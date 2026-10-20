@@ -8,5 +8,5 @@ outputs/
 *.jpg
 *.jpeg
 *.png
-!docs/**/*.png
+!docs/**
 .env
