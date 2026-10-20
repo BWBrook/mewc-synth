@@ -14,4 +14,7 @@ dependencies = [
     "numpy",
     "pandas",
     "pyyaml",
+    "pyarrow",
+    "imagehash",
+    "scipy",
 ]
