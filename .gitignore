@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+data/
+outputs/
+*.safetensors
+*.ckpt
+*.keras
+*.jpg
+*.jpeg
+*.png
+!docs/**/*.png
+.env
