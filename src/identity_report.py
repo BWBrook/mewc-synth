@@ -38,8 +38,9 @@ def main(identity_dir, class_yaml, sanity_prefix, sanity_truth):
     probs = np.load(d / "vtl_probs.npy")
     vtl["relpath"] = vtl["path"].str.split("/").str[-2:].str.join("/")
     df = man.merge(vtl.reset_index(), on="relpath")
-    df["p_intended"] = [probs[i, col[c]] for i, c in zip(df["index"], df["class_code"])]
-    df["intended"] = df["top_name"] == df["class_code"]
+    df["model_name"] = df["class_code"].map(lambda c: ALIASES.get(c, c))
+    df["p_intended"] = [probs[i, col[c]] for i, c in zip(df["index"], df["model_name"])]
+    df["intended"] = df["top_name"] == df["model_name"]
     df["lookalike"] = [t in LOOKALIKES.get(c, []) for t, c in zip(df["top_name"], df["class_code"])]
     df["infrared"] = df["prompt"].str.contains("infrared")
     rows = []
