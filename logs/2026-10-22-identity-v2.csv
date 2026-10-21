@@ -1,0 +1,12 @@
+class,setting,n,intended,lookalike,mean_p_intended,intended_ir,intended_day,top_wrong
+black_currawong,base_g50,64,0.234,0.766,0.299,,0.234,grey_currawong 49
+black_rat,base_g50,64,0.047,0.438,0.165,0.047,,long_tailed_mouse 33; swamp_rat 28
+eastern_quoll,base_g50,64,1.0,0.0,0.975,1.0,1.0,
+flame_robin,camtrap_g50,64,0.984,0.0,0.959,,0.984,superb_fairywren 1
+forester_kangaroo,base_g50,64,0.953,0.047,0.86,1.0,0.875,bennetts_wallaby 3
+grey_currawong,base_g50,64,0.859,0.141,0.825,,0.859,black_currawong 9
+scrubtit,camtrap_g50,64,0.125,0.0,0.124,0.375,0.089,tasmanian_scrubwren 42; olive_whistler 8; superb_fairywren 3
+spotted_tail_quoll,base_g50,64,0.016,0.984,0.078,0.0,0.062,eastern_quoll 63
+strong_billed_honeyeater,camtrap_g50,64,0.484,0.0,0.35,,0.484,yellow_throated_honeyeater 16; olive_whistler 9; crescent_honeyeater 5
+tasmanian_boobook,camtrap_g50,64,0.641,0.0,0.593,0.781,0.5,brown_falcon 13; bassian_thrush 3; australian_owlet_nightjar 3
+tasmanian_devil,base_g50,64,1.0,0.0,0.995,1.0,1.0,
