@@ -2,7 +2,9 @@
 (512 px -> Lanczos 600 px -> PIL default JPEG), with a manifest row per image.
 Usage: python src/generate.py LORA_DIR CLASS_TABLE_CSV OUT_DIR JOBS_JSON
 JOBS_JSON example: {"seed": 11, "steps": 30, "guidance": 5.0, "batch": 8,
-  "jobs": [{"code": "tasmanian_devil", "n": 64, "infrared_share": 0.6}]}"""
+  "jobs": [{"code": "tasmanian_devil", "n": 64, "infrared_share": 0.6, "q95_share": 0.2,
+            "negative": "eastern quoll", "tag": "neg"}]}
+"negative" (optional) is passed as the negative prompt; "guidance" may also be set per job."""
 import hashlib
 import json
 import sys
@@ -30,6 +32,7 @@ def main(lora_dir, class_table, out_dir, jobs_json):
     rows = []
     for job in cfg["jobs"]:
         code, n, b = str(job["code"]), int(job["n"]), int(cfg["batch"])
+        guidance, negative, tag = job.get("guidance", cfg["guidance"]), job.get("negative"), job.get("tag", "base")
         (out / code).mkdir(parents=True, exist_ok=True)
         k = 0
         while k < n:
@@ -37,15 +40,17 @@ def main(lora_dir, class_table, out_dir, jobs_json):
             infrared = bool(rng.random() < job["infrared_share"])
             prompt = caption(*names[code], infrared)
             seed = int(rng.integers(0, 2**31 - 1))
-            images = pipe(prompt, height=GEN_RES, width=GEN_RES, num_inference_steps=cfg["steps"],
-                          guidance_scale=cfg["guidance"], num_images_per_prompt=m,
+            images = pipe(prompt, negative_prompt=negative, height=GEN_RES, width=GEN_RES,
+                          num_inference_steps=cfg["steps"], guidance_scale=guidance, num_images_per_prompt=m,
                           generator=torch.Generator("cuda").manual_seed(seed)).images
             for j, img in enumerate(images):
-                name = f"synth_{code}_{seed}_{j}.jpg"
-                data = finish_snip(img)
+                name = f"synth_{code}_{tag}_{seed}_{j}.jpg"
+                quality = 95 if rng.random() < job.get("q95_share", 0.0) else 75
+                data = finish_snip(img, quality)
                 (out / code / name).write_bytes(data)
-                rows.append({"relpath": f"{code}/{name}", "class_code": code, "prompt": prompt, "seed": seed,
-                             "index_in_batch": j, "steps": cfg["steps"], "guidance": cfg["guidance"],
+                rows.append({"relpath": f"{code}/{name}", "class_code": code, "tag": tag, "prompt": prompt,
+                             "negative": negative, "seed": seed, "index_in_batch": j, "steps": cfg["steps"],
+                             "guidance": guidance, "jpeg_quality": quality,
                              "base_model": SDXL, "vae": VAE_FP16, "lora": str(weights), "lora_sha256": lora_sha,
                              "sha256": hashlib.sha256(data).hexdigest()})
             k += m

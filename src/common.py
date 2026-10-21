@@ -43,9 +43,9 @@ def chroma(img):
     return float((np.abs(a[..., 0] - a[..., 1]) + np.abs(a[..., 1] - a[..., 2])).mean() / 2)
 
 
-def finish_snip(img512):
-    """Finish a generated snip exactly as mewc-snip finishes real ones:
-    Lanczos square resize to 600 px, then PIL's default JPEG save (quality 75)."""
+def finish_snip(img512, quality=75):
+    """Finish a generated snip as real snips are finished: Lanczos square resize to 600 px,
+    then PIL JPEG with default settings at the given quality (mewc-snip writes 75; one source wrote 95)."""
     buf = io.BytesIO()
-    img512.convert("RGB").resize((SNIP_RES, SNIP_RES), Image.LANCZOS).save(buf, format="JPEG")
+    img512.convert("RGB").resize((SNIP_RES, SNIP_RES), Image.LANCZOS).save(buf, format="JPEG", quality=quality)
     return buf.getvalue()
