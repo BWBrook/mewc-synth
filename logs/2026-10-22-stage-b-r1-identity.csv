@@ -1,0 +1,17 @@
+class,setting,n,intended,lookalike,mean_p_intended,intended_ir,intended_day,top_wrong
+black_currawong,b_currawong_s000400_target,64,1.0,0.0,0.949,,1.0,
+black_currawong,b_currawong_s000800_target,64,1.0,0.0,0.965,,1.0,
+eastern_quoll,b_quoll_s000400_look,32,0.938,0.062,0.734,0.938,,spotted_tail_quoll 2
+eastern_quoll,b_quoll_s000800_look,32,1.0,0.0,0.883,1.0,,
+grey_currawong,b_currawong_s000400_look,32,0.469,0.531,0.456,,0.469,black_currawong 17
+grey_currawong,b_currawong_s000800_look,32,0.562,0.438,0.513,,0.562,black_currawong 14
+scrubtit,b_scrubtit_s000400_target,64,0.203,0.797,0.32,0.083,0.275,tasmanian_scrubwren 51
+scrubtit,b_scrubtit_s000800_target,64,0.344,0.641,0.402,0.25,0.4,tasmanian_scrubwren 41; thornbill 1
+spotted_tail_quoll,b_quoll_s000400_target,64,1.0,0.0,0.983,1.0,1.0,
+spotted_tail_quoll,b_quoll_s000800_target,64,1.0,0.0,0.992,1.0,1.0,
+strong_billed_honeyeater,b_honeyeater_s000400_target,64,0.969,0.0,0.778,,0.969,olive_whistler 1; european_goldfinch 1
+strong_billed_honeyeater,b_honeyeater_s000800_target,64,0.984,0.0,0.771,,0.984,superb_fairywren 1
+tasmanian_scrubwren,b_scrubtit_s000400_look,32,1.0,0.0,0.936,,1.0,
+tasmanian_scrubwren,b_scrubtit_s000800_look,32,1.0,0.0,0.952,,1.0,
+yellow_throated_honeyeater,b_honeyeater_s000400_look,32,0.969,0.0,0.875,,0.969,olive_whistler 1
+yellow_throated_honeyeater,b_honeyeater_s000800_look,32,1.0,0.0,0.938,,1.0,

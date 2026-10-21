@@ -4,7 +4,8 @@ Usage: python src/generate.py LORA_DIR CLASS_TABLE_CSV OUT_DIR JOBS_JSON
 JOBS_JSON example: {"seed": 11, "steps": 30, "guidance": 5.0, "batch": 8,
   "jobs": [{"code": "tasmanian_devil", "n": 64, "infrared_share": 0.6, "q95_share": 0.2,
             "negative": "eastern quoll", "tag": "neg"}]}
-"negative" (optional) is passed as the negative prompt; "guidance" may also be set per job."""
+"negative" (optional) is passed as the negative prompt; "guidance" may also be set per job;
+"views" (optional) appends one randomly chosen viewpoint phrase per batch to the prompt."""
 import hashlib
 import json
 import sys
@@ -39,6 +40,8 @@ def main(lora_dir, class_table, out_dir, jobs_json):
             m = min(b, n - k)
             infrared = bool(rng.random() < job["infrared_share"])
             prompt = caption(*names[code], infrared)
+            if job.get("views"):
+                prompt += ", " + job["views"][int(rng.integers(len(job["views"])))]
             seed = int(rng.integers(0, 2**31 - 1))
             images = pipe(prompt, negative_prompt=negative, height=GEN_RES, width=GEN_RES,
                           num_inference_steps=cfg["steps"], guidance_scale=guidance, num_images_per_prompt=m,
