@@ -1,10 +1,14 @@
-"""Stage A: train one SDXL UNet LoRA on cached latents and text embeddings.
-Class sampling weight is n_c^-alpha per snip (alpha 0.5 = square-root balancing).
+"""Train one SDXL UNet LoRA on cached latents and text embeddings (Stage A, or Stage B from init_lora).
+Default class sampling weight is n_c^-alpha per snip (alpha 0.5 = square-root balancing). With "focus"
+(Stage B), only the named classes (each with the given total sampling mass) and prior_n random rows from
+other classes (sharing prior_mass) are sampled; "init_lora" resumes from a saved LoRA.
 Saves LoRA checkpoints, a loss log and fixed-seed sample grids.
 Usage: python src/train_lora.py RUN_NAME OUT_NAME CONFIG_JSON
 CONFIG_JSON example: {"rank": 64, "lr": 1e-4, "steps": 6000, "batch": 32, "alpha": 0.5,
   "warmup": 200, "min_snr": 5.0, "save_every": 1000, "sample_every": 1000, "seed": 7,
-  "sample_prompts": ["camera trap snip of a tasmanian devil, infrared night"]}"""
+  "sample_prompts": ["camera trap snip of a tasmanian devil, infrared night"]}
+Stage B additions: "init_lora": "<lora dir>", "focus": {"classes": {"scrubtit": 0.45,
+  "tasmanian_scrubwren": 0.25}, "prior_mass": 0.3, "prior_n": 3000}"""
 import json
 import math
 import sys
@@ -14,9 +18,10 @@ import numpy as np
 import pandas as pd
 import torch
 from diffusers import AutoencoderKL, DDPMScheduler, StableDiffusionXLPipeline, UNet2DConditionModel
-from diffusers.utils import convert_state_dict_to_diffusers
-from peft import LoraConfig
+from diffusers.utils import convert_state_dict_to_diffusers, convert_unet_state_dict_to_peft
+from peft import LoraConfig, set_peft_model_state_dict
 from peft.utils import get_peft_model_state_dict
+from safetensors.torch import load_file
 from PIL import Image
 
 from common import DATA, GEN_RES, SDXL, VAE_FP16
@@ -56,7 +61,14 @@ def main(run, out_name, config):
     lat = torch.from_numpy(np.load(src / "latents.npy")).cuda() # about 10 GB for 150k snips: kept on the GPU
     te = torch.load(src / "text_embeds.pt")
     pe_all, pooled_all = te["prompt_embeds"].cuda(), te["pooled"].cuda()
-    w = np.array(rows["class_code"].map(rows["class_code"].value_counts() ** -cfg["alpha"]), dtype=np.float64)
+    if "focus" in cfg:
+        f = cfg["focus"]
+        counts = rows["class_code"].value_counts()
+        w = np.array(rows["class_code"].map(lambda c: f["classes"].get(c, 0.0) / counts[c]), dtype=np.float64)
+        others = np.flatnonzero(w == 0)
+        w[rng.choice(others, min(f["prior_n"], len(others)), replace=False)] = f["prior_mass"] / min(f["prior_n"], len(others))
+    else:
+        w = np.array(rows["class_code"].map(rows["class_code"].value_counts() ** -cfg["alpha"]), dtype=np.float64)
     w /= w.sum()
     cap_ids = torch.from_numpy(rows["caption_id"].to_numpy()).cuda()
 
@@ -67,6 +79,13 @@ def main(run, out_name, config):
     params = [p for p in unet.parameters() if p.requires_grad]
     for p in params:
         p.data = p.data.float()
+    if cfg.get("init_lora"):
+        sd = load_file(f"{cfg['init_lora']}/pytorch_lora_weights.safetensors")
+        sd = convert_unet_state_dict_to_peft({k.removeprefix("unet."): v for k, v in sd.items() if k.startswith("unet.")})
+        res = set_peft_model_state_dict(unet, sd, adapter_name="default")
+        if getattr(res, "unexpected_keys", None):
+            raise ValueError(f"init_lora has {len(res.unexpected_keys)} unexpected keys, e.g. {res.unexpected_keys[:2]}")
+        print(json.dumps({"init_lora": cfg["init_lora"], "tensors": len(sd)}), flush=True)
     unet.enable_gradient_checkpointing()
     unet.to("cuda").train()
     opt = torch.optim.AdamW(params, lr=cfg["lr"], weight_decay=1e-2)

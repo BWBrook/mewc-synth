@@ -17,7 +17,11 @@ LOOKALIKES = {"spotted_tail_quoll": ["eastern_quoll"],
               "black_rat": ["house_mouse", "swamp_rat"],
               "eastern_quoll": ["spotted_tail_quoll"],
               "grey_currawong": ["black_currawong", "forest_raven"],
-              "tasmanian_devil": []}
+              "tasmanian_devil": [],
+              "scrubtit": ["tasmanian_scrubwren"],
+              "tasmanian_scrubwren": ["scrubtit"],
+              "strong_billed_honeyeater": ["yellow_throated_honeyeater", "crescent_honeyeater"],
+              "yellow_throated_honeyeater": ["strong_billed_honeyeater"]}
 
 
 def main(identity_dir, class_yaml, sanity_prefix, sanity_truth):
