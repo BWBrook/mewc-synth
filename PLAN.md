@@ -124,3 +124,40 @@ and synthetic snips identically.
 ## Change log
 
 - 2026-10-20: initial plan.
+- 2026-10-21, before any data were processed. These are the data facts and
+  the resulting decisions.
+  - **Source:** `deep-server:/data/data_600px.zip`, 196 GB stored (no
+    compression), 4,069,864 JPEGs, in folders
+    `data_600px/<tier>/<common_name>/`. The tiers are `base` (22 classes,
+    3.16 M), `sufficient` (61, 894 k), `need_more` (23, 11.5 k), `too_few`
+    (14, 988) and `not_in_model` (53 tiny classes, 663; excluded).
+    `species_list.txt` in the zip gives code, binomial and common name for
+    all 120 used classes.
+  - **The Tasmanian 96-class model** (`class_list_96sp.yaml`) is 22 `base`,
+    49 `sufficient`, 22 `need_more` and 3 `too_few` classes (chestnut teal,
+    brown goshawk, European goldfinch). Three name aliases apply: `bait` =
+    `camera_bait`, `flame_scarlet_robin` = `flame_robin`, `maned_goose` =
+    `maned_duck`. The 12 other `sufficient` classes and `bush_rat` are
+    Gippsland (Victorian) species from Barry's separate model. The 11 other
+    `too_few` classes are candidate new classes.
+  - **Working set:** every snip for classes up to 30,000, and a seeded
+    random 30,000 above that (seed 20261021), about 1.07 M snips. Class
+    identity is the folder name.
+  - **Scope:** Stage A trains on the train split of all 120 classes,
+    Victorian included, because it is a generator and more camera-trap
+    variety helps. Classifier comparisons use only the 96 Tasmanian model
+    classes. "Low-count" targets are the in-model `need_more` and in-model
+    `too_few` classes (94 to 1,016 snips).
+  - **Captions** carry binomials: `camera trap snip of a {common}
+    ({binomial}), {daylight colour | infrared night}`.
+  - **Proposed pseudo-rare classes** (Barry to confirm), chosen as abundant
+    in-model classes with a close look-alike, so identity errors in synthetic
+    snips will show:
+    - spotted-tailed quoll (24 k; look-alike eastern quoll)
+    - forester kangaroo (131 k; look-alikes Bennett's wallaby, pademelon)
+    - black currawong (43 k; look-alikes forest raven, grey currawong)
+    - black rat (22 k; look-alikes swamp rat, house mouse, long-tailed
+      mouse)
+
+    Each is cut to n = 50 and n = 20 training snips by whole groups. Their
+    test sets may be enlarged beyond the 2,000 cap for power.
