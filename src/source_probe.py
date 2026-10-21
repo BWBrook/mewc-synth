@@ -5,7 +5,6 @@ both sources, so the probe learns style rather than taxon. It is validated by Gr
 classes (held-out species).
 Usage: python src/source_probe.py INV_DIR"""
 import json
-import re
 import sys
 from pathlib import Path
 
@@ -17,25 +16,19 @@ from sklearn.model_selection import GroupKFold
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 
+from common import source_prefix
+
 PHOTO = {"ebird", "inat"}
 CAMERA = {"iona", "jl", "tlc", "thi", "ink", "nw", "gkvic", "gst", "hr", "lun", "deeca", "delwp",
           "goa", "nret", "kpz", "vish", "evd", "alex", "js", "felix"}
 PER_CLASS = 600
 
 
-def prefix(relpath):
-    """Leading letters before '_' or '-'; UUID-style hex heads (e.g. 'fcffacac') count as no prefix."""
-    m = re.match(r"([A-Za-z]+)[_-]", relpath.split("/", 1)[1])
-    if not m or (len(m.group(1)) == 8 and set(m.group(1).lower()) <= set("abcdef")):
-        return "(none)"
-    return m.group(1).lower()
-
-
 def main(inv_dir):
     inv_dir = Path(inv_dir)
     inv = pd.read_parquet(inv_dir / "inventory.parquet")
     emb = np.load(inv_dir / "dinov2_base.npy", mmap_mode="r")
-    inv["src"] = inv["relpath"].map(prefix)
+    inv["src"] = inv["relpath"].map(source_prefix)
     inv["label"] = np.where(inv["src"].isin(PHOTO), 1, np.where(inv["src"].isin(CAMERA), 0, -1))
     rng = np.random.default_rng(5)
     picks = []

@@ -1,5 +1,6 @@
 """Shared paths and image helpers for mewc-synth."""
 import io
+import re
 from pathlib import Path
 
 import numpy as np
@@ -49,3 +50,12 @@ def finish_snip(img512, quality=75):
     buf = io.BytesIO()
     img512.convert("RGB").resize((SNIP_RES, SNIP_RES), Image.LANCZOS).save(buf, format="JPEG", quality=quality)
     return buf.getvalue()
+
+
+def source_prefix(relpath):
+    """Source code from a snip file name: leading letters before '_' or '-'. UUID-style hex heads
+    (for example 'fcffacac') and names without a prefix return '(none)'."""
+    m = re.match(r"([A-Za-z]+)[_-]", relpath.split("/", 1)[1])
+    if not m or (len(m.group(1)) == 8 and set(m.group(1).lower()) <= set("abcdef")):
+        return "(none)"
+    return m.group(1).lower()

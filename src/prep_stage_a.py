@@ -2,7 +2,10 @@
 SDXL VAE latents at 512 px (both horizontal orientations) and SDXL text embeddings per caption.
 Pseudo-rare classes contribute only their fixed subset from pseudo_rare.parquet (see pseudo_rare.py).
 Usage: python src/prep_stage_a.py SNIP_ROOT INV_DIR SPLIT_NAME CLASS_TABLE_CSV RUN_NAME CONFIG_JSON
-CONFIG_JSON example: {"cap": 1500, "seed": 7, "pseudo_rare": {"black_rat": 50}, "ir_chroma": 1.0}"""
+CONFIG_JSON example: {"cap": 1500, "seed": 7, "pseudo_rare": {"black_rat": 50}, "ir_chroma": 1.0,
+  "photo_prefixes": ["ebird", "inat"], "reuse_latents_from": "a_v1"}
+Optional: photo_prefixes caption those sources as photographs; reuse_latents_from links an earlier
+run's latents when its rows are identical (only captions change)."""
 import json
 import sys
 from pathlib import Path
@@ -14,7 +17,7 @@ from diffusers import AutoencoderKL, StableDiffusionXLPipeline
 from PIL import Image
 from torch.utils.data import DataLoader, Dataset
 
-from common import DATA, GEN_RES, SDXL, VAE_FP16
+from common import DATA, GEN_RES, SDXL, VAE_FP16, source_prefix
 
 
 OVERRIDES = Path(__file__).resolve().parents[1] / "configs" / "caption_overrides.csv"
@@ -30,9 +33,11 @@ def class_names(table_csv):
     return names
 
 
-def caption(common, binomial, infrared):
-    light = "infrared night" if infrared else "daylight colour"
+def caption(common, binomial, infrared, photo=False):
     name = common if binomial.lower() == common.lower() else f"{common} ({binomial})"
+    if photo:
+        return f"photograph of a {name}"
+    light = "infrared night" if infrared else "daylight colour"
     return f"camera trap snip of a {name}, {light}"
 
 
@@ -70,7 +75,8 @@ def main(root, inv_dir, split_name, class_table, run, config):
             rows.extend(cdf.index if len(cdf) <= n else rng.choice(cdf.index, n, replace=False))
     sel = df.loc[sorted(rows)].reset_index(drop=True)
     sel["infrared"] = sel["chroma"] < cfg["ir_chroma"]
-    sel["caption"] = [caption(*names[c], ir) for c, ir in zip(sel["class_code"], sel["infrared"])]
+    sel["photo"] = sel["relpath"].map(source_prefix).isin(cfg.get("photo_prefixes", []))
+    sel["caption"] = [caption(*names[c], ir, ph) for c, ir, ph in zip(sel["class_code"], sel["infrared"], sel["photo"])]
     captions = sorted(sel["caption"].unique())
     sel["caption_id"] = sel["caption"].map({c: i for i, c in enumerate(captions)})
 
@@ -86,6 +92,14 @@ def main(root, inv_dir, split_name, class_table, run, config):
     torch.save({"prompt_embeds": pe.cpu(), "pooled": pooled.cpu()}, out / "text_embeds.pt")
     del pipe
 
+    if cfg.get("reuse_latents_from"):
+        src = DATA / "stage_a" / cfg["reuse_latents_from"]
+        if not (pd.read_parquet(src / "rows.parquet")["relpath"].values == sel["relpath"].values).all():
+            raise ValueError(f"rows differ from {src}; latents cannot be reused")
+        (out / "latents.npy").symlink_to(src / "latents.npy")
+        print(json.dumps({"run": run, "rows": len(sel), "captions": len(captions),
+                          "photo_share": round(float(sel["photo"].mean()), 3), "latents": f"linked from {src}"}))
+        return
     vae = AutoencoderKL.from_pretrained(VAE_FP16, torch_dtype=torch.float16).cuda().eval()
     sf = vae.config.scaling_factor
     lat = np.lib.format.open_memmap(out / "latents.npy", mode="w+", dtype=np.float16,
