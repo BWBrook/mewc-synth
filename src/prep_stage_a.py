@@ -1,8 +1,8 @@
 """Build the Stage A training cache from the train split: a class-capped sample, captions,
 SDXL VAE latents at 512 px (both horizontal orientations) and SDXL text embeddings per caption.
 Pseudo-rare classes contribute only their reduced subset (whole groups, drawn with the seed).
-Usage: python src/prep_stage_a.py SNIP_ROOT INV_DIR SPLIT_NAME CLASS_MAP_YAML RUN_NAME CONFIG_JSON
-CONFIG_JSON example: {"cap": 1500, "seed": 7, "pseudo_rare": {"1": 50, "8": 50}, "ir_chroma": 4.0}"""
+Usage: python src/prep_stage_a.py SNIP_ROOT INV_DIR SPLIT_NAME CLASS_TABLE_CSV RUN_NAME CONFIG_JSON
+CONFIG_JSON example: {"cap": 1500, "seed": 7, "pseudo_rare": {"cat": 50}, "ir_chroma": 1.0}"""
 import json
 import sys
 from pathlib import Path
@@ -10,7 +10,6 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import torch
-import yaml
 from diffusers import AutoencoderKL, StableDiffusionXLPipeline
 from PIL import Image
 from torch.utils.data import DataLoader, Dataset
@@ -18,9 +17,16 @@ from torch.utils.data import DataLoader, Dataset
 from common import DATA, GEN_RES, SDXL, VAE_FP16
 
 
-def caption(name, infrared):
+def class_names(table_csv):
+    """Map class folder name to (common name, binomial) from the class table."""
+    t = pd.read_csv(table_csv, dtype=str)
+    return {c: (c.replace("_", " "), b) for c, b in zip(t["class"], t["binomial"])}
+
+
+def caption(common, binomial, infrared):
     light = "infrared night" if infrared else "daylight colour"
-    return f"camera trap snip of a {name.replace('_', ' ')}, {light}"
+    name = common if binomial.lower() == common.lower() else f"{common} ({binomial})"
+    return f"camera trap snip of a {name}, {light}"
 
 
 def take_groups(cdf, n, rng):
@@ -47,9 +53,9 @@ class Snips(Dataset):
         return torch.from_numpy(a / 127.5 - 1).permute(2, 0, 1)
 
 
-def main(root, inv_dir, split_name, class_map, run, config):
+def main(root, inv_dir, split_name, class_table, run, config):
     inv_dir, cfg = Path(inv_dir), json.loads(config)
-    names = {str(k): v.strip() for k, v in yaml.safe_load(open(class_map)).items()}
+    names = class_names(class_table)
     split = pd.read_parquet(inv_dir / "splits" / split_name / "split.parquet")
     meta = pd.read_parquet(inv_dir / "embed_meta.parquet")[["relpath", "chroma"]]
     df = split[split["split"] == "train"].merge(meta, on="relpath").reset_index(drop=True)
@@ -61,7 +67,7 @@ def main(root, inv_dir, split_name, class_map, run, config):
                     (cdf.index if len(cdf) <= n else rng.choice(cdf.index, n, replace=False)))
     sel = df.loc[sorted(rows)].reset_index(drop=True)
     sel["infrared"] = sel["chroma"] < cfg["ir_chroma"]
-    sel["caption"] = [caption(names[c], ir) for c, ir in zip(sel["class_code"], sel["infrared"])]
+    sel["caption"] = [caption(*names[c], ir) for c, ir in zip(sel["class_code"], sel["infrared"])]
     captions = sorted(sel["caption"].unique())
     sel["caption_id"] = sel["caption"].map({c: i for i, c in enumerate(captions)})
 
