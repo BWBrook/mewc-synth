@@ -17,10 +17,17 @@ from torch.utils.data import DataLoader, Dataset
 from common import DATA, GEN_RES, SDXL, VAE_FP16
 
 
+OVERRIDES = Path(__file__).resolve().parents[1] / "configs" / "caption_overrides.csv"
+
+
 def class_names(table_csv):
-    """Map class folder name to (common name, binomial) from the class table."""
+    """Map class folder name to (common name, binomial) from the class table, applying
+    caption overrides (for example merged classes such as flame and scarlet robins)."""
     t = pd.read_csv(table_csv, dtype=str)
-    return {c: (c.replace("_", " "), b) for c, b in zip(t["class"], t["binomial"])}
+    names = {c: (c.replace("_", " "), b) for c, b in zip(t["class"], t["binomial"])}
+    for _, r in pd.read_csv(OVERRIDES, dtype=str).iterrows():
+        names[r["class"]] = (r["common"], r["binomial"])
+    return names
 
 
 def caption(common, binomial, infrared):

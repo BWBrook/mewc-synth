@@ -161,3 +161,26 @@ and synthetic snips identically.
 
     Each is cut to n = 50 and n = 20 training snips by whole groups. Their
     test sets may be enlarged beyond the 2,000 cap for power.
+  - **Barry's difficulty notes (2026-10-21, chat, paraphrased).** Spotted-tailed
+    and eastern quolls are easy to tell apart. Forester kangaroo is easy
+    except for partial views (foot, tail, close fur). Black and grey
+    currawongs are easy if the beak or rump shows, otherwise nearly
+    impossible. Black rat versus house mouse is very hard because snips lack
+    scale, especially in IR. Swamp rat and long-tailed mouse are relatively
+    easy. The four pseudo-rare classes are therefore kept as a **difficulty
+    gradient**:
+    - quoll: easy, a ceiling and no-harm control;
+    - kangaroo: easy except partial views;
+    - black currawong: partial-view-limited, where generation should help
+      most;
+    - black rat: scale-limited, a negative control where generation cannot
+      add the missing cue.
+
+    Results are interpreted per class.
+  - `maned_duck` (Australian wood duck, *Chenonetta jubata*) is one species
+    under several names. `flame_robin` is the merged flame and scarlet robin
+    class (females are very hard to separate), so its caption is overridden
+    in `configs/caption_overrides.csv`.
+  - **Later candidate (Barry's suggestion):** splitting flame and scarlet
+    robins with synthetic support. This needs an expert-labelled seed set and
+    test set for each species, including females.
