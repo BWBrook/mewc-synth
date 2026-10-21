@@ -1,8 +1,8 @@
 """Build the Stage A training cache from the train split: a class-capped sample, captions,
 SDXL VAE latents at 512 px (both horizontal orientations) and SDXL text embeddings per caption.
-Pseudo-rare classes contribute only their reduced subset (whole groups, drawn with the seed).
+Pseudo-rare classes contribute only their fixed subset from pseudo_rare.parquet (see pseudo_rare.py).
 Usage: python src/prep_stage_a.py SNIP_ROOT INV_DIR SPLIT_NAME CLASS_TABLE_CSV RUN_NAME CONFIG_JSON
-CONFIG_JSON example: {"cap": 1500, "seed": 7, "pseudo_rare": {"cat": 50}, "ir_chroma": 1.0}"""
+CONFIG_JSON example: {"cap": 1500, "seed": 7, "pseudo_rare": {"black_rat": 50}, "ir_chroma": 1.0}"""
 import json
 import sys
 from pathlib import Path
@@ -36,17 +36,6 @@ def caption(common, binomial, infrared):
     return f"camera trap snip of a {name}, {light}"
 
 
-def take_groups(cdf, n, rng):
-    """Draw whole groups in seeded order until n snips; trims the last group to hit n exactly."""
-    members = cdf.groupby("group").indices
-    picked = []
-    for g in rng.permutation(sorted(members)):
-        picked.extend(cdf.index[members[g]])
-        if len(picked) >= n:
-            break
-    return picked[:n]
-
-
 class Snips(Dataset):
     def __init__(self, root, relpaths):
         self.root, self.relpaths = Path(root), relpaths
@@ -68,10 +57,17 @@ def main(root, inv_dir, split_name, class_table, run, config):
     df = split[split["split"] == "train"].merge(meta, on="relpath").reset_index(drop=True)
     rng = np.random.default_rng(cfg["seed"])
     rows = []
+    if cfg["pseudo_rare"]:
+        pr = pd.read_parquet(inv_dir / "splits" / split_name / "pseudo_rare.parquet")
     for code, cdf in df.groupby("class_code"):
-        n = int(cfg["pseudo_rare"].get(code, cfg["cap"]))
-        rows.extend(take_groups(cdf, n, rng) if code in cfg["pseudo_rare"] else
-                    (cdf.index if len(cdf) <= n else rng.choice(cdf.index, n, replace=False)))
+        if code in cfg["pseudo_rare"]:
+            keep = set(pr[(pr["class_code"] == code) & (pr["n"] == cfg["pseudo_rare"][code])]["relpath"])
+            if len(keep) != cfg["pseudo_rare"][code]:
+                raise ValueError(f"pseudo_rare.parquet has no n={cfg['pseudo_rare'][code]} subset for {code}")
+            rows.extend(cdf.index[cdf["relpath"].isin(keep)])
+        else:
+            n = cfg["cap"]
+            rows.extend(cdf.index if len(cdf) <= n else rng.choice(cdf.index, n, replace=False))
     sel = df.loc[sorted(rows)].reset_index(drop=True)
     sel["infrared"] = sel["chroma"] < cfg["ir_chroma"]
     sel["caption"] = [caption(*names[c], ir) for c, ir in zip(sel["class_code"], sel["infrared"])]
