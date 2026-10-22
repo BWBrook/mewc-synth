@@ -231,3 +231,7 @@ and synthetic snips identically.
     reported. B-syn helps if it beats both R and B-rep with intervals
     excluding zero; no-harm by the amended rule above. The shortcut probe
     (within mode) runs on the translations before the classifier runs.
+- 2026-10-22, before its results: **S20** added to complete the share axis
+  (same 200 translated snips per pseudo-rare class, real snips linked 16
+  times, so 20% of draws are synthetic; seeds 1 to 3), queued behind the bird
+  arm. Judged by the same rule as S80 and S50.
