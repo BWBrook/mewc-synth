@@ -1,0 +1,17 @@
+class,setting,train_rows,gen_nn_median,test_nn_median,gen_ge_0.95,test_ge_0.95,gen_ge_0.90,test_ge_0.90,gen_pairwise,test_pairwise,gen_anchor_share,test_anchor_share
+black_currawong,sw_currawong_s000400_g25,50,0.799,0.714,0.0,0.0,0.0,0.0,0.678,0.447,0.208,0.13
+black_currawong,sw_currawong_s000400_g35,50,0.789,0.704,0.0,0.0,0.0,0.0,0.671,0.503,0.229,0.135
+black_currawong,sw_currawong_s000400_g35_views,50,0.798,0.703,0.0,0.0,0.0,0.0,0.76,0.44,0.292,0.18
+black_currawong,sw_currawong_s000400_g50,50,0.781,0.711,0.0,0.0,0.0,0.0,0.702,0.463,0.188,0.15
+black_currawong,sw_currawong_s000800_g25,50,0.795,0.705,0.0,0.0,0.0,0.0,0.697,0.437,0.25,0.125
+black_currawong,sw_currawong_s000800_g35,50,0.799,0.711,0.0,0.0,0.0,0.0,0.716,0.473,0.271,0.115
+black_currawong,sw_currawong_s000800_g35_views,50,0.814,0.731,0.0,0.0,0.0,0.0,0.779,0.493,0.271,0.18
+black_currawong,sw_currawong_s000800_g50,50,0.78,0.712,0.0,0.0,0.0,0.0,0.703,0.471,0.208,0.11
+spotted_tail_quoll,sw_quoll_s000400_g25,50,0.805,0.726,0.0,0.0,0.0,0.0,0.733,0.489,0.25,0.14
+spotted_tail_quoll,sw_quoll_s000400_g35,50,0.81,0.711,0.0,0.0,0.0,0.0,0.78,0.49,0.25,0.135
+spotted_tail_quoll,sw_quoll_s000400_g35_views,50,0.811,0.737,0.0,0.0,0.0,0.0,0.787,0.458,0.188,0.08
+spotted_tail_quoll,sw_quoll_s000400_g50,50,0.807,0.714,0.0,0.0,0.0,0.0,0.789,0.472,0.312,0.085
+spotted_tail_quoll,sw_quoll_s000800_g25,50,0.797,0.733,0.0,0.0,0.0,0.0,0.727,0.514,0.354,0.095
+spotted_tail_quoll,sw_quoll_s000800_g35,50,0.817,0.724,0.0,0.0,0.0,0.0,0.783,0.493,0.229,0.065
+spotted_tail_quoll,sw_quoll_s000800_g35_views,50,0.82,0.736,0.0,0.0,0.0,0.0,0.8,0.486,0.333,0.1
+spotted_tail_quoll,sw_quoll_s000800_g50,50,0.812,0.724,0.0,0.0,0.0,0.0,0.798,0.454,0.396,0.07
