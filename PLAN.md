@@ -184,3 +184,25 @@ and synthetic snips identically.
   - **Later candidate (Barry's suggestion):** splitting flame and scarlet
     robins with synthetic support. This needs an expert-labelled seed set and
     test set for each species, including females.
+- 2026-10-22, before the classifier screen. Synthetic snips for the pseudo-rare
+  classes come from look-alike translation (SDXL img2img at strength 0.65 from
+  real camera-trap snips of the look-alike, with a per-class Stage B adapter),
+  because generation from noise gave too little diversity. A reference arm
+  **R** (pseudo-rare classes at full real data) was added to measure the
+  headroom. Seeds: 3 for A0 and the synthetic arm, 2 for R.
+- 2026-10-22, after round 1 results (`logs/2026-10-22-screen-r1.md`).
+  - **Naming.** The round 1 synthetic arm was run under the name `A1`; it is
+    this plan's **A2 at the 80% share** and is reported as **S80**. The 50%
+    share is **S50** (real snips linked four times so that real and synthetic
+    each fill half the draws, with the same 200 synthetic snips). The plan's
+    A1 (copy-paste) keeps its name and has not been run.
+  - **Deviation.** Quality check 4 (shortcut probe) ran after the comparison,
+    not before. It found a VAE fingerprint (AUC 0.69 for a VAE round trip of
+    real snips, 0.50 for resizing and JPEG alone); later synthetic sets are
+    probed before any classifier run.
+  - **No-harm rule, amended after seeing results.** As written, the rule
+    flagged 11 of 92 non-focus classes for R, which cannot harm them, so it
+    measures seed noise. Proposed replacement: a non-focus class is harmed if
+    its F1 difference has a two-level (test snips and seeds) 95% interval
+    entirely below -0.01, and the arm fails if more classes are harmed than
+    under R. This change is post hoc and is reported as such.
