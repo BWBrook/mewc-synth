@@ -1,0 +1,10 @@
+class,setting,n,intended,lookalike,mean_p_intended,intended_ir,intended_day,top_wrong
+black_currawong,tr_black_currawong_from_grey_currawong_s50,48,0.667,0.333,0.618,1.0,0.66,grey_currawong 16
+black_currawong,tr_black_currawong_from_grey_currawong_s65,48,0.812,0.167,0.732,0.0,0.83,grey_currawong 8; superb_lyrebird 1
+black_currawong,tr_black_currawong_from_grey_currawong_s80,48,0.938,0.062,0.852,1.0,0.936,grey_currawong 3
+scrubtit,tr_scrubtit_from_tasmanian_scrubwren_s50,48,0.5,0.438,0.405,0.6,0.488,tasmanian_scrubwren 21; superb_fairywren 2; olive_whistler 1
+scrubtit,tr_scrubtit_from_tasmanian_scrubwren_s65,48,0.521,0.396,0.436,0.4,0.535,tasmanian_scrubwren 19; olive_whistler 2; superb_fairywren 2
+scrubtit,tr_scrubtit_from_tasmanian_scrubwren_s80,48,0.479,0.521,0.436,0.4,0.488,tasmanian_scrubwren 25
+spotted_tail_quoll,tr_spotted_tail_quoll_from_eastern_quoll_s50,48,0.604,0.396,0.586,0.833,0.222,eastern_quoll 19
+spotted_tail_quoll,tr_spotted_tail_quoll_from_eastern_quoll_s65,48,0.75,0.229,0.726,1.0,0.333,eastern_quoll 11; brushtail_possum 1
+spotted_tail_quoll,tr_spotted_tail_quoll_from_eastern_quoll_s80,48,0.854,0.146,0.82,1.0,0.611,eastern_quoll 7

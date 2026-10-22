@@ -1,0 +1,10 @@
+class,setting,train_rows,gen_nn_median,test_nn_median,gen_ge_0.95,test_ge_0.95,gen_ge_0.90,test_ge_0.90,gen_pairwise,test_pairwise,gen_anchor_share,test_anchor_share
+black_currawong,tr_black_currawong_from_grey_currawong_s50,50,0.723,0.714,0.0,0.0,0.0,0.0,0.552,0.447,0.125,0.13
+black_currawong,tr_black_currawong_from_grey_currawong_s65,50,0.744,0.704,0.0,0.0,0.0,0.0,0.59,0.503,0.146,0.135
+black_currawong,tr_black_currawong_from_grey_currawong_s80,50,0.767,0.703,0.0,0.0,0.0,0.0,0.688,0.44,0.188,0.18
+scrubtit,tr_scrubtit_from_tasmanian_scrubwren_s50,185,0.651,0.795,0.0,0.0,0.0,0.0,0.549,0.571,0.167,0.057
+scrubtit,tr_scrubtit_from_tasmanian_scrubwren_s65,185,0.671,0.795,0.0,0.0,0.0,0.0,0.578,0.553,0.188,0.057
+scrubtit,tr_scrubtit_from_tasmanian_scrubwren_s80,185,0.68,0.795,0.0,0.0,0.0,0.0,0.621,0.56,0.229,0.057
+spotted_tail_quoll,tr_spotted_tail_quoll_from_eastern_quoll_s50,50,0.785,0.729,0.0,0.0,0.0,0.0,0.73,0.506,0.229,0.12
+spotted_tail_quoll,tr_spotted_tail_quoll_from_eastern_quoll_s65,50,0.803,0.718,0.0,0.0,0.0,0.0,0.743,0.45,0.25,0.09
+spotted_tail_quoll,tr_spotted_tail_quoll_from_eastern_quoll_s80,50,0.803,0.725,0.0,0.0,0.0,0.0,0.741,0.494,0.292,0.09
