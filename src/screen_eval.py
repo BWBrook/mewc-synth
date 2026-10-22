@@ -18,26 +18,31 @@ from identity_report import LOOKALIKES
 B = 1000
 
 
-def f1_table(y, p, classes):
-    out = {}
-    for c in classes:
-        tp = np.sum((p == c) & (y == c)); fp = np.sum((p == c) & (y != c)); fn = np.sum((p != c) & (y == c))
-        prec = tp / (tp + fp) if tp + fp else 0.0
-        rec = tp / (tp + fn) if tp + fn else 0.0
-        out[c] = (prec, rec, 2 * prec * rec / (prec + rec) if prec + rec else 0.0)
-    return out
+def prf(y, p, k):
+    """Per-class precision, recall and F1 from integer-coded labels via one confusion count."""
+    cm = np.bincount(y * k + p, minlength=k * k).reshape(k, k)
+    tp = np.diag(cm).astype(float)
+    pred, true = cm.sum(0), cm.sum(1)
+    prec = np.divide(tp, pred, out=np.zeros(k), where=pred > 0)
+    rec = np.divide(tp, true, out=np.zeros(k), where=true > 0)
+    f1 = np.divide(2 * prec * rec, prec + rec, out=np.zeros(k), where=(prec + rec) > 0)
+    return prec, rec, f1, cm
 
 
 def summarise(y, preds, classes, focus):
+    k, ci = len(classes), {c: i for i, c in enumerate(classes)}
+    present = np.bincount(y, minlength=k) > 0
+    nonfocus = present & ~np.isin(np.arange(k), [ci[c] for c in focus])
     rows = {}
     for run, p in preds.items():
-        t = f1_table(y, p, classes)
-        r = {"macro_f1_all": np.mean([v[2] for v in t.values()]),
-             "macro_f1_nonfocus": np.mean([t[c][2] for c in classes if c not in focus]),
+        prec, rec, f1, cm = prf(y, p, k)
+        r = {"macro_f1_all": float(f1[present].mean()), "macro_f1_nonfocus": float(f1[nonfocus].mean()),
              "accuracy": float(np.mean(p == y))}
         for c in focus:
-            r[f"{c}_P"], r[f"{c}_R"], r[f"{c}_F1"] = t[c]
-            r[f"{c}_to_lookalike"] = float(np.mean(np.isin(p[y == c], LOOKALIKES.get(c, []))))
+            i = ci[c]
+            r[f"{c}_P"], r[f"{c}_R"], r[f"{c}_F1"] = float(prec[i]), float(rec[i]), float(f1[i])
+            looks = [ci[l] for l in LOOKALIKES.get(c, []) if l in ci]
+            r[f"{c}_to_lookalike"] = float(cm[i, looks].sum() / max(cm[i].sum(), 1))
         rows[run] = r
     return pd.DataFrame(rows).T
 
@@ -45,11 +50,17 @@ def summarise(y, preds, classes, focus):
 def main(screen_dir, arms_json):
     d, spec = Path(screen_dir), json.loads(arms_json)
     paths = [l.strip() for l in open(d / "shared_test_paths.txt") if l.strip()]
-    y = np.array([p.split("/")[-2] for p in paths])
+    names = np.array([p.split("/")[-2] for p in paths])
     camera = np.array([source_prefix("/".join(p.split("/")[-2:])) not in ("ebird", "inat") for p in paths])
-    classes = sorted(set(y))
+    classes = sorted(set(names))
+    ci = {c: i for i, c in enumerate(classes)}
+    y = np.array([ci[n] for n in names])
     runs = [r for rs in spec["arms"].values() for r in rs]
-    preds = {r: pd.read_csv(d / "scores" / f"{r}.csv")["top_name"].to_numpy() for r in runs}
+    preds = {}
+    for r in runs:
+        sc = pd.read_csv(d / "scores" / f"{r}.csv")
+        assert (sc["path"].to_numpy() == np.array(paths)).all(), f"{r}: score rows do not match test paths"
+        preds[r] = np.array([ci[n] for n in sc["top_name"]])
     focus = spec["focus"]
     report = {}
     for subset, mask in (("all", np.ones(len(y), bool)), ("camera_trap", camera)):
