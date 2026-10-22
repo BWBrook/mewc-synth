@@ -235,3 +235,16 @@ and synthetic snips identically.
   (same 200 translated snips per pseudo-rare class, real snips linked 16
   times, so 20% of draws are synthetic; seeds 1 to 3), queued behind the bird
   arm. Judged by the same rule as S80 and S50.
+- 2026-10-23, after round 2 (`logs/2026-10-23-screen-r2.md`), before any of
+  these results:
+  - **Confirmation of S20**: seeds 4 and 5 for A0 and S20. S20 is confirmed
+    if, over seeds 1 to 5, its focus macro-F1 gain over A0 keeps a two-level
+    interval excluding zero with no class harmed under the amended rule.
+  - **S10**: the same synthetic set at a 10% share (real snips linked 36
+    times), seeds 1 to 3, to locate the optimum share.
+  - **Production-model check** (this plan's "Confirmation: production-like
+    VTL for the best option against baseline"): VTL A0 against VTL S20,
+    seeds 1 and 2, same recipe as the screen. Read as confirming if the
+    focus macro-F1 difference has the same sign as under VTB.
+  - The bird arm (B-syn) failed its rule and is not pursued further in this
+    lease.

@@ -3,7 +3,8 @@ focus classes, macro-F1 over all classes and over non-focus classes (no-harm che
 each focus class's test snips predicted as named look-alikes. Arm differences use a paired bootstrap
 over test snips with seed runs averaged per draw (ci95, conditional on the trained models), and a
 two-level bootstrap that also resamples seed runs within each arm (ci95_seeds). The no-harm check
-lists non-focus classes whose seed-averaged F1 falls by more than 1 point against the baseline.
+lists non-focus classes whose seed-averaged F1 falls by more than 1 point against the baseline, and
+(the amended rule) those whose two-level 95% interval for the F1 difference lies entirely below -0.01.
 Camera-trap-only results are reported separately.
 Usage: python src/screen_eval.py SCREEN_DIR ARMS_JSON
 ARMS_JSON example: {"focus": ["black_rat"], "baseline": "A0", "arms": {"A0": ["A0_s1", "A0_s2"], "A1": ["A1_s1"]}}"""
@@ -95,16 +96,30 @@ def main(screen_dir, arms_json):
         diffs = {a: {m: [] for m in metrics} for a in spec["arms"] if a != spec["baseline"]}
         diffs2 = {a: {m: [] for m in metrics} for a in diffs}
         pick = lambda runs: list(rng_seed.choice(runs, len(runs), replace=True))
+        k = len(classes)
+        class_diffs = {a: [] for a in diffs}
         for _ in range(B):
             s = rng.choice(idx, len(idx), replace=True)
             tb = summarise(y[s], {r: p[s] for r, p in preds.items()}, classes, focus)
+            f1s = {r: prf(y[s], p[s], k)[2] for r, p in preds.items()}
             base_runs = spec["arms"][spec["baseline"]]
-            base, base2 = tb.loc[base_runs].mean(), tb.loc[pick(base_runs)].mean()
+            base_pick = pick(base_runs)
+            base, base2 = tb.loc[base_runs].mean(), tb.loc[base_pick].mean()
+            base_f1 = np.mean([f1s[r] for r in base_pick], axis=0)
             for a in diffs:
-                arm, arm2 = tb.loc[spec["arms"][a]].mean(), tb.loc[pick(spec["arms"][a])].mean()
+                arm_pick = pick(spec["arms"][a])
+                arm, arm2 = tb.loc[spec["arms"][a]].mean(), tb.loc[arm_pick].mean()
                 for m in metrics:
                     diffs[a][m].append(arm[m] - base[m])
                     diffs2[a][m].append(arm2[m] - base2[m])
+                class_diffs[a].append(np.mean([f1s[r] for r in arm_pick], axis=0) - base_f1)
+        present = np.bincount(y[mask], minlength=k) > 0
+        for a, cd in class_diffs.items():
+            cd = np.array(cd)
+            upper = np.quantile(cd, 0.975, axis=0)
+            harmed = [(classes[i], round(float(cd[:, i].mean()), 4), round(float(upper[i]), 4))
+                      for i in range(k) if present[i] and classes[i] not in focus and upper[i] < -0.01]
+            report[subset]["noharm"][a]["harmed_two_level"] = sorted(harmed, key=lambda r: r[1])
         q = lambda v: [round(float(np.quantile(v, 0.025)), 4), round(float(np.quantile(v, 0.975)), 4)]
         report[subset]["vs_baseline"] = {a: {m: {"mean": round(float(np.mean(v)), 4), "ci95": q(v),
                                                  "ci95_seeds": q(diffs2[a][m])}
@@ -121,6 +136,8 @@ def main(screen_dir, arms_json):
         for a, nh in report[subset]["noharm"].items():
             print(f"-- no-harm, {a}: {nh['nonfocus_classes_down_1pt']} non-focus classes down >1 pt F1; "
                   f"worst (class, diff, baseline seed SD): {nh['worst']}")
+            print(f"   amended rule, {a}: {len(nh['harmed_two_level'])} harmed (class, mean diff, upper 95%): "
+                  f"{nh['harmed_two_level']}")
 
 
 if __name__ == "__main__":

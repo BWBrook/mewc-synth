@@ -120,8 +120,8 @@ def main(synth_dir, mode="pair", epochs=15):
         a, b, pair = sources, processed(sources, mode), np.arange(len(man))
     else:
         raise ValueError(mode)
-    x = torch.stack([load(p) for p in list(a) + list(b)]).to(dev)
-    x = x * 4 if full else high_pass(x)
+    x = torch.stack([load(p) for p in list(a) + list(b)])
+    x = torch.cat([(c * 4 if full else high_pass(c.to(dev))).half().cpu() for c in x.split(256)])
     y = torch.cat([torch.zeros(len(a)), torch.ones(len(b))]).to(dev)
     pair = np.concatenate([pair, pair])
     cls = np.concatenate([man["class_code"].to_numpy()] * 2)
@@ -132,7 +132,7 @@ def main(synth_dir, mode="pair", epochs=15):
         for _ in range(int(epochs)):
             for b in np.array_split(rng.permutation(tr), max(1, len(tr) // 32)):
                 i, j = rng.integers(0, SIZE - CROP, 2)
-                xb = x[b][:, :, i:i + CROP, j:j + CROP]
+                xb = x[b][:, :, i:i + CROP, j:j + CROP].to(dev).float()
                 if rng.random() < 0.5:
                     xb = xb.flip(3)
                 loss = F.binary_cross_entropy_with_logits(m(xb)[:, 0], y[b])
@@ -140,7 +140,7 @@ def main(synth_dir, mode="pair", epochs=15):
                 loss.backward()
                 opt.step()
         with torch.no_grad():
-            scores[te] = torch.cat([m(x[te][s:s + 64])[:, 0] for s in range(0, len(te), 64)]).cpu().numpy()
+            scores[te] = torch.cat([m(x[te[s:s + 64]].to(dev).float())[:, 0] for s in range(0, len(te), 64)]).cpu().numpy()
         print(json.dumps({"fold": k, "auc": round(roc_auc_score(y[te].cpu().numpy(), scores[te]), 3)}), flush=True)
     yt = y.cpu().numpy()
     mode = mode + ("_full" if full else "")
