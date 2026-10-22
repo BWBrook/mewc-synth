@@ -50,3 +50,48 @@ Design sketch:
 - Ordering with `mewc-synth`: run the synthetic-data study on a fixed
   screening recipe first. Then include the synthetic share as one factor in
   the full search.
+
+## Later: diversity-aware curation of the real snip library (proposed 22 October 2026)
+
+Barry: "A lot of my snips on the common classes likely have very high
+similarity scores (statistically), and so are contributing little to
+classifier training fidelity in practice. A lot of wasted compute perhaps,
+and also, misleading test statistics. I wonder if we should do a pass over
+all snips at some point, and create a cleaner training, validation and test
+pool that tries to improve diversity in those real images too."
+
+What the 1.07 M working set already shows (DINOv2 groups at tau 0.90):
+
+- 30.7% of snips sit in multi-snip near-duplicate groups. One per group
+  keeps 800,755 snips (75%); three per group keeps 881,553 (83%).
+- By class: forester kangaroo 40%, unknown animal 40%, forest raven 37% and
+  Cape Barren goose 37% of their (sampled) snips are in bursts; pademelon 8%,
+  wombat 14%.
+- These are underestimates for abundant classes. They were randomly
+  subsampled to 30,000, which dilutes bursts (for example 30k of 689k
+  pademelons). Full-library redundancy will be much higher.
+
+Proposed study:
+
+1. Embed all 4.07 M snips (DINOv2-base, about 40 min on the A100) and group
+   near-duplicates within classes. Use approximate nearest neighbours (for
+   example FAISS) for the largest classes. Calibrate tau visually, as on
+   2026-10-21.
+2. Build production train, validation and test splits by group (no burst or
+   repeat-visit cluster straddles splits), with a small group-disjoint
+   validation set for model selection.
+3. Quantify how optimistic the existing random-split accuracy is. Score the
+   current production model on group-held-out test snips, against its
+   reported figures.
+4. Make sampling in `mewc-train` group-aware (draw a group, then a member),
+   so `CLASS_SAMPLES` per epoch buys diversity rather than repeats. Also
+   consider pruning to k per group to save storage and compute. Measure
+   whether accuracy holds at the same or lower compute.
+5. Fold in the related data issues found on 2026-10-21:
+   - 114 cross-class duplicate images to adjudicate.
+   - Class-correlated JPEG quality (q95 source).
+   - Photo-dominated bird classes (eBird) and how they are balanced against
+     camera-trap snips.
+
+This pairs naturally with the model-selection and Pareto study above: both
+need the same group-disjoint splits.
