@@ -7,7 +7,9 @@ CONFIG_JSON example: {"arm": "A1", "train_cap": 4000, "val_cap": 100, "seed": 41
   "real_repeat": {"black_rat": 4}}
 "synthetic" maps a class to a directory (relative to the data root) holding manifest.parquet.
 "real_repeat" links each real snip of a class k times (as rep1_..., rep2_...), which sets the real
-share of mewc-train's uniform per-class sampling without changing the synthetic set."""
+share of mewc-train's uniform per-class sampling without changing the synthetic set.
+"extra_real" adds n links cycling through a class's train-split camera-trap snips (all of them, not
+only those inside the cap), named x{j}_...: the non-generative competitor to translating those snips."""
 import json
 import os
 import sys
@@ -17,7 +19,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from common import DATA
+from common import DATA, source_prefix
 
 CONTAINER_ROOT = "/data"
 
@@ -64,6 +66,14 @@ def main(inv_dir, split_name, class_table, out_root, config):
         files = [container_snip(r) for r in tr]
         rep = cfg.get("real_repeat", {}).get(c, 1)
         link(arm / "train" / c, files, rep)
+        n_extra = cfg.get("extra_real", {}).get(c, 0)
+        if n_extra:
+            pool = split[(split["class_code"] == c) & (split["split"] == "train")]["relpath"]
+            pool = sorted(r for r in pool if source_prefix(r) not in ("ebird", "inat"))
+            extra = [pool[j % len(pool)] for j in range(n_extra)]
+            d = arm / "train" / c
+            for j, r in enumerate(extra):
+                os.symlink(container_snip(r), d / f"x{j}_{Path(r).name}")
         n_syn = 0
         if c in cfg.get("synthetic", {}):
             sdir = cfg["synthetic"][c]
@@ -72,7 +82,7 @@ def main(inv_dir, split_name, class_table, out_root, config):
             assert len(syn) == cfg["synthetic_n"], (c, len(syn))
             link(arm / "train" / c, [f"{CONTAINER_ROOT}/{sdir}/{r}" for r in syn])
             n_syn = len(syn)
-        counts.append({"class": c, "real": len(tr), "real_repeat": rep, "synthetic": n_syn})
+        counts.append({"class": c, "real": len(tr), "real_repeat": rep, "extra_real": n_extra, "synthetic": n_syn})
     pd.DataFrame(counts).to_csv(out / f"{cfg['arm']}_composition.csv", index=False)
     (out / f"{cfg['arm']}_config.json").write_text(json.dumps(cfg, indent=1))
     total = pd.DataFrame(counts)

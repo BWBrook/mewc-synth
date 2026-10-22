@@ -39,6 +39,7 @@ def summarise(y, preds, classes, focus):
     for run, p in preds.items():
         prec, rec, f1, cm = prf(y, p, k)
         r = {"macro_f1_all": float(f1[present].mean()), "macro_f1_nonfocus": float(f1[nonfocus].mean()),
+             "macro_f1_focus": float(f1[[ci[c] for c in focus if present[ci[c]]]].mean()),
              "accuracy": float(np.mean(p == y))}
         for c in focus:
             i = ci[c]
@@ -90,7 +91,7 @@ def main(screen_dir, arms_json):
                                           spec["arms"], spec["baseline"])
         rng, rng_seed = np.random.default_rng(0), np.random.default_rng(1)
         idx = np.flatnonzero(mask)
-        metrics = ["macro_f1_all", "macro_f1_nonfocus"] + [f"{c}_F1" for c in focus] + [f"{c}_R" for c in focus]
+        metrics = ["macro_f1_all", "macro_f1_nonfocus", "macro_f1_focus"] + [f"{c}_F1" for c in focus] + [f"{c}_R" for c in focus]
         diffs = {a: {m: [] for m in metrics} for a in spec["arms"] if a != spec["baseline"]}
         diffs2 = {a: {m: [] for m in metrics} for a in diffs}
         pick = lambda runs: list(rng_seed.choice(runs, len(runs), replace=True))

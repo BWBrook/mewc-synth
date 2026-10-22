@@ -206,3 +206,28 @@ and synthetic snips identically.
     its F1 difference has a two-level (test snips and seeds) 95% interval
     entirely below -0.01, and the arm fails if more classes are harmed than
     under R. This change is post hoc and is reported as such.
+- 2026-10-22, before any result for it: **bird arm (B)**, registered here.
+  - Question: do camera-trap-style synthetic snips raise camera-trap
+    performance for photo-dominated birds, on top of full real data?
+  - Targets: the in-model classes with at least 80% eBird/iNaturalist
+    training snips and camera-trap recall below 0.9 under R: Pacific black
+    duck, flame robin, yellow-throated, strong-billed and crescent
+    honeyeaters, pink robin, wedge-tailed eagle, grey shrike-thrush, maned
+    duck (63 to 1,059 camera-trap train snips each).
+  - A pilot restyling eBird photos as camera-trap snips kept identity but not
+    the camera-trap viewpoint or setting, so it is not used. Synthetic snips
+    are instead translations of each target's own camera-trap train snips
+    (source = target, SDXL img2img with the Stage A domain adapter
+    `a_v2/r64_s10k/step_010000`, strength 0.55, guidance 3.5, 30 steps,
+    infrared captions from source chroma), 400 per target, sources drawn
+    with replacement.
+  - Arms, all on R's composition (every class at its real data, cap
+    4,000): **R** (seeds 1 to 3); **B-syn**, R plus the 400 translations per
+    target (seeds 1 to 3); **B-rep**, R plus 400 extra links cycling through
+    the same real camera-trap train snips (seeds 1 to 3), the non-generative
+    competitor using identical real information.
+  - Primary metric: macro-F1 over the nine targets on camera-trap test snips
+    (about 450), with two-level bootstrap intervals; per-class F1 and recall
+    reported. B-syn helps if it beats both R and B-rep with intervals
+    excluding zero; no-harm by the amended rule above. The shortcut probe
+    (within mode) runs on the translations before the classifier runs.
