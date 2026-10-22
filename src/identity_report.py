@@ -14,7 +14,7 @@ ALIASES = {"camera_bait": "bait", "flame_robin": "flame_scarlet_robin", "maned_d
 LOOKALIKES = {"spotted_tail_quoll": ["eastern_quoll"],
               "black_currawong": ["grey_currawong", "forest_raven"],
               "forester_kangaroo": ["bennetts_wallaby", "tasmanian_pademelon"],
-              "black_rat": ["house_mouse", "swamp_rat"],
+              "black_rat": ["house_mouse", "swamp_rat", "long_tailed_mouse"],
               "eastern_quoll": ["spotted_tail_quoll"],
               "grey_currawong": ["black_currawong", "forest_raven"],
               "tasmanian_devil": [],
