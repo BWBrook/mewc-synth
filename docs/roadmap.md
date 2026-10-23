@@ -95,3 +95,19 @@ Proposed study:
 
 This pairs naturally with the model-selection and Pareto study above: both
 need the same group-disjoint splits.
+
+## Later: restore the scale cue that squaring removes (noted 23 October 2026)
+
+Barry, on the bird shortcut probe's resolution finding: "Might allow for separation of small vs
+large in house mice vs black rats, haha." Squaring every detector crop to 600 px discards the
+animal's size in the frame, but not completely: small crops are upscaled more and come out softer.
+A quick check on real camera-trap train snips (1,500 per class; `ops/2026-10-23/scale_cue.py`): Laplacian variance at 600 px alone separates house mouse from black rat
+with AUC 0.78 (median 4.7 against 10.8; 0.78 on infrared snips, 0.83 on colour), house mouse from
+swamp rat 0.79, and black rat from swamp rat only 0.51, as expected for similar-sized animals. JPEG
+file size gives 0.74. The classifier can already see this softness, but only indirectly, and site,
+camera model and distance confound it.
+
+A cleaner fix belongs in `mewc-snip`: record each crop's bounding-box size (pixels, and as a share
+of the frame) with the snip, and give it to the classifier as an auxiliary input. That would let
+the model use size directly for the hardest pair Barry named (black rat against house mouse), and it
+tells synthetic generation what effective resolution each output should have.
