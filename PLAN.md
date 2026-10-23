@@ -248,3 +248,11 @@ and synthetic snips identically.
     focus macro-F1 difference has the same sign as under VTB.
   - The bird arm (B-syn) failed its rule and is not pursued further in this
     lease.
+- 2026-10-23, before any of these results, queued behind the confirmation
+  runs:
+  - **Second synthetic set (S20b)**: a fresh translation draw (seed 52, new
+    look-alike sources sampled from the same pool, same adapters, strength
+    0.65), 200 per pseudo-rare class at the 20% share, seeds 1 to 3. Tests
+    whether the S20 gain depends on one particular batch of synthetic snips.
+  - **Seeds 6 and 7** for A0 and S20 (VTB), so the confirmation rests on
+    seven seeds per arm.
