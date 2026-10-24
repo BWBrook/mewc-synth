@@ -51,6 +51,16 @@ Design sketch:
   screening recipe first. Then include the synthetic share as one factor in
   the full search.
 
+### Pilot in spare lease time (queued 24 October 2026)
+
+Behind the eight-seed VTL check, both A100s train the R composition (every class at its real data,
+cap 4,000, screen recipe: `CLASS_SAMPLES` 400, 12 epochs) with EfficientNetV2-B0, -B2, -S and -M,
+ConvNeXt-Pico, -Tiny, -Small and -Base, and ViT-S, two seeds each, plus VTL (two seeds, one per
+machine); VTB already has three seeds on R. Each model is timed with `src/bench_infer.py` on the A100
+(batch 64) and on 8 CPU cores (batch 8, a desktop stand-in). Output: macro-F1 (all and camera-trap)
+against parameters and throughput, to shape the November study. Short schedules favour models
+that converge fast, so this ranks candidates; it does not settle the final choice.
+
 ## Later: diversity-aware curation of the real snip library (proposed 22 October 2026)
 
 Barry: "A lot of my snips on the common classes likely have very high
