@@ -256,3 +256,12 @@ and synthetic snips identically.
     whether the S20 gain depends on one particular batch of synthetic snips.
   - **Seeds 6 and 7** for A0 and S20 (VTB), so the confirmation rests on
     seven seeds per arm.
+- 2026-10-24, after round 3 (seven VTB seeds, S10, S20b and two VTL seeds),
+  before these results: the two-seed VTL check gave +0.004 [-0.036, +0.045]
+  in focus macro-F1, which meets the registered "same sign" reading only
+  nominally, with VTL's seed-to-seed spread larger than the effect. The VTL
+  check is extended to **eight seeds per arm** (A0 and S20, seeds 3 to 8).
+  S20's gain is taken to transfer to the production model if, over the eight
+  seeds, the focus macro-F1 difference has a two-level interval excluding
+  zero with no class harmed under the amended rule; otherwise the conclusion
+  is that the VTB gain does not transfer to VTL at this sample size.
