@@ -4,7 +4,14 @@ Barry asked for the `lowest_loss` bug to be fixed and for other pipeline
 problems and speed-ups to be found, tested and eventually packaged as a PR
 to `zaandahl/mewc-train` plus a Docker Hub rebuild. The fixes are on the local
 branch `fix/progressive-training-and-speed` in `~/git/mewc-train` (commit
-`02d2975`). Nothing has been pushed to the upstream repository.
+`02d2975`). Released on 24 October 2026 at Barry's go-ahead ("Go ahead and merge
+that PR and rebuild the Docker Hub image, definitely."): PR
+[zaandahl/mewc-train#6](https://github.com/zaandahl/mewc-train/pull/6) merged
+as `35ea469`, tagged `v2.0.10`, and published by the repository's CI as
+`zaandahl/mewc-train:2.0.10` (also `:2.0` and `:latest`, digest
+`sha256:25ef68931cf2d...`). The published image's `lib_model.py`,
+`lib_data.py` and `mewc_train.py` are byte-identical to the merged branch, and
+the 31 tests pass inside it.
 
 ## Findings
 

@@ -51,6 +51,16 @@ Design sketch:
   screening recipe first. Then include the synthetic share as one factor in
   the full search.
 
+### Decision, 24 October 2026
+
+Barry, in chat: "in later work, once further GPUs are booked post-Sunday, we'll be re-fitting a
+production model (actually, after a slew of experiments on model architecture and training
+hyperparameters, as discussed earlier). Use of synthetic snips there should absolutely be on the
+table." So the production refit follows this study, and a synthetic arm at about a 20% share (the
+screen's best, `logs/2026-10-24-screen-r3.md`) is one of its candidate factors, judged on VTL or
+whichever architecture the study selects. Training uses `zaandahl/mewc-train:2.0.10`, the first
+image with progressive dropout working.
+
 ### Pilot in spare lease time (queued 24 October 2026)
 
 Behind the eight-seed VTL check, both A100s train the R composition (every class at its real data,
