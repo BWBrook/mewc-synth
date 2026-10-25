@@ -51,6 +51,8 @@ Design sketch:
   screening recipe first. Then include the synthetic share as one factor in
   the full search.
 
+**Schedule for the next booking:** `docs/plan-next-booking.md` (25 October 2026, reviewed).
+
 ### Decision, 24 October 2026
 
 Barry, in chat: "in later work, once further GPUs are booked post-Sunday, we'll be re-fitting a
