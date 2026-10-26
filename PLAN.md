@@ -265,3 +265,23 @@ and synthetic snips identically.
   seeds, the focus macro-F1 difference has a two-level interval excluding
   zero with no class harmed under the amended rule; otherwise the conclusion
   is that the VTB gain does not transfer to VTL at this sample size.
+- 2026-10-26, **phase 1 of `docs/plan-next-booking.md`**, registered before any of its runs
+  (booking 29 October to 8 November, two A100s).
+  - **Data**: split v2 (`logs/2026-10-26-split-v2.md`). Every phase 1 run trains on the v2 pool and
+    is scored on the full v2 validation set (29,018 snips); test and held-out-project snips are not
+    scored until phase 2.
+  - **Parity gate (day 1)**: ViT-B (`vit_base_patch16_384.augreg_in21k_ft_in1k`, 9 blocks) and
+    ConvNeXt-B (`convnext_base.fb_in22k_ft_in1k` at 384 px, 2 blocks), the same checkpoints kimm
+    converted, trained by `mewc-torch` (fp32, batch 16) and by `zaandahl/mewc-train:2.0.10`, screen
+    scale (400 per class, 3 frozen and 12 progressive epochs), seeds 1 and 2. `mewc-torch` passes if,
+    for each backbone, its seed-mean validation macro-F1 is no more than 0.005 below mewc-train's. If
+    it fails, phase 1 continues on mewc-train and the modern families are probed on frozen features only.
+  - **Speed levers (day 1 to 2)**, on ViT-B and ConvNeXt-B in `mewc-torch`, two seeds: bf16 against
+    fp32, and batch 64 (learning rate ×2) against 16. A lever is adopted if seed-mean validation
+    macro-F1 is no more than 0.003 lower and throughput rises.
+  - **Shortlist rule (stage 2)**: accurate model = highest validation macro-F1 at any cost; deployable
+    model = highest validation macro-F1 above 15 images/s on 8 CPU cores in `onnxruntime` (revised if
+    Barry names target hardware before stage 2 ends); ties within the two-level interval go to the
+    cheaper model.
+  - **Synthetic re-test (stages 2 to 4)**: endpoints and minimum detectable effects are registered here
+    once the v2 baseline's seed variance is measured, before any synthetic arm runs.
