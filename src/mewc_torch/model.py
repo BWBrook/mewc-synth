@@ -13,14 +13,25 @@ def compression_width(n_features, n_classes, vit):
     return 256 if n_classes <= 25 or n_features < 768 else 384 if n_features == 768 else 512
 
 
+def create_base(backbone, pretrained=True, img_size=None):
+    """The timm backbone without its classifier, average-pooled as mewc-train pools kimm's features, keeping
+    every pretrained weight: a class-token or attention-pool ViT averages its tokens after its own final
+    norm instead of timm's freshly initialised post-pool norm, and a transformer built at a non-native size
+    gets resampled position embeddings."""
+    probe = timm.create_model(backbone, pretrained=False, num_classes=0)
+    kw = {"num_classes": 0, "global_pool": "avg"}
+    if getattr(probe, "global_pool", None) in ("token", "map"):
+        kw[{"VisionTransformer": "fc_norm", "Eva": "use_fc_norm"}[type(probe).__name__]] = False
+    if img_size and hasattr(probe, "patch_embed") and img_size != probe.pretrained_cfg["input_size"][-1]:
+        kw["img_size"] = img_size
+    return timm.create_model(backbone, pretrained=pretrained, **kw)
+
+
 class MewcClassifier(nn.Module):
     def __init__(self, backbone, n_classes, dropout=0.1, pretrained=True, img_size=None):
         super().__init__()
-        self.base = timm.create_model(backbone, pretrained=pretrained, num_classes=0, global_pool="avg")
-        if img_size and hasattr(self.base, "patch_embed") and img_size != self.base.pretrained_cfg["input_size"][-1]:
-            self.base = timm.create_model(backbone, pretrained=pretrained, num_classes=0, global_pool="avg",
-                                          img_size=img_size)
-        n = self.base.num_features
+        self.base = create_base(backbone, pretrained, img_size)
+        n = getattr(self.base, "head_hidden_size", None) or self.base.num_features
         width = compression_width(n, n_classes, vit=hasattr(self.base, "blocks") and hasattr(self.base, "patch_embed"))
         self.drop1, self.compress, self.act = nn.Dropout(dropout), nn.Linear(n, width), nn.ELU()
         self.drop2, self.classify = nn.Dropout(dropout), nn.Linear(width, n_classes)
@@ -38,8 +49,11 @@ class MewcClassifier(nn.Module):
 
 
 def block_groups(base):
-    """Backbone parameter names in coarse groups, bottom to top (stem first, final norm last)."""
-    groups = group_parameters(base, base.group_matcher(coarse=True))
+    """Backbone parameter names in coarse groups, bottom to top (stem first, final norm last). Models without
+    timm's group_matcher (MetaFormer) are grouped by their numbered stages or blocks."""
+    matcher = base.group_matcher(coarse=True) if hasattr(base, "group_matcher") else {
+        "stem": r"^(?:stem|patch_embed)", "blocks": [(r"^(?:stages|blocks|layers|levels)\.(\d+)", None), (r".*", (99999,))]}
+    groups = group_parameters(base, matcher)
     return [names for _, names in sorted(groups.items())]
 
 

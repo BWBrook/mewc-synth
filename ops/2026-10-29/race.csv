@@ -2,7 +2,7 @@ name,backbone,img_size,blocks,tier,family
 vtl,vit_large_patch16_384.augreg_in21k_ft_in1k,384,9,large,ViT anchor
 eva02_l,eva02_large_patch14_448.mim_m38m_ft_in22k_in1k,392,9,large,EVA-02
 dinov3_l,vit_large_patch16_dinov3.lvd1689m,384,9,large,DINOv3 ViT
-siglip2_l,vit_large_patch16_siglip_384.v2_webli,384,9,large,SigLIP 2
+siglip2_l,vit_large_patch16_siglip_gap_384.v2_webli,384,9,large,SigLIP 2
 cnv2_l,convnextv2_large.fcmae_ft_in22k_in1k_384,384,2,large,ConvNeXt V2
 caformer_b36,caformer_b36.sail_in22k_ft_in1k_384,384,2,large,MetaFormer
 vtb,vit_base_patch16_384.augreg_in21k_ft_in1k,384,9,base,ViT anchor
@@ -12,7 +12,7 @@ eva02_b,eva02_base_patch14_448.mim_in22k_ft_in22k_in1k,392,9,base,EVA-02
 dinov3_b,vit_base_patch16_dinov3.lvd1689m,384,9,base,DINOv3 ViT
 dinov3_cnb,convnext_base.dinov3_lvd1689m,384,2,base,DINOv3 ConvNeXt
 dinov2_b,vit_base_patch14_reg4_dinov2.lvd142m,392,9,base,DINOv2
-siglip2_b,vit_base_patch16_siglip_384.v2_webli,384,9,base,SigLIP 2
+siglip2_b,vit_base_patch16_siglip_gap_384.v2_webli,384,9,base,SigLIP 2
 caformer_s36,caformer_s36.sail_in22k_ft_in1k_384,384,2,base,MetaFormer
 cns,convnext_small.in12k_ft_in1k_384,384,2,small,ConvNeXt anchor
 cnt,convnext_tiny.in12k_ft_in1k_384,384,2,small,ConvNeXt

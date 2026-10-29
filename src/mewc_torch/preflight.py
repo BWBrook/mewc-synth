@@ -1,10 +1,12 @@
 """Check architecture-race candidates before GPU time is spent: build each backbone with the MEWC head at its
 race size, count its parameters, body groups and the share its unfreeze setting trains, export it to ONNX,
-check the export against PyTorch and time it in onnxruntime on CPU threads (bench.py's protocol).
+check the export against PyTorch and time it in onnxruntime on CPU threads (bench.py's protocol), and
+record any checkpoint keys timm could not load.
 Appends one JSON line per candidate; a candidate that fails records its error and the rest continue.
 Usage: python -m mewc_torch.preflight RACE_CSV OUT_JSONL [THREADS] [N_CLASSES]
 RACE_CSV columns: name, backbone, img_size, blocks (and any others, carried through)."""
 import json
+import logging
 import sys
 import tempfile
 import traceback
@@ -18,9 +20,24 @@ from . import bench
 from .model import BODY, Deployable, MewcClassifier, block_groups, freeze_base
 
 
+class Keys(logging.Handler):
+    """Collects timm's warnings about checkpoint keys left unloaded or model weights left uninitialised."""
+
+    def __init__(self):
+        super().__init__(logging.WARNING)
+        self.messages = []
+
+    def emit(self, record):
+        if "keys" in record.getMessage().lower():
+            self.messages.append(record.getMessage()[:300])
+
+
 def check(row, threads, n_classes):
     size = int(row["img_size"])
+    keys = Keys()
+    logging.getLogger("timm").addHandler(keys)
     model = MewcClassifier(row["backbone"], n_classes, img_size=size).eval()
+    logging.getLogger("timm").removeHandler(keys)
     total = sum(p.numel() for p in model.parameters())
     groups = block_groups(model.base)
     body = sum(any(n.split(".")[0] in BODY for n in g) for g in groups)
@@ -35,7 +52,7 @@ def check(row, threads, n_classes):
                           dynamic_axes={"image": {0: "batch"}, "probs": {0: "batch"}}, opset_version=18, dynamo=False)
         got = ort.InferenceSession(path, providers=["CPUExecutionProvider"]).run(None, {"image": x.numpy()})[0]
         speed = bench.main(path, f"{d}/bench.json", "cpu", threads)
-    return {"params_M": round(total / 1e6, 1), "body_groups": body, "trained_share": round(trained / sum(
+    return {"key_warnings": keys.messages, "params_M": round(total / 1e6, 1), "body_groups": body, "trained_share": round(trained / sum(
         p.numel() for p in model.base.parameters()), 3), "onnx_max_err": float(np.abs(ref - got).max()),
         "cpu_img_s": speed["img_per_s"], "threads": int(threads)}
 
