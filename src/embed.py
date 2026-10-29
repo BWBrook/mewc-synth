@@ -1,6 +1,6 @@
 """Embed every inventoried snip: DINOv2-base CLS embedding (unit-normalised, float16),
 64-bit perceptual hash and chroma (day colour vs infrared/greyscale).
-Usage: python src/embed.py SNIP_ROOT INV_DIR"""
+Usage: python src/embed.py SNIP_ROOT INV_DIR [WORKERS]"""
 import sys
 from pathlib import Path
 
@@ -36,10 +36,10 @@ class Snips(Dataset):
         return x, np.uint64(ph).view(np.int64), ch
 
 
-def main(root, inv_dir):
+def main(root, inv_dir, workers=48):
     inv_dir = Path(inv_dir)
     inv = pd.read_parquet(inv_dir / "inventory.parquet")
-    loader = DataLoader(Snips(root, inv["relpath"].tolist()), batch_size=256, num_workers=48, pin_memory=True)
+    loader = DataLoader(Snips(root, inv["relpath"].tolist()), batch_size=256, num_workers=int(workers), pin_memory=True)
     model = AutoModel.from_pretrained(MODEL, torch_dtype=torch.float16).cuda().eval()
     emb = np.lib.format.open_memmap(inv_dir / "dinov2_base.npy", mode="w+", dtype=np.float16, shape=(len(inv), 768))
     phash, chro, k = np.empty(len(inv), np.int64), np.empty(len(inv), np.float32), 0
@@ -57,4 +57,4 @@ def main(root, inv_dir):
 
 
 if __name__ == "__main__":
-    main(*sys.argv[1:3])
+    main(*sys.argv[1:4])

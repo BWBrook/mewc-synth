@@ -58,7 +58,7 @@ Moving `mewc-predict` and AddaxAI to ONNX is phase 2 work, for Barry and Zach to
   whole source projects form a project-disjoint test stratum.
 - **Label check before sealing.** On day 1 a strong model scores validation and test; confident
   disagreements go to Barry (decision 4).
-- **Sealed test.** Phases 1 runs score validation only; test logits are computed once, in phase 2.
+- **Sealed test.** Phase 1 runs score validation only; test logits are computed once, in phase 2.
   Validation during training uses 100 snips per class per epoch; full validation once per run.
 - **Metrics.** Macro-F1 (all, camera-trap, rare-class subset), per-class F1, calibration (ECE),
   open-set behaviour on the library's out-of-model classes (`not_in_model`, Gippsland-only and
