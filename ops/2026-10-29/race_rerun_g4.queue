@@ -1,0 +1,11 @@
+torch race_eva02_b /home/ubuntu/mewc-synth/ops/2026-10-29/race/race_eva02_b.json
+torch race_dinov3_cnb /home/ubuntu/mewc-synth/ops/2026-10-29/race/race_dinov3_cnb.json
+torch race_caformer_s36 /home/ubuntu/mewc-synth/ops/2026-10-29/race/race_caformer_s36.json
+torch race_dinov3_sp /home/ubuntu/mewc-synth/ops/2026-10-29/race/race_dinov3_sp.json
+torch race_mnv4_cl_wu /home/ubuntu/mewc-synth/ops/2026-10-29/race/race_mnv4_cl_wu.json
+torch race_dinov3_cnt_wu /home/ubuntu/mewc-synth/ops/2026-10-29/race/race_dinov3_cnt_wu.json
+torch race_vtb_wu /home/ubuntu/mewc-synth/ops/2026-10-29/race/race_vtb_wu.json
+torch race_dinov3_cnb /home/ubuntu/mewc-synth/ops/2026-10-29/race/race_dinov3_cnb.json
+torch race_caformer_s36 /home/ubuntu/mewc-synth/ops/2026-10-29/race/race_caformer_s36.json
+torch race_dinov3_sp /home/ubuntu/mewc-synth/ops/2026-10-29/race/race_dinov3_sp.json
+torch race_mnv4_cl_wu /home/ubuntu/mewc-synth/ops/2026-10-29/race/race_mnv4_cl_wu.json

@@ -1,0 +1,307 @@
+<title>Snip Label Review</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a dark light-table stage for the snip, a decision rail beside it (below it on phones), and a status strip of every item. */
+:root {
+  --bg: #eef1ef;
+  --panel: #ffffff;
+  --fg: #1b2420;
+  --muted: #5d6a64;
+  --line: #d3dad6;
+  --stage: #121614;
+  --stage-fg: #e7ece9;
+  --accent: #2f6b55;
+  --accent-fg: #ffffff;
+  --accent-soft: #dcebe4;
+  --decided: #2f6b55;
+  --unsure: #b7791f;
+  --unusable: #8a5a7a;
+  --empty: #c9d1cd;
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-body: "Atkinson Hyperlegible", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #161b19; --panel: #1f2623; --fg: #e3e9e6; --muted: #97a59e; --line: #34403b;
+    --stage: #0b0d0c; --stage-fg: #e7ece9; --accent: #6fb596; --accent-fg: #0f1a15; --accent-soft: #24382f;
+    --decided: #6fb596; --unsure: #d9a441; --unusable: #c08bb0; --empty: #3a4641; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #161b19; --panel: #1f2623; --fg: #e3e9e6; --muted: #97a59e; --line: #34403b;
+  --stage: #0b0d0c; --stage-fg: #e7ece9; --accent: #6fb596; --accent-fg: #0f1a15; --accent-soft: #24382f;
+  --decided: #6fb596; --unsure: #d9a441; --unusable: #c08bb0; --empty: #3a4641; color-scheme: dark;
+}
+body {
+  background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 40px;
+}
+.wrap { max-width: 1120px; margin: 0 auto; display: grid; gap: 18px; }
+header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 20px; }
+h1 { font-family: var(--font-display); font-weight: 700; font-size: 30px; letter-spacing: 0.01em; margin: 0; text-wrap: balance; }
+.lede { color: var(--muted); max-width: 68ch; margin: 4px 0 0; }
+.tally { font-family: var(--font-mono); font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.tally b { color: var(--fg); font-weight: 500; }
+.banner { border: 1px solid var(--unsure); color: var(--fg); background: var(--panel); padding: 10px 14px; border-radius: 6px; }
+.main { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 18px; align-items: start; }
+@media (max-width: 820px) { .main { grid-template-columns: minmax(0, 1fr); } }
+.stage { background: var(--stage); color: var(--stage-fg); border-radius: 8px; overflow: hidden; display: grid; min-width: 0; }
+.stage img { display: block; width: 100%; max-height: 72vh; object-fit: contain; background: var(--stage); }
+.stage-bar { display: flex; justify-content: space-between; gap: 12px; padding: 8px 12px; font-family: var(--font-mono); font-size: 12px; color: #a9b5af; }
+.rail { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px; display: grid; gap: 12px; min-width: 0; }
+.rail h2 { font-family: var(--font-display); font-weight: 600; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0; }
+.choices { display: grid; gap: 8px; }
+.choice {
+  display: grid; grid-template-columns: 26px minmax(0, 1fr); align-items: center; gap: 10px; text-align: left;
+  font: inherit; color: var(--fg); background: var(--panel); border: 1.5px solid var(--line); border-radius: 6px;
+  padding: 10px 12px; cursor: pointer;
+}
+.choice:hover { border-color: var(--accent); }
+.choice:focus-visible, select:focus-visible, textarea:focus-visible, .nav button:focus-visible, .cell:focus-visible, .tool:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 2px;
+}
+.choice .key { font-family: var(--font-mono); font-size: 12px; color: var(--muted); border: 1px solid var(--line); border-radius: 4px; text-align: center; line-height: 22px; }
+.choice .name { font-family: var(--font-display); font-weight: 600; font-size: 21px; line-height: 1.15; }
+.choice .code { display: block; font-family: var(--font-mono); font-size: 11px; color: var(--muted); font-weight: 400; }
+.choice.minor .name { font-size: 17px; }
+.choice[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-fg); }
+.choice[aria-pressed="true"] .key, .choice[aria-pressed="true"] .code { color: var(--accent-fg); border-color: var(--accent-fg); }
+.other { display: grid; gap: 6px; }
+.other label, .note label { font-size: 13px; color: var(--muted); }
+select, textarea { box-sizing: border-box; font: inherit; color: var(--fg); background: var(--panel); border: 1.5px solid var(--line); border-radius: 6px; padding: 8px 10px; width: 100%; }
+select.picked { border-color: var(--accent); background: var(--accent-soft); }
+textarea { min-height: 56px; resize: vertical; }
+.note { display: grid; gap: 6px; }
+.status { font-family: var(--font-mono); font-size: 12px; color: var(--muted); min-height: 18px; }
+.nav { display: flex; gap: 8px; flex-wrap: wrap; }
+.nav button, .tool {
+  font: inherit; font-size: 14px; color: var(--fg); background: var(--panel); border: 1px solid var(--line);
+  border-radius: 6px; padding: 7px 12px; cursor: pointer;
+}
+.nav button:hover, .tool:hover { border-color: var(--accent); }
+.keys { font-size: 12px; color: var(--muted); }
+.keys kbd { font-family: var(--font-mono); font-size: 11px; border: 1px solid var(--line); border-radius: 3px; padding: 0 4px; }
+.strip-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 16px; }
+.legend { display: flex; flex-wrap: wrap; gap: 12px; font-size: 13px; color: var(--muted); }
+.legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; background: var(--c); vertical-align: -1px; }
+.strip { display: grid; grid-template-columns: repeat(auto-fill, minmax(34px, 1fr)); gap: 4px; }
+.cell {
+  font-family: var(--font-mono); font-size: 11px; font-variant-numeric: tabular-nums; border: 0; border-radius: 4px;
+  padding: 5px 0; cursor: pointer; background: var(--empty); color: var(--fg);
+}
+.cell.d { background: var(--decided); color: var(--accent-fg); }
+.cell.u { background: var(--unsure); color: #1b1408; }
+.cell.x { background: var(--unusable); color: #ffffff; }
+.cell.cur { box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--fg); }
+.group-sep { grid-column: 1 / -1; height: 0; }
+footer { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; color: var(--muted); font-size: 13px; }
+#csv { width: 100%; font-family: var(--font-mono); font-size: 12px; min-height: 120px; }
+@media (prefers-reduced-motion: no-preference) { .choice, .cell { transition: background-color 120ms, border-color 120ms; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Snip label review</h1>
+      <p class="lede">167 snips where all eight phase 1 models confidently disagree with the label (mean probability at least 0.9). For each, pick the species you see. The two candidates are the current label and the models' prediction, in a fixed random order; the page does not say which is which. Snips with the same pair of species sit together.</p>
+    </div>
+    <div class="tally" id="tally" aria-live="polite"></div>
+  </header>
+  <div class="banner" id="banner" hidden></div>
+  <div class="main">
+    <figure class="stage" style="margin:0">
+      <img id="img" alt="">
+      <figcaption class="stage-bar"><span id="itemid"></span><span id="pos"></span></figcaption>
+    </figure>
+    <section class="rail" aria-label="Decision">
+      <h2>Which species is this?</h2>
+      <div class="choices">
+        <button class="choice" id="optA" type="button" aria-pressed="false"><span class="key">1</span><span class="name"></span></button>
+        <button class="choice" id="optB" type="button" aria-pressed="false"><span class="key">2</span><span class="name"></span></button>
+      </div>
+      <div class="other">
+        <label for="other">Another species (3)</label>
+        <select id="other"><option value="">Choose a species…</option></select>
+      </div>
+      <div class="choices">
+        <button class="choice minor" id="optU" type="button" aria-pressed="false"><span class="key">4</span><span class="name">Can't tell</span></button>
+        <button class="choice minor" id="optX" type="button" aria-pressed="false"><span class="key">5</span><span class="name">Not usable (no animal, bad crop)</span></button>
+      </div>
+      <div class="note">
+        <label for="note">Note (optional)</label>
+        <textarea id="note" placeholder="Anything that would help, such as two species in frame"></textarea>
+      </div>
+      <div class="status" id="status" aria-live="polite"></div>
+      <div class="nav">
+        <button type="button" id="prev">← Previous</button>
+        <button type="button" id="next">Next →</button>
+        <button type="button" id="nextU">Next undecided</button>
+      </div>
+      <p class="keys">Keys: <kbd>1</kbd>–<kbd>5</kbd> decide, <kbd>←</kbd> <kbd>→</kbd> move, <kbd>U</kbd> next undecided. A decision moves on to the next undecided snip.</p>
+    </section>
+  </div>
+  <section>
+    <div class="strip-head">
+      <h2 style="font-family:var(--font-display);font-size:18px;margin:0">All snips</h2>
+      <div class="legend">
+        <span style="--c:var(--decided)">Species chosen</span>
+        <span style="--c:var(--unsure)">Can't tell</span>
+        <span style="--c:var(--unusable)">Not usable</span>
+        <span style="--c:var(--empty)">Undecided</span>
+      </div>
+    </div>
+    <div class="strip" id="strip" style="margin-top:10px"></div>
+  </section>
+  <footer>
+    <span id="savehint">Decisions save as you go.</span>
+    <button type="button" class="tool" id="showcsv">Show decisions as CSV</button>
+  </footer>
+  <textarea id="csv" readonly hidden aria-label="Decisions as CSV"></textarea>
+</div>
+
+<script type="application/json" id="classes">__CLASSES__</script>
+<script type="application/json" id="items">__ITEMS__</script>
+<script>
+const ITEMS = JSON.parse(document.getElementById("items").textContent);
+const CLASSES = JSON.parse(document.getElementById("classes").textContent);
+const pretty = c => { const s = c.replace(/_/g, " "); return s.charAt(0).toUpperCase() + s.slice(1); };
+const $ = id => document.getElementById(id);
+const decisions = {};
+let cur = 0, db = null, store = "none";
+const chains = {};
+
+for (const c of CLASSES) { const o = document.createElement("option"); o.value = c; o.textContent = pretty(c); $("other").append(o); }
+
+function loadLocal() { try { return JSON.parse(localStorage.getItem("lc-decisions") || "{}"); } catch { return {}; } }
+function saveLocal() { try { localStorage.setItem("lc-decisions", JSON.stringify(decisions)); } catch {} }
+
+function kind(d) { return !d || !d.verdict ? "" : d.verdict === "species" ? "d" : d.verdict === "unsure" ? "u" : "x"; }
+
+function buildStrip() {
+  const s = $("strip"); s.textContent = "";
+  ITEMS.forEach((it, i) => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "cell"; b.textContent = String(i + 1); b.dataset.i = i;
+    b.title = `${it.id}`; b.addEventListener("click", () => go(i));
+    s.append(b);
+  });
+}
+
+function paintStrip() {
+  [...$("strip").children].forEach((b, i) => {
+    b.className = "cell " + kind(decisions[ITEMS[i].id]) + (i === cur ? " cur" : "");
+    b.setAttribute("aria-label", `Snip ${i + 1}${decisions[ITEMS[i].id]?.verdict ? ", decided" : ", undecided"}`);
+  });
+  const n = ITEMS.filter(it => decisions[it.id]?.verdict).length;
+  $("tally").innerHTML = `<b>${n}</b> of ${ITEMS.length} decided`;
+}
+
+function render() {
+  const it = ITEMS[cur], d = decisions[it.id] || {};
+  $("img").src = "data:image/jpeg;base64," + it.img;
+  $("img").alt = `Snip ${cur + 1} of ${ITEMS.length}`;
+  $("itemid").textContent = it.id;
+  $("pos").textContent = `${cur + 1} / ${ITEMS.length} · pair ${it.group}`;
+  for (const [btn, code] of [[$("optA"), it.a], [$("optB"), it.b]]) {
+    btn.querySelector(".name").innerHTML = "";
+    btn.querySelector(".name").append(pretty(code));
+    const c = document.createElement("span"); c.className = "code"; c.textContent = code; btn.querySelector(".name").append(c);
+    btn.setAttribute("aria-pressed", String(d.verdict === "species" && d.pick === code));
+  }
+  const otherPick = d.verdict === "species" && d.pick !== it.a && d.pick !== it.b ? d.pick : "";
+  $("other").value = otherPick || ""; $("other").classList.toggle("picked", !!otherPick);
+  $("optU").setAttribute("aria-pressed", String(d.verdict === "unsure"));
+  $("optX").setAttribute("aria-pressed", String(d.verdict === "unusable"));
+  if (document.activeElement !== $("note")) $("note").value = d.note || "";
+  paintStrip();
+}
+
+function go(i) { cur = (i + ITEMS.length) % ITEMS.length; $("status").textContent = ""; render(); }
+function nextUndecided() {
+  for (let k = 1; k <= ITEMS.length; k++) { const i = (cur + k) % ITEMS.length; if (!decisions[ITEMS[i].id]?.verdict) return go(i); }
+  $("status").textContent = "Every snip has a decision.";
+}
+
+function persist(id, body) {
+  decisions[id] = body; saveLocal(); paintStrip();
+  if (!db) { $("status").textContent = store === "pending" ? "Saved in this browser; connecting…" : "Saved in this browser only"; return Promise.resolve(); }
+  $("status").textContent = "Saving…";
+  chains[id] = (chains[id] || Promise.resolve()).then(() => db.collection("decisions").doc(id).set(body)).then(
+    () => { if (ITEMS[cur].id === id) $("status").textContent = "Saved"; },
+    e => { $("status").textContent = `Not saved (${e && e.code || "error"}). Your choice is kept in this browser; use Show decisions as CSV at the end.`; });
+  return chains[id];
+}
+
+function decide(verdict, pick) {
+  const it = ITEMS[cur];
+  persist(it.id, { verdict, pick: pick || null, note: $("note").value.trim(), at: new Date().toISOString() });
+  render();
+  setTimeout(nextUndecided, 160);
+}
+
+$("optA").addEventListener("click", () => decide("species", ITEMS[cur].a));
+$("optB").addEventListener("click", () => decide("species", ITEMS[cur].b));
+$("optU").addEventListener("click", () => decide("unsure"));
+$("optX").addEventListener("click", () => decide("unusable"));
+$("other").addEventListener("change", e => { if (e.target.value) decide("species", e.target.value); });
+$("note").addEventListener("change", () => {
+  const it = ITEMS[cur], d = decisions[it.id] || { verdict: null, pick: null };
+  const note = $("note").value.trim();
+  if ((d.note || "") !== note) persist(it.id, { ...d, note, at: new Date().toISOString() });
+});
+$("prev").addEventListener("click", () => go(cur - 1));
+$("next").addEventListener("click", () => go(cur + 1));
+$("nextU").addEventListener("click", nextUndecided);
+document.addEventListener("keydown", e => {
+  if (e.target.matches("textarea, select, input") || e.metaKey || e.ctrlKey || e.altKey) return;
+  const k = e.key;
+  if (k === "1") $("optA").click();
+  else if (k === "2") $("optB").click();
+  else if (k === "3") { e.preventDefault(); $("other").focus(); }
+  else if (k === "4") $("optU").click();
+  else if (k === "5") $("optX").click();
+  else if (k === "ArrowLeft") go(cur - 1);
+  else if (k === "ArrowRight") go(cur + 1);
+  else if (k === "u" || k === "U") nextUndecided();
+});
+$("showcsv").addEventListener("click", () => {
+  const q = s => `"${String(s ?? "").replace(/"/g, '""')}"`;
+  const rows = ["id,verdict,pick,note,at", ...ITEMS.map(it => { const d = decisions[it.id] || {}; return [it.id, d.verdict || "", d.pick || "", q(d.note), d.at || ""].join(","); })];
+  $("csv").value = rows.join("\n"); $("csv").hidden = false; $("csv").focus(); $("csv").select();
+});
+
+Object.assign(decisions, loadLocal());
+buildStrip();
+go(Math.max(0, ITEMS.findIndex(it => !decisions[it.id]?.verdict)));
+
+store = "pending";
+(async () => {
+  try { db = await window.claude?.use?.("db"); } catch { db = null; }
+  if (!db) {
+    store = "local";
+    $("banner").hidden = false;
+    $("banner").textContent = "This view cannot save to the shared store, so decisions stay in this browser. When you finish, use Show decisions as CSV and paste the text into the chat.";
+    $("savehint").textContent = "Decisions save in this browser only.";
+    return;
+  }
+  store = "db";
+  db.collection("decisions").onSnapshot(snap => {
+    for (const doc of snap.docs) decisions[doc.id] = doc.data();
+    saveLocal(); render();
+  }, e => {
+    $("banner").hidden = false;
+    $("banner").textContent = `Lost the connection to the shared store (${e.code}). Decisions now stay in this browser; reload to reconnect.`;
+    db = null; store = "local";
+  });
+  const local = loadLocal();
+  for (const [id, body] of Object.entries(local)) {
+    const snap = await db.collection("decisions").doc(id).get().catch(() => null);
+    if (snap && !snap.exists && body.verdict) await db.collection("decisions").doc(id).set(body).catch(() => {});
+  }
+})();
+</script>

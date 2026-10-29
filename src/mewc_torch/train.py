@@ -3,7 +3,9 @@ initial class sample (no augmentation, early stopping on training loss), then pr
 the top blocks unfrozen, a fresh optimiser, and dropout and RandAugment magnitude stepped up per stage,
 each epoch on a fresh per-class sample; categorical focal loss; AdamW with AMSGrad and exponential
 learning-rate decay to min_lr_frac; the best epoch by validation loss is kept. Adds bf16, any batch
-size and per-epoch checkpoints, so an interrupted run resumes where it stopped.
+size, per-epoch checkpoints, so an interrupted run resumes where it stopped, and an optional linear
+warmup over the first warmup_steps of each fresh optimiser (0, mewc-train's recipe, by default), and
+optional gradient checkpointing, which trades time for memory without changing the computation.
 Usage: python -m mewc_torch.train CONFIG_JSON"""
 import json
 import sys
@@ -22,7 +24,7 @@ DEFAULTS = {"samples_per_class": 4000, "frozen_epochs": 10, "stage_len": 7, "tot
             "magnitudes": [0.2, 0.4, 0.6, 0.8], "dropouts": [0.1, 0.2, 0.3, 0.4], "n_aug": 3, "blocks": 2,
             "lr": 1e-4, "weight_decay": 1e-4, "min_lr_frac": 0.2, "batch": 16, "focal_alpha": 0.25,
             "focal_gamma": 2.0, "seed": 12345, "val_per_class": 100, "precision": "bf16", "workers": 16,
-            "frozen_patience": 5}
+            "frozen_patience": 5, "warmup_steps": 0, "grad_checkpointing": False}
 
 
 def focal_loss(logits, y, alpha, gamma):
@@ -33,7 +35,8 @@ def focal_loss(logits, y, alpha, gamma):
 def optimiser(params, cfg, steps_per_epoch):
     opt = torch.optim.AdamW(params, lr=cfg["lr"], weight_decay=cfg["weight_decay"], amsgrad=True)
     total = cfg["total_epochs"] * steps_per_epoch
-    sched = torch.optim.lr_scheduler.LambdaLR(opt, lambda s: cfg["min_lr_frac"] ** (s / total))
+    warm = cfg["warmup_steps"] + 1
+    sched = torch.optim.lr_scheduler.LambdaLR(opt, lambda s: min(1, (s + 1) / warm) * cfg["min_lr_frac"] ** (s / total))
     return opt, sched
 
 
@@ -83,6 +86,8 @@ def main(config_path):
     va_rows = np.concatenate([np.flatnonzero(va_labels == c)[:cfg["val_per_class"]] for c in range(len(classes))])
     model = MewcClassifier(cfg["backbone"], len(classes), cfg["dropouts"][0], pretrained=cfg.get("pretrained", True),
                           img_size=cfg.get("img_size")).to(dev)
+    if cfg["grad_checkpointing"]:
+        model.base.set_grad_checkpointing()
     size = cfg.get("img_size") or model.native_size
     loader = lambda paths, labels, rows, mag, n_aug, shuffle: DataLoader(
         Snips([paths[i] for i in rows], labels[rows], size, model.mean, model.std, mag, n_aug),
