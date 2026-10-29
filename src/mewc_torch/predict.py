@@ -18,7 +18,7 @@ def load_run(run_dir, dev):
     run = Path(run_dir)
     cfg = json.loads((run / "config.json").read_text())
     classes = sorted(Path(cfg["classes"]).read_text().split())
-    model = MewcClassifier(cfg["backbone"], len(classes), pretrained=False)
+    model = MewcClassifier(cfg["backbone"], len(classes), pretrained=False, img_size=cfg.get("img_size"))
     model.load_state_dict(torch.load(run / "best.pt", map_location="cpu"))
     size = cfg.get("img_size") or model.native_size
     return model.to(dev).eval(), classes, size, cfg

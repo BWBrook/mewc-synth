@@ -26,6 +26,7 @@ def main(path, out, device="cpu", threads=8, batch=8, n=8):
     with open(out, "w") as f:
         json.dump(res, f)
     print(json.dumps(res))
+    return res
 
 
 if __name__ == "__main__":

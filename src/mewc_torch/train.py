@@ -81,7 +81,8 @@ def main(config_path):
     tr_paths, tr_labels = read_list(cfg["train"], classes)
     va_paths, va_labels = read_list(cfg["val"], classes)
     va_rows = np.concatenate([np.flatnonzero(va_labels == c)[:cfg["val_per_class"]] for c in range(len(classes))])
-    model = MewcClassifier(cfg["backbone"], len(classes), cfg["dropouts"][0], pretrained=cfg.get("pretrained", True)).to(dev)
+    model = MewcClassifier(cfg["backbone"], len(classes), cfg["dropouts"][0], pretrained=cfg.get("pretrained", True),
+                          img_size=cfg.get("img_size")).to(dev)
     size = cfg.get("img_size") or model.native_size
     loader = lambda paths, labels, rows, mag, n_aug, shuffle: DataLoader(
         Snips([paths[i] for i in rows], labels[rows], size, model.mean, model.std, mag, n_aug),

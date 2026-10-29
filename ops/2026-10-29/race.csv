@@ -1,0 +1,31 @@
+name,backbone,img_size,blocks,tier,family
+vtl,vit_large_patch16_384.augreg_in21k_ft_in1k,384,9,large,ViT anchor
+eva02_l,eva02_large_patch14_448.mim_m38m_ft_in22k_in1k,392,9,large,EVA-02
+dinov3_l,vit_large_patch16_dinov3.lvd1689m,384,9,large,DINOv3 ViT
+siglip2_l,vit_large_patch16_siglip_384.v2_webli,384,9,large,SigLIP 2
+cnv2_l,convnextv2_large.fcmae_ft_in22k_in1k_384,384,2,large,ConvNeXt V2
+caformer_b36,caformer_b36.sail_in22k_ft_in1k_384,384,2,large,MetaFormer
+vtb,vit_base_patch16_384.augreg_in21k_ft_in1k,384,9,base,ViT anchor
+cnb,convnext_base.fb_in22k_ft_in1k,384,2,base,ConvNeXt anchor
+cnv2_b,convnextv2_base.fcmae_ft_in22k_in1k_384,384,2,base,ConvNeXt V2
+eva02_b,eva02_base_patch14_448.mim_in22k_ft_in22k_in1k,392,9,base,EVA-02
+dinov3_b,vit_base_patch16_dinov3.lvd1689m,384,9,base,DINOv3 ViT
+dinov3_cnb,convnext_base.dinov3_lvd1689m,384,2,base,DINOv3 ConvNeXt
+dinov2_b,vit_base_patch14_reg4_dinov2.lvd142m,392,9,base,DINOv2
+siglip2_b,vit_base_patch16_siglip_384.v2_webli,384,9,base,SigLIP 2
+caformer_s36,caformer_s36.sail_in22k_ft_in1k_384,384,2,base,MetaFormer
+cns,convnext_small.in12k_ft_in1k_384,384,2,small,ConvNeXt anchor
+cnt,convnext_tiny.in12k_ft_in1k_384,384,2,small,ConvNeXt
+cnv2_t,convnextv2_tiny.fcmae_ft_in22k_in1k_384,384,2,small,ConvNeXt V2
+cnv2_n,convnextv2_nano.fcmae_ft_in22k_in1k_384,384,2,small,ConvNeXt V2
+dinov3_cnt,convnext_tiny.dinov3_lvd1689m,384,2,small,DINOv3 ConvNeXt
+dinov3_sp,vit_small_plus_patch16_dinov3.lvd1689m,384,9,small,DINOv3 ViT
+eva02_s,eva02_small_patch14_336.mim_in22k_ft_in1k,336,9,small,EVA-02
+vts,vit_small_patch16_384.augreg_in21k_ft_in1k,384,9,small,ViT anchor
+tinyvit_21m,tiny_vit_21m_384.dist_in22k_ft_in1k,384,2,small,TinyViT
+mnv4_hl,mobilenetv4_hybrid_large.ix_e600_r384_in1k,384,2,small,MobileNetV4
+mnv4_cl,mobilenetv4_conv_aa_large.e230_r384_in12k_ft_in1k,384,2,small,MobileNetV4
+effvit_l2,efficientvit_l2.r384_in1k,384,2,small,EfficientViT
+fastvit_sa24,fastvit_sa24.apple_dist_in1k,256,2,small,FastViT
+ens,tf_efficientnetv2_s.in21k_ft_in1k,384,2,small,EfficientNetV2 anchor
+hgnetv2_b4,hgnetv2_b4.ssld_stage2_ft_in1k,288,2,small,HGNetV2

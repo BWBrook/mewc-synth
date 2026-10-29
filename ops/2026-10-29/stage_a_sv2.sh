@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # Stage A domain adapter retrained on split v2's training pool (same recipe as a_v2), after gpu-5's
-# parity lanes and the v2 embedding pass finish. Pseudo-rare classes keep only their n=50 v2 subsets.
+# parity lanes, their label-check scoring and the v2 embedding pass finish. Pseudo-rare classes keep only
+# their n=50 v2 subsets.
 set -uo pipefail
 M=/mnt/ml-data/mewc-synth; W=$M/work; P=$HOME/mewc-synth/.venv/bin/python
 cd "$HOME/mewc-synth/src"; export HF_HOME=/mnt/scratch/hf
 stamp() { echo "[$(date +%H:%M:%S)] $*"; }
-until grep -q "^embedded" $W/embed_v2.log && grep -q "QUEUE DONE" /mnt/scratch/logs/q_g5a.log \
-  && grep -q "QUEUE DONE" /mnt/scratch/logs/q_g5b.log; do sleep 60; done
+until grep -q "^embedded" $W/embed_v2.log && grep -q "LABELCHECK SCORED" /mnt/scratch/logs/labelcheck.log; do sleep 60; done
 stamp "prep start"
 $P prep_stage_a.py "$M/v2" "$W/audit_v2" split_v2 "$W/snips_meta/class_table.csv" a_sv2 \
   '{"cap": 1500, "seed": 7, "pseudo_rare": {"spotted_tail_quoll": 50, "forester_kangaroo": 50, "black_currawong": 50, "black_rat": 50}, "ir_chroma": 1.0, "photo_prefixes": ["ebird", "inat"]}' \

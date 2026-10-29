@@ -14,9 +14,12 @@ def compression_width(n_features, n_classes, vit):
 
 
 class MewcClassifier(nn.Module):
-    def __init__(self, backbone, n_classes, dropout=0.1, pretrained=True):
+    def __init__(self, backbone, n_classes, dropout=0.1, pretrained=True, img_size=None):
         super().__init__()
         self.base = timm.create_model(backbone, pretrained=pretrained, num_classes=0, global_pool="avg")
+        if img_size and hasattr(self.base, "patch_embed") and img_size != self.base.pretrained_cfg["input_size"][-1]:
+            self.base = timm.create_model(backbone, pretrained=pretrained, num_classes=0, global_pool="avg",
+                                          img_size=img_size)
         n = self.base.num_features
         width = compression_width(n, n_classes, vit=hasattr(self.base, "blocks") and hasattr(self.base, "patch_embed"))
         self.drop1, self.compress, self.act = nn.Dropout(dropout), nn.Linear(n, width), nn.ELU()
