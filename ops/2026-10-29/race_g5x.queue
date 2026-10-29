@@ -1,0 +1,2 @@
+torch race_dinov3_l /home/ubuntu/mewc-synth/ops/2026-10-29/race/race_dinov3_l.json
+torch race_siglip2_l /home/ubuntu/mewc-synth/ops/2026-10-29/race/race_siglip2_l.json

@@ -1,0 +1,14 @@
+{
+ "backbone": "vit_base_patch14_reg4_dinov2.lvd142m",
+ "blocks": 9,
+ "seed": 1,
+ "samples_per_class": 400,
+ "frozen_epochs": 3,
+ "stage_len": 3,
+ "total_epochs": 12,
+ "img_size": 392,
+ "workers": 12,
+ "precision": "bf16",
+ "batch": 64,
+ "lr": 0.0002
+}
