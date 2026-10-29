@@ -2,3 +2,4 @@ torch pt_vtb_bf16_s1 /home/ubuntu/mewc-synth/ops/2026-10-29/configs/pt_vtb_bf16_
 torch pt_cnb_bf16_s1 /home/ubuntu/mewc-synth/ops/2026-10-29/configs/pt_cnb_bf16_s1.json
 torch pt_vtb_bf16_s2 /home/ubuntu/mewc-synth/ops/2026-10-29/configs/pt_vtb_bf16_s2.json
 torch pt_cnb_bf16_s2 /home/ubuntu/mewc-synth/ops/2026-10-29/configs/pt_cnb_bf16_s2.json
+torch pt_vtb_bf16_s1 /home/ubuntu/mewc-synth/ops/2026-10-29/configs/pt_vtb_bf16_s1.json
