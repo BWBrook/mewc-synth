@@ -285,3 +285,22 @@ and synthetic snips identically.
     cheaper model.
   - **Synthetic re-test (stages 2 to 4)**: endpoints and minimum detectable effects are registered here
     once the v2 baseline's seed variance is measured, before any synthetic arm runs.
+- 2026-10-29, day 1 of phase 1, registered before any race or label-check result:
+  - **Architecture race (stage 2)**: the 30 candidates in `ops/2026-10-29/race.csv` (anchors ViT-L,
+    ViT-B, ViT-S, ConvNeXt-B, ConvNeXt-S and EfficientNetV2-S; ConvNeXt V2, DINOv3 ViT and ConvNeXt,
+    DINOv2, EVA-02, SigLIP 2, CAFormer, TinyViT, MobileNetV4, EfficientViT, FastViT, HGNetV2), one seed,
+    screen scale, in `mewc-torch` with whichever speed levers pass. Size: 384 px (392 for patch-14
+    models); EVA-02-S, FastViT and HGNetV2 at their native 336, 256 and 288. Unfreezing: plain ViTs
+    their top 9 blocks, hierarchical models their top 2 stages. The ViT-B and ConvNeXt-B entries reuse
+    their parity runs. A candidate that fails the CPU preflight (build, ONNX export within 1e-3 of
+    PyTorch) is dropped before any GPU time.
+  - **Families advancing to the mini-search**: the four families with the best validation macro-F1 of
+    any member (anchors count with their family), plus the best family with a member above the
+    deployable threshold if none of the four has one. CPU throughput for the threshold is measured on
+    deep (Xeon E5-2683 v4, 8 threads, `onnxruntime` 1.31, batch 8), which runs at about 0.7 times the
+    pilot's CPU, so the threshold is conservative there.
+  - **Label check**: the ensemble is every `mewc-torch` parity run (ViT-B and ConvNeXt-B, three arms,
+    two seeds); a snip is flagged when the ensemble's mean top probability is at least 0.9 for a class
+    other than its label. Barry adjudicates the flags in descending probability; corrected labels apply
+    to validation and test before any phase 1 result is reported, and validation metrics are recomputed
+    from saved probabilities. Test probabilities from the label check are used for nothing else.
