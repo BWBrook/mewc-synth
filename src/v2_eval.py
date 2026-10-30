@@ -1,6 +1,8 @@
 """Validation metrics for one phase 1 run and a registry row: macro-F1 over all classes, camera-trap snips
 and the 25 low-count classes, accuracy and expected calibration error (15 bins), from the run's scores
-on the full v2 validation list. Appends a JSON line to the registry.
+on the v2 validation list. Truth comes from v2/val.csv, joined on path, so label corrections apply and
+excluded snips drop out; the row's labels field says whether the list is corrected (v2c) or not (v2).
+Appends a JSON line to the registry.
 Usage: python src/v2_eval.py RUNS_DIR RUN_NAME CLASS_TABLE_CSV [EXTRA_JSON]"""
 import json
 import sys
@@ -23,10 +25,11 @@ def ece(conf, correct, bins=15):
 
 def main(runs_dir, name, class_table, extra="{}"):
     d = Path(runs_dir)
-    sc = pd.read_csv(d / "scores" / f"{name}.csv")
+    v2 = d.parent / "v2"
+    sc = pd.read_csv(d / "scores" / f"{name}.csv").merge(pd.read_csv(v2 / "val.csv", usecols=["path", "label"]), on="path")
     classes = sorted(Path(d / "classes.txt").read_text().split())
     ci = {c: i for i, c in enumerate(classes)}
-    truth = np.array([ci[p.split("/")[-2]] for p in sc["path"]])
+    truth = np.array([ci[c] for c in sc["label"]])
     pred = np.array([ci[n] for n in sc["top_name"]])
     camera = np.array([source_prefix("/".join(p.split("/")[-2:])) not in ("ebird", "inat") for p in sc["path"]])
     ct = pd.read_csv(class_table)
@@ -41,6 +44,7 @@ def main(runs_dir, name, class_table, extra="{}"):
 
     allm = np.ones(len(truth), bool)
     row = {"name": name, "time": time.strftime("%Y-%m-%dT%H:%M:%S"), "n_val": len(truth),
+           "labels": "v2c" if (v2 / "val.pre_lc.csv").exists() else "v2",
            "macro_f1": macro(allm), "macro_f1_camera": macro(camera), "macro_f1_rare": macro(allm, rare),
            "accuracy": round(float((pred == truth).mean()), 4),
            "ece": round(ece(sc["top_prob"].to_numpy(), pred == truth), 4), **json.loads(extra)}

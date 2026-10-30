@@ -1,0 +1,136 @@
+id,part,path,old_label,new_label,action,reason
+lc001,test,/mnt/ml-data/mewc-synth/v2/test/brush_bronzewing/ebird_610017853-0.jpg,brush_bronzewing,common_bronzewing,relabel,models right
+lc002,val,/mnt/ml-data/mewc-synth/v2/val/common_bronzewing/11acf242-5e97-467b-9f5c-c016b1fd6426-0.jpg,common_bronzewing,brush_bronzewing,relabel,models right
+lc003,val,/mnt/ml-data/mewc-synth/v2/val/common_bronzewing/ebird_609469996-0.jpg,common_bronzewing,brush_bronzewing,relabel,models right
+lc004,test,/mnt/ml-data/mewc-synth/v2/test/common_bronzewing/ink2_w71jbnHBK4cAehJA.JPG,common_bronzewing,brush_bronzewing,relabel,models right
+lc006,test,/mnt/ml-data/mewc-synth/v2/test/common_bronzewing/af5ed654-55a0-41e1-8382-be5ac89e25e7-0.jpg,common_bronzewing,brush_bronzewing,relabel,models right
+lc008,val,/mnt/ml-data/mewc-synth/v2/val/common_bronzewing/ink_4rn2et1xbF29Eb6L.JPG,common_bronzewing,brush_bronzewing,relabel,models right
+lc009,val,/mnt/ml-data/mewc-synth/v2/val/brush_bronzewing/ink2_esrCwExJfME7XScW.JPG,brush_bronzewing,common_bronzewing,relabel,models right
+lc010,test,/mnt/ml-data/mewc-synth/v2/test/common_bronzewing/thi_yxBlEnjDGqMY.JPG,common_bronzewing,,exclude,unsure
+lc019,test,/mnt/ml-data/mewc-synth/v2/test/eastern_quoll/jl_ZChJZGD94say978x.JPG,eastern_quoll,eastern_rosella,relabel,models right
+lc020,val,/mnt/ml-data/mewc-synth/v2/val/eastern_quoll/jl_Zah15R3xqHmfkueM.JPG,eastern_quoll,eastern_rosella,relabel,models right
+lc021,test,/mnt/ml-data/mewc-synth/v2/test/eastern_quoll/jl_aswzyaiCNEtAdP6k.JPG,eastern_quoll,eastern_rosella,relabel,models right
+lc022,test,/mnt/ml-data/mewc-synth/v2/test/eastern_quoll/jl_iaXqeYf0OPhp2uN5.JPG,eastern_quoll,eastern_rosella,relabel,models right
+lc023,test,/mnt/ml-data/mewc-synth/v2/test/eastern_quoll/jl_Q3hRO7CGPXZDTBpi.JPG,eastern_quoll,eastern_rosella,relabel,models right
+lc024,test,/mnt/ml-data/mewc-synth/v2/test/eastern_quoll/jl_m1sIc9dfyIdkdHMx.JPG,eastern_quoll,eastern_rosella,relabel,models right
+lc025,test,/mnt/ml-data/mewc-synth/v2/test/eastern_quoll/jl_1sMbm1Z6sUUPQJ0h.JPG,eastern_quoll,eastern_rosella,relabel,models right
+lc026,test,/mnt/ml-data/mewc-synth/v2/test/superb_fairywren/gst_hvd42Ieq0ruSNad3.JPG,superb_fairywren,grey_fantail,relabel,models right
+lc027,test,/mnt/ml-data/mewc-synth/v2/test/superb_fairywren/jl_jSkpf51zy57kNKeE.JPG,superb_fairywren,grey_fantail,relabel,models right
+lc028,test,/mnt/ml-data/mewc-synth/v2/test/superb_fairywren/gst_IlaE3UZGKYkYhvd0.JPG,superb_fairywren,grey_fantail,relabel,models right
+lc029,test,/mnt/ml-data/mewc-synth/v2/test/superb_fairywren/ink2_x6WoaTIf4HTF4Wey.JPG,superb_fairywren,grey_fantail,relabel,models right
+lc030,val,/mnt/ml-data/mewc-synth/v2/val/superb_fairywren/gst_FyKkoOi7N2w0K4Pd.JPG,superb_fairywren,grey_fantail,relabel,models right
+lc031,test,/mnt/ml-data/mewc-synth/v2/test/superb_fairywren/gst_p6GF9sgycxkDwYt5.JPG,superb_fairywren,grey_fantail,relabel,models right
+lc032,test,/mnt/ml-data/mewc-synth/v2/test/superb_fairywren/gst_C0O132PQs4L6AWG8.JPG,superb_fairywren,grey_fantail,relabel,models right
+lc033,test,/mnt/ml-data/mewc-synth/v2/test/white_footed_dunnart/delwp_MTL3burKvr.JPG,white_footed_dunnart,antechinus,relabel,models right
+lc034,val,/mnt/ml-data/mewc-synth/v2/val/antechinus/delwp_HYDQ9L23Th.JPG,antechinus,white_footed_dunnart,relabel,models right
+lc035,test,/mnt/ml-data/mewc-synth/v2/test/antechinus/delwp_ORcOIwIfxV.JPG,antechinus,white_footed_dunnart,relabel,models right
+lc036,val,/mnt/ml-data/mewc-synth/v2/val/white_footed_dunnart/delwp_VovMRM9Uvi.JPG,white_footed_dunnart,antechinus,relabel,models right
+lc037,val,/mnt/ml-data/mewc-synth/v2/val/antechinus/delwp_Qu9adu3QS5.JPG,antechinus,white_footed_dunnart,relabel,models right
+lc039,test_proj,/mnt/ml-data/mewc-synth/v2/test_proj/unknown_animal/hr_yDdsAuIB1WkdkxmZ.JPG,unknown_animal,,exclude,unusable
+lc040,test_proj,/mnt/ml-data/mewc-synth/v2/test_proj/unknown_animal/hr_uwYXsn4Ue1YZ3seD.JPG,unknown_animal,chicken,relabel,models right
+lc042,test_proj,/mnt/ml-data/mewc-synth/v2/test_proj/unknown_animal/hr_NOX2k9OvFGXO7Zrn.JPG,unknown_animal,,exclude,unusable
+lc044,test_proj,/mnt/ml-data/mewc-synth/v2/test_proj/unknown_animal/hr_XjuuVJYLfQZkAWVO.JPG,unknown_animal,chicken,relabel,models right
+lc045,test,/mnt/ml-data/mewc-synth/v2/test/southern_brown_bandicoot/92dc4fec-63cd-492b-b423-6a589992fee7-0.jpg,southern_brown_bandicoot,long_nosed_potoroo,relabel,models right
+lc046,test,/mnt/ml-data/mewc-synth/v2/test/long_nosed_potoroo/jl_NusZ7fQiLae5bK6A.JPG,long_nosed_potoroo,southern_brown_bandicoot,relabel,models right
+lc047,test,/mnt/ml-data/mewc-synth/v2/test/southern_brown_bandicoot/ink_0iYzA3lw7kBSxDVH.JPG,southern_brown_bandicoot,long_nosed_potoroo,relabel,models right
+lc048,test,/mnt/ml-data/mewc-synth/v2/test/long_nosed_potoroo/370a3eb1-962c-4b43-bd56-b5dc786dab0c-0.jpg,long_nosed_potoroo,southern_brown_bandicoot,relabel,models right
+lc049,val,/mnt/ml-data/mewc-synth/v2/val/long_nosed_potoroo/jl_QjJC2Lw5fYoF0R9g.JPG,long_nosed_potoroo,,exclude,unsure
+lc050,test,/mnt/ml-data/mewc-synth/v2/test/long_nosed_potoroo/jl_gMQki0dVprXDlzCe.JPG,long_nosed_potoroo,southern_brown_bandicoot,relabel,models right
+lc051,test,/mnt/ml-data/mewc-synth/v2/test/tasmanian_scrubwren/ebird_249798731-0.jpg,tasmanian_scrubwren,scrubtit,relabel,models right
+lc052,val,/mnt/ml-data/mewc-synth/v2/val/tasmanian_scrubwren/ebird_614333636-0.jpg,tasmanian_scrubwren,scrubtit,relabel,models right
+lc053,val,/mnt/ml-data/mewc-synth/v2/val/tasmanian_scrubwren/ebird_614333638-0.jpg,tasmanian_scrubwren,scrubtit,relabel,models right
+lc054,test,/mnt/ml-data/mewc-synth/v2/test/tasmanian_scrubwren/ebird_249798811-0.jpg,tasmanian_scrubwren,scrubtit,relabel,models right
+lc055,test,/mnt/ml-data/mewc-synth/v2/test/scrubtit/ebird_217729891-0.jpg,scrubtit,tasmanian_scrubwren,relabel,models right
+lc056,test,/mnt/ml-data/mewc-synth/v2/test/scrubtit/ebird_217729871-0.jpg,scrubtit,tasmanian_scrubwren,relabel,models right
+lc057,test,/mnt/ml-data/mewc-synth/v2/test/flame_robin/ebird_fr_523521351-0.jpg,flame_robin,dusky_robin,relabel,models right
+lc058,test,/mnt/ml-data/mewc-synth/v2/test/flame_robin/ebird_fr_520715531-0.jpg,flame_robin,dusky_robin,relabel,models right
+lc059,test,/mnt/ml-data/mewc-synth/v2/test/flame_robin/ebird_sr_616129716-0.jpg,flame_robin,dusky_robin,relabel,models right
+lc060,test,/mnt/ml-data/mewc-synth/v2/test/flame_robin/ebird_fr_523521371-0.jpg,flame_robin,dusky_robin,relabel,models right
+lc061,test,/mnt/ml-data/mewc-synth/v2/test/flame_robin/ebird_fr_523521381-0.jpg,flame_robin,dusky_robin,relabel,models right
+lc062,val,/mnt/ml-data/mewc-synth/v2/val/tasmanian_scrubwren/5645036d-3376-44d7-8a75-516ac18c9f8e-0.jpg,tasmanian_scrubwren,olive_whistler,relabel,models right
+lc064,val,/mnt/ml-data/mewc-synth/v2/val/tasmanian_scrubwren/ink_z4JqlJQpP2R0T5GF.JPG,tasmanian_scrubwren,,exclude,unsure
+lc067,test,/mnt/ml-data/mewc-synth/v2/test/european_starling/jl_rNENhqE5A3j9kaCx.JPG,european_starling,common_blackbird,relabel,models right
+lc068,test,/mnt/ml-data/mewc-synth/v2/test/european_starling/jl_gDbnVzmhaFLPj9OP.JPG,european_starling,common_blackbird,relabel,models right
+lc069,test,/mnt/ml-data/mewc-synth/v2/test/common_blackbird/iona_mSi1-IMG_9224-0.JPG,common_blackbird,,exclude,unusable
+lc070,val,/mnt/ml-data/mewc-synth/v2/val/common_blackbird/jl_T4i6z5X7KHUXDDyb.JPG,common_blackbird,european_starling,relabel,models right
+lc071,val,/mnt/ml-data/mewc-synth/v2/val/eastern_quoll/ink_0ie1TEfaEXoKUFYy.JPG,eastern_quoll,spotted_tail_quoll,relabel,models right
+lc072,test,/mnt/ml-data/mewc-synth/v2/test/spotted_tail_quoll/ink_g8YuhEGXsfSb0aS2.JPG,spotted_tail_quoll,eastern_quoll,relabel,models right
+lc073,test,/mnt/ml-data/mewc-synth/v2/test/spotted_tail_quoll/ink_g2ZWVkhFEBldBw33.JPG,spotted_tail_quoll,eastern_quoll,relabel,models right
+lc074,test,/mnt/ml-data/mewc-synth/v2/test/spotted_tail_quoll/al_ny1NgbkOAr1Wtk2h.JPG,spotted_tail_quoll,eastern_quoll,relabel,models right
+lc075,test,/mnt/ml-data/mewc-synth/v2/test/brown_quail/thi_OxYxyiMrzBEC.JPG,brown_quail,painted_buttonquail,relabel,models right
+lc077,test,/mnt/ml-data/mewc-synth/v2/test/brown_quail/thi_FtbXBNkXPPkH9Ro7.JPG,brown_quail,,exclude,unusable
+lc078,test,/mnt/ml-data/mewc-synth/v2/test/grey_currawong/gst_gK2Q0EaF9MK54JrL.JPG,grey_currawong,grey_fantail,relabel,models right
+lc079,val,/mnt/ml-data/mewc-synth/v2/val/grey_currawong/gst_Csnei6FTjWyvdi3J.JPG,grey_currawong,grey_fantail,relabel,models right
+lc080,test,/mnt/ml-data/mewc-synth/v2/test/grey_currawong/gst_E2jXlkwM6WwncAsv.JPG,grey_currawong,,exclude,unsure
+lc082,test,/mnt/ml-data/mewc-synth/v2/test/olive_whistler/ebird_611034312-0.jpg,olive_whistler,grey_shrikethrush,relabel,models right
+lc084,test_proj,/mnt/ml-data/mewc-synth/v2/test_proj/unknown_animal/hr_4KEme55mT8FXLvXx.JPG,unknown_animal,,exclude,unusable
+lc085,test_proj,/mnt/ml-data/mewc-synth/v2/test_proj/unknown_animal/hr_7wIAtQBG0H3kVcnG.JPG,unknown_animal,,exclude,unusable
+lc086,test,/mnt/ml-data/mewc-synth/v2/test/unknown_animal/jl_IAMnctAYtcpV9cgp.JPG,unknown_animal,,exclude,unusable
+lc087,test,/mnt/ml-data/mewc-synth/v2/test/bare_nosed_wombat/nw_vCcjG1FKrrSYuFXh.JPG,bare_nosed_wombat,unknown_animal,relabel,models right
+lc089,test,/mnt/ml-data/mewc-synth/v2/test/crimson_rosella/ebird_615423708-0.jpg,crimson_rosella,,exclude,"red-browed firetail, not a model class"
+lc090,test,/mnt/ml-data/mewc-synth/v2/test/crimson_rosella/ebird_615423707-0.jpg,crimson_rosella,,exclude,"red-browed firetail, not a model class"
+lc093,test,/mnt/ml-data/mewc-synth/v2/test/black_rat/ink_0URZnbsUAXERS71b.JPG,black_rat,swamp_rat,relabel,models right
+lc094,test,/mnt/ml-data/mewc-synth/v2/test/black_rat/ink_0HnqdA0SoiFirFst.JPG,black_rat,swamp_rat,relabel,models right
+lc095,val,/mnt/ml-data/mewc-synth/v2/val/brown_goshawk/ink2_nelfFBuylsMafwFI.JPG,brown_goshawk,brown_falcon,relabel,models right
+lc096,val,/mnt/ml-data/mewc-synth/v2/val/brown_goshawk/ink2_2PICsp1qLYA3xuyr.JPG,brown_goshawk,brown_falcon,relabel,models right
+lc097,test,/mnt/ml-data/mewc-synth/v2/test/brown_quail/thi_sIaTafpTOvF45lya.JPG,brown_quail,lewins_rail,relabel,models right
+lc098,test,/mnt/ml-data/mewc-synth/v2/test/brown_quail/thi_9pLEhhnIJd9gvoFC.JPG,brown_quail,lewins_rail,relabel,models right
+lc100,test_proj,/mnt/ml-data/mewc-synth/v2/test_proj/brushtail_possum/mtwt_ekC1fIIqvzWPC8Wr.JPG,brushtail_possum,common_ringtail,relabel,models right
+lc101,test,/mnt/ml-data/mewc-synth/v2/test/pacific_black_duck/alex_thi_qL0hKb6a.JPG,pacific_black_duck,chestnut_teal,relabel,models right
+lc102,test,/mnt/ml-data/mewc-synth/v2/test/pacific_black_duck/thi_Gs6et7Qu7RZ2.JPG,pacific_black_duck,chestnut_teal,relabel,models right
+lc103,test,/mnt/ml-data/mewc-synth/v2/test/chicken/hr_A6axsParCYRUHjv4.JPG,chicken,guinea_fowl,relabel,models right
+lc104,val,/mnt/ml-data/mewc-synth/v2/val/chicken/hr_lfmgKm1Prj1T3a7h.JPG,chicken,guinea_fowl,relabel,models right
+lc105,test,/mnt/ml-data/mewc-synth/v2/test/common_bronzewing/gst_JSN1Nc6oYn6ctWyh.JPG,common_bronzewing,common_blackbird,relabel,models right
+lc106,test,/mnt/ml-data/mewc-synth/v2/test/common_bronzewing/gst_c16Zg3unVIpgzI8j.JPG,common_bronzewing,common_blackbird,relabel,models right
+lc107,test,/mnt/ml-data/mewc-synth/v2/test/olive_whistler/ink2_DPwPnxLrcGsl9Osw.JPG,olive_whistler,crescent_honeyeater,relabel,models right
+lc109,test,/mnt/ml-data/mewc-synth/v2/test/pink_robin/lun_oQb35zvnJA7ibVgv.JPG,pink_robin,dusky_robin,relabel,models right
+lc113,test,/mnt/ml-data/mewc-synth/v2/test/flame_robin/ebird_sr_140424771-0.jpg,flame_robin,pink_robin,relabel,models right
+lc114,test,/mnt/ml-data/mewc-synth/v2/test/flame_robin/ebird_fr_151054851-0.jpg,flame_robin,pink_robin,relabel,models right
+lc115,test_proj,/mnt/ml-data/mewc-synth/v2/test_proj/unknown_animal/hr_w8y4evJXP0ugeGnn.JPG,unknown_animal,guinea_fowl,relabel,models right
+lc116,test_proj,/mnt/ml-data/mewc-synth/v2/test_proj/unknown_animal/hr_oV6D9MRWEozpG20z.JPG,unknown_animal,guinea_fowl,relabel,models right
+lc118,val,/mnt/ml-data/mewc-synth/v2/val/long_tailed_mouse/delwp_NOc718yM0G.JPG,long_tailed_mouse,house_mouse,relabel,models right
+lc119,val,/mnt/ml-data/mewc-synth/v2/val/purple_swamphen/iona_5EVl9dT6lssJNoAt.JPG,purple_swamphen,lewins_rail,relabel,models right
+lc120,val,/mnt/ml-data/mewc-synth/v2/val/lewins_rail/iona_5f7g7MUqvX0KnIKm.JPG,lewins_rail,purple_swamphen,relabel,models right
+lc121,val,/mnt/ml-data/mewc-synth/v2/val/long_nosed_potoroo/ink_2PJARVdbxtqpJM8N.JPG,long_nosed_potoroo,,exclude,unsure
+lc122,val,/mnt/ml-data/mewc-synth/v2/val/swamp_rat/ink_G2p2jc2rOj5gxTA5.JPG,swamp_rat,long_nosed_potoroo,relabel,models right
+lc123,test,/mnt/ml-data/mewc-synth/v2/test/long_nosed_potoroo/642af80a-fd6d-46a5-81f7-bfab906c90af-0.jpg,long_nosed_potoroo,tasmanian_pademelon,relabel,models right
+lc124,test,/mnt/ml-data/mewc-synth/v2/test/long_nosed_potoroo/76c0333b-5a9d-4d06-9645-907a749645a1-0.jpg,long_nosed_potoroo,tasmanian_pademelon,relabel,models right
+lc125,val,/mnt/ml-data/mewc-synth/v2/val/long_tailed_mouse/ink_KFpDiQNyJ93n4gZv.JPG,long_tailed_mouse,swamp_rat,relabel,models right
+lc126,test,/mnt/ml-data/mewc-synth/v2/test/swamp_rat/ink_PCa5Xs9KevNpb2O9.JPG,swamp_rat,long_tailed_mouse,relabel,models right
+lc127,val,/mnt/ml-data/mewc-synth/v2/val/purple_swamphen/iona_dhX4-IMG_6521-2.JPG,purple_swamphen,peafowl,relabel,models right
+lc128,test,/mnt/ml-data/mewc-synth/v2/test/purple_swamphen/iona_3PSm-IMG_1980-0.JPG,purple_swamphen,peafowl,relabel,models right
+lc129,test,/mnt/ml-data/mewc-synth/v2/test/white_bellied_sea_eagle/iona_628oTKUVvKfhBa8K.JPG,white_bellied_sea_eagle,peafowl,relabel,models right
+lc130,test,/mnt/ml-data/mewc-synth/v2/test/white_bellied_sea_eagle/iona_vlCh6emnqRrtGi4h.JPG,white_bellied_sea_eagle,peafowl,relabel,models right
+lc131,test,/mnt/ml-data/mewc-synth/v2/test/pygmy_possum/delwp_MGlWvHp2A5.JPG,pygmy_possum,white_footed_dunnart,relabel,models right
+lc132,test,/mnt/ml-data/mewc-synth/v2/test/pygmy_possum/delwp_SMvLUZzDIc.JPG,pygmy_possum,white_footed_dunnart,relabel,models right
+lc133,val,/mnt/ml-data/mewc-synth/v2/val/thornbill/ebird_612069538-0.jpg,thornbill,tasmanian_scrubwren,relabel,models right
+lc134,test,/mnt/ml-data/mewc-synth/v2/test/thornbill/ink_JGKkH0dGaZEKpfl0.JPG,thornbill,tasmanian_scrubwren,relabel,models right
+lc135,test,/mnt/ml-data/mewc-synth/v2/test/wedge_tailed_eagle/ebird_610131408-0.jpg,wedge_tailed_eagle,australian_magpie,relabel,models right
+lc136,val,/mnt/ml-data/mewc-synth/v2/val/common_blackbird/ink_y25TMXLVfnRxObW5.JPG,common_blackbird,,exclude,unusable
+lc137,val,/mnt/ml-data/mewc-synth/v2/val/common_bronzewing/ink2_diGkXSWq7wzmZhqb.JPG,common_bronzewing,bassian_thrush,relabel,models right
+lc138,val,/mnt/ml-data/mewc-synth/v2/val/beautiful_firetail/ebird_42692661.jpg,beautiful_firetail,thornbill,relabel,models right
+lc139,test,/mnt/ml-data/mewc-synth/v2/test/bennetts_wallaby/nw_ueYIfyIbl8rShfqs.JPG,bennetts_wallaby,,exclude,unusable
+lc140,test,/mnt/ml-data/mewc-synth/v2/test/bennetts_wallaby/jl_hIsuxNE06j0dIKE4.JPG,bennetts_wallaby,sheep,relabel,models right
+lc141,test,/mnt/ml-data/mewc-synth/v2/test/black_currawong/cu-active_91295370-4924-44c6-9853-bd70e6e12244-0.jpg,black_currawong,common_blackbird,relabel,models right
+lc143,test_proj,/mnt/ml-data/mewc-synth/v2/test_proj/grey_currawong/mtwt_Q9tTK7Pywz7c8VAu.JPG,grey_currawong,brown_falcon,relabel,models right
+lc144,val,/mnt/ml-data/mewc-synth/v2/val/european_rabbit/jl_FCsvzsGwRYa5mxjF.JPG,european_rabbit,,exclude,unusable
+lc145,test,/mnt/ml-data/mewc-synth/v2/test/brush_bronzewing/4235609a-b319-43fa-a8b5-6a6a806cdcc7-0.jpg,brush_bronzewing,olive_whistler,relabel,models right
+lc146,test_proj,/mnt/ml-data/mewc-synth/v2/test_proj/cat/hr_3QMNlWZlpahHZJWO.JPG,cat,brushtail_possum,relabel,models right
+lc147,val,/mnt/ml-data/mewc-synth/v2/val/brushtail_possum/ink_0oJnCfys2BjSDtsA.JPG,brushtail_possum,tasmanian_devil,relabel,models right
+lc148,test,/mnt/ml-data/mewc-synth/v2/test/white_faced_heron/iona_iGWE-IMG_0217-0.JPG,white_faced_heron,cape_barren_goose,relabel,models right
+lc150,test_proj,/mnt/ml-data/mewc-synth/v2/test_proj/cattle/hr_FKnTIywjBB4B1Nja.JPG,cattle,,exclude,unsure
+lc151,test_proj,/mnt/ml-data/mewc-synth/v2/test_proj/tasmanian_devil/hr_aydYlyLlUNGu6UFD.JPG,tasmanian_devil,chicken,relabel,models right
+lc153,val,/mnt/ml-data/mewc-synth/v2/val/dog/jl_7oLqEJnCyjUxTRrm.JPG,dog,goat,relabel,models right
+lc154,test,/mnt/ml-data/mewc-synth/v2/test/olive_whistler/lun_vgPqUsQE0ABHuo5t.JPG,olive_whistler,,exclude,unsure
+lc155,test,/mnt/ml-data/mewc-synth/v2/test/european_rabbit/jl_k2vb9xJgFZtoOfQ6.JPG,european_rabbit,eastern_barred_bandicoot,relabel,models right
+lc156,val,/mnt/ml-data/mewc-synth/v2/val/long_nosed_potoroo/ec606a42-9421-4737-8744-6396daf135e6-0.jpg,long_nosed_potoroo,eastern_bettong,relabel,models right
+lc157,val,/mnt/ml-data/mewc-synth/v2/val/eastern_bettong/jl_tdMZsVd8qusJl8vp.JPG,eastern_bettong,,exclude,unsure
+lc158,val,/mnt/ml-data/mewc-synth/v2/val/eastern_quoll/687d47d9-2a08-4773-b999-02cf85d6fffd-0.jpg,eastern_quoll,tasmanian_devil,relabel,models right
+lc159,test,/mnt/ml-data/mewc-synth/v2/test/european_goldfinch/ink_wIbUN37rc5nbjK4w.JPG,european_goldfinch,,exclude,unsure
+lc160,test,/mnt/ml-data/mewc-synth/v2/test/laughing_kookaburra/ink2_u3JtJHhGPfs1hr2N.JPG,laughing_kookaburra,,exclude,unsure
+lc161,test,/mnt/ml-data/mewc-synth/v2/test/painted_buttonquail/ink2_tzWkgGTU52yNLy44.JPG,painted_buttonquail,lewins_rail,relabel,models right
+lc162,test,/mnt/ml-data/mewc-synth/v2/test/pacific_black_duck/ebird_287947061-0.jpg,pacific_black_duck,maned_duck,relabel,models right
+lc163,val,/mnt/ml-data/mewc-synth/v2/val/olive_whistler/ink2_Szhsiz1OREGB3A98.JPG,olive_whistler,strong_billed_honeyeater,relabel,models right
+lc165,val,/mnt/ml-data/mewc-synth/v2/val/strong_billed_honeyeater/ebird_481081231-1.jpg,strong_billed_honeyeater,yellow_throated_honeyeater,relabel,models right
+lc166,test_proj,/mnt/ml-data/mewc-synth/v2/test_proj/tasmanian_pademelon/hr_lkISZsck6YO3S8h5.JPG,tasmanian_pademelon,,exclude,unusable
+lc167,val,/mnt/ml-data/mewc-synth/v2/val/wedge_tailed_eagle/ebird_611120360-0.jpg,wedge_tailed_eagle,,exclude,unusable

@@ -1,8 +1,9 @@
-"""Label check before the test is sealed: average the class probabilities of several runs over validation,
-test and the project-held-out test, and list the snips where the ensemble confidently disagrees with the
-label, for a person to adjudicate. Only the disagreement list is written; no metrics are computed on the
-test parts. Validation probabilities come from RUNS_DIR/scores, test ones from RUNS_DIR/labelcheck.
-Usage: python src/label_check.py RUNS_DIR V2_DIR OUT_CSV MIN_PROB RUN [RUN ...]"""
+"""Label check: average the class probabilities of several runs over the listed parts of split v2 (val,
+test, test_proj, train) and list the snips where the ensemble confidently disagrees with the label, for a
+person to adjudicate. Only the disagreement list is written; no metrics are computed on the test parts.
+Validation probabilities come from RUNS_DIR/scores, the others from RUNS_DIR/labelcheck/RUN_PART_probs.npy.
+Usage: python src/label_check.py RUNS_DIR V2_DIR OUT_CSV MIN_PROB PARTS RUN [RUN ...]
+PARTS is comma-separated, for example val,test,test_proj."""
 import sys
 from pathlib import Path
 
@@ -10,12 +11,12 @@ import numpy as np
 import pandas as pd
 
 
-def main(runs_dir, v2, out, min_prob, *runs):
+def main(runs_dir, v2, out, min_prob, parts, *runs):
     d, v2, min_prob = Path(runs_dir), Path(v2), float(min_prob)
     classes = sorted((v2 / "classes.txt").read_text().split())
     ci = {c: i for i, c in enumerate(classes)}
     flagged = []
-    for part in ("val", "test", "test_proj"):
+    for part in parts.split(","):
         df = pd.read_csv(v2 / f"{part}.csv")
         probs = np.stack([np.load(d / "scores" / f"{r}_probs.npy" if part == "val"
                                   else d / "labelcheck" / f"{r}_{part}_probs.npy") for r in runs])
@@ -38,4 +39,4 @@ def main(runs_dir, v2, out, min_prob, *runs):
 
 
 if __name__ == "__main__":
-    main(*sys.argv[1:4], sys.argv[4], *sys.argv[5:])
+    main(*sys.argv[1:6], *sys.argv[6:])

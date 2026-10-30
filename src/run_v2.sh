@@ -32,11 +32,11 @@ else
 import csv, os, sys
 v, n = sys.argv[1], {}
 for r in csv.DictReader(open(f"{v}/val.csv")):
-    c, f = r["label"], os.path.basename(r["path"])
+    c, f, src = r["label"], os.path.basename(r["path"]), r["path"].replace("/mnt/ml-data/mewc-synth/", "/data/")
     n[c] = n.get(c, 0) + 1
     for d in ["val_100"] * (n[c] <= 100) + ["test_stub"] * (n[c] == 1):
         os.makedirs(f"{v}/{d}/{c}", exist_ok=True)
-        os.symlink(f"/data/v2/val/{c}/{f}", f"{v}/{d}/{c}/{f}")
+        os.symlink(src, f"{v}/{d}/{c}/{f}")
 EOF
   sudo docker run --rm --gpus all -e PYTHONDONTWRITEBYTECODE=1 ${XLA_FRACTION:+-e XLA_PYTHON_CLIENT_MEM_FRACTION=$XLA_FRACTION} \
     -v $M:/data -v /mnt/scratch/keras-cache:/root/.keras \
