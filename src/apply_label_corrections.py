@@ -1,7 +1,8 @@
-"""Apply a label-corrections table to the v2 evaluation lists: relabel or drop each listed snip in val.csv,
-test.csv and test_proj.csv, and rewrite val_paths.txt from the corrected validation list. The uncorrected
-lists are kept as PART.pre_lc.csv and are always the starting point, so a rerun with a revised table is
-safe. Snip files stay where they are: the lists carry the labels.
+"""Apply a label-corrections table to the v2 lists: relabel or drop each listed snip in the list of each part
+the table names (val, test, test_proj, train), and rewrite val_paths.txt when val is among them. The
+uncorrected lists are kept as PART.pre_lc.csv and are always the starting point, so the table for a part
+must hold all of that part's corrections; parts the table does not name are left alone. Snip files stay
+where they are: the lists carry the labels.
 Usage: python src/apply_label_corrections.py V2_DIR CORRECTIONS_CSV
 CORRECTIONS_CSV columns: part, path, old_label, new_label, action (relabel or exclude)."""
 import shutil
@@ -17,7 +18,7 @@ def main(v2, corrections):
     bad = set(c.loc[c.action == "relabel", "new_label"]) - classes
     if bad:
         raise ValueError(f"new labels not in the class list: {sorted(bad)}")
-    for part in ("val", "test", "test_proj"):
+    for part in c.part.unique():
         orig = v2 / f"{part}.pre_lc.csv"
         if not orig.exists():
             shutil.copy(v2 / f"{part}.csv", orig)
