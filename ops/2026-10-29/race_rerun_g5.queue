@@ -6,3 +6,4 @@ torch race_siglip2_b_wu /home/ubuntu/mewc-synth/ops/2026-10-29/race/race_siglip2
 torch race_cnt_wu /home/ubuntu/mewc-synth/ops/2026-10-29/race/race_cnt_wu.json
 torch race_cnv2_l /home/ubuntu/mewc-synth/ops/2026-10-29/race/race_cnv2_l.json
 torch race_cns /home/ubuntu/mewc-synth/ops/2026-10-29/race/race_cns.json
+torch race_effvit_l2_wu /home/ubuntu/mewc-synth/ops/2026-10-29/race/race_effvit_l2_wu.json

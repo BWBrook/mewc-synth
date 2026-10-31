@@ -1,4 +1,4 @@
-<title>Snip Label Review</title>
+<title>__TITLE__</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -107,8 +107,8 @@ footer { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; color: 
 <div class="wrap">
   <header>
     <div>
-      <h1>Snip label review</h1>
-      <p class="lede">167 snips where all eight phase 1 models confidently disagree with the label (mean probability at least 0.9). For each, pick the species you see. The two candidates are the current label and the models' prediction, in a fixed random order; the page does not say which is which. Snips with the same pair of species sit together.</p>
+      <h1>__HEADING__</h1>
+      <p class="lede">__LEDE__ For each, pick the species you see. The two candidates are the current label and the models' prediction, in a fixed random order; the page does not say which is which. Snips with the same pair of species sit together.</p>
     </div>
     <div class="tally" id="tally" aria-live="polite"></div>
   </header>
@@ -177,8 +177,8 @@ const chains = {};
 
 for (const c of CLASSES) { const o = document.createElement("option"); o.value = c; o.textContent = pretty(c); $("other").append(o); }
 
-function loadLocal() { try { return JSON.parse(localStorage.getItem("lc-decisions") || "{}"); } catch { return {}; } }
-function saveLocal() { try { localStorage.setItem("lc-decisions", JSON.stringify(decisions)); } catch {} }
+function loadLocal() { try { return JSON.parse(localStorage.getItem("__PREFIX__-decisions") || "{}"); } catch { return {}; } }
+function saveLocal() { try { localStorage.setItem("__PREFIX__-decisions", JSON.stringify(decisions)); } catch {} }
 
 function kind(d) { return !d || !d.verdict ? "" : d.verdict === "species" ? "d" : d.verdict === "unsure" ? "u" : "x"; }
 
