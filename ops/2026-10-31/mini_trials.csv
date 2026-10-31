@@ -1,0 +1,51 @@
+name,family,member,variant,tier,blocks,lr,depth
+mini_dinov3_l_base,DINOv3 ViT,dinov3_l,base,large,9,0.0002,24.0
+mini_dinov3_l_lr1,DINOv3 ViT,dinov3_l,lr1,large,9,0.0001,24.0
+mini_dinov3_l_lr4,DINOv3 ViT,dinov3_l,lr4,large,9,0.0004,24.0
+mini_dinov3_l_bmore,DINOv3 ViT,dinov3_l,bmore,large,16,0.0002,24.0
+mini_dinov3_l_bless,DINOv3 ViT,dinov3_l,bless,large,5,0.0002,24.0
+mini_dinov3_b_base,DINOv3 ViT,dinov3_b,base,base,9,0.0002,12.0
+mini_dinov3_b_lr1,DINOv3 ViT,dinov3_b,lr1,base,9,0.0001,12.0
+mini_dinov3_b_lr4,DINOv3 ViT,dinov3_b,lr4,base,9,0.0004,12.0
+mini_dinov3_b_bmore,DINOv3 ViT,dinov3_b,bmore,base,12,0.0002,12.0
+mini_dinov3_b_bless,DINOv3 ViT,dinov3_b,bless,base,5,0.0002,12.0
+mini_eva02_b_base,EVA-02,eva02_b,base,base,9,0.0002,12.0
+mini_eva02_b_lr1,EVA-02,eva02_b,lr1,base,9,0.0001,12.0
+mini_eva02_b_lr4,EVA-02,eva02_b,lr4,base,9,0.0004,12.0
+mini_eva02_b_bmore,EVA-02,eva02_b,bmore,base,12,0.0002,12.0
+mini_eva02_b_bless,EVA-02,eva02_b,bless,base,5,0.0002,12.0
+mini_eva02_l_base,EVA-02,eva02_l,base,large,9,0.0002,24.0
+mini_eva02_l_lr1,EVA-02,eva02_l,lr1,large,9,0.0001,24.0
+mini_eva02_l_lr4,EVA-02,eva02_l,lr4,large,9,0.0004,24.0
+mini_eva02_l_bmore,EVA-02,eva02_l,bmore,large,16,0.0002,24.0
+mini_eva02_l_bless,EVA-02,eva02_l,bless,large,5,0.0002,24.0
+mini_cnv2_l_base,ConvNeXt V2,cnv2_l,base,large,2,0.0002,
+mini_cnv2_l_lr1,ConvNeXt V2,cnv2_l,lr1,large,2,0.0001,
+mini_cnv2_l_lr4,ConvNeXt V2,cnv2_l,lr4,large,2,0.0004,
+mini_cnv2_l_bmore,ConvNeXt V2,cnv2_l,bmore,large,3,0.0002,
+mini_cnv2_l_bless,ConvNeXt V2,cnv2_l,bless,large,1,0.0002,
+mini_cnv2_n_base,ConvNeXt V2,cnv2_n,base,small,2,0.0002,
+mini_cnv2_n_lr1,ConvNeXt V2,cnv2_n,lr1,small,2,0.0001,
+mini_cnv2_n_lr4,ConvNeXt V2,cnv2_n,lr4,small,2,0.0004,
+mini_cnv2_n_bmore,ConvNeXt V2,cnv2_n,bmore,small,3,0.0002,
+mini_cnv2_n_bless,ConvNeXt V2,cnv2_n,bless,small,1,0.0002,
+mini_vtl_base,ViT,vtl,base,large,9,0.0002,24.0
+mini_vtl_lr1,ViT,vtl,lr1,large,9,0.0001,24.0
+mini_vtl_lr4,ViT,vtl,lr4,large,9,0.0004,24.0
+mini_vtl_bmore,ViT,vtl,bmore,large,16,0.0002,24.0
+mini_vtl_bless,ViT,vtl,bless,large,5,0.0002,24.0
+mini_vtb_base,ViT,vtb,base,base,9,0.0002,12.0
+mini_vtb_lr1,ViT,vtb,lr1,base,9,0.0001,12.0
+mini_vtb_lr4,ViT,vtb,lr4,base,9,0.0004,12.0
+mini_vtb_bmore,ViT,vtb,bmore,base,12,0.0002,12.0
+mini_vtb_bless,ViT,vtb,bless,base,5,0.0002,12.0
+mini_caformer_s36_base,MetaFormer,caformer_s36,base,base,2,0.0002,
+mini_caformer_s36_lr1,MetaFormer,caformer_s36,lr1,base,2,0.0001,
+mini_caformer_s36_lr4,MetaFormer,caformer_s36,lr4,base,2,0.0004,
+mini_caformer_s36_bmore,MetaFormer,caformer_s36,bmore,base,3,0.0002,
+mini_caformer_s36_bless,MetaFormer,caformer_s36,bless,base,1,0.0002,
+mini_caformer_b36_base,MetaFormer,caformer_b36,base,large,2,0.0002,
+mini_caformer_b36_lr1,MetaFormer,caformer_b36,lr1,large,2,0.0001,
+mini_caformer_b36_lr4,MetaFormer,caformer_b36,lr4,large,2,0.0004,
+mini_caformer_b36_bmore,MetaFormer,caformer_b36,bmore,large,3,0.0002,
+mini_caformer_b36_bless,MetaFormer,caformer_b36,bless,large,1,0.0002,

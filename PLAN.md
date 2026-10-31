@@ -304,3 +304,24 @@ and synthetic snips identically.
     other than its label. Barry adjudicates the flags in descending probability; corrected labels apply
     to validation and test before any phase 1 result is reported, and validation metrics are recomputed
     from saved probabilities. Test probabilities from the label check are used for nothing else.
+- 2026-10-31, after the race (`logs/2026-10-30-day2.md`), before any mini-search result:
+  - **Recipe**: a linear warmup over the first 300 steps of each fresh optimiser joins the recipe. Without it,
+    unfreezing collapsed MobileNetV4 and EfficientViT and damaged DINOv3 ConvNeXt-T and SigLIP 2-B. Warmup
+    reruns gained +0.002 on ConvNeXt-T (no shock) and +0.006 on ViT-B, which closed the batch-64 deficit,
+    so batch 64 with warmup stands. Results are on the corrected labels (v2c).
+  - **Families advancing** (best member, v2c macro-F1): DINOv3 ViT (ViT-L 0.9687), EVA-02 (B 0.9674),
+    ConvNeXt V2 (L 0.9662), ViT (L 0.9661) and, as a deviation, MetaFormer (CAFormer-S36 0.9657). It is
+    0.0004 behind fourth place, inside the 0.001–0.003 seed spread, and five times faster on CPU than ViT-L,
+    so the tie goes to the cheaper family as the shortlist rule does for models. ConvNeXt V2-N (16.5 img/s)
+    covers the deployable track.
+  - **Mini-search** (`ops/2026-10-31/mini_trials.csv`): two members per family (DINOv3 L and B, EVA-02 B
+    and L, ConvNeXt V2 L and N, ViT L and B, CAFormer S36 and B36), each with five variants at screen
+    scale, seed 1, warmup 300:
+    - base (learning rate 2e-4, race unfreezing);
+    - learning rate 1e-4;
+    - learning rate 4e-4;
+    - more unfrozen (plain ViTs 12 or 16 blocks, hierarchical 3 stages);
+    - fewer unfrozen (5 blocks or 1 stage).
+    Large members and the more-unfrozen variants use gradient checkpointing, which leaves the computation
+    unchanged. Each member's best variant goes forward; the accurate and deployable shortlists follow the
+    stage 2 rule.
