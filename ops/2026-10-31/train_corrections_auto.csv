@@ -1,0 +1,9 @@
+part,path,old_label,new_label,action,reason,p_pred
+train,/mnt/ml-data/mewc-synth/v2/train/eastern_quoll/jl_EwzvJegvm4J2Z41y.JPG,eastern_quoll,eastern_rosella,relabel,"same-first-name misclick, unanimous ensemble",0.9931
+train,/mnt/ml-data/mewc-synth/v2/train/eastern_quoll/jl_fyszgbAmhH00HwnV.JPG,eastern_quoll,eastern_rosella,relabel,"same-first-name misclick, unanimous ensemble",0.991
+train,/mnt/ml-data/mewc-synth/v2/train/eastern_quoll/jl_VAVBWNIvfTrUrA5d.JPG,eastern_quoll,eastern_rosella,relabel,"same-first-name misclick, unanimous ensemble",0.9895
+train,/mnt/ml-data/mewc-synth/v2/train/common_bronzewing/gst_SvkFIfxAYYbk5GUz.JPG,common_bronzewing,common_blackbird,relabel,"same-first-name misclick, unanimous ensemble",0.9855
+train,/mnt/ml-data/mewc-synth/v2/train/eastern_quoll/jl_YK2iAea7RvTaYQlf.JPG,eastern_quoll,eastern_rosella,relabel,"same-first-name misclick, unanimous ensemble",0.9791
+train,/mnt/ml-data/mewc-synth/v2/train/eastern_quoll/jl_IuKDEDpXUXCMCyDU.JPG,eastern_quoll,eastern_rosella,relabel,"same-first-name misclick, unanimous ensemble",0.9784
+train,/mnt/ml-data/mewc-synth/v2/train/common_bronzewing/gst_swK6Sw8Az8bMBqxO.JPG,common_bronzewing,common_blackbird,relabel,"same-first-name misclick, unanimous ensemble",0.9592
+train,/mnt/ml-data/mewc-synth/v2/train/eastern_quoll/jl_ku2pAr6P8HjWxuUh.JPG,eastern_quoll,eastern_rosella,relabel,"same-first-name misclick, unanimous ensemble",0.9503

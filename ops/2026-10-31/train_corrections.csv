@@ -1,0 +1,284 @@
+id,part,path,old_label,new_label,action,reason
+auto,train,/mnt/ml-data/mewc-synth/v2/train/eastern_quoll/jl_EwzvJegvm4J2Z41y.JPG,eastern_quoll,eastern_rosella,relabel,"same-first-name misclick, unanimous ensemble"
+auto,train,/mnt/ml-data/mewc-synth/v2/train/eastern_quoll/jl_fyszgbAmhH00HwnV.JPG,eastern_quoll,eastern_rosella,relabel,"same-first-name misclick, unanimous ensemble"
+auto,train,/mnt/ml-data/mewc-synth/v2/train/eastern_quoll/jl_VAVBWNIvfTrUrA5d.JPG,eastern_quoll,eastern_rosella,relabel,"same-first-name misclick, unanimous ensemble"
+auto,train,/mnt/ml-data/mewc-synth/v2/train/common_bronzewing/gst_SvkFIfxAYYbk5GUz.JPG,common_bronzewing,common_blackbird,relabel,"same-first-name misclick, unanimous ensemble"
+auto,train,/mnt/ml-data/mewc-synth/v2/train/eastern_quoll/jl_YK2iAea7RvTaYQlf.JPG,eastern_quoll,eastern_rosella,relabel,"same-first-name misclick, unanimous ensemble"
+auto,train,/mnt/ml-data/mewc-synth/v2/train/eastern_quoll/jl_IuKDEDpXUXCMCyDU.JPG,eastern_quoll,eastern_rosella,relabel,"same-first-name misclick, unanimous ensemble"
+auto,train,/mnt/ml-data/mewc-synth/v2/train/common_bronzewing/gst_swK6Sw8Az8bMBqxO.JPG,common_bronzewing,common_blackbird,relabel,"same-first-name misclick, unanimous ensemble"
+auto,train,/mnt/ml-data/mewc-synth/v2/train/eastern_quoll/jl_ku2pAr6P8HjWxuUh.JPG,eastern_quoll,eastern_rosella,relabel,"same-first-name misclick, unanimous ensemble"
+tr001,train,/mnt/ml-data/mewc-synth/v2/train/spotted_tail_quoll/8378ed6f-a3b4-43e8-8a10-069fd07b7a49-0.jpg,spotted_tail_quoll,eastern_quoll,relabel,Barry review: models right
+tr002,train,/mnt/ml-data/mewc-synth/v2/train/spotted_tail_quoll/ink_G0Y8suOJWgnXFUE5.JPG,spotted_tail_quoll,eastern_quoll,relabel,Barry review: models right
+tr003,train,/mnt/ml-data/mewc-synth/v2/train/spotted_tail_quoll/ink_2rZY8OpKTHjNPcnY.JPG,spotted_tail_quoll,eastern_quoll,relabel,Barry review: models right
+tr004,train,/mnt/ml-data/mewc-synth/v2/train/spotted_tail_quoll/ink_oqViZuDQMhdzIZBF.JPG,spotted_tail_quoll,eastern_quoll,relabel,Barry review: models right
+tr005,train,/mnt/ml-data/mewc-synth/v2/train/spotted_tail_quoll/ink_g3U3hgwIosyKAiE4.JPG,spotted_tail_quoll,eastern_quoll,relabel,Barry review: models right
+tr006,train,/mnt/ml-data/mewc-synth/v2/train/spotted_tail_quoll/ink_4XKKAfe9PsH26QLP.JPG,spotted_tail_quoll,eastern_quoll,relabel,Barry review: models right
+tr007,train,/mnt/ml-data/mewc-synth/v2/train/spotted_tail_quoll/e5dcfcc1-c855-4b74-859c-a918eb51b9ab-0.jpg,spotted_tail_quoll,eastern_quoll,relabel,Barry review: models right
+tr008,train,/mnt/ml-data/mewc-synth/v2/train/spotted_tail_quoll/ink_G1xdHjCQLNh4Ne97.JPG,spotted_tail_quoll,eastern_quoll,relabel,Barry review: models right
+tr009,train,/mnt/ml-data/mewc-synth/v2/train/spotted_tail_quoll/ink_FZsMbscKbHvgR6Xt.JPG,spotted_tail_quoll,eastern_quoll,relabel,Barry review: models right
+tr010,train,/mnt/ml-data/mewc-synth/v2/train/spotted_tail_quoll/ink_2r3WvlFKeMoU6lGP.JPG,spotted_tail_quoll,eastern_quoll,relabel,Barry review: models right
+tr011,train,/mnt/ml-data/mewc-synth/v2/train/spotted_tail_quoll/ink_0FAYHM0SDBS9EQbs.JPG,spotted_tail_quoll,eastern_quoll,relabel,Barry review: models right
+tr012,train,/mnt/ml-data/mewc-synth/v2/train/spotted_tail_quoll/ink_g0ataXhPkzuNztIT.JPG,spotted_tail_quoll,eastern_quoll,relabel,Barry review: models right
+tr013,train,/mnt/ml-data/mewc-synth/v2/train/spotted_tail_quoll/ink_J48fFEt6cBnSWjkE.JPG,spotted_tail_quoll,eastern_quoll,relabel,Barry review: models right
+tr014,train,/mnt/ml-data/mewc-synth/v2/train/eastern_quoll/cp_Fty0dsc74tx4ZbuV.JPG,eastern_quoll,spotted_tail_quoll,relabel,Barry review: models right
+tr016,train,/mnt/ml-data/mewc-synth/v2/train/spotted_tail_quoll/ink_24EYKPvwhJpYxbtn.JPG,spotted_tail_quoll,eastern_quoll,relabel,Barry review: models right
+tr017,train,/mnt/ml-data/mewc-synth/v2/train/spotted_tail_quoll/ink_G0O1oYu45wbVPsm1.JPG,spotted_tail_quoll,eastern_quoll,relabel,Barry review: models right
+tr018,train,/mnt/ml-data/mewc-synth/v2/train/spotted_tail_quoll/ink_LmNAZxg4JKsBtix9.JPG,spotted_tail_quoll,eastern_quoll,relabel,Barry review: models right
+tr019,train,/mnt/ml-data/mewc-synth/v2/train/eastern_quoll/ink_0qWOLmgznn46z5TL.JPG,eastern_quoll,spotted_tail_quoll,relabel,Barry review: models right
+tr020,train,/mnt/ml-data/mewc-synth/v2/train/spotted_tail_quoll/ink_G5bFqT2XE5BHmvSN.JPG,spotted_tail_quoll,eastern_quoll,relabel,Barry review: models right
+tr027,train,/mnt/ml-data/mewc-synth/v2/train/black_rat/delwp_wamRQ1qARK.JPG,black_rat,house_mouse,relabel,Barry review: models right
+tr032,train,/mnt/ml-data/mewc-synth/v2/train/black_rat/delwp_07pWRlo8xe.JPG,black_rat,house_mouse,relabel,Barry review: models right
+tr033,train,/mnt/ml-data/mewc-synth/v2/train/black_rat/delwp_o02DvT1VC3.JPG,black_rat,house_mouse,relabel,Barry review: models right
+tr034,train,/mnt/ml-data/mewc-synth/v2/train/black_rat/delwp_zf7GXnbRGR.JPG,black_rat,house_mouse,relabel,Barry review: models right
+tr035,train,/mnt/ml-data/mewc-synth/v2/train/black_rat/delwp_n9ci6sUl1a.JPG,black_rat,house_mouse,relabel,Barry review: models right
+tr036,train,/mnt/ml-data/mewc-synth/v2/train/black_rat/delwp_985kVP9ULT.JPG,black_rat,house_mouse,relabel,Barry review: models right
+tr040,train,/mnt/ml-data/mewc-synth/v2/train/unknown_animal/nw_CjWOuvo7BzkpuuRw.JPG,unknown_animal,insect,relabel,Barry review: models right
+tr041,train,/mnt/ml-data/mewc-synth/v2/train/unknown_animal/nw_cC9aZghzdWSiH8fV.JPG,unknown_animal,insect,relabel,Barry review: models right
+tr042,train,/mnt/ml-data/mewc-synth/v2/train/unknown_animal/nw_kZnC0bEZ8hiOZVpj.JPG,unknown_animal,insect,relabel,Barry review: models right
+tr045,train,/mnt/ml-data/mewc-synth/v2/train/unknown_animal/9893d6af-edac-44ce-ad41-aeeb7f17bca7-0.jpg,unknown_animal,insect,relabel,Barry review: models right
+tr051,train,/mnt/ml-data/mewc-synth/v2/train/unknown_animal/thi_tFL5c9mkDfWwAeYT.JPG,unknown_animal,insect,relabel,Barry review: models right
+tr058,train,/mnt/ml-data/mewc-synth/v2/train/black_rat/ink_0FacIV3iOaWDLd3F.JPG,black_rat,swamp_rat,relabel,Barry review: models right
+tr059,train,/mnt/ml-data/mewc-synth/v2/train/black_rat/ink_2mUhwrlJ4l04tZKN.JPG,black_rat,swamp_rat,relabel,Barry review: models right
+tr060,train,/mnt/ml-data/mewc-synth/v2/train/black_rat/ink_o2YpfAWWuO2sWbGU.JPG,black_rat,swamp_rat,relabel,Barry review: models right
+tr061,train,/mnt/ml-data/mewc-synth/v2/train/black_rat/ink_0GGhz6OTx9pPVJV6.JPG,black_rat,swamp_rat,relabel,Barry review: models right
+tr063,train,/mnt/ml-data/mewc-synth/v2/train/black_rat/ink_VT5sHllNfIhQ34hO.JPG,black_rat,swamp_rat,relabel,Barry review: models right
+tr067,train,/mnt/ml-data/mewc-synth/v2/train/black_rat/ink_0GjjFfVuvuWm68oZ.JPG,black_rat,swamp_rat,relabel,Barry review: models right
+tr068,train,/mnt/ml-data/mewc-synth/v2/train/black_rat/ink_0YCZ65Z6lr52U7sQ.JPG,black_rat,swamp_rat,relabel,Barry review: models right
+tr069,train,/mnt/ml-data/mewc-synth/v2/train/black_rat/ink_2PjMYJBWx4xW6NfX.JPG,black_rat,swamp_rat,relabel,Barry review: models right
+tr070,train,/mnt/ml-data/mewc-synth/v2/train/forest_raven/bcd20fbf-63a5-4dde-8ef1-c3257c62a099-0.jpg,forest_raven,black_currawong,relabel,Barry review: models right
+tr071,train,/mnt/ml-data/mewc-synth/v2/train/black_currawong/cu-active_ink_4pKdcX7ovki5hzZ3.JPG,black_currawong,forest_raven,relabel,Barry review: models right
+tr073,train,/mnt/ml-data/mewc-synth/v2/train/forest_raven/7a2a5980-18a0-4694-8502-c984b422fdb1-0.jpg,forest_raven,black_currawong,relabel,Barry review: models right
+tr075,train,/mnt/ml-data/mewc-synth/v2/train/black_currawong/cu-active_ink_7cKJLjQi2lelXJPk.JPG,black_currawong,forest_raven,relabel,Barry review: models right
+tr076,train,/mnt/ml-data/mewc-synth/v2/train/forest_raven/a4502d4d-89e5-424f-9a37-9eff4cd46ae0-0.jpg,forest_raven,black_currawong,relabel,Barry review: models right
+tr077,train,/mnt/ml-data/mewc-synth/v2/train/black_currawong/200b8aca-36ae-486b-990f-9278c9028454-0.jpg,black_currawong,forest_raven,relabel,Barry review: models right
+tr080,train,/mnt/ml-data/mewc-synth/v2/train/black_currawong/cu-active_ink_7r16W65dhTK9GgAE.JPG,black_currawong,forest_raven,relabel,Barry review: models right
+tr081,train,/mnt/ml-data/mewc-synth/v2/train/southern_brown_bandicoot/ink_2R9wV7nHPL6ya2g1.JPG,southern_brown_bandicoot,long_nosed_potoroo,relabel,Barry review: models right
+tr082,train,/mnt/ml-data/mewc-synth/v2/train/southern_brown_bandicoot/213861aa-a48e-4394-af4a-9e9524ef4f51-0.jpg,southern_brown_bandicoot,long_nosed_potoroo,relabel,Barry review: models right
+tr083,train,/mnt/ml-data/mewc-synth/v2/train/southern_brown_bandicoot/7MFleLScmPIRSfWo.JPG,southern_brown_bandicoot,long_nosed_potoroo,relabel,Barry review: models right
+tr085,train,/mnt/ml-data/mewc-synth/v2/train/long_nosed_potoroo/jl_db5oR2t9PQbK9SAQ.JPG,long_nosed_potoroo,southern_brown_bandicoot,relabel,Barry review: models right
+tr087,train,/mnt/ml-data/mewc-synth/v2/train/long_nosed_potoroo/gkvic_WMKRkEvQdVTpfEzk.JPG,long_nosed_potoroo,southern_brown_bandicoot,relabel,Barry review: models right
+tr088,train,/mnt/ml-data/mewc-synth/v2/train/southern_brown_bandicoot/W8EfU2KYMCSU76pF.JPG,southern_brown_bandicoot,long_nosed_potoroo,relabel,Barry review: models right
+tr090,train,/mnt/ml-data/mewc-synth/v2/train/long_nosed_potoroo/ink_0NBHUEUhOTkjskAK.JPG,long_nosed_potoroo,southern_brown_bandicoot,relabel,Barry review: models right
+tr091,train,/mnt/ml-data/mewc-synth/v2/train/cat/gyOrIujQdidsRXGN.JPG,cat,dog,relabel,Barry review: models right
+tr095,train,/mnt/ml-data/mewc-synth/v2/train/cat/q6VPP8M3BNqMdGg4.JPG,cat,dog,relabel,Barry review: models right
+tr100,train,/mnt/ml-data/mewc-synth/v2/train/flame_robin/ebird_sr_213489821-0.jpg,flame_robin,dusky_robin,relabel,Barry review: models right
+tr101,train,/mnt/ml-data/mewc-synth/v2/train/flame_robin/lu_uVDO465vj6t5yyx5.JPG,flame_robin,dusky_robin,relabel,Barry review: models right
+tr102,train,/mnt/ml-data/mewc-synth/v2/train/flame_robin/ebird_fr_198449191-0.jpg,flame_robin,dusky_robin,relabel,Barry review: models right
+tr109,train,/mnt/ml-data/mewc-synth/v2/train/black_currawong/cu-active_d85722dc-7732-4a72-927d-9d33aa3a723b-0.jpg,black_currawong,grey_currawong,relabel,Barry review: models right
+tr110,train,/mnt/ml-data/mewc-synth/v2/train/black_currawong/cu-active_879345e0-c051-4898-975b-e5518ea9efdb-0.jpg,black_currawong,grey_currawong,relabel,Barry review: models right
+tr111,train,/mnt/ml-data/mewc-synth/v2/train/black_currawong/gst_1lYSPljYDQgUVojC.JPG,black_currawong,grey_currawong,relabel,Barry review: models right
+tr112,train,/mnt/ml-data/mewc-synth/v2/train/black_currawong/cu-active_mp__mPyNkcgbg69PbAsi.JPG,black_currawong,grey_currawong,relabel,Barry review: models right
+tr117,train,/mnt/ml-data/mewc-synth/v2/train/common_bronzewing/8b8f25ce-0eb1-472d-b176-125a76be3b5a-0.jpg,common_bronzewing,brush_bronzewing,relabel,Barry review: models right
+tr118,train,/mnt/ml-data/mewc-synth/v2/train/common_bronzewing/WSf0ZQeRd9GN756B.JPG,common_bronzewing,brush_bronzewing,relabel,Barry review: models right
+tr119,train,/mnt/ml-data/mewc-synth/v2/train/common_bronzewing/ink2_jvBmYVLLLH11DA1p.JPG,common_bronzewing,brush_bronzewing,relabel,Barry review: models right
+tr120,train,/mnt/ml-data/mewc-synth/v2/train/common_bronzewing/ink2_eBPiLk7l7Ajne7Hj.JPG,common_bronzewing,brush_bronzewing,relabel,Barry review: models right
+tr121,train,/mnt/ml-data/mewc-synth/v2/train/brush_bronzewing/70e2dbac-2560-4b71-a1ac-c02290997afc-0.jpg,brush_bronzewing,common_bronzewing,relabel,Barry review: models right
+tr122,train,/mnt/ml-data/mewc-synth/v2/train/common_bronzewing/ink2_dYL3ZBFJqjORUqRx.JPG,common_bronzewing,brush_bronzewing,relabel,Barry review: models right
+tr123,train,/mnt/ml-data/mewc-synth/v2/train/common_bronzewing/69a2bc65-ff5e-4924-a01e-d3a9cbe39174-0.jpg,common_bronzewing,brush_bronzewing,relabel,Barry review: models right
+tr124,train,/mnt/ml-data/mewc-synth/v2/train/common_bronzewing/ink2_qBOzSQTE24KehwlY.JPG,common_bronzewing,brush_bronzewing,relabel,Barry review: models right
+tr125,train,/mnt/ml-data/mewc-synth/v2/train/bennetts_wallaby/ink_0bnE1q3tU6ibu8aD.JPG,bennetts_wallaby,tasmanian_pademelon,relabel,Barry review: models right
+tr127,train,/mnt/ml-data/mewc-synth/v2/train/bennetts_wallaby/b8eb2867-e8a3-4c79-a16e-8f5732f3cc49-0.jpg,bennetts_wallaby,tasmanian_pademelon,relabel,Barry review: models right
+tr128,train,/mnt/ml-data/mewc-synth/v2/train/bennetts_wallaby/ink_mszZls65xslDpUPj.JPG,bennetts_wallaby,tasmanian_pademelon,relabel,Barry review: models right
+tr129,train,/mnt/ml-data/mewc-synth/v2/train/bennetts_wallaby/cp_VkMAJrIGqshla9ZW.JPG,bennetts_wallaby,tasmanian_pademelon,relabel,Barry review: models right
+tr130,train,/mnt/ml-data/mewc-synth/v2/train/bennetts_wallaby/a986c2dd-649c-4049-b04a-0c49fc76e48a-0.jpg,bennetts_wallaby,tasmanian_pademelon,relabel,Barry review: models right
+tr131,train,/mnt/ml-data/mewc-synth/v2/train/bennetts_wallaby/jl_siypwTpbDI31kgfJ.JPG,bennetts_wallaby,tasmanian_pademelon,relabel,Barry review: models right
+tr132,train,/mnt/ml-data/mewc-synth/v2/train/forest_raven/thi_SijEdbnyrDZlH75v.JPG,forest_raven,sooty_shearwater,relabel,Barry review: models right
+tr133,train,/mnt/ml-data/mewc-synth/v2/train/forest_raven/thi_iqyrjLqqM2bfGOji.JPG,forest_raven,sooty_shearwater,relabel,Barry review: models right
+tr134,train,/mnt/ml-data/mewc-synth/v2/train/forest_raven/thi_Gvp80UGDqAebw3Er.JPG,forest_raven,sooty_shearwater,relabel,Barry review: models right
+tr135,train,/mnt/ml-data/mewc-synth/v2/train/forest_raven/iona_QEcv1q7NyWWNJvHP.JPG,forest_raven,sooty_shearwater,relabel,Barry review: models right
+tr136,train,/mnt/ml-data/mewc-synth/v2/train/forest_raven/thi_vI2BXgNOZd1UJ20g.JPG,forest_raven,sooty_shearwater,relabel,Barry review: models right
+tr137,train,/mnt/ml-data/mewc-synth/v2/train/forest_raven/thi_uUGPK6ljpQiadUJE.JPG,forest_raven,sooty_shearwater,relabel,Barry review: models right
+tr138,train,/mnt/ml-data/mewc-synth/v2/train/forest_raven/thi_NrKdtIw1gYTGSKL1.JPG,forest_raven,sooty_shearwater,relabel,Barry review: models right
+tr139,train,/mnt/ml-data/mewc-synth/v2/train/superb_fairywren/gst_64BLHqMUjNqq7xbS.JPG,superb_fairywren,grey_fantail,relabel,Barry review: models right
+tr140,train,/mnt/ml-data/mewc-synth/v2/train/superb_fairywren/gst_XnQqc7Psv0zXJiR8.JPG,superb_fairywren,grey_fantail,relabel,Barry review: models right
+tr141,train,/mnt/ml-data/mewc-synth/v2/train/superb_fairywren/gst_DQNzKZOdYajluNqB.JPG,superb_fairywren,grey_fantail,relabel,Barry review: models right
+tr142,train,/mnt/ml-data/mewc-synth/v2/train/superb_fairywren/gst_Z8zdybzcFh7Tdv72.JPG,superb_fairywren,grey_fantail,relabel,Barry review: models right
+tr143,train,/mnt/ml-data/mewc-synth/v2/train/superb_fairywren/gst_C6ZPZkKDfszcpfdF.JPG,superb_fairywren,grey_fantail,relabel,Barry review: models right
+tr144,train,/mnt/ml-data/mewc-synth/v2/train/superb_fairywren/gst_NvSVvAOpbnbEItaW.JPG,superb_fairywren,grey_fantail,relabel,Barry review: models right
+tr145,train,/mnt/ml-data/mewc-synth/v2/train/superb_fairywren/gst_Wo8aC8xeLWXOXbMq.JPG,superb_fairywren,grey_fantail,relabel,Barry review: models right
+tr146,train,/mnt/ml-data/mewc-synth/v2/train/black_currawong/cu-active_ink_DNMIjLc1OQfrFDFU.JPG,black_currawong,common_blackbird,relabel,Barry review: models right
+tr147,train,/mnt/ml-data/mewc-synth/v2/train/black_currawong/2a984cd2-06bb-4408-b170-a4e7549ef63d-0.jpg,black_currawong,common_blackbird,relabel,Barry review: models right
+tr148,train,/mnt/ml-data/mewc-synth/v2/train/black_currawong/5b13214f-6e79-4d52-8a61-c72056801fa8-0.jpg,black_currawong,common_blackbird,relabel,Barry review: models right
+tr149,train,/mnt/ml-data/mewc-synth/v2/train/black_currawong/cu-active_v1SojhkLaEqXypSN.JPG,black_currawong,common_blackbird,relabel,Barry review: models right
+tr151,train,/mnt/ml-data/mewc-synth/v2/train/black_currawong/cu-active_ink_7Zk6STDR76YgETwu.JPG,black_currawong,common_blackbird,relabel,Barry review: models right
+tr152,train,/mnt/ml-data/mewc-synth/v2/train/flame_robin/ebird_fr_222862421-0.jpg,flame_robin,pink_robin,relabel,Barry review: models right
+tr153,train,/mnt/ml-data/mewc-synth/v2/train/flame_robin/ebird_fr_127394591-0.jpg,flame_robin,pink_robin,relabel,Barry review: models right
+tr154,train,/mnt/ml-data/mewc-synth/v2/train/flame_robin/ebird_fr_127394571-0.jpg,flame_robin,pink_robin,relabel,Barry review: models right
+tr155,train,/mnt/ml-data/mewc-synth/v2/train/flame_robin/ebird_sr_331195071-0.jpg,flame_robin,pink_robin,relabel,Barry review: models right
+tr157,train,/mnt/ml-data/mewc-synth/v2/train/flame_robin/ebird_sr_454343061-0.jpg,flame_robin,pink_robin,relabel,Barry review: models right
+tr163,train,/mnt/ml-data/mewc-synth/v2/train/tasmanian_nativehen/jl_uAXQVkK0cBDEACUR.JPG,tasmanian_nativehen,maned_duck,relabel,Barry review: models right
+tr164,train,/mnt/ml-data/mewc-synth/v2/train/tasmanian_nativehen/jl_fuiWTQ6eX7w2ZHBu.JPG,tasmanian_nativehen,maned_duck,relabel,Barry review: models right
+tr165,train,/mnt/ml-data/mewc-synth/v2/train/tasmanian_nativehen/jl_tiX0wrhRIEr8gRIj.JPG,tasmanian_nativehen,maned_duck,relabel,Barry review: models right
+tr167,train,/mnt/ml-data/mewc-synth/v2/train/tasmanian_nativehen/jl_EyXMrwFowKpEa79d.JPG,tasmanian_nativehen,maned_duck,relabel,Barry review: models right
+tr168,train,/mnt/ml-data/mewc-synth/v2/train/black_currawong/gst_DHYJ4vFK0z73lABE.JPG,black_currawong,australian_magpie,relabel,Barry review: models right
+tr169,train,/mnt/ml-data/mewc-synth/v2/train/black_currawong/gst_vRxDvM2MD0DRZscK.JPG,black_currawong,australian_magpie,relabel,Barry review: models right
+tr170,train,/mnt/ml-data/mewc-synth/v2/train/black_currawong/gst_niQbLyQFZsUKNmmm.JPG,black_currawong,australian_magpie,relabel,Barry review: models right
+tr172,train,/mnt/ml-data/mewc-synth/v2/train/wedge_tailed_eagle/ebird_267714101-0.jpg,wedge_tailed_eagle,australian_magpie,relabel,Barry review: models right
+tr173,train,/mnt/ml-data/mewc-synth/v2/train/wedge_tailed_eagle/ebird_264723261-0.jpg,wedge_tailed_eagle,australian_magpie,relabel,Barry review: models right
+tr174,train,/mnt/ml-data/mewc-synth/v2/train/wedge_tailed_eagle/ebird_213461391-1.jpg,wedge_tailed_eagle,australian_magpie,relabel,Barry review: models right
+tr175,train,/mnt/ml-data/mewc-synth/v2/train/australian_magpie/ebird_61922361-0.jpg,australian_magpie,wedge_tailed_eagle,relabel,Barry review: models right
+tr180,train,/mnt/ml-data/mewc-synth/v2/train/black_rat/ink_ZZYJdzPmBctgnVn5.JPG,black_rat,long_tailed_mouse,relabel,Barry review: models right
+tr181,train,/mnt/ml-data/mewc-synth/v2/train/black_rat/cp_ZNK0lF3hd6IZBGJ1.JPG,black_rat,long_tailed_mouse,relabel,Barry review: models right
+tr184,train,/mnt/ml-data/mewc-synth/v2/train/cape_barren_goose/iona_oH55-IMG_0267-0.JPG,cape_barren_goose,peafowl,relabel,Barry review: models right
+tr185,train,/mnt/ml-data/mewc-synth/v2/train/cape_barren_goose/iona_cRej-IMG_5895-0.JPG,cape_barren_goose,peafowl,relabel,Barry review: models right
+tr186,train,/mnt/ml-data/mewc-synth/v2/train/cape_barren_goose/iona_9CKc-IMG_3305-3.JPG,cape_barren_goose,peafowl,relabel,Barry review: models right
+tr187,train,/mnt/ml-data/mewc-synth/v2/train/cape_barren_goose/iona_2WlE-IMG_2503-0.JPG,cape_barren_goose,peafowl,relabel,Barry review: models right
+tr188,train,/mnt/ml-data/mewc-synth/v2/train/cat/tlc_li9VkCCkeFGEsvTl.JPG,cat,fallow_deer,relabel,Barry review: models right
+tr189,train,/mnt/ml-data/mewc-synth/v2/train/cat/tlc_aVr6CxmIhRIwYZvX.JPG,cat,fallow_deer,relabel,Barry review: models right
+tr190,train,/mnt/ml-data/mewc-synth/v2/train/cat/tlc_glsKqlgVtiYrDypb.JPG,cat,fallow_deer,relabel,Barry review: models right
+tr191,train,/mnt/ml-data/mewc-synth/v2/train/cat/tlc_D4qiNztBREUv-ITQ.JPG,cat,fallow_deer,relabel,Barry review: models right
+tr192,train,/mnt/ml-data/mewc-synth/v2/train/long_nosed_potoroo/3a0b32dd-9877-4e72-a837-d8f6d33c98be-0.jpg,long_nosed_potoroo,tasmanian_pademelon,relabel,Barry review: models right
+tr193,train,/mnt/ml-data/mewc-synth/v2/train/long_nosed_potoroo/2f1aa121-addf-4921-a933-6fdc7a57bf05-0.jpg,long_nosed_potoroo,tasmanian_pademelon,relabel,Barry review: models right
+tr194,train,/mnt/ml-data/mewc-synth/v2/train/long_nosed_potoroo/34aa5a82-8911-40f2-b6ec-3c73ce3d1e1d-0.jpg,long_nosed_potoroo,tasmanian_pademelon,relabel,Barry review: models right
+tr199,train,/mnt/ml-data/mewc-synth/v2/train/forest_raven/ink_4arV4WEPomPmWM1o.JPG,forest_raven,australian_magpie,relabel,Barry review: models right
+tr200,train,/mnt/ml-data/mewc-synth/v2/train/forest_raven/gst_3bCmeuQmz3D5ytCO.JPG,forest_raven,australian_magpie,relabel,Barry review: models right
+tr202,train,/mnt/ml-data/mewc-synth/v2/train/bassian_thrush/677aefbc-c943-4818-ac63-d9acdf6d81e7-0.jpg,bassian_thrush,grey_shrikethrush,relabel,Barry review: models right
+tr203,train,/mnt/ml-data/mewc-synth/v2/train/bassian_thrush/gOCnkcktdyZ8jtiB.JPG,bassian_thrush,grey_shrikethrush,relabel,Barry review: models right
+tr204,train,/mnt/ml-data/mewc-synth/v2/train/bassian_thrush/61e7f12c-770b-4a8f-90c1-d7029f772466-0.jpg,bassian_thrush,grey_shrikethrush,relabel,Barry review: models right
+tr205,train,/mnt/ml-data/mewc-synth/v2/train/bassian_thrush/c33407f2-e912-4ad8-95e5-4cc83801901a-0.jpg,bassian_thrush,olive_whistler,relabel,Barry review: models right
+tr206,train,/mnt/ml-data/mewc-synth/v2/train/bassian_thrush/34e50404-0d48-49df-954a-e58fdaafd64e-0.jpg,bassian_thrush,olive_whistler,relabel,Barry review: models right
+tr207,train,/mnt/ml-data/mewc-synth/v2/train/bassian_thrush/3aR7Xq1CAeIZ7Fnk.JPG,bassian_thrush,olive_whistler,relabel,Barry review: models right
+tr209,train,/mnt/ml-data/mewc-synth/v2/train/eastern_bettong/tlc_jIFYDz3612uIhE9P.JPG,eastern_bettong,bennetts_wallaby,relabel,Barry review: models right
+tr210,train,/mnt/ml-data/mewc-synth/v2/train/eastern_bettong/tlc_37fIgUaQKY1q3wSO.JPG,eastern_bettong,bennetts_wallaby,relabel,Barry review: models right
+tr213,train,/mnt/ml-data/mewc-synth/v2/train/brown_quail/thi_3evWOM4kdZ2ZWbNj.JPG,brown_quail,lewins_rail,relabel,Barry review: models right
+tr216,train,/mnt/ml-data/mewc-synth/v2/train/brown_quail/thi_gfbrOMNK9PlhpBfV.JPG,brown_quail,painted_buttonquail,relabel,Barry review: models right
+tr217,train,/mnt/ml-data/mewc-synth/v2/train/cat/kpz_Xj8VziJsmDmHhdmf.JPG,cat,tasmanian_nativehen,relabel,Barry review: models right
+tr218,train,/mnt/ml-data/mewc-synth/v2/train/cat/kpz_tHGbGk4frF71qhfY.JPG,cat,tasmanian_nativehen,relabel,Barry review: models right
+tr219,train,/mnt/ml-data/mewc-synth/v2/train/cat/kpz_cLIuMLFRKAYIezpt.JPG,cat,tasmanian_nativehen,relabel,Barry review: models right
+tr220,train,/mnt/ml-data/mewc-synth/v2/train/pacific_black_duck/thi_wjIWUNxo26GA.JPG,pacific_black_duck,chestnut_teal,relabel,Barry review: models right
+tr221,train,/mnt/ml-data/mewc-synth/v2/train/pacific_black_duck/thi_zK9okNG1FvBJ.JPG,pacific_black_duck,chestnut_teal,relabel,Barry review: models right
+tr222,train,/mnt/ml-data/mewc-synth/v2/train/pacific_black_duck/thi_EsdSADCOiGrS.JPG,pacific_black_duck,chestnut_teal,relabel,Barry review: models right
+tr226,train,/mnt/ml-data/mewc-synth/v2/train/pacific_black_duck/ebird_502310001-1.jpg,pacific_black_duck,maned_duck,relabel,Barry review: models right
+tr229,train,/mnt/ml-data/mewc-synth/v2/train/thornbill/ebird_546428211-0.jpg,thornbill,pink_robin,relabel,Barry review: models right
+tr230,train,/mnt/ml-data/mewc-synth/v2/train/thornbill/ebird_399296341-0.jpg,thornbill,pink_robin,relabel,Barry review: models right
+tr231,train,/mnt/ml-data/mewc-synth/v2/train/thornbill/ebird_399296351-0.jpg,thornbill,pink_robin,relabel,Barry review: models right
+tr232,train,/mnt/ml-data/mewc-synth/v2/train/tasmanian_scrubwren/ebird_540696711-0.jpg,tasmanian_scrubwren,thornbill,relabel,Barry review: models right
+tr233,train,/mnt/ml-data/mewc-synth/v2/train/thornbill/js_bQSkwEMIqnbtEF5f.JPG,thornbill,tasmanian_scrubwren,relabel,Barry review: models right
+tr234,train,/mnt/ml-data/mewc-synth/v2/train/thornbill/ink_U8qEySBssjHb1emE.JPG,thornbill,tasmanian_scrubwren,relabel,Barry review: models right
+tr238,train,/mnt/ml-data/mewc-synth/v2/train/bennetts_wallaby/jl_egSwzUV6He80yhft.JPG,bennetts_wallaby,sheep,relabel,Barry review: models right
+tr241,train,/mnt/ml-data/mewc-synth/v2/train/black_rat/thi_ZA4Pj9Xc1USRr66R.JPG,black_rat,tasmanian_pademelon,relabel,Barry review: models right
+tr243,train,/mnt/ml-data/mewc-synth/v2/train/cat/ink_0qhkg8YJTBBAfDnG.JPG,cat,brushtail_possum,relabel,Barry review: models right
+tr244,train,/mnt/ml-data/mewc-synth/v2/train/cat/tlc_ejS4eAvXha8ftL9X.JPG,cat,brushtail_possum,relabel,Barry review: models right
+tr246,train,/mnt/ml-data/mewc-synth/v2/train/brushtail_possum/vish_Ia2cOApKnCwZShUZ.JPG,brushtail_possum,unknown_animal,relabel,Barry review: models right
+tr249,train,/mnt/ml-data/mewc-synth/v2/train/forest_raven/lu_5UcobF9klJwLyPPq.JPG,forest_raven,european_starling,relabel,Barry review: models right
+tr250,train,/mnt/ml-data/mewc-synth/v2/train/forest_raven/lu_iQSmq0PwqrMPf4TI.JPG,forest_raven,european_starling,relabel,Barry review: models right
+tr251,train,/mnt/ml-data/mewc-synth/v2/train/fallow_deer/evd_IbYudYRiwffed0yN.JPG,fallow_deer,sheep,relabel,Barry review: models right
+tr252,train,/mnt/ml-data/mewc-synth/v2/train/fallow_deer/jl_ZDAKmUbifXXXB4q9.JPG,fallow_deer,sheep,relabel,Barry review: models right
+tr254,train,/mnt/ml-data/mewc-synth/v2/train/flame_robin/iona_OLY0-IMG_0217-0.JPG,flame_robin,olive_whistler,relabel,Barry review: models right
+tr263,train,/mnt/ml-data/mewc-synth/v2/train/tasmanian_nativehen/tlc_8KPeXP1mctyGZLvp.JPG,tasmanian_nativehen,purple_swamphen,relabel,Barry review: models right
+tr264,train,/mnt/ml-data/mewc-synth/v2/train/tasmanian_nativehen/ebird_418440601-0.jpg,tasmanian_nativehen,purple_swamphen,relabel,Barry review: models right
+tr265,train,/mnt/ml-data/mewc-synth/v2/train/tasmanian_scrubwren/ebird_614333639-0.jpg,tasmanian_scrubwren,scrubtit,relabel,Barry review: models right
+tr266,train,/mnt/ml-data/mewc-synth/v2/train/tasmanian_scrubwren/ebird_614333637-0.jpg,tasmanian_scrubwren,scrubtit,relabel,Barry review: models right
+tr267,train,/mnt/ml-data/mewc-synth/v2/train/sheep/vish_SnSkE9kKDCLVj44A.JPG,sheep,unknown_animal,relabel,Barry review: models right
+tr270,train,/mnt/ml-data/mewc-synth/v2/train/superb_fairywren/cp_38kSPUewK1iJJu0O.JPG,superb_fairywren,australian_pipit,relabel,Barry review: models right
+tr273,train,/mnt/ml-data/mewc-synth/v2/train/bassian_thrush/a592144c-e88a-451d-a91d-a23180e0a523-0.jpg,bassian_thrush,common_blackbird,relabel,Barry review: models right
+tr274,train,/mnt/ml-data/mewc-synth/v2/train/common_bronzewing/ink_M3gaTFIvUgIpRQFG.JPG,common_bronzewing,bassian_thrush,relabel,Barry review: models right
+tr276,train,/mnt/ml-data/mewc-synth/v2/train/bennetts_wallaby/24769dce-25c3-47ab-b7fb-6915eadbe226-0.jpg,bennetts_wallaby,unknown_animal,relabel,Barry review: models right
+tr277,train,/mnt/ml-data/mewc-synth/v2/train/black_currawong/cu-active_7zrCxGuWjvnuTzhW.JPG,black_currawong,dog,relabel,Barry review: models right
+tr278,train,/mnt/ml-data/mewc-synth/v2/train/black_currawong/cu-active_boAH3KnLSjqsazjt.JPG,black_currawong,flame_robin,relabel,Barry review: models right
+tr281,train,/mnt/ml-data/mewc-synth/v2/train/black_currawong/thi_FYhv7PuwswoV.JPG,black_currawong,swamp_harrier,relabel,Barry review: models right
+tr282,train,/mnt/ml-data/mewc-synth/v2/train/black_currawong/iona_srBD-IMG_1670-0.JPG,black_currawong,yellow_tailed_black_cockatoo,relabel,Barry review: models right
+tr283,train,/mnt/ml-data/mewc-synth/v2/train/black_currawong/nw_K6cp8wrgiMKCKkNA.JPG,black_currawong,yellow_throated_honeyeater,relabel,Barry review: models right
+tr284,train,/mnt/ml-data/mewc-synth/v2/train/black_rat/iona_YC3r-IMG_0020-0.JPG,black_rat,rakali,relabel,Barry review: models right
+tr286,train,/mnt/ml-data/mewc-synth/v2/train/tasmanian_nativehen/ink2_imU0n2UANoAiAPSl.JPG,tasmanian_nativehen,brown_falcon,relabel,Barry review: models right
+tr288,train,/mnt/ml-data/mewc-synth/v2/train/brush_bronzewing/lu_5UODdWxS4SGAaF8z.JPG,brush_bronzewing,brown_quail,relabel,Barry review: models right
+tr289,train,/mnt/ml-data/mewc-synth/v2/train/brown_quail/e96f4fcf-c15a-4756-8f2a-0687a3279e43-2.jpg,brown_quail,tasmanian_pademelon,relabel,Barry review: models right
+tr291,train,/mnt/ml-data/mewc-synth/v2/train/brushtail_possum/ink_ZZUSo8YtC262jOOf.JPG,brushtail_possum,swamp_rat,relabel,Barry review: models right
+tr292,train,/mnt/ml-data/mewc-synth/v2/train/tasmanian_pademelon/cp_fH2ZLNCJHl5IP0MW.JPG,tasmanian_pademelon,brushtail_possum,relabel,Barry review: models right
+tr293,train,/mnt/ml-data/mewc-synth/v2/train/cape_barren_goose/iona_Ze2C-IMG_6844-3.JPG,cape_barren_goose,sooty_shearwater,relabel,Barry review: models right
+tr294,train,/mnt/ml-data/mewc-synth/v2/train/cape_barren_goose/thi_vilOYdjM142C6Xn0.JPG,cape_barren_goose,white_faced_heron,relabel,Barry review: models right
+tr295,train,/mnt/ml-data/mewc-synth/v2/train/cat/gkvic_hK8jZu3coKKpSonD.JPG,cat,red_fox,relabel,Barry review: models right
+tr296,train,/mnt/ml-data/mewc-synth/v2/train/cat/eRxz6ZuUR7wDVGMu.JPG,cat,superb_lyrebird,relabel,Barry review: models right
+tr298,train,/mnt/ml-data/mewc-synth/v2/train/cattle/jl_2q6V3CxasdEeqeim.JPG,cattle,sheep,relabel,Barry review: models right
+tr299,train,/mnt/ml-data/mewc-synth/v2/train/chicken/hr_575zxYwSnuJU8Xzk.JPG,chicken,guinea_fowl,relabel,Barry review: models right
+tr300,train,/mnt/ml-data/mewc-synth/v2/train/chicken/iona_WSIGi04UQzjKHiCJ.JPG,chicken,peafowl,relabel,Barry review: models right
+tr301,train,/mnt/ml-data/mewc-synth/v2/train/superb_lyrebird/T1BFDIvDYkv2QKtg.JPG,superb_lyrebird,chicken,relabel,Barry review: models right
+tr302,train,/mnt/ml-data/mewc-synth/v2/train/tasmanian_nativehen/ebird_82009251-1.jpg,tasmanian_nativehen,chicken,relabel,Barry review: models right
+tr303,train,/mnt/ml-data/mewc-synth/v2/train/common_blackbird/lu_J6Ctwa7V9VqIibnq.JPG,common_blackbird,european_starling,relabel,Barry review: models right
+tr304,train,/mnt/ml-data/mewc-synth/v2/train/forest_raven/ink_XYk01h6GtHDJAoZR.JPG,forest_raven,common_blackbird,relabel,Barry review: models right
+tr305,train,/mnt/ml-data/mewc-synth/v2/train/common_bronzewing/ink2_rf8rBvl9UWPsBqIC.JPG,common_bronzewing,painted_buttonquail,relabel,Barry review: models right
+tr306,train,/mnt/ml-data/mewc-synth/v2/train/long_nosed_potoroo/ac408ee5-cf3a-42cf-b1e5-83dc9385d5f8-0.jpg,long_nosed_potoroo,common_ringtail,relabel,Barry review: models right
+tr307,train,/mnt/ml-data/mewc-synth/v2/train/unknown_animal/ks_Ib9edcaBDhuy39HB.JPG,unknown_animal,common_ringtail,relabel,Barry review: models right
+tr308,train,/mnt/ml-data/mewc-synth/v2/train/olive_whistler/ink2_60qR1gyZJFV1g1aB.JPG,olive_whistler,crescent_honeyeater,relabel,Barry review: models right
+tr309,train,/mnt/ml-data/mewc-synth/v2/train/crescent_honeyeater/ebird_228519161-0.jpg,crescent_honeyeater,yellow_throated_honeyeater,relabel,Barry review: models right
+tr310,train,/mnt/ml-data/mewc-synth/v2/train/crimson_rosella/ebird_156454681-2.jpg,crimson_rosella,green_rosella,relabel,Barry review: models right
+tr311,train,/mnt/ml-data/mewc-synth/v2/train/fallow_deer/CYpjD0koIzpvk1NN.JPG,fallow_deer,dog,relabel,Barry review: models right
+tr313,train,/mnt/ml-data/mewc-synth/v2/train/eastern_barred_bandicoot/inat_98924911-1.jpg,eastern_barred_bandicoot,tasmanian_pademelon,relabel,Barry review: models right
+tr316,train,/mnt/ml-data/mewc-synth/v2/train/forester_kangaroo/gkvic_1jxGuP0jUWEAUIDF.JPG,forester_kangaroo,fallow_deer,relabel,Barry review: models right
+tr318,train,/mnt/ml-data/mewc-synth/v2/train/flame_robin/ebird_sr_573390711-2.jpg,flame_robin,grey_shrikethrush,relabel,Barry review: models right
+tr319,train,/mnt/ml-data/mewc-synth/v2/train/forest_raven/cp_04FiZASRwGwsb1NH.JPG,forest_raven,grey_currawong,relabel,Barry review: models right
+tr321,train,/mnt/ml-data/mewc-synth/v2/train/forest_raven/Cv9RGrMm5fGsmxtf.JPG,forest_raven,white_faced_heron,relabel,Barry review: models right
+tr322,train,/mnt/ml-data/mewc-synth/v2/train/grey_shrikethrush/ink2_tLOXhWVinEY59Kdo.JPG,grey_shrikethrush,superb_lyrebird,relabel,Barry review: models right
+tr323,train,/mnt/ml-data/mewc-synth/v2/train/laughing_kookaburra/jl_ZZwrih7qJ93fVVIt.JPG,laughing_kookaburra,insect,relabel,Barry review: models right
+tr325,train,/mnt/ml-data/mewc-synth/v2/train/masked_lapwing/thi_SSv1Kp5pmOOMP3B6.JPG,masked_lapwing,peafowl,relabel,Barry review: models right
+tr327,train,/mnt/ml-data/mewc-synth/v2/train/olive_whistler/tlc_ZqsQ6ad-AZYEqmZw.JPG,olive_whistler,yellow_throated_honeyeater,relabel,Barry review: models right
+tr330,train,/mnt/ml-data/mewc-synth/v2/train/unknown_animal/ebird_345354561-0.jpg,unknown_animal,sooty_shearwater,relabel,Barry review: models right
+tr331,train,/mnt/ml-data/mewc-synth/v2/train/tasmanian_nativehen/ink2_FwPWBwUS19gYo1nk.JPG,tasmanian_nativehen,superb_lyrebird,relabel,Barry review: models right
+tr332,train,/mnt/ml-data/mewc-synth/v2/train/tasmanian_devil/592824d9-aca1-4374-abb3-fce540b875ac-0.jpg,tasmanian_devil,unknown_animal,relabel,Barry review: models right
+tr333,train,/mnt/ml-data/mewc-synth/v2/train/wedge_tailed_eagle/iona_gsng-IMG_0534-1.JPG,wedge_tailed_eagle,white_bellied_sea_eagle,relabel,Barry review: models right
+tr015,train,/mnt/ml-data/mewc-synth/v2/train/spotted_tail_quoll/cp_bz0MZPywZzqSJGEQ.JPG,spotted_tail_quoll,,exclude,Barry review: unsure
+tr021,train,/mnt/ml-data/mewc-synth/v2/train/black_rat/iona_klW8-IMG_0126-0.JPG,black_rat,,exclude,Barry review: unsure
+tr022,train,/mnt/ml-data/mewc-synth/v2/train/black_rat/iona_jtWB-IMG_0124-0.JPG,black_rat,,exclude,Barry review: unsure
+tr024,train,/mnt/ml-data/mewc-synth/v2/train/black_rat/delwp_B58UyqQQjq.JPG,black_rat,,exclude,Barry review: unsure
+tr025,train,/mnt/ml-data/mewc-synth/v2/train/black_rat/delwp_EkGVGQ23y1.JPG,black_rat,,exclude,Barry review: unsure
+tr029,train,/mnt/ml-data/mewc-synth/v2/train/black_rat/delwp_ozLh83bEn7.JPG,black_rat,,exclude,Barry review: unsure
+tr039,train,/mnt/ml-data/mewc-synth/v2/train/black_rat/iona_Myx8-IMG_0110-0.JPG,black_rat,,exclude,Barry review: unsure
+tr064,train,/mnt/ml-data/mewc-synth/v2/train/black_rat/ink_31jVZf8YjXlWyjSn.JPG,black_rat,,exclude,Barry review: unsure
+tr065,train,/mnt/ml-data/mewc-synth/v2/train/black_rat/ink_2OMmxcbgrYQA5pH4.JPG,black_rat,,exclude,Barry review: unsure
+tr066,train,/mnt/ml-data/mewc-synth/v2/train/black_rat/ink_2m35oi38uaBhHLFX.JPG,black_rat,,exclude,Barry review: unsure
+tr072,train,/mnt/ml-data/mewc-synth/v2/train/forest_raven/55e93298-f29f-4ff3-9045-3d8eb43086be-0.jpg,forest_raven,,exclude,Barry review: unsure
+tr074,train,/mnt/ml-data/mewc-synth/v2/train/black_currawong/nw_s2ICOZcAKXEQxW9K.JPG,black_currawong,,exclude,Barry review: unsure
+tr078,train,/mnt/ml-data/mewc-synth/v2/train/forest_raven/798df765-35db-4c31-bcdd-8deceb37d67e-0.jpg,forest_raven,,exclude,Barry review: unsure
+tr079,train,/mnt/ml-data/mewc-synth/v2/train/black_currawong/cu-active_6b06d0e2-2ab7-4405-a01b-c0526f8faa5d-0.jpg,black_currawong,,exclude,Barry review: unsure
+tr084,train,/mnt/ml-data/mewc-synth/v2/train/long_nosed_potoroo/jl_evX9sFYF6EdeBf6R.JPG,long_nosed_potoroo,,exclude,Barry review: unsure
+tr086,train,/mnt/ml-data/mewc-synth/v2/train/long_nosed_potoroo/jl_350isY1mCuEJKGe1.JPG,long_nosed_potoroo,,exclude,Barry review: unsure
+tr089,train,/mnt/ml-data/mewc-synth/v2/train/southern_brown_bandicoot/d26e0f1d-4422-4176-afe8-93df8a2a7a6e-0.jpg,southern_brown_bandicoot,,exclude,Barry review: unsure
+tr113,train,/mnt/ml-data/mewc-synth/v2/train/black_currawong/6db07580-f248-4e12-b0ad-cbcf99180a22-0.jpg,black_currawong,,exclude,Barry review: unsure
+tr114,train,/mnt/ml-data/mewc-synth/v2/train/black_currawong/iona_nOdiOkK3lcEysmq1.JPG,black_currawong,,exclude,Barry review: unsure
+tr115,train,/mnt/ml-data/mewc-synth/v2/train/black_currawong/cu-active_mp__LnUWaqOj0OJKfp7C.JPG,black_currawong,,exclude,Barry review: unsure
+tr116,train,/mnt/ml-data/mewc-synth/v2/train/black_currawong/iona_UQok2wTnnvbMj1qo.JPG,black_currawong,,exclude,Barry review: unsure
+tr150,train,/mnt/ml-data/mewc-synth/v2/train/black_currawong/44f5de0e-7c7d-4544-ab69-28e5967e46b2-0.jpg,black_currawong,,exclude,Barry review: unsure
+tr156,train,/mnt/ml-data/mewc-synth/v2/train/flame_robin/ink2_jMeVAtrXaPW4rrD1.JPG,flame_robin,,exclude,Barry review: unsure
+tr171,train,/mnt/ml-data/mewc-synth/v2/train/black_currawong/gst_jiDzphpz4I1wuh8L.JPG,black_currawong,,exclude,Barry review: unsure
+tr176,train,/mnt/ml-data/mewc-synth/v2/train/bare_nosed_wombat/nw_pwCokkyr42GohaGQ.JPG,bare_nosed_wombat,,exclude,Barry review: unsure
+tr177,train,/mnt/ml-data/mewc-synth/v2/train/bare_nosed_wombat/nw_PVa7z1Z255WqVCh1.JPG,bare_nosed_wombat,,exclude,Barry review: unsure
+tr179,train,/mnt/ml-data/mewc-synth/v2/train/bare_nosed_wombat/nw_GCpTCprj3FU0MdgD.JPG,bare_nosed_wombat,,exclude,Barry review: unsure
+tr183,train,/mnt/ml-data/mewc-synth/v2/train/black_rat/ink_0haLIWbatQwesBIf.JPG,black_rat,,exclude,Barry review: unsure
+tr196,train,/mnt/ml-data/mewc-synth/v2/train/unknown_animal/4ad62e24-a65b-484a-98a8-f03d878dbc58-0.jpg,unknown_animal,,exclude,Barry review: unsure
+tr197,train,/mnt/ml-data/mewc-synth/v2/train/unknown_animal/618d4420-bb39-4988-a467-e18df92defc7-0.jpg,unknown_animal,,exclude,Barry review: unsure
+tr198,train,/mnt/ml-data/mewc-synth/v2/train/unknown_animal/64c2e9c7-7cc9-4596-955c-a502d0ffd60d-0.jpg,unknown_animal,,exclude,Barry review: unsure
+tr201,train,/mnt/ml-data/mewc-synth/v2/train/australian_magpie/ink_2CpiYa0YbFSy2UIE.JPG,australian_magpie,,exclude,Barry review: unsure
+tr208,train,/mnt/ml-data/mewc-synth/v2/train/bennetts_wallaby/20c1ad4d-1665-4a81-af6d-43f4cca83eee-0.jpg,bennetts_wallaby,,exclude,Barry review: unsure
+tr211,train,/mnt/ml-data/mewc-synth/v2/train/brown_quail/thi_CvlBWtv3KgqROaqI.JPG,brown_quail,,exclude,Barry review: unsure
+tr212,train,/mnt/ml-data/mewc-synth/v2/train/brown_quail/iona_nOS5-IMG_0155-0.JPG,brown_quail,,exclude,Barry review: unsure
+tr214,train,/mnt/ml-data/mewc-synth/v2/train/brown_quail/thi_DFsBrULAtka8.JPG,brown_quail,,exclude,Barry review: unsure
+tr223,train,/mnt/ml-data/mewc-synth/v2/train/eastern_barred_bandicoot/fabaf02d-3ff6-4305-add6-d7201c1db44c-0.jpg,eastern_barred_bandicoot,,exclude,Barry review: unsure
+tr224,train,/mnt/ml-data/mewc-synth/v2/train/eastern_barred_bandicoot/jl_KONZGag0D3QU9ud0.JPG,eastern_barred_bandicoot,,exclude,Barry review: unsure
+tr225,train,/mnt/ml-data/mewc-synth/v2/train/southern_brown_bandicoot/jl_r4h29ZsdauhF1VDA.JPG,southern_brown_bandicoot,,exclude,Barry review: unsure
+tr228,train,/mnt/ml-data/mewc-synth/v2/train/maned_duck/ebird_564835741-1.jpg,maned_duck,,exclude,Barry review: unsure
+tr237,train,/mnt/ml-data/mewc-synth/v2/train/bennetts_wallaby/jl_c6CJ6SuuDewq4l5Z.JPG,bennetts_wallaby,,exclude,Barry review: unsure
+tr239,train,/mnt/ml-data/mewc-synth/v2/train/black_currawong/cp_7Vlp1mbJwQJpQsEv.JPG,black_currawong,,exclude,Barry review: unsure
+tr240,train,/mnt/ml-data/mewc-synth/v2/train/black_currawong/cu-active_ink_24siRwIqbNxXNT1L.JPG,black_currawong,,exclude,Barry review: unsure
+tr247,train,/mnt/ml-data/mewc-synth/v2/train/southern_brown_bandicoot/e1ab7e74-b052-4173-9f12-c210ed0ed4e8-0.jpg,southern_brown_bandicoot,,exclude,Barry review: unsure
+tr248,train,/mnt/ml-data/mewc-synth/v2/train/eastern_bettong/jl_dk31b5xKCx01QD9c.JPG,eastern_bettong,,exclude,Barry review: unsure
+tr253,train,/mnt/ml-data/mewc-synth/v2/train/flame_robin/ebird_sr_202268311-0.jpg,flame_robin,,exclude,Barry review: unsure
+tr255,train,/mnt/ml-data/mewc-synth/v2/train/flame_robin/ebird_sr_93775381-0.jpg,flame_robin,,exclude,Barry review: unsure
+tr259,train,/mnt/ml-data/mewc-synth/v2/train/olive_whistler/ebird_611034315-0.jpg,olive_whistler,,exclude,Barry review: unsure
+tr261,train,/mnt/ml-data/mewc-synth/v2/train/grey_shrikethrush/delwp_3vWTA0HcGO.JPG,grey_shrikethrush,,exclude,Barry review: unsure
+tr262,train,/mnt/ml-data/mewc-synth/v2/train/grey_shrikethrush/ink_JYsLDitEHXYan4Ft.JPG,grey_shrikethrush,,exclude,Barry review: unsure
+tr269,train,/mnt/ml-data/mewc-synth/v2/train/australian_magpie/ebird_610914396-1.jpg,australian_magpie,,exclude,Barry review: unusable
+tr271,train,/mnt/ml-data/mewc-synth/v2/train/bare_nosed_wombat/jl_H6IXbkb9hgdFnpsF.JPG,bare_nosed_wombat,,exclude,Barry review: unsure
+tr275,train,/mnt/ml-data/mewc-synth/v2/train/crimson_rosella/ebird_544688141-4.jpg,crimson_rosella,,exclude,Barry review: unsure
+tr279,train,/mnt/ml-data/mewc-synth/v2/train/black_currawong/gst_jJAZT2sv3NkZWd5V.JPG,black_currawong,,exclude,Barry review: unsure
+tr280,train,/mnt/ml-data/mewc-synth/v2/train/black_currawong/thi_AgogVrr3qjiNDLMA.JPG,black_currawong,,exclude,Barry review: unsure
+tr285,train,/mnt/ml-data/mewc-synth/v2/train/black_rat/thi_pjv7XCuDvdpM4jdf.JPG,black_rat,,exclude,Barry review: unsure
+tr287,train,/mnt/ml-data/mewc-synth/v2/train/tasmanian_pademelon/jl_3odGrhA0N7KRHF1q.JPG,tasmanian_pademelon,,exclude,Barry review: unsure
+tr290,train,/mnt/ml-data/mewc-synth/v2/train/brushtail_possum/bbcbc446-b2d4-403d-8dda-ff1049b96871-0.jpg,brushtail_possum,,exclude,Barry review: unsure
+tr312,train,/mnt/ml-data/mewc-synth/v2/train/eastern_barred_bandicoot/jl_N8RrG42gQik1WPs0.JPG,eastern_barred_bandicoot,,exclude,Barry review: unsure
+tr315,train,/mnt/ml-data/mewc-synth/v2/train/southern_brown_bandicoot/jl_GVAIN6ORHe09fv6P.JPG,southern_brown_bandicoot,,exclude,Barry review: unsure
+tr317,train,/mnt/ml-data/mewc-synth/v2/train/flame_robin/jl_p5oZnvB6iCAHWxUL.JPG,flame_robin,,exclude,Barry review: unsure
+tr320,train,/mnt/ml-data/mewc-synth/v2/train/forest_raven/vish_7W6LWkeN0xtm55EX.JPG,forest_raven,,exclude,Barry review: unusable
+tr324,train,/mnt/ml-data/mewc-synth/v2/train/swamp_rat/ks_6tzYgdvU5pGO1YIx.JPG,swamp_rat,,exclude,Barry review: unsure
+tr326,train,/mnt/ml-data/mewc-synth/v2/train/tasmanian_scrubwren/ink_aYA8HG48zlpMq4gA.JPG,tasmanian_scrubwren,,exclude,Barry review: unsure
+tr328,train,/mnt/ml-data/mewc-synth/v2/train/pacific_black_duck/ebird_400024801-0.jpg,pacific_black_duck,,exclude,Barry review: unsure
+tr329,train,/mnt/ml-data/mewc-synth/v2/train/unknown_animal/kpz_F3kt2YxG0CIptNNC.JPG,unknown_animal,,exclude,Barry review: unusable

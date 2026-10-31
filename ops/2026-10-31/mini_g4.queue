@@ -28,3 +28,4 @@ torch mini_vtb_lr1 /home/ubuntu/mewc-synth/ops/2026-10-31/mini/mini_vtb_lr1.json
 torch mini_dinov3_b_lr4 /home/ubuntu/mewc-synth/ops/2026-10-31/mini/mini_dinov3_b_lr4.json
 torch mini_eva02_b_lr4 /home/ubuntu/mewc-synth/ops/2026-10-31/mini/mini_eva02_b_lr4.json
 torch mini_vtb_lr4 /home/ubuntu/mewc-synth/ops/2026-10-31/mini/mini_vtb_lr4.json
+torch mini_dinov3_l_base /home/ubuntu/mewc-synth/ops/2026-10-31/mini/mini_dinov3_l_base.json
