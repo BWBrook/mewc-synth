@@ -42,7 +42,7 @@ def main(tdir, v2, out_json, out_csv, seed):
         for r in rows[-24:]:
             r["block"], r["target"], r["lookalike"] = block, target, look
     items = pd.DataFrame(rows)
-    items = items.groupby("block", group_keys=False).apply(lambda g: g.sample(frac=1, random_state=int(seed)))
+    items = items.sample(frac=1, random_state=int(seed)).sort_values("block", kind="stable")
     items["id"] = [f"sy{i:03d}" for i in range(1, len(items) + 1)]
     flip = rng.random(len(items)) < 0.5
     items["a"] = np.where(flip, items.lookalike, items.target)
