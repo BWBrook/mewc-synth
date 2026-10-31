@@ -1,0 +1,26 @@
+{
+  "rank": 64,
+  "lr": 0.00005,
+  "steps": 400,
+  "batch": 16,
+  "alpha": 0.5,
+  "warmup": 50,
+  "min_snr": 5.0,
+  "save_every": 400,
+  "sample_every": 400,
+  "seed": 7,
+  "sample_prompts": [
+    "camera trap snip of a black currawong (Strepera fuliginosa), daylight colour",
+    "camera trap snip of a grey currawong (Strepera versicolor), daylight colour"
+  ],
+  "init_lora": "/mnt/ml-data/mewc-synth/stage_a/a_sv2/lora/r64_s10k/step_010000",
+  "focus": {
+    "classes": {
+      "black_currawong": 0.45,
+      "grey_currawong": 0.15,
+      "forest_raven": 0.1
+    },
+    "prior_mass": 0.3,
+    "prior_n": 3000
+  }
+}

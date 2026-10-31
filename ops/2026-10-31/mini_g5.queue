@@ -18,3 +18,4 @@ torch mini_cnv2_n_bless /home/ubuntu/mewc-synth/ops/2026-10-31/mini/mini_cnv2_n_
 torch mini_cnv2_n_bmore /home/ubuntu/mewc-synth/ops/2026-10-31/mini/mini_cnv2_n_bmore.json
 torch mini_cnv2_n_lr1 /home/ubuntu/mewc-synth/ops/2026-10-31/mini/mini_cnv2_n_lr1.json
 torch mini_cnv2_n_lr4 /home/ubuntu/mewc-synth/ops/2026-10-31/mini/mini_cnv2_n_lr4.json
+torch race_effvit_l2_wu /home/ubuntu/mewc-synth/ops/2026-10-29/race/race_effvit_l2_wu.json

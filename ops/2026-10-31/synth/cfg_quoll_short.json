@@ -1,0 +1,25 @@
+{
+  "rank": 64,
+  "lr": 0.00005,
+  "batch": 16,
+  "alpha": 0.5,
+  "warmup": 50,
+  "min_snr": 5.0,
+  "seed": 7,
+  "init_lora": "/mnt/ml-data/mewc-synth/stage_a/a_sv2/lora/r64_s10k/step_010000",
+  "steps": 200,
+  "save_every": 200,
+  "sample_every": 200,
+  "sample_prompts": [
+    "camera trap snip of a spotted tail quoll (Dasyurus maculatus), infrared night",
+    "camera trap snip of a eastern quoll (Dasyurus viverrinus), infrared night"
+  ],
+  "focus": {
+    "classes": {
+      "spotted_tail_quoll": 0.45,
+      "eastern_quoll": 0.25
+    },
+    "prior_mass": 0.3,
+    "prior_n": 3000
+  }
+}
