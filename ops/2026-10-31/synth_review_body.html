@@ -1,0 +1,170 @@
+<style>
+.qrow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+.qrow .choice { grid-template-columns: 22px minmax(0, 1fr); padding: 8px 8px; }
+.qrow .choice .name { font-size: 17px; }
+.qrow.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.cell.h { background: var(--unsure); color: #1b1408; }
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Synthetic snip audit</h1>
+      <p class="lede">96 camera-trap snips for four pseudo-rare classes (spotted-tailed quoll, black currawong, forester kangaroo, black rat). Some are real; some were generated from a real snip of a look-alike species. For each, say whether it looks real or synthetic, and which species it shows. Snips of the same species pair sit together, in random order. Stop whenever you like.</p>
+    </div>
+    <div class="tally" id="tally" aria-live="polite"></div>
+  </header>
+  <div class="banner" id="banner" hidden></div>
+  <div class="main">
+    <figure class="stage" style="margin:0">
+      <img id="img" alt="">
+      <figcaption class="stage-bar"><span id="itemid"></span><span id="pos"></span></figcaption>
+    </figure>
+    <section class="rail" aria-label="Decision">
+      <h2>Real or synthetic?</h2>
+      <div class="qrow">
+        <button class="choice" id="rR" type="button" aria-pressed="false"><span class="key">1</span><span class="name">Real</span></button>
+        <button class="choice" id="rS" type="button" aria-pressed="false"><span class="key">2</span><span class="name">Synthetic</span></button>
+        <button class="choice" id="rU" type="button" aria-pressed="false"><span class="key">3</span><span class="name">Unsure</span></button>
+      </div>
+      <h2>Which species?</h2>
+      <div class="choices">
+        <button class="choice" id="sA" type="button" aria-pressed="false"><span class="key">4</span><span class="name"></span></button>
+        <button class="choice" id="sB" type="button" aria-pressed="false"><span class="key">5</span><span class="name"></span></button>
+      </div>
+      <div class="qrow two">
+        <button class="choice minor" id="sO" type="button" aria-pressed="false"><span class="key">6</span><span class="name">Neither</span></button>
+        <button class="choice minor" id="sU" type="button" aria-pressed="false"><span class="key">7</span><span class="name">Can't tell</span></button>
+      </div>
+      <div class="note">
+        <label for="note">Note (optional)</label>
+        <textarea id="note" placeholder="What gave it away, or anything odd about the animal"></textarea>
+      </div>
+      <div class="status" id="status" aria-live="polite"></div>
+      <div class="nav">
+        <button type="button" id="prev">← Previous</button>
+        <button type="button" id="next">Next →</button>
+        <button type="button" id="nextU">Next unfinished</button>
+      </div>
+      <p class="keys">Keys: <kbd>1</kbd>–<kbd>3</kbd> real or synthetic, <kbd>4</kbd>–<kbd>7</kbd> species, <kbd>←</kbd> <kbd>→</kbd> move. Once both answers are in, the page moves on.</p>
+    </section>
+  </div>
+  <section>
+    <div class="strip-head">
+      <h2 style="font-family:var(--font-display);font-size:18px;margin:0">All snips</h2>
+      <div class="legend">
+        <span style="--c:var(--decided)">Both answered</span>
+        <span style="--c:var(--unsure)">One answered</span>
+        <span style="--c:var(--empty)">Not started</span>
+      </div>
+    </div>
+    <div class="strip" id="strip" style="margin-top:10px"></div>
+  </section>
+  <footer>
+    <span id="savehint">Answers save as you go.</span>
+    <button type="button" class="tool" id="showcsv">Show answers as CSV</button>
+  </footer>
+  <textarea id="csv" readonly hidden aria-label="Answers as CSV"></textarea>
+</div>
+
+<script type="application/json" id="items">__ITEMS__</script>
+<script>
+const ITEMS = JSON.parse(document.getElementById("items").textContent);
+const pretty = c => { const s = c.replace(/_/g, " "); return s.charAt(0).toUpperCase() + s.slice(1); };
+const $ = id => document.getElementById(id);
+const answers = {}, chains = {};
+let cur = 0, db = null;
+
+function loadLocal() { try { return JSON.parse(localStorage.getItem("sy-answers") || "{}"); } catch { return {}; } }
+function saveLocal() { try { localStorage.setItem("sy-answers", JSON.stringify(answers)); } catch {} }
+const done = a => a && a.real && a.species;
+
+function buildStrip() {
+  ITEMS.forEach((it, i) => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "cell"; b.textContent = String(i + 1); b.addEventListener("click", () => go(i));
+    $("strip").append(b);
+  });
+}
+function paintStrip() {
+  [...$("strip").children].forEach((b, i) => {
+    const a = answers[ITEMS[i].id];
+    b.className = "cell " + (done(a) ? "d" : a && (a.real || a.species) ? "h" : "") + (i === cur ? " cur" : "");
+    b.setAttribute("aria-label", `Snip ${i + 1}${done(a) ? ", answered" : ""}`);
+  });
+  $("tally").innerHTML = `<b>${ITEMS.filter(it => done(answers[it.id])).length}</b> of ${ITEMS.length} answered`;
+}
+function render() {
+  const it = ITEMS[cur], a = answers[it.id] || {};
+  $("img").src = "data:image/jpeg;base64," + it.img; $("img").alt = `Snip ${cur + 1} of ${ITEMS.length}`;
+  $("itemid").textContent = it.id; $("pos").textContent = `${cur + 1} / ${ITEMS.length} · pair ${it.block}`;
+  for (const [id, v] of [["rR", "real"], ["rS", "synthetic"], ["rU", "unsure"]]) $(id).setAttribute("aria-pressed", String(a.real === v));
+  for (const [id, code] of [["sA", it.a], ["sB", it.b]]) {
+    const n = $(id).querySelector(".name"); n.textContent = pretty(code);
+    $(id).setAttribute("aria-pressed", String(a.species === code));
+  }
+  $("sO").setAttribute("aria-pressed", String(a.species === "neither"));
+  $("sU").setAttribute("aria-pressed", String(a.species === "unsure"));
+  if (document.activeElement !== $("note")) $("note").value = a.note || "";
+  paintStrip();
+}
+function go(i) { cur = (i + ITEMS.length) % ITEMS.length; $("status").textContent = ""; render(); }
+function nextUnfinished() {
+  for (let k = 1; k <= ITEMS.length; k++) { const i = (cur + k) % ITEMS.length; if (!done(answers[ITEMS[i].id])) return go(i); }
+  $("status").textContent = "Every snip has both answers.";
+}
+function persist(id, body) {
+  answers[id] = body; saveLocal(); paintStrip();
+  if (!db) { $("status").textContent = "Saved in this browser only"; return; }
+  $("status").textContent = "Saving…";
+  chains[id] = (chains[id] || Promise.resolve()).then(() => db.collection("answers").doc(id).set(body)).then(
+    () => { if (ITEMS[cur].id === id) $("status").textContent = "Saved"; },
+    e => { $("status").textContent = `Not saved (${e && e.code || "error"}). Kept in this browser; use Show answers as CSV at the end.`; });
+}
+function answer(field, value) {
+  const it = ITEMS[cur], a = { ...(answers[it.id] || {}), [field]: value, note: $("note").value.trim(), at: new Date().toISOString() };
+  persist(it.id, a); render();
+  if (done(a)) setTimeout(nextUnfinished, 180);
+}
+$("rR").addEventListener("click", () => answer("real", "real"));
+$("rS").addEventListener("click", () => answer("real", "synthetic"));
+$("rU").addEventListener("click", () => answer("real", "unsure"));
+$("sA").addEventListener("click", () => answer("species", ITEMS[cur].a));
+$("sB").addEventListener("click", () => answer("species", ITEMS[cur].b));
+$("sO").addEventListener("click", () => answer("species", "neither"));
+$("sU").addEventListener("click", () => answer("species", "unsure"));
+$("note").addEventListener("change", () => {
+  const it = ITEMS[cur], a = answers[it.id] || {}, note = $("note").value.trim();
+  if ((a.note || "") !== note) persist(it.id, { ...a, note, at: new Date().toISOString() });
+});
+$("prev").addEventListener("click", () => go(cur - 1));
+$("next").addEventListener("click", () => go(cur + 1));
+$("nextU").addEventListener("click", nextUnfinished);
+document.addEventListener("keydown", e => {
+  if (e.target.matches("textarea, select, input") || e.metaKey || e.ctrlKey || e.altKey) return;
+  const map = { "1": "rR", "2": "rS", "3": "rU", "4": "sA", "5": "sB", "6": "sO", "7": "sU" };
+  if (map[e.key]) $(map[e.key]).click();
+  else if (e.key === "ArrowLeft") go(cur - 1);
+  else if (e.key === "ArrowRight") go(cur + 1);
+});
+$("showcsv").addEventListener("click", () => {
+  const q = s => `"${String(s ?? "").replace(/"/g, '""')}"`;
+  $("csv").value = ["id,real,species,note,at", ...ITEMS.map(it => { const a = answers[it.id] || {}; return [it.id, a.real || "", a.species || "", q(a.note), a.at || ""].join(","); })].join("\n");
+  $("csv").hidden = false; $("csv").focus(); $("csv").select();
+});
+
+Object.assign(answers, loadLocal());
+buildStrip();
+go(Math.max(0, ITEMS.findIndex(it => !done(answers[it.id]))));
+(async () => {
+  try { db = await window.claude?.use?.("db"); } catch { db = null; }
+  if (!db) {
+    $("banner").hidden = false;
+    $("banner").textContent = "This view cannot save to the shared store, so answers stay in this browser. When you finish, use Show answers as CSV and paste the text into the chat.";
+    $("savehint").textContent = "Answers save in this browser only.";
+    return;
+  }
+  db.collection("answers").onSnapshot(snap => { for (const d of snap.docs) answers[d.id] = d.data(); saveLocal(); render(); },
+    e => { $("banner").hidden = false; $("banner").textContent = `Lost the connection to the shared store (${e.code}). Answers now stay in this browser; reload to reconnect.`; db = null; });
+})();
+</script>
