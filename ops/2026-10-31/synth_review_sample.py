@@ -30,7 +30,7 @@ def main(tdir, v2, out_json, out_csv, seed):
     man = pd.read_parquet(tdir / "manifest.parquet")
     sources = set(man.source_relpath)
     train = pd.read_csv(Path(v2) / "train.csv")
-    train["rel"] = train.path.str.split("/").str[-2:].str.join("/")
+    train["rel"] = train.path.str.split("/").str[-3:].str.join("/")
     camera = ~train.path.str.split("/").str[-1].str.match(r"(ebird|inat)_")
     rows = []
     for block, (target, look) in enumerate(PAIRS.items(), 1):

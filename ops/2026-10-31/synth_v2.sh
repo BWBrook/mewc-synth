@@ -9,12 +9,13 @@ cd "$HOME/mewc-synth/src"; export HF_HOME=/mnt/scratch/hf
 stamp() { echo "[$(date +%H:%M:%S)] $*"; }
 trap 'stamp "SYNTH V2 END"' EXIT
 for a in quoll_short currawong kangaroo rat; do
+  ls -d $L/b_$a/step_* > /dev/null 2>&1 && { stamp "b_$a already trained"; continue; }
   stamp "train b_$a"
   $P train_lora.py a_sv2 b_$a "$(cat $C/cfg_$a.json)" > $W/synth_v2_train_$a.log 2>&1 \
     || { stamp "train b_$a FAILED"; tail -n 5 $W/synth_v2_train_$a.log; exit 1; }
 done
 tr() { stamp "translate $2 -> $3"; $P translate.py $L/$1 $W/snips_meta/class_table.csv $W/audit_v2 split_v2 $O \
-  "{\"source\": \"$2\", \"target\": \"$3\", \"n\": 200, \"strengths\": [0.65], \"guidance\": 3.5, \"steps\": 30, \"seed\": 61, \"ir_chroma\": 1.0, \"q95_share\": $4}" 2>&1 | grep "^{" || { stamp "translate FAILED"; exit 1; }; }
+  "{\"source\": \"$2\", \"target\": \"$3\", \"n\": 200, \"strengths\": [0.65], \"guidance\": 3.5, \"steps\": 30, \"seed\": 61, \"ir_chroma\": 1.0, \"q95_share\": $4, \"snip_root\": \"$M/v2\"}" 2>&1 | grep "^{" || { stamp "translate FAILED"; exit 1; }; }
 tr b_quoll_short/step_000200 eastern_quoll spotted_tail_quoll 0.089
 tr b_currawong/step_000400 grey_currawong black_currawong 0.332
 tr b_kangaroo/step_000400 bennetts_wallaby forester_kangaroo 0.0

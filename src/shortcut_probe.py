@@ -105,8 +105,9 @@ def main(synth_dir, mode="pair", epochs=15):
     dev = "cuda" if torch.cuda.is_available() else "cpu"
     d = Path(synth_dir)
     man = pd.read_parquet(d / "manifest.parquet").reset_index(drop=True)
-    snips = DATA / "work" / "snips"
-    sources = [snips / r for r in man["source_relpath"]]
+    roots = man["source_root"] if "source_root" in man else [DATA / "work" / "snips"] * len(man)
+    sources = [Path(root) / r for root, r in zip(roots, man["source_relpath"])]
+    snips = Path(list(roots)[0])
     if mode == "pair":
         a, b, pair = sources, [d / r for r in man["relpath"]], np.arange(len(man))
     elif mode == "within":

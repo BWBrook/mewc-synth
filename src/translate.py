@@ -8,7 +8,9 @@ infrared with probability "ir_share" (default 0) since photos carry no infrared 
 If n exceeds the source pool, sources are drawn with replacement (each repeat gets its own seed).
 Usage: python src/translate.py LORA_DIR CLASS_TABLE_CSV INV_DIR SPLIT_NAME OUT_DIR CONFIG_JSON
 CONFIG_JSON example: {"source": "eastern_quoll", "target": "spotted_tail_quoll", "n": 48,
-  "strengths": [0.5, 0.65, 0.8], "guidance": 3.5, "steps": 30, "seed": 31, "ir_chroma": 1.0, "q95_share": 0.09}"""
+  "strengths": [0.5, 0.65, 0.8], "guidance": 3.5, "steps": 30, "seed": 31, "ir_chroma": 1.0, "q95_share": 0.09}
+Optional "snip_root" names the folder that relpaths resolve against (default INV_DIR/../snips, the v1 layout;
+/mnt/ml-data/mewc-synth/v2 for split v2); the manifest records it as source_root."""
 import hashlib
 import json
 import sys
@@ -40,7 +42,7 @@ def main(lora_dir, class_table, inv_dir, split_name, out_dir, config):
     pipe = StableDiffusionXLImg2ImgPipeline.from_pretrained(SDXL, vae=vae, torch_dtype=torch.bfloat16, variant="fp16").to("cuda")
     pipe.load_lora_weights(str(lora_dir))
     pipe.set_progress_bar_config(disable=True)
-    snip_root = inv_dir.parent / "snips"
+    snip_root = Path(cfg.get("snip_root", inv_dir.parent / "snips"))
     target = cfg["target"]
     (out / target).mkdir(parents=True, exist_ok=True)
     rows = []
@@ -60,7 +62,7 @@ def main(lora_dir, class_table, inv_dir, split_name, out_dir, config):
             name = f"synth_{target}_{tag}_{seed}.jpg"
             (out / target / name).write_bytes(data)
             rows.append({"relpath": f"{target}/{name}", "class_code": target, "tag": tag, "prompt": prompt,
-                         "source_relpath": r.relpath, "strength": s, "seed": seed, "guidance": cfg["guidance"],
+                         "source_relpath": r.relpath, "source_root": str(snip_root), "strength": s, "seed": seed, "guidance": cfg["guidance"],
                          "steps": cfg["steps"], "jpeg_quality": quality, "lora": str(weights),
                          "lora_sha256": lora_sha, "sha256": hashlib.sha256(data).hexdigest()})
     manifest = out / "manifest.parquet"
