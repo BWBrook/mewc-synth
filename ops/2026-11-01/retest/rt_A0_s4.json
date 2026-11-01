@@ -1,0 +1,16 @@
+{
+ "backbone": "vit_base_patch16_384.augreg_in21k_ft_in1k",
+ "blocks": 9,
+ "seed": 4,
+ "samples_per_class": 400,
+ "frozen_epochs": 3,
+ "stage_len": 3,
+ "total_epochs": 12,
+ "img_size": 384,
+ "workers": 12,
+ "precision": "bf16",
+ "batch": 64,
+ "lr": 0.0002,
+ "warmup_steps": 300,
+ "train": "/mnt/ml-data/mewc-synth/v2_runs/arms/A0.csv"
+}

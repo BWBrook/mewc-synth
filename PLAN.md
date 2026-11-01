@@ -325,3 +325,28 @@ and synthetic snips identically.
     Large members and the more-unfrozen variants use gradient checkpointing, which leaves the computation
     unchanged. Each member's best variant goes forward; the accurate and deployable shortlists follow the
     stage 2 rule.
+- 2026-11-01, before any of its runs: **phase 1 synthetic re-test** (`ops/2026-11-01`), on gpu-5 after its
+  mini-search.
+  - **Data:** split v2 with all label corrections (val, test, and the training pool's 283 changes, applied
+    on gpu-5 just before the first run). The four pseudo-rare classes (spotted-tailed quoll, forester kangaroo,
+    black currawong, black rat) are cut to their 50-snip subsets (Stage A run `a_sv2`); every other class keeps
+    its full pool.
+  - **Synthetic set:** `translate_v2`, 200 look-alike translations per class with the S20 recipe on the v2
+    adapters (logged on 31 October). Barry's blind audit and the production model agree that the quoll
+    translations mostly keep the eastern quoll's look.
+  - **Arms**, ViT-B, screen scale, the mewc-torch recipe (bf16, batch 64, warmup 300):
+    - **A0:** the 50 real snips per class.
+    - **S20:** the 50 real snips listed 16 times plus the 200 translations, so 20% of draws are synthetic.
+    - **S20f:** S20 with the synthetic rows cycling through only the translations the production VTL
+      assigns to the target class (PLAN filter 2). Share and real exposure match S20; 73, 116, 142 and 164
+      pass for quoll, rat, currawong and kangaroo.
+    - **R:** full real data, seeds 1 and 2 only, as the headroom reference.
+    A0, S20 and S20f run seeds 1 to 8, paired by seed.
+  - **Primary endpoint:** macro-F1 over the four classes on the v2c validation snips (500 per class), as the
+    difference S20 − A0 and S20f − A0 with two-level bootstrap intervals (snips within seeds, then seeds).
+    An arm helps if its interval excludes zero and no non-focus class is harmed under the amended rule
+    (2026-10-22). S20f against S20 is secondary: it tests whether the identity filter adds anything.
+  - **Validation is also the selection set:** the best epoch is picked on 100 validation snips per class, a
+    small optimism common to all arms. Test snips (2,000 per class) stay sealed for phase 2.
+  - **Deviation:** the minimum detectable effect was to be registered from a measured v2 baseline seed
+    variance. That measurement does not exist yet, so the achieved interval widths will be reported instead.
