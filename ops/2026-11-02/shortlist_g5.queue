@@ -1,0 +1,15 @@
+torch sl_cnv2_l_base_s2 /home/ubuntu/mewc-synth/ops/2026-11-02/shortlist/sl_cnv2_l_base_s2.json
+torch sl_caformer_s36_lr1_s2 /home/ubuntu/mewc-synth/ops/2026-11-02/shortlist/sl_caformer_s36_lr1_s2.json
+torch sl_caformer_b36_bmore_s2 /home/ubuntu/mewc-synth/ops/2026-11-02/shortlist/sl_caformer_b36_bmore_s2.json
+torch sl_cnv2_l_base_s3 /home/ubuntu/mewc-synth/ops/2026-11-02/shortlist/sl_cnv2_l_base_s3.json
+torch sl_caformer_s36_lr1_s3 /home/ubuntu/mewc-synth/ops/2026-11-02/shortlist/sl_caformer_s36_lr1_s3.json
+torch sl_caformer_b36_bmore_s3 /home/ubuntu/mewc-synth/ops/2026-11-02/shortlist/sl_caformer_b36_bmore_s3.json
+torch sl_cnv2_n_lr1_s1 /home/ubuntu/mewc-synth/ops/2026-11-02/shortlist/sl_cnv2_n_lr1_s1.json
+torch sl_mnv4_hl_lr1_s1 /home/ubuntu/mewc-synth/ops/2026-11-02/shortlist/sl_mnv4_hl_lr1_s1.json
+torch sl_mnv4_cl_lr1_s1 /home/ubuntu/mewc-synth/ops/2026-11-02/shortlist/sl_mnv4_cl_lr1_s1.json
+torch sl_cnv2_n_lr1_s2 /home/ubuntu/mewc-synth/ops/2026-11-02/shortlist/sl_cnv2_n_lr1_s2.json
+torch sl_mnv4_hl_lr1_s2 /home/ubuntu/mewc-synth/ops/2026-11-02/shortlist/sl_mnv4_hl_lr1_s2.json
+torch sl_mnv4_cl_lr1_s2 /home/ubuntu/mewc-synth/ops/2026-11-02/shortlist/sl_mnv4_cl_lr1_s2.json
+torch sl_cnv2_n_lr1_s3 /home/ubuntu/mewc-synth/ops/2026-11-02/shortlist/sl_cnv2_n_lr1_s3.json
+torch sl_mnv4_hl_lr1_s3 /home/ubuntu/mewc-synth/ops/2026-11-02/shortlist/sl_mnv4_hl_lr1_s3.json
+torch sl_mnv4_cl_lr1_s3 /home/ubuntu/mewc-synth/ops/2026-11-02/shortlist/sl_mnv4_cl_lr1_s3.json

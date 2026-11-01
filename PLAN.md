@@ -350,3 +350,24 @@ and synthetic snips identically.
     small optimism common to all arms. Test snips (2,000 per class) stay sealed for phase 2.
   - **Deviation:** the minimum detectable effect was to be registered from a measured v2 baseline seed
     variance. That measurement does not exist yet, so the achieved interval widths will be reported instead.
+- 2026-11-02, after the mini-search and the re-test, before any shortlist-seed result:
+  - **Seeded shortlist round** (`ops/2026-11-02`), inserted before recipe tuning. Seed-to-seed SD of
+    overall macro-F1 is 0.0053 (eight A0 seeds of the re-test, ViT-B). That is larger than the gaps among
+    the seven best mini-search members (0.9675 to 0.9704), so one seed cannot apply the tie rule.
+    - **Accurate track:** two further seeds (2 and 3) for DINOv3-L (lr 1e-4), ConvNeXt V2-L (base),
+      EVA-02-L (16 blocks), CAFormer-S36 (lr 1e-4), EVA-02-B (lr 1e-4), ViT-L (16 blocks) and CAFormer-B36
+      (3 stages).
+    - **Deployable track** (at least 15 images/s on deep): ConvNeXt V2-N, EfficientNetV2-S, FastViT-SA24,
+      MobileNetV4 hybrid-large and conv-large, and HGNetV2-B4, at lr 1e-4 with warmup (the best variant on
+      average in the mini-search), seeds 1 to 3.
+    - **Training pool:** the corrected pool on both instances. The accurate track's seed 1 trained on the
+      uncorrected pool, 283 of 1.01M rows different.
+    - **Rule:** the accurate model is the highest three-seed mean; any model within the two-level 95%
+      interval of the leader that is cheaper on CPU wins the tie. The deployable model follows the same rule
+      among the deployable models.
+  - **Re-test outcome:** registered rule met (`ops/2026-11-01/retest_eval.json`), no class harmed.
+    - S20 − A0 = +0.028 [+0.003, +0.055].
+    - S20f − A0 = +0.030 [+0.006, +0.058].
+    - Focus macro-F1: A0 0.837, S20 0.864, S20f 0.867, R 0.957.
+    - The identity filter moves the gain from the quoll (+0.011 to +0.004) to the currawong (+0.064 to
+      +0.084), with no net difference.

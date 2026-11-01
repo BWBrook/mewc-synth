@@ -1,0 +1,17 @@
+torch sl_dinov3_l_lr1_s2 /home/ubuntu/mewc-synth/ops/2026-11-02/shortlist/sl_dinov3_l_lr1_s2.json
+torch sl_eva02_l_bmore_s2 /home/ubuntu/mewc-synth/ops/2026-11-02/shortlist/sl_eva02_l_bmore_s2.json
+torch sl_vtl_bmore_s2 /home/ubuntu/mewc-synth/ops/2026-11-02/shortlist/sl_vtl_bmore_s2.json
+torch sl_eva02_b_lr1_s2 /home/ubuntu/mewc-synth/ops/2026-11-02/shortlist/sl_eva02_b_lr1_s2.json
+torch sl_dinov3_l_lr1_s3 /home/ubuntu/mewc-synth/ops/2026-11-02/shortlist/sl_dinov3_l_lr1_s3.json
+torch sl_eva02_l_bmore_s3 /home/ubuntu/mewc-synth/ops/2026-11-02/shortlist/sl_eva02_l_bmore_s3.json
+torch sl_vtl_bmore_s3 /home/ubuntu/mewc-synth/ops/2026-11-02/shortlist/sl_vtl_bmore_s3.json
+torch sl_eva02_b_lr1_s3 /home/ubuntu/mewc-synth/ops/2026-11-02/shortlist/sl_eva02_b_lr1_s3.json
+torch sl_ens_lr1_s1 /home/ubuntu/mewc-synth/ops/2026-11-02/shortlist/sl_ens_lr1_s1.json
+torch sl_fastvit_sa24_lr1_s1 /home/ubuntu/mewc-synth/ops/2026-11-02/shortlist/sl_fastvit_sa24_lr1_s1.json
+torch sl_hgnetv2_b4_lr1_s1 /home/ubuntu/mewc-synth/ops/2026-11-02/shortlist/sl_hgnetv2_b4_lr1_s1.json
+torch sl_ens_lr1_s2 /home/ubuntu/mewc-synth/ops/2026-11-02/shortlist/sl_ens_lr1_s2.json
+torch sl_fastvit_sa24_lr1_s2 /home/ubuntu/mewc-synth/ops/2026-11-02/shortlist/sl_fastvit_sa24_lr1_s2.json
+torch sl_hgnetv2_b4_lr1_s2 /home/ubuntu/mewc-synth/ops/2026-11-02/shortlist/sl_hgnetv2_b4_lr1_s2.json
+torch sl_ens_lr1_s3 /home/ubuntu/mewc-synth/ops/2026-11-02/shortlist/sl_ens_lr1_s3.json
+torch sl_fastvit_sa24_lr1_s3 /home/ubuntu/mewc-synth/ops/2026-11-02/shortlist/sl_fastvit_sa24_lr1_s3.json
+torch sl_hgnetv2_b4_lr1_s3 /home/ubuntu/mewc-synth/ops/2026-11-02/shortlist/sl_hgnetv2_b4_lr1_s3.json
