@@ -408,3 +408,7 @@ and synthetic snips identically.
     - Fusing FastViT's reparameterisable branches (timm `reparameterize_model`) raises its CPU throughput
       from 32.4 to 45.9 and its 2080 throughput by 28%, with outputs unchanged (6.5e-9). `export.py` now
       fuses before export.
+  - **Seed 4 for the accurate track**, appended to the queue tails on 2 November so neither GPU sits idle
+    overnight (gpu-5: ConvNeXt V2-L, CAFormer-S36, CAFormer-B36, DINOv3-L; ngx-gpu: ViT-L, EVA-02-B,
+    EVA-02-L). The registered three-seed rule decides; four-seed means and intervals are reported beside
+    it and replace it only if every accurate model has its fourth seed by then.
