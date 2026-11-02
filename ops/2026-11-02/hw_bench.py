@@ -12,6 +12,7 @@ import tempfile
 import traceback
 
 import onnx
+import onnxruntime as ort
 import pandas as pd
 import torch
 from onnxruntime.transformers.float16 import convert_float_to_float16
@@ -40,6 +41,7 @@ def timings(path, d, tag):
 
 
 def main(models, out):
+    ort.preload_dlls()
     torch.set_num_threads(8)
     for row in pd.read_csv(models).to_dict("records"):
         try:
