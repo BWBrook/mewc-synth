@@ -371,3 +371,12 @@ and synthetic snips identically.
     - Focus macro-F1: A0 0.837, S20 0.864, S20f 0.867, R 0.957.
     - The identity filter moves the gain from the quoll (+0.011 to +0.004) to the currawong (+0.064 to
       +0.084), with no net difference.
+- 2026-11-02, decision 1 (deployment hardware), after two seed-2 shortlist results (DINOv3-L 0.9704,
+  ConvNeXt V2-L 0.9703) and before any cost comparison:
+  - **Barry (chat, 2 November):** "8-core CPU + RTX 2080", and "You can experiment with alien for a setup
+    that matches that exactly". The A100 stays as the reference.
+  - **Reference machine:** alien (i7-9700K, 8 cores; RTX 2080, 8 GB), `ops/2026-11-02/hw_bench.py`:
+    `onnxruntime` on 8 CPU threads at batch 8, and CUDA fp32 and fp16 at batch 8 and 32.
+  - **Rule revision:** the deployable threshold is 15 images/s on alien's 8 cores, replacing deep. The
+    accurate-track tie goes to the model that is cheaper on the RTX 2080; the deployable-track tie to the
+    one cheaper on the CPU. Accuracy endpoints are unchanged.
