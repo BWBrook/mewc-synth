@@ -1,0 +1,513 @@
+{
+ "n_val": 29011,
+ "accurate_s1_3": {
+  "leader": "dinov3_l_lr1",
+  "cost_key": "gpu_fp16_b32",
+  "winner": "caformer_s36_lr1",
+  "tied": [
+   "dinov3_l_lr1",
+   "cnv2_l_base",
+   "eva02_l_bmore",
+   "eva02_b_lr1",
+   "caformer_s36_lr1"
+  ],
+  "models": [
+   {
+    "model": "dinov3_l_lr1",
+    "seeds": [
+     1,
+     2,
+     3
+    ],
+    "per_seed": [
+     0.9704,
+     0.9704,
+     0.9681
+    ],
+    "mean": 0.9697,
+    "sd": 0.0014,
+    "diff_vs_leader": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "ties_leader": true,
+    "cpu8": 1.0,
+    "gpu_fp32_b32": 16.9,
+    "gpu_fp16_b32": 47.2
+   },
+   {
+    "model": "cnv2_l_base",
+    "seeds": [
+     1,
+     2,
+     3
+    ],
+    "per_seed": [
+     0.9688,
+     0.9703,
+     0.9659
+    ],
+    "mean": 0.9683,
+    "sd": 0.0023,
+    "diff_vs_leader": -0.0013,
+    "ci95": [
+     -0.0055,
+     0.0033
+    ],
+    "ties_leader": true,
+    "cpu8": 1.5,
+    "gpu_fp32_b32": 24.1,
+    "gpu_fp16_b32": 49.4
+   },
+   {
+    "model": "eva02_l_bmore",
+    "seeds": [
+     1,
+     2,
+     3
+    ],
+    "per_seed": [
+     0.9688,
+     0.9698,
+     0.9664
+    ],
+    "mean": 0.9683,
+    "sd": 0.0018,
+    "diff_vs_leader": -0.0013,
+    "ci95": [
+     -0.0056,
+     0.0021
+    ],
+    "ties_leader": true,
+    "cpu8": 0.6,
+    "gpu_fp32_b32": 11.1,
+    "gpu_fp16_b32": 29.4
+   },
+   {
+    "model": "eva02_b_lr1",
+    "seeds": [
+     1,
+     2,
+     3
+    ],
+    "per_seed": [
+     0.9677,
+     0.966,
+     0.9667
+    ],
+    "mean": 0.9668,
+    "sd": 0.0008,
+    "diff_vs_leader": -0.0029,
+    "ci95": [
+     -0.0067,
+     0.0008
+    ],
+    "ties_leader": true,
+    "cpu8": 2.2,
+    "gpu_fp32_b32": 34.8,
+    "gpu_fp16_b32": 86.5
+   },
+   {
+    "model": "caformer_s36_lr1",
+    "seeds": [
+     1,
+     2,
+     3
+    ],
+    "per_seed": [
+     0.9687,
+     0.9648,
+     0.9625
+    ],
+    "mean": 0.9653,
+    "sd": 0.0031,
+    "diff_vs_leader": -0.0044,
+    "ci95": [
+     -0.0092,
+     0.0007
+    ],
+    "ties_leader": true,
+    "cpu8": 4.4,
+    "gpu_fp32_b32": 69.4,
+    "gpu_fp16_b32": 154.4
+   },
+   {
+    "model": "vtl_bmore",
+    "seeds": [
+     1,
+     2,
+     3
+    ],
+    "per_seed": [
+     0.9676,
+     0.964,
+     0.9635
+    ],
+    "mean": 0.965,
+    "sd": 0.0023,
+    "diff_vs_leader": -0.0046,
+    "ci95": [
+     -0.0084,
+     -0.0002
+    ],
+    "ties_leader": false,
+    "cpu8": 1.1,
+    "gpu_fp32_b32": 18.1,
+    "gpu_fp16_b32": 53.0
+   },
+   {
+    "model": "caformer_b36_bmore",
+    "seeds": [
+     1,
+     2,
+     3
+    ],
+    "per_seed": [
+     0.9675,
+     0.9642,
+     0.9624
+    ],
+    "mean": 0.9647,
+    "sd": 0.0026,
+    "diff_vs_leader": -0.005,
+    "ci95": [
+     -0.0094,
+     -0.0007
+    ],
+    "ties_leader": false,
+    "cpu8": 1.8,
+    "gpu_fp32_b32": 33.0,
+    "gpu_fp16_b32": 85.1
+   }
+  ]
+ },
+ "accurate_s1_4": {
+  "leader": "dinov3_l_lr1",
+  "cost_key": "gpu_fp16_b32",
+  "winner": "eva02_b_lr1",
+  "tied": [
+   "dinov3_l_lr1",
+   "eva02_l_bmore",
+   "cnv2_l_base",
+   "eva02_b_lr1"
+  ],
+  "models": [
+   {
+    "model": "dinov3_l_lr1",
+    "seeds": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "per_seed": [
+     0.9704,
+     0.9704,
+     0.9681,
+     0.9705
+    ],
+    "mean": 0.9699,
+    "sd": 0.0012,
+    "diff_vs_leader": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "ties_leader": true,
+    "cpu8": 1.0,
+    "gpu_fp32_b32": 16.9,
+    "gpu_fp16_b32": 47.2
+   },
+   {
+    "model": "eva02_l_bmore",
+    "seeds": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "per_seed": [
+     0.9688,
+     0.9698,
+     0.9664,
+     0.9703
+    ],
+    "mean": 0.9688,
+    "sd": 0.0017,
+    "diff_vs_leader": -0.0011,
+    "ci95": [
+     -0.0049,
+     0.0022
+    ],
+    "ties_leader": true,
+    "cpu8": 0.6,
+    "gpu_fp32_b32": 11.1,
+    "gpu_fp16_b32": 29.4
+   },
+   {
+    "model": "cnv2_l_base",
+    "seeds": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "per_seed": [
+     0.9688,
+     0.9703,
+     0.9659,
+     0.9664
+    ],
+    "mean": 0.9679,
+    "sd": 0.0021,
+    "diff_vs_leader": -0.002,
+    "ci95": [
+     -0.0062,
+     0.002
+    ],
+    "ties_leader": true,
+    "cpu8": 1.5,
+    "gpu_fp32_b32": 24.1,
+    "gpu_fp16_b32": 49.4
+   },
+   {
+    "model": "eva02_b_lr1",
+    "seeds": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "per_seed": [
+     0.9677,
+     0.966,
+     0.9667,
+     0.9679
+    ],
+    "mean": 0.9671,
+    "sd": 0.0009,
+    "diff_vs_leader": -0.0028,
+    "ci95": [
+     -0.0066,
+     0.0007
+    ],
+    "ties_leader": true,
+    "cpu8": 2.2,
+    "gpu_fp32_b32": 34.8,
+    "gpu_fp16_b32": 86.5
+   },
+   {
+    "model": "vtl_bmore",
+    "seeds": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "per_seed": [
+     0.9676,
+     0.964,
+     0.9635,
+     0.9644
+    ],
+    "mean": 0.9649,
+    "sd": 0.0019,
+    "diff_vs_leader": -0.005,
+    "ci95": [
+     -0.0087,
+     -0.0013
+    ],
+    "ties_leader": false,
+    "cpu8": 1.1,
+    "gpu_fp32_b32": 18.1,
+    "gpu_fp16_b32": 53.0
+   },
+   {
+    "model": "caformer_s36_lr1",
+    "seeds": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "per_seed": [
+     0.9687,
+     0.9648,
+     0.9625,
+     0.9603
+    ],
+    "mean": 0.964,
+    "sd": 0.0036,
+    "diff_vs_leader": -0.0058,
+    "ci95": [
+     -0.0106,
+     -0.0008
+    ],
+    "ties_leader": false,
+    "cpu8": 4.4,
+    "gpu_fp32_b32": 69.4,
+    "gpu_fp16_b32": 154.4
+   },
+   {
+    "model": "caformer_b36_bmore",
+    "seeds": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "per_seed": [
+     0.9675,
+     0.9642,
+     0.9624,
+     0.9614
+    ],
+    "mean": 0.9639,
+    "sd": 0.0027,
+    "diff_vs_leader": -0.006,
+    "ci95": [
+     -0.0105,
+     -0.0018
+    ],
+    "ties_leader": false,
+    "cpu8": 1.8,
+    "gpu_fp32_b32": 33.0,
+    "gpu_fp16_b32": 85.1
+   }
+  ]
+ },
+ "deployable_s1_3": {
+  "leader": "ens_lr1",
+  "cost_key": "cpu8",
+  "winner": "hgnetv2_b4_lr1",
+  "tied": [
+   "ens_lr1",
+   "fastvit_sa24_lr1",
+   "hgnetv2_b4_lr1",
+   "mnv4_hl_lr1"
+  ],
+  "models": [
+   {
+    "model": "ens_lr1",
+    "seeds": [
+     1,
+     2,
+     3
+    ],
+    "per_seed": [
+     0.9473,
+     0.9467,
+     0.9447
+    ],
+    "mean": 0.9462,
+    "sd": 0.0014,
+    "diff_vs_leader": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "ties_leader": true,
+    "cpu8": 17.9,
+    "gpu_fp32_b32": 212.9,
+    "gpu_fp16_b32": 347.7
+   },
+   {
+    "model": "fastvit_sa24_lr1",
+    "seeds": [
+     1,
+     2,
+     3
+    ],
+    "per_seed": [
+     0.9476,
+     0.9433,
+     0.9421
+    ],
+    "mean": 0.9443,
+    "sd": 0.0029,
+    "diff_vs_leader": -0.0019,
+    "ci95": [
+     -0.0071,
+     0.0035
+    ],
+    "ties_leader": true,
+    "cpu8": 45.9,
+    "gpu_fp32_b32": 449.9,
+    "gpu_fp16_b32": 780.2
+   },
+   {
+    "model": "hgnetv2_b4_lr1",
+    "seeds": [
+     1,
+     2,
+     3
+    ],
+    "per_seed": [
+     0.9439,
+     0.9411,
+     0.9449
+    ],
+    "mean": 0.9433,
+    "sd": 0.002,
+    "diff_vs_leader": -0.0029,
+    "ci95": [
+     -0.0078,
+     0.0025
+    ],
+    "ties_leader": true,
+    "cpu8": 54.6,
+    "gpu_fp32_b32": 496.5,
+    "gpu_fp16_b32": 868.1
+   },
+   {
+    "model": "mnv4_hl_lr1",
+    "seeds": [
+     1,
+     2,
+     3
+    ],
+    "per_seed": [
+     0.9427,
+     0.9428,
+     0.9434
+    ],
+    "mean": 0.943,
+    "sd": 0.0004,
+    "diff_vs_leader": -0.0033,
+    "ci95": [
+     -0.0077,
+     0.0018
+    ],
+    "ties_leader": true,
+    "cpu8": 25.1,
+    "gpu_fp32_b32": 243.3,
+    "gpu_fp16_b32": 437.1
+   },
+   {
+    "model": "mnv4_cl_lr1",
+    "seeds": [
+     1,
+     2,
+     3
+    ],
+    "per_seed": [
+     0.939,
+     0.9404,
+     0.9379
+    ],
+    "mean": 0.9391,
+    "sd": 0.0012,
+    "diff_vs_leader": -0.0071,
+    "ci95": [
+     -0.0119,
+     -0.0021
+    ],
+    "ties_leader": false,
+    "cpu8": 27.3,
+    "gpu_fp32_b32": 250.1,
+    "gpu_fp16_b32": 450.3
+   }
+  ]
+ }
+}

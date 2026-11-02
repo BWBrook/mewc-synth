@@ -1,0 +1,31 @@
+{
+ "backbone": "hgnetv2_b4.ssld_stage2_ft_in1k",
+ "img_size": 288,
+ "samples_per_class": 400,
+ "frozen_epochs": 3,
+ "stage_len": 3,
+ "total_epochs": 12,
+ "workers": 12,
+ "precision": "bf16",
+ "batch": 64,
+ "warmup_steps": 300,
+ "seed": 1,
+ "lr": 3.595772525254713e-05,
+ "weight_decay": 0.00587739677519678,
+ "blocks": 1,
+ "min_lr_frac": 0.15676842877209188,
+ "dropouts": [
+  0.0782,
+  0.1564,
+  0.2346,
+  0.3128
+ ],
+ "magnitudes": [
+  0.1567,
+  0.3134,
+  0.4701,
+  0.6268
+ ],
+ "n_aug": 4,
+ "focal_gamma": 0.15519187040627003
+}

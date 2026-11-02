@@ -1,0 +1,31 @@
+{
+ "backbone": "eva02_base_patch14_448.mim_in22k_ft_in22k_in1k",
+ "img_size": 392,
+ "samples_per_class": 400,
+ "frozen_epochs": 3,
+ "stage_len": 3,
+ "total_epochs": 12,
+ "workers": 12,
+ "precision": "bf16",
+ "batch": 64,
+ "warmup_steps": 300,
+ "seed": 1,
+ "lr": 0.0005518599000829084,
+ "weight_decay": 0.00025048698776436554,
+ "blocks": 11,
+ "min_lr_frac": 0.8591876300308193,
+ "dropouts": [
+  0.0838,
+  0.1677,
+  0.2515,
+  0.3353
+ ],
+ "magnitudes": [
+  0.1321,
+  0.2643,
+  0.3964,
+  0.5285
+ ],
+ "n_aug": 3,
+ "focal_gamma": 2.124583588913083
+}

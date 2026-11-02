@@ -412,3 +412,45 @@ and synthetic snips identically.
     overnight (gpu-5: ConvNeXt V2-L, CAFormer-S36, CAFormer-B36, DINOv3-L; ngx-gpu: ViT-L, EVA-02-B,
     EVA-02-L). The registered three-seed rule decides; four-seed means and intervals are reported beside
     it and replace it only if every accurate model has its fourth seed by then.
+- 2026-11-03, shortlist outcome (`ops/2026-11-03/shortlist_eval.json`; two-level intervals of the
+  difference from each track's leader, seeds resampled within model and snips jointly):
+  - **Accurate track.** Every model has its fourth seed, so the four-seed analysis decides, as registered.
+    - DINOv3-L leads at 0.9699.
+    - EVA-02-L (−0.0011), ConvNeXt V2-L (−0.0020) and EVA-02-B (−0.0028, interval [−0.0066, +0.0007]) tie with it.
+    - ViT-L, CAFormer-S36 and CAFormer-B36 fall below it.
+    - The tie goes to the cheapest on the RTX 2080: **EVA-02-B**, at 86.5 images/s fp16 (34.8 fp32), against
+      47.2 for DINOv3-L. fp32 and fp16 give the same order.
+    - Under the three-seed rule, CAFormer-S36 would also have tied and won on cost. Its fourth seed (0.9603)
+      took it out.
+  - **Deployable track.** EfficientNetV2-S leads at 0.9462.
+    - FastViT-SA24 (−0.0019), HGNetV2-B4 (−0.0029) and MobileNetV4 hybrid-large (−0.0033) tie with it.
+    - MobileNetV4 conv-large falls below it.
+    - The tie goes to the fastest on alien's 8 cores: **HGNetV2-B4**, at 54.6 images/s against 17.9.
+  - Seed 1 of the accurate track trained on the uncorrected pool. Every other run used the corrected pool.
+- 2026-11-03, recipe tuning, registered before any trial result (`ops/2026-11-03`):
+  - **Models:** EVA-02-B and HGNetV2-B4, at screen scale, fixed compute (400 per class, 3 frozen + 12
+    progressive epochs), bf16, batch 64 and warmup 300 throughout.
+  - **Stage 1:** 40 scrambled-Sobol trials per model, seed 1, over eight dimensions:
+    - lr: log, 2e-5 to 6e-4;
+    - weight decay: log, 1e-5 to 0.1;
+    - unfrozen depth: EVA-02-B 3 to 12 blocks, HGNetV2-B4 1 to 4 stages;
+    - final learning-rate fraction: log, 0.02 to 1;
+    - maximum dropout: 0.05 to 0.6;
+    - maximum RandAugment magnitude: 0.2 to 1.0;
+    - RandAugment ops: 1 to 4;
+    - focal gamma: 0 to 3.
+    The dropout and augmentation ramps keep MEWC's four-stage linear shape.
+  - **Stage 2:** the top 8 trials per model by seed-1 macro-F1 run seeds 2 and 3.
+    - The best recipe is the highest three-seed mean. It and the runner-up go to medium-scale confirmation,
+      two seeds, with the current recipe as the default anchor.
+    - The anchor at screen scale is the shortlist runs on the corrected pool: EVA-02-B seeds 2 to 4 and
+      HGNetV2-B4 seeds 1 to 3. Each tuned recipe is reported against it, with a two-level interval.
+    - Selecting the best of eight leaves some optimism in its three-seed mean. The medium-scale runs are the
+      unbiased check.
+  - **fANOVA** (`optuna`'s evaluator on the 40 trials) is diagnostic: it says which dimensions matter, and
+    no decision depends on it.
+  - **Placement:**
+    - ngx-gpu: 25 EVA-02-B trials;
+    - ngx-gpu-5: 15 EVA-02-B and 40 HGNetV2-B4 trials, interleaved;
+    - about 24 h on each.
+    - A probe of full-depth EVA-02-B at batch 64 peaked at 27.3 GiB, so no gradient checkpointing.
