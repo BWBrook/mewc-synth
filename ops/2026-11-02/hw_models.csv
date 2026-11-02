@@ -1,0 +1,14 @@
+name,backbone,img_size,blocks
+caformer_b36_bmore,caformer_b36.sail_in22k_ft_in1k_384,384,3
+caformer_s36_lr1,caformer_s36.sail_in22k_ft_in1k_384,384,2
+cnv2_l_base,convnextv2_large.fcmae_ft_in22k_in1k_384,384,2
+cnv2_n_lr1,convnextv2_nano.fcmae_ft_in22k_in1k_384,384,2
+dinov3_l_lr1,vit_large_patch16_dinov3.lvd1689m,384,9
+ens_lr1,tf_efficientnetv2_s.in21k_ft_in1k,384,2
+eva02_b_lr1,eva02_base_patch14_448.mim_in22k_ft_in22k_in1k,392,9
+eva02_l_bmore,eva02_large_patch14_448.mim_m38m_ft_in22k_in1k,392,16
+fastvit_sa24_lr1,fastvit_sa24.apple_dist_in1k,256,2
+hgnetv2_b4_lr1,hgnetv2_b4.ssld_stage2_ft_in1k,288,2
+mnv4_cl_lr1,mobilenetv4_conv_aa_large.e230_r384_in12k_ft_in1k,384,2
+mnv4_hl_lr1,mobilenetv4_hybrid_large.ix_e600_r384_in1k,384,2
+vtl_bmore,vit_large_patch16_384.augreg_in21k_ft_in1k,384,16
