@@ -380,3 +380,31 @@ and synthetic snips identically.
   - **Rule revision:** the deployable threshold is 15 images/s on alien's 8 cores, replacing deep. The
     accurate-track tie goes to the model that is cheaper on the RTX 2080; the deployable-track tie to the
     one cheaper on the CPU. Accuracy endpoints are unchanged.
+  - **Outcome on alien** (`ops/2026-11-02/hw_alien.jsonl`, random weights, images/s):
+
+    | Model | CPU, 8 threads | 2080 fp32, b32 | 2080 fp16, b32 |
+    |---|---:|---:|---:|
+    | HGNetV2-B4 | 54.6 | 497 | 868 |
+    | FastViT-SA24 (fused) | 45.9 | 450 | 780 |
+    | MobileNetV4 conv-large | 27.3 | 250 | 450 |
+    | MobileNetV4 hybrid-large | 25.1 | 243 | 437 |
+    | EfficientNetV2-S | 17.9 | 213 | 348 |
+    | ConvNeXt V2-N | 11.4 | 155 | 258 |
+    | CAFormer-S36 | 4.4 | 69 | 154 |
+    | EVA-02-B | 2.2 | 35 | 87 |
+    | CAFormer-B36 | 1.8 | 33 | 85 |
+    | ConvNeXt V2-L | 1.5 | 24 | 49 |
+    | ViT-L | 1.1 | 18 | 53 |
+    | DINOv3-L | 1.0 | 17 | 47 |
+    | EVA-02-L | 0.6 | 11 | 29 |
+
+    - alien's CPU runs these models at 0.5 to 1.1 times deep's speed (ConvNeXt V2-N 0.69, EfficientNetV2-S 0.79).
+      ConvNeXt V2-N falls below 15 images/s and leaves the deployable track; its three shortlist seeds are
+      withdrawn before they start. Five deployable models remain.
+    - Every accurate-track model runs on the 2080. fp16 weights give 2 to 3 times fp32 throughput; fp16
+      becomes the GPU deployment precision only if its validation predictions match fp32 on the chosen
+      models. The accurate-track tie uses fp16 at batch 32 on that condition, and fp32 otherwise. The two
+      rankings differ only in the order of ViT-L, ConvNeXt V2-L and DINOv3-L.
+    - Fusing FastViT's reparameterisable branches (timm `reparameterize_model`) raises its CPU throughput
+      from 32.4 to 45.9 and its 2080 throughput by 28%, with outputs unchanged (6.5e-9). `export.py` now
+      fuses before export.
