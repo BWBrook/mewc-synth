@@ -48,7 +48,7 @@ def main(out):
                          "dropout_max": r["dropouts"][-1], "magnitude_max": r["magnitudes"][-1]})
     t = pd.DataFrame(rows)
     t.to_csv(out / "tune_trials.csv", index=False)
-    line = lambda r: f"torch {r} $HOME/mewc-synth/ops/2026-11-03/tune/{r}.json"
+    line = lambda r: f"torch {r} /home/ubuntu/mewc-synth/ops/2026-11-03/tune/{r}.json"
     eva, hg = list(t[t.model == "eva02_b"].run), list(t[t.model == "hgnetv2_b4"].run)
     g4 = eva[:25]
     g5 = []
