@@ -454,3 +454,20 @@ and synthetic snips identically.
     - ngx-gpu-5: 15 EVA-02-B and 40 HGNetV2-B4 trials, interleaved;
     - about 24 h on each.
     - A probe of full-depth EVA-02-B at batch 64 peaked at 27.3 GiB, so no gradient checkpointing.
+- 2026-11-04, recipe tuning stage 1, and a deviation:
+  - **Divergence bug:** 10 of the 40 HGNetV2-B4 trials went to NaN in their first unfrozen epoch. All 10 have
+    focal gamma below 1 (10 of the 13 such trials); none of the 27 with gamma of 1 or more diverged. The
+    focal term (1 − p)^γ has an infinite gradient wherever p rounds to 1 when γ < 1, so this is a numerical
+    bug, not a property of the recipe.
+  - **Fix:** `train.py` clamps 1 − p at 1e-7, as the Keras focal loss in mewc-train clips its predictions.
+    Every earlier run used γ = 2, where the clip changes nothing measurable.
+  - **Deviation:** the 10 trials rerun unchanged with the fix, before stage 2 picks HGNetV2-B4's top 8.
+    EVA-02-B had no divergences (13 trials with γ < 1), so its stage 1 stands as run.
+  - **EVA-02-B stage 1:**
+    - top 8 by seed-1 macro-F1: trials 21, 16, 23, 39, 11, 12, 26 and 3 (0.9694 to 0.9672); median 0.9628;
+    - the anchor's mean over seeds 2 to 4 is 0.9669;
+    - fANOVA: lr 0.43, focal gamma 0.30, final learning-rate fraction 0.12, everything else 0.06 or less;
+    - lower lr and a lower final fraction rank better (Spearman −0.5 each).
+  - **Stage 2 placement:** EVA-02-B seeds 2 and 3 run on ngx-gpu (11 runs) and gpu-5 (5 runs). gpu-5 first
+    finishes the HGNetV2-B4 reruns; then `ops/2026-11-04/stage2_g5.sh` picks HGNetV2-B4's top 8 from the
+    complete stage 1 and runs them ahead of its EVA-02-B share.

@@ -1,0 +1,11 @@
+torch tn_eva02_b_t21_s2 /home/ubuntu/mewc-synth/ops/2026-11-03/tune/tn_eva02_b_t21_s2.json
+torch tn_eva02_b_t16_s2 /home/ubuntu/mewc-synth/ops/2026-11-03/tune/tn_eva02_b_t16_s2.json
+torch tn_eva02_b_t23_s2 /home/ubuntu/mewc-synth/ops/2026-11-03/tune/tn_eva02_b_t23_s2.json
+torch tn_eva02_b_t39_s2 /home/ubuntu/mewc-synth/ops/2026-11-03/tune/tn_eva02_b_t39_s2.json
+torch tn_eva02_b_t11_s2 /home/ubuntu/mewc-synth/ops/2026-11-03/tune/tn_eva02_b_t11_s2.json
+torch tn_eva02_b_t12_s2 /home/ubuntu/mewc-synth/ops/2026-11-03/tune/tn_eva02_b_t12_s2.json
+torch tn_eva02_b_t26_s2 /home/ubuntu/mewc-synth/ops/2026-11-03/tune/tn_eva02_b_t26_s2.json
+torch tn_eva02_b_t03_s2 /home/ubuntu/mewc-synth/ops/2026-11-03/tune/tn_eva02_b_t03_s2.json
+torch tn_eva02_b_t21_s3 /home/ubuntu/mewc-synth/ops/2026-11-03/tune/tn_eva02_b_t21_s3.json
+torch tn_eva02_b_t16_s3 /home/ubuntu/mewc-synth/ops/2026-11-03/tune/tn_eva02_b_t16_s3.json
+torch tn_eva02_b_t23_s3 /home/ubuntu/mewc-synth/ops/2026-11-03/tune/tn_eva02_b_t23_s3.json

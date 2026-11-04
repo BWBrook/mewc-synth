@@ -29,7 +29,7 @@ DEFAULTS = {"samples_per_class": 4000, "frozen_epochs": 10, "stage_len": 7, "tot
 
 def focal_loss(logits, y, alpha, gamma):
     logp = F.log_softmax(logits.float(), dim=1).gather(1, y[:, None])[:, 0]
-    return (-alpha * (1 - logp.exp()) ** gamma * logp).mean()
+    return (-alpha * (1 - logp.exp()).clamp_min(1e-7) ** gamma * logp).mean()
 
 
 def optimiser(params, cfg, steps_per_epoch):
