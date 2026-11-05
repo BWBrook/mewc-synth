@@ -471,3 +471,33 @@ and synthetic snips identically.
   - **Stage 2 placement:** EVA-02-B seeds 2 and 3 run on ngx-gpu (11 runs) and gpu-5 (5 runs). gpu-5 first
     finishes the HGNetV2-B4 reruns; then `ops/2026-11-04/stage2_g5.sh` picks HGNetV2-B4's top 8 from the
     complete stage 1 and runs them ahead of its EVA-02-B share.
+- 2026-11-05, recipe tuning stage 2 outcome (`ops/2026-11-05/stage2_eval.json`; three-seed means, two-level
+  intervals against the default-recipe anchor):
+  - **EVA-02-B:** best t21 0.9706, +0.0037 [+0.0007, +0.0068]; runner-up t16 0.9703, +0.0035 [+0.0004,
+    +0.0064]. Anchor 0.9669. Only these two exclude zero; t03 and t12 fall to the anchor.
+    - t21: lr 1.9e-4, weight decay 3.9e-5, 8 blocks, final fraction 0.085, dropout to 0.35, magnitude to 0.41,
+      3 ops, gamma 0.34.
+    - t16: lr 7e-5, weight decay 0.020, 10 blocks, final fraction 0.026, dropout to 0.25, magnitude to 0.96,
+      2 ops, gamma 0.84.
+  - **HGNetV2-B4:** best t23 0.9535, +0.0102 [+0.0058, +0.0146]; runner-up t21 0.9535, +0.0102 [+0.0044,
+    +0.0154]. Anchor 0.9433. Four of the eight beat the anchor with intervals clear of zero.
+    - t23: lr 1e-4, weight decay 2.5e-4, 4 stages, final fraction 0.057, dropout to 0.15, magnitude to 0.99,
+      1 op, gamma 1.27.
+    - t21: lr 2.7e-4, weight decay 4e-5, 3 stages, final fraction 0.028, dropout to 0.48, magnitude to 0.38,
+      2 ops, gamma 1.52.
+  - **HGNetV2-B4 fANOVA** (all 40 trials after the reruns): focal gamma 0.38, lr 0.19, magnitude 0.18, final
+    fraction 0.08, everything else 0.08 or less. Deeper unfreezing (Spearman +0.31) and a lower final fraction
+    (−0.39) rank better.
+  - The common thread is a schedule that decays further than the default (final fraction 0.03 to 0.09
+    against 1), plus deeper unfreezing for HGNetV2-B4.
+- 2026-11-05, before any of its runs: **medium-scale confirmation** (`ops/2026-11-05`).
+  - **Medium scale** is 20% of production compute: mewc-train production is 4,000 per class with 10 frozen
+    and 30 progressive epochs; medium is 1,600 per class with 4 frozen and 16 progressive epochs in four
+    stages of 4. Everything else is as in each recipe's stage-1 config.
+  - **Runs:** per model, the best two stage-2 recipes and the anchor (EVA-02-B lr 1e-4, 9 blocks; HGNetV2-B4
+    lr 1e-4, 2 stages), seeds 1 and 2. Seed 1 runs on ngx-gpu and seed 2 on gpu-5, HGNetV2-B4 first.
+  - **Rule:** each model's interim recipe is the tuned recipe with the higher two-seed mean macro-F1, if
+    that mean is above the anchor's. Otherwise the default recipe stays. The difference from the anchor is
+    reported with a two-level interval; with two seeds it is wide, so the rule rests on the mean.
+  - **Fidelity:** screen-to-medium agreement on these three recipes per model is reported as a partial
+    fidelity check. Three recipes cannot measure rank correlation; they can show a reversal.
