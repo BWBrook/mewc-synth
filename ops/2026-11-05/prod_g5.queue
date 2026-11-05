@@ -1,0 +1,2 @@
+torch pd_eva02_b_anchor_s1 /home/ubuntu/mewc-synth/ops/2026-11-05/prod/pd_eva02_b_anchor_s1.json
+torch pd_hgnetv2_b4_anchor_s1 /home/ubuntu/mewc-synth/ops/2026-11-05/prod/pd_hgnetv2_b4_anchor_s1.json

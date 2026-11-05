@@ -501,3 +501,23 @@ and synthetic snips identically.
     reported with a two-level interval; with two seeds it is wide, so the rule rests on the mean.
   - **Fidelity:** screen-to-medium agreement on these three recipes per model is reported as a partial
     fidelity check. Three recipes cannot measure rank correlation; they can show a reversal.
+- 2026-11-05, before any of its runs: **synthetic gain against training scale** (`ops/2026-11-05/synth_scale_*`),
+  chosen by Barry over the real low-count classes for this booking (5 November, button answer "Synthetic test").
+  - **Question:** whether the synthetic-snip gain survives larger training runs. From screen to medium each
+    synthetic snip is seen four times as often, so the gain could shrink or turn into harm. The review of
+    25 October flagged this risk.
+  - **Design:** HGNetV2-B4 on the current recipe (lr 1e-4, 2 stages), arms A0 and S20 of the phase 1 re-test
+    (the same lists, `v2_runs/arms`, copied to ngx-gpu and checked by checksum), at screen and medium scale,
+    seeds 1 to 8 paired within each scale: 32 runs on ngx-gpu, about 23 h. S20f is left out, since it did not
+    differ from S20.
+  - **Primary endpoint:** focus macro-F1 (the four pseudo-rare classes), S20 − A0 at medium scale, with a
+    two-level interval (`synth_scale_eval.py`). The gain holds at medium scale if the interval excludes zero
+    and no non-focus class is harmed (same rule as the re-test).
+  - **Secondary:** the scale interaction, the medium gain minus the screen gain, with its interval. The
+    screen arm also replicates the ViT-B re-test on a second architecture.
+- 2026-11-05, **production-scale runs** (`ops/2026-11-05/prod_build.py`): mewc-train production compute
+  (4,000 per class, 10 frozen + 30 progressive epochs in stages of 7), one seed each.
+  - EVA-02-B and HGNetV2-B4, each on its interim recipe (medium-scale rule above) and on the anchor.
+  - The anchors need no decision and run first on gpu-5 after its medium runs. The interim-recipe runs follow
+    once the medium-scale results are in: EVA-02-B on ngx-gpu after the synthetic test, HGNetV2-B4 on gpu-5.
+  - One seed cannot settle small gaps, but it can show whether a tuned recipe's gain reverses at full scale.
