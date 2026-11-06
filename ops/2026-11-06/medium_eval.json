@@ -1,0 +1,102 @@
+{
+ "eva02_b": {
+  "interim": "t21",
+  "recipes": [
+   {
+    "recipe": "t21",
+    "per_seed": [
+     0.974,
+     0.9709
+    ],
+    "mean": 0.9725,
+    "vs_anchor": 0.0003,
+    "vs_anchor_ci95": [
+     -0.0039,
+     0.0051
+    ],
+    "screen_mean": 0.9706,
+    "screen_vs_anchor": 0.0037
+   },
+   {
+    "recipe": "t16",
+    "per_seed": [
+     0.9712,
+     0.9734
+    ],
+    "mean": 0.9723,
+    "vs_anchor": 0.0001,
+    "vs_anchor_ci95": [
+     -0.004,
+     0.0034
+    ],
+    "screen_mean": 0.9703,
+    "screen_vs_anchor": 0.0034
+   },
+   {
+    "recipe": "anchor",
+    "per_seed": [
+     0.9715,
+     0.9729
+    ],
+    "mean": 0.9722,
+    "vs_anchor": 0.0,
+    "vs_anchor_ci95": [
+     0.0,
+     0.0
+    ],
+    "screen_mean": 0.9669,
+    "screen_vs_anchor": 0.0
+   }
+  ]
+ },
+ "hgnetv2_b4": {
+  "interim": "anchor",
+  "recipes": [
+   {
+    "recipe": "t23",
+    "per_seed": [
+     0.959,
+     0.9662
+    ],
+    "mean": 0.9626,
+    "vs_anchor": -0.001,
+    "vs_anchor_ci95": [
+     -0.0081,
+     0.0054
+    ],
+    "screen_mean": 0.9535,
+    "screen_vs_anchor": 0.0102
+   },
+   {
+    "recipe": "t21",
+    "per_seed": [
+     0.959,
+     0.9627
+    ],
+    "mean": 0.9608,
+    "vs_anchor": -0.0027,
+    "vs_anchor_ci95": [
+     -0.0087,
+     0.0023
+    ],
+    "screen_mean": 0.9535,
+    "screen_vs_anchor": 0.0102
+   },
+   {
+    "recipe": "anchor",
+    "per_seed": [
+     0.9614,
+     0.9657
+    ],
+    "mean": 0.9635,
+    "vs_anchor": 0.0,
+    "vs_anchor_ci95": [
+     0.0,
+     0.0
+    ],
+    "screen_mean": 0.9433,
+    "screen_vs_anchor": 0.0
+   }
+  ]
+ }
+}

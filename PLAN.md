@@ -521,3 +521,36 @@ and synthetic snips identically.
   - The anchors need no decision and run first on gpu-5 after its medium runs. The interim-recipe runs follow
     once the medium-scale results are in: EVA-02-B on ngx-gpu after the synthetic test, HGNetV2-B4 on gpu-5.
   - One seed cannot settle small gaps, but it can show whether a tuned recipe's gain reverses at full scale.
+- 2026-11-06, **medium-scale confirmation outcome** (`ops/2026-11-06/medium_eval.json`; two-seed means, two-level
+  intervals against the anchor):
+
+  | Model | Recipe | Screen (3 seeds) | Screen vs anchor | Medium (2 seeds) | Medium vs anchor |
+  |---|---|---|---|---|---|
+  | EVA-02-B | t21 | 0.9706 | +0.0037 | 0.9725 | +0.0003 [−0.0039, +0.0051] |
+  | EVA-02-B | t16 | 0.9703 | +0.0034 | 0.9723 | +0.0001 [−0.0040, +0.0034] |
+  | EVA-02-B | anchor | 0.9669 | | 0.9722 | |
+  | HGNetV2-B4 | t23 | 0.9535 | +0.0102 | 0.9626 | −0.0010 [−0.0081, +0.0054] |
+  | HGNetV2-B4 | t21 | 0.9535 | +0.0102 | 0.9608 | −0.0027 [−0.0087, +0.0023] |
+  | HGNetV2-B4 | anchor | 0.9433 | | 0.9635 | |
+
+  - **The screen-scale gains did not transfer.** At medium scale the anchor gains +0.005 (EVA-02-B) and +0.020
+    (HGNetV2-B4) over its screen score and catches the tuned recipes. The tuned recipes gain only +0.002 and
+    +0.008. Tuning at screen scale selected recipes that converge faster on a short budget (all of them
+    decay the learning rate further than the anchor), not recipes that end better. The review's fidelity
+    risk is realised.
+  - **Rule outcome:** EVA-02-B's interim recipe is t21 (its mean is above the anchor's by 0.0003, inside any
+    reasonable noise). HGNetV2-B4 keeps the default recipe, so its tuned production run is dropped; the anchor
+    production run is that model's interim run.
+  - **Consequence for phase 2:** recipe search for these models has to run at medium scale or above, or not
+    at all. The default recipes are as good as anything found here.
+- 2026-11-06, partial **synthetic scale test** result, before any production-scale synthetic run: at screen scale
+  (8 seeds), HGNetV2-B4 S20 − A0 focus macro-F1 = +0.023 [+0.014, +0.033], no non-focus class harmed. That
+  replicates the ViT-B re-test (+0.028) on a second architecture. Medium scale has 2 of 8 seed pairs.
+- 2026-11-06, before any of its runs: **synthetic scale test extended to production scale**
+  (`ops/2026-11-06/synth_prod_build.py`).
+  - The gpu time freed by dropping HGNetV2-B4's tuned production run, plus the time left after the registered
+    production runs, goes to A0 and S20 at production compute (4,000 per class, 10 + 30 epochs). HGNetV2-B4,
+    current recipe, seeds 1 to 6 paired: seeds 1 to 4 on gpu-5 after its anchor production runs, 5 and 6 on
+    ngx-gpu after EVA-02-B t21 production. About 5 h per run.
+  - **Endpoint:** S20 − A0 focus macro-F1 at production scale, and the production gain minus the screen gain,
+    both with two-level intervals (`synth_scale_eval.py`, extended to a third scale). Same no-harm rule.
