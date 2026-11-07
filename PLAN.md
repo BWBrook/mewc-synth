@@ -573,3 +573,11 @@ and synthetic snips identically.
   mean 0.9722, screen 0.9669), HGNetV2-B4 0.9670 (medium 0.9635, screen 0.9433). EVA-02-B's production score
   is below both medium seeds (0.9715, 0.9729); one seed cannot separate that from noise, and the t21
   production run (due about 12:00 UTC on 7 November) gives a second EVA-02-B production point.
+- 2026-11-08, **EVA-02-B production comparison** (one seed each, validation macro-F1): t21 0.9633, anchor 0.9689,
+  so t21 − anchor = −0.0056. Across scales t21's difference from the anchor goes +0.0037 (screen, 3 seeds),
+  +0.0003 (medium, 2 seeds), −0.0056 (production, 1 seed). The trend is consistent with screen-scale tuning
+  favouring fast convergence at the cost of the end point. The default recipe stays for both models into
+  phase 2.
+- 2026-11-08, interim note (not an endpoint): production-scale synthetic pairs 1 and 2 on gpu-5 give focus A0
+  0.769 and S20 0.806. A0's focus score keeps falling with scale (screen 0.841, medium 0.814), and S20's
+  margin is not shrinking. The registered evaluation runs once all six pairs are in.
