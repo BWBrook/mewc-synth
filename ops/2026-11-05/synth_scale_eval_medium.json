@@ -1,0 +1,64 @@
+{
+ "seeds": {
+  "screen": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8
+  ],
+  "medium": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8
+  ],
+  "prod": []
+ },
+ "screen": {
+  "focus_A0": 0.8405,
+  "focus_S20": 0.8635,
+  "focus_diff": 0.023,
+  "ci95": [
+   0.013,
+   0.0331
+  ],
+  "per_class_diff": {
+   "spotted_tail_quoll": 0.0116,
+   "forester_kangaroo": 0.0213,
+   "black_currawong": 0.0432,
+   "black_rat": 0.0159
+  },
+  "harmed_nonfocus": []
+ },
+ "medium": {
+  "focus_A0": 0.8139,
+  "focus_S20": 0.8429,
+  "focus_diff": 0.029,
+  "ci95": [
+   0.0052,
+   0.0535
+  ],
+  "per_class_diff": {
+   "spotted_tail_quoll": 0.0109,
+   "forester_kangaroo": 0.016,
+   "black_currawong": 0.0638,
+   "black_rat": 0.0253
+  },
+  "harmed_nonfocus": []
+ },
+ "medium_minus_screen": {
+  "diff": 0.006,
+  "ci95": [
+   -0.0198,
+   0.032
+  ]
+ }
+}

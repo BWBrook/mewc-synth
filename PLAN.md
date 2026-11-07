@@ -554,3 +554,22 @@ and synthetic snips identically.
     ngx-gpu after EVA-02-B t21 production. About 5 h per run.
   - **Endpoint:** S20 − A0 focus macro-F1 at production scale, and the production gain minus the screen gain,
     both with two-level intervals (`synth_scale_eval.py`, extended to a third scale). Same no-harm rule.
+- 2026-11-07, **synthetic scale test, medium scale complete** (`ops/2026-11-05/synth_scale_eval_medium.json`;
+  HGNetV2-B4, current recipe, 8 seed pairs per scale):
+
+  | Scale | Focus A0 | Focus S20 | S20 − A0 | Non-focus harmed |
+  |---|---|---|---|---|
+  | screen | 0.8405 | 0.8635 | +0.023 [+0.013, +0.033] | none |
+  | medium | 0.8139 | 0.8429 | +0.029 [+0.005, +0.054] | none |
+
+  - **Primary endpoint met:** the gain holds at medium scale (interval excludes zero, no class harmed). The
+    medium-minus-screen difference is +0.006 [−0.020, +0.032], so there is no sign of the gain shrinking.
+  - **Mechanism, by observation:** A0's focus score falls by 0.027 from screen to medium, while overall
+    macro-F1 rises. With four times the draws, the 50 real snips per focus class are seen four times as
+    often, and those classes overfit; the synthetic snips cushion that. The currawong gains most at both
+    scales (+0.043, +0.064).
+  - Production scale (6 pairs) is running and finishes about 10:00 UTC on 8 November.
+- 2026-11-07, **production-scale anchors** (one seed each, validation macro-F1): EVA-02-B 0.9689 (medium two-seed
+  mean 0.9722, screen 0.9669), HGNetV2-B4 0.9670 (medium 0.9635, screen 0.9433). EVA-02-B's production score
+  is below both medium seeds (0.9715, 0.9729); one seed cannot separate that from noise, and the t21
+  production run (due about 12:00 UTC on 7 November) gives a second EVA-02-B production point.
