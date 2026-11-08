@@ -59,9 +59,14 @@ then snips).
 - **Environments:** kept on the boot volumes `ngx-boot-1` and `ngx-boot-2`.
 - **Data volumes:** `ml-data` (on ngx-gpu-4) and `ml-data-2` (on ngx-gpu-5) hold the data, every run's
   `best.pt` and scores, and `v2_runs/registry.jsonl`. Each instance has its own registry.
-- **Disk:** `ml-data-2` is full (2.3 GB free). Ten finished early runs there still hold `last.pt` and
-  `frozen_best.pt`, about 11 GB. Removing them needs Barry's approval: the session's permission check blocked
-  it on 5 November.
+- **Disk:** `ml-data-2` was cleaned on 8 November with Barry's approval, from 2.4 GB to 145 GB free
+  (`ops/2026-11-08`; `cleanup_record/removed.tsv` lists every removed file). It removed 107 GB of material
+  that a config, a download or a short computation rebuilds: resume checkpoints; the weights of screen-scale
+  runs, whose predictions are all kept; cached VAE latents; intermediate adapter steps; download caches; and
+  the mewc-train Docker images. A further 30 GB was saved by hard-linking v2's snips to their identical copies
+  in `work/snips`, which removed nothing. Kept: all data and labels, every results file, the medium,
+  production and production-synthetic weights, and every adapter used downstream. `ml-data` on ngx-gpu-4 has
+  not been cleaned.
 
 ## For the next booking
 
