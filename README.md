@@ -6,7 +6,7 @@ classes? This repo holds the test plan (`PLAN.md`), the code and the dated
 logs. Snips, generated images and model weights live on the compute volumes,
 not here.
 
-Status: setup (20 October 2026). Data arrive 21 October.
+Status: phase 1 complete (8 November 2026); see `docs/phase1-summary.md`. Phase 2 waits for the next GPU booking.
 
 ## Licence
 

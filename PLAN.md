@@ -581,3 +581,17 @@ and synthetic snips identically.
 - 2026-11-08, interim note (not an endpoint): production-scale synthetic pairs 1 and 2 on gpu-5 give focus A0
   0.769 and S20 0.806. A0's focus score keeps falling with scale (screen 0.841, medium 0.814), and S20's
   margin is not shrinking. The registered evaluation runs once all six pairs are in.
+- 2026-11-08, **synthetic scale test outcome** (`ops/2026-11-05/synth_scale_eval_final.json`; HGNetV2-B4, current
+  recipe):
+
+  | Scale | Seed pairs | Focus A0 | Focus S20 | S20 − A0 | Non-focus harmed |
+  |---|---|---|---|---|---|
+  | screen | 8 | 0.8405 | 0.8635 | +0.023 [+0.014, +0.032] | none |
+  | medium | 8 | 0.8139 | 0.8429 | +0.029 [+0.003, +0.055] | none |
+  | production | 6 | 0.7837 | 0.8248 | +0.041 [+0.024, +0.056] | none |
+
+  - **Primary endpoint met at medium scale and at production scale.** Production minus screen is +0.018
+    [−0.001, +0.034]; medium minus screen +0.006 [−0.022, +0.035].
+  - Overall macro-F1 (A0, S20): screen 0.929, 0.932; medium 0.944, 0.946; production 0.942, 0.947. A0's
+    overall score falls from medium to production because its focus classes overfit.
+  - Phase 1 is closed. The summary and the next booking's list are in `docs/phase1-summary.md`.

@@ -1,0 +1,94 @@
+{
+ "seeds": {
+  "screen": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8
+  ],
+  "medium": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8
+  ],
+  "prod": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6
+  ]
+ },
+ "screen": {
+  "focus_A0": 0.8405,
+  "focus_S20": 0.8635,
+  "focus_diff": 0.023,
+  "ci95": [
+   0.0136,
+   0.0322
+  ],
+  "per_class_diff": {
+   "spotted_tail_quoll": 0.0116,
+   "forester_kangaroo": 0.0215,
+   "black_currawong": 0.0433,
+   "black_rat": 0.0156
+  },
+  "harmed_nonfocus": []
+ },
+ "medium": {
+  "focus_A0": 0.8139,
+  "focus_S20": 0.8429,
+  "focus_diff": 0.029,
+  "ci95": [
+   0.0031,
+   0.055
+  ],
+  "per_class_diff": {
+   "spotted_tail_quoll": 0.0108,
+   "forester_kangaroo": 0.016,
+   "black_currawong": 0.0649,
+   "black_rat": 0.0255
+  },
+  "harmed_nonfocus": []
+ },
+ "prod": {
+  "focus_A0": 0.7837,
+  "focus_S20": 0.8248,
+  "focus_diff": 0.0411,
+  "ci95": [
+   0.0237,
+   0.0564
+  ],
+  "per_class_diff": {
+   "spotted_tail_quoll": 0.0125,
+   "forester_kangaroo": 0.0242,
+   "black_currawong": 0.0091,
+   "black_rat": 0.118
+  },
+  "harmed_nonfocus": []
+ },
+ "medium_minus_screen": {
+  "diff": 0.006,
+  "ci95": [
+   -0.0216,
+   0.0353
+  ]
+ },
+ "prod_minus_screen": {
+  "diff": 0.0181,
+  "ci95": [
+   -0.001,
+   0.0342
+  ]
+ }
+}
