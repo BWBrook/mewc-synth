@@ -48,7 +48,10 @@ it, and seeds where an interval stays wide.
   the look-alike's camera-trap training snips. That keeps each synthetic snip at about 20 views in a
   production run (4,000 × 40 × 20% / 1,600), as `plan-next-booking.md` asks.
 - **Checks:** identity by the production VTL, memorisation against the class's training snips, the
-  real-against-synthetic shortcut probe. A blind review by Barry is offered but not waited on.
+  real-against-synthetic shortcut probe, and a blind review by Barry ("Yes, send the 100 when ready then",
+  13 November): 100 snips, per class 2 translations, 1 real snip of the class and 1 of its look-alike, in
+  the format of the 31 October audit. The runs do not wait for it; a class the review finds clearly wrong
+  is reported with and without.
 - **Arm S20:** the training list plus, per low-count class, its real rows repeated k times and the 1,600
   translations, with k = round(4 × 1,600 / n_real), so synthetic snips are 20% of the class's draws.
 - **Endpoint:** macro-F1 over the 25 classes on the validation snips, S20 − A0, two-level bootstrap
