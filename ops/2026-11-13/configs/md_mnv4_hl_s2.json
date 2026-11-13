@@ -1,0 +1,15 @@
+{
+ "backbone": "mobilenetv4_hybrid_large.ix_e600_r384_in1k",
+ "blocks": 2,
+ "seed": 2,
+ "samples_per_class": 1600,
+ "frozen_epochs": 4,
+ "stage_len": 4,
+ "total_epochs": 16,
+ "img_size": 384,
+ "workers": 12,
+ "precision": "bf16",
+ "batch": 64,
+ "lr": 0.0001,
+ "warmup_steps": 300
+}

@@ -2,7 +2,9 @@
 initial class sample (no augmentation, early stopping on training loss), then progressive stages with
 the top blocks unfrozen, a fresh optimiser, and dropout and RandAugment magnitude stepped up per stage,
 each epoch on a fresh per-class sample; categorical focal loss; AdamW with AMSGrad and exponential
-learning-rate decay to min_lr_frac; the best epoch by validation loss is kept. Adds bf16, any batch
+learning-rate decay to min_lr_frac; the best epoch by validation loss is kept ("select": "last" keeps the
+final epoch instead, for a refit whose training list contains the validation snips). Each epoch also logs
+macro-F1 on the validation selection subset. Adds bf16, any batch
 size, per-epoch checkpoints, so an interrupted run resumes where it stopped, and an optional linear
 warmup over the first warmup_steps of each fresh optimiser (0, mewc-train's recipe, by default), and
 optional gradient checkpointing, which trades time for memory without changing the computation.
@@ -24,7 +26,7 @@ DEFAULTS = {"samples_per_class": 4000, "frozen_epochs": 10, "stage_len": 7, "tot
             "magnitudes": [0.2, 0.4, 0.6, 0.8], "dropouts": [0.1, 0.2, 0.3, 0.4], "n_aug": 3, "blocks": 2,
             "lr": 1e-4, "weight_decay": 1e-4, "min_lr_frac": 0.2, "batch": 16, "focal_alpha": 0.25,
             "focal_gamma": 2.0, "seed": 12345, "val_per_class": 100, "precision": "bf16", "workers": 16,
-            "frozen_patience": 5, "warmup_steps": 0, "grad_checkpointing": False}
+            "frozen_patience": 5, "warmup_steps": 0, "grad_checkpointing": False, "select": "best"}
 
 
 def focal_loss(logits, y, alpha, gamma):
@@ -57,12 +59,15 @@ def run_epoch(model, loader, cfg, dev, opt=None, sched=None):
     if train:
         frozen_norms(model)
     amp = torch.autocast("cuda", dtype=torch.bfloat16, enabled=cfg["precision"] == "bf16" and dev == "cuda")
-    total, n, t0 = 0.0, 0, time.time()
+    total, n, t0, preds = 0.0, 0, time.time(), []
     with torch.set_grad_enabled(train):
         for x, y in loader:
             x, y = x.to(dev, non_blocking=True), y.to(dev, non_blocking=True)
             with amp:
-                loss = focal_loss(model(x), y, cfg["focal_alpha"], cfg["focal_gamma"])
+                logits = model(x)
+                loss = focal_loss(logits, y, cfg["focal_alpha"], cfg["focal_gamma"])
+            if not train:
+                preds.append(logits.argmax(1).cpu())
             if train:
                 opt.zero_grad(set_to_none=True)
                 loss.backward()
@@ -70,7 +75,14 @@ def run_epoch(model, loader, cfg, dev, opt=None, sched=None):
                 sched.step()
             total += loss.item() * len(y)
             n += len(y)
-    return total / n, n / (time.time() - t0)
+    return total / n, n / (time.time() - t0), (torch.cat(preds).numpy() if preds else None)
+
+
+def macro_f1(truth, pred, k):
+    tp = np.bincount(truth[pred == truth], minlength=k)
+    denom = np.bincount(truth, minlength=k) + np.bincount(pred, minlength=k)
+    present = np.bincount(truth, minlength=k) > 0
+    return float((2 * tp[present] / denom[present]).mean())
 
 
 def main(config_path):
@@ -120,10 +132,11 @@ def main(config_path):
         seed = cfg["seed"] + (0 if ph == "frozen" else e)
         rows = sample_epoch(tr_labels, cfg["samples_per_class"], seed)
         n_aug = cfg["n_aug"] if ph == "progressive" else 0
-        tr_loss, tr_ips = run_epoch(model, loader(tr_paths, tr_labels, rows, mag, n_aug, False), cfg, dev, opt, sched)
-        va_loss, va_ips = run_epoch(model, val_loader, cfg, dev)
+        tr_loss, tr_ips, _ = run_epoch(model, loader(tr_paths, tr_labels, rows, mag, n_aug, False), cfg, dev, opt, sched)
+        va_loss, va_ips, va_pred = run_epoch(model, val_loader, cfg, dev)
         rec = {"k": k, "phase": ph, "epoch": e, "dropout": drop, "magnitude": mag, "train_loss": tr_loss,
-               "val_loss": va_loss, "train_img_s": round(tr_ips, 1), "lr": sched.get_last_lr()[0], "time": time.time()}
+               "val_loss": va_loss, "val_f1": round(macro_f1(va_labels[va_rows], va_pred, len(classes)), 5),
+               "train_img_s": round(tr_ips, 1), "lr": sched.get_last_lr()[0], "time": time.time()}
         state["history"].append(rec)
         print(json.dumps(rec), flush=True)
         if ph == "frozen":
@@ -132,8 +145,8 @@ def main(config_path):
                 torch.save(model.state_dict(), out / "frozen_best.pt")
             else:
                 state["bad"] += 1
-        elif va_loss < state["best_val"]:
-            state["best_val"] = va_loss
+        elif cfg["select"] == "last" or va_loss < state["best_val"]:
+            state["best_val"] = min(va_loss, state["best_val"])
             torch.save(model.state_dict(), out / "best.pt")
         state["next"] = k + 1
         torch.save({"model": model.state_dict(), "opt": opt.state_dict(), "sched": sched.state_dict(),

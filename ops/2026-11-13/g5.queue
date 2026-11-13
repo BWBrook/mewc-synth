@@ -1,0 +1,17 @@
+torch rr_hgnetv2_b4_S20_s1 /home/ubuntu/mewc-synth/ops/2026-11-13/configs/rr_hgnetv2_b4_S20_s1.json
+torch rr_hgnetv2_b4_S20_s2 /home/ubuntu/mewc-synth/ops/2026-11-13/configs/rr_hgnetv2_b4_S20_s2.json
+torch rr_hgnetv2_b4_S20_s3 /home/ubuntu/mewc-synth/ops/2026-11-13/configs/rr_hgnetv2_b4_S20_s3.json
+torch rr_hgnetv2_b4_S20_s4 /home/ubuntu/mewc-synth/ops/2026-11-13/configs/rr_hgnetv2_b4_S20_s4.json
+torch rr_hgnetv2_b4_S20_s5 /home/ubuntu/mewc-synth/ops/2026-11-13/configs/rr_hgnetv2_b4_S20_s5.json
+torch rr_hgnetv2_b4_S20_s6 /home/ubuntu/mewc-synth/ops/2026-11-13/configs/rr_hgnetv2_b4_S20_s6.json
+torch rr_hgnetv2_b4_S20_s7 /home/ubuntu/mewc-synth/ops/2026-11-13/configs/rr_hgnetv2_b4_S20_s7.json
+torch rr_hgnetv2_b4_S20_s8 /home/ubuntu/mewc-synth/ops/2026-11-13/configs/rr_hgnetv2_b4_S20_s8.json
+torch md_dinov3_l_s2 /home/ubuntu/mewc-synth/ops/2026-11-13/configs/md_dinov3_l_s2.json
+torch md_cnv2_l_s2 /home/ubuntu/mewc-synth/ops/2026-11-13/configs/md_cnv2_l_s2.json
+torch md_eva02_l_s2 /home/ubuntu/mewc-synth/ops/2026-11-13/configs/md_eva02_l_s2.json
+torch re_A0_100_s4 /home/ubuntu/mewc-synth/ops/2026-11-13/configs/re_A0_100_s4.json
+torch re_A0_200_s4 /home/ubuntu/mewc-synth/ops/2026-11-13/configs/re_A0_200_s4.json
+torch re_A0_100_s5 /home/ubuntu/mewc-synth/ops/2026-11-13/configs/re_A0_100_s5.json
+torch re_A0_200_s5 /home/ubuntu/mewc-synth/ops/2026-11-13/configs/re_A0_200_s5.json
+torch re_A0_100_s6 /home/ubuntu/mewc-synth/ops/2026-11-13/configs/re_A0_100_s6.json
+torch re_A0_200_s6 /home/ubuntu/mewc-synth/ops/2026-11-13/configs/re_A0_200_s6.json

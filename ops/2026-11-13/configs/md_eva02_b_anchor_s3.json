@@ -1,0 +1,16 @@
+{
+ "backbone": "eva02_base_patch14_448.mim_in22k_ft_in22k_in1k",
+ "blocks": 9,
+ "seed": 3,
+ "samples_per_class": 1600,
+ "frozen_epochs": 4,
+ "stage_len": 4,
+ "total_epochs": 16,
+ "img_size": 392,
+ "workers": 12,
+ "precision": "bf16",
+ "batch": 64,
+ "lr": 0.0001,
+ "warmup_steps": 300,
+ "grad_checkpointing": false
+}

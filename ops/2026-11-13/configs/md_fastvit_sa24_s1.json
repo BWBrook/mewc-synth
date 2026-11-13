@@ -1,0 +1,15 @@
+{
+ "backbone": "fastvit_sa24.apple_dist_in1k",
+ "blocks": 2,
+ "seed": 1,
+ "samples_per_class": 1600,
+ "frozen_epochs": 4,
+ "stage_len": 4,
+ "total_epochs": 16,
+ "img_size": 256,
+ "workers": 12,
+ "precision": "bf16",
+ "batch": 64,
+ "lr": 0.0001,
+ "warmup_steps": 300
+}

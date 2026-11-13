@@ -1,0 +1,16 @@
+{
+ "backbone": "hgnetv2_b4.ssld_stage2_ft_in1k",
+ "blocks": 2,
+ "seed": 5,
+ "samples_per_class": 4000,
+ "frozen_epochs": 10,
+ "stage_len": 7,
+ "total_epochs": 30,
+ "img_size": 288,
+ "workers": 12,
+ "precision": "bf16",
+ "batch": 64,
+ "lr": 0.0001,
+ "warmup_steps": 300,
+ "train": "/mnt/ml-data/mewc-synth/v2_runs/arms/A0_200.csv"
+}

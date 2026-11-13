@@ -595,3 +595,25 @@ and synthetic snips identically.
   - Overall macro-F1 (A0, S20): screen 0.929, 0.932; medium 0.944, 0.946; production 0.942, 0.947. A0's
     overall score falls from medium to production because its focus classes overfit.
   - Phase 1 is closed. The summary and the next booking's list are in `docs/phase1-summary.md`.
+- 2026-11-13, before any of its runs: **third booking** (17 November to 1 December; Barry, 13 November: "They're
+  all yours to do with as you think best!"). The design and every rule are in `docs/plan-booking-3.md`; this
+  entry registers them.
+  - **Q1, real low-count classes:** the 25 in-model `need_more` and `too_few` classes. HGNetV2-B4 at
+    production, A0 (full real pool) against S20 (per class, real rows repeated round(4 × 1,600 / n_real)
+    times plus 1,600 look-alike translations), 8 paired seeds. Generator: Stage B adapters on `a_sv2` (split
+    v2), look-alike = the eligible class most confused with the class over 127 saved runs
+    (`ops/2026-11-13/rare_profile.csv`). Endpoint: S20 − A0 macro-F1 over the 25 classes on validation,
+    two-level interval; S20 helps if the interval excludes zero and no other class is harmed.
+  - **Q2, shortlist at medium scale:** the screen-scale tie sets (accurate: DINOv3-L, EVA-02-L, ConvNeXt V2-L,
+    EVA-02-B; deployable: EfficientNetV2-S, FastViT-SA24, MobileNetV4-HL, HGNetV2-B4), two seeds at medium
+    scale, decided by the shortlist rule (PLAN 2026-11-02) with the 2080 fp16 and 8-core CPU cost keys.
+  - **Q3, accurate-model schedule:** EVA-02-B at 2,400 per class (6 + 24) for two seeds and a third medium
+    seed; the accurate model trains at the length with the highest mean validation macro-F1.
+  - **Q4, worth of a synthetic snip:** pseudo-rare real-only arms with 100 and 200 snips per class (nested on
+    the 50), HGNetV2-B4 at production, seeds 1 to 6; descriptive.
+  - **Q5, final models:** two train-only seeds per track on the chosen model, schedule and data; test and
+    held-out-project test scored once, on corrected and original labels; a refit on train + validation
+    (`"select": "last"`) per track as the release candidate; ONNX and fp16 parity on alien.
+  - **Q6 (stretch):** distillation of the accurate model into the deployable one.
+  - `train.py` now logs validation macro-F1 per epoch on the selection subset and takes `"select": "last"`;
+    training is otherwise unchanged (CPU smoke test on 13 November).
