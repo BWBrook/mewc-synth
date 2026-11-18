@@ -54,6 +54,11 @@ it, and seeds where an interval stays wide.
   is reported with and without.
 - **Arm S20:** the training list plus, per low-count class, its real rows repeated k times and the 1,600
   translations, with k = round(4 × 1,600 / n_real), so synthetic snips are 20% of the class's draws.
+- **Secondary arm S20f** (registered 18 November, before any S20 result, after a contact sheet showed
+  that some classes' translations keep the look-alike's identity, goat from cattle most clearly): as S20,
+  but the synthetic rows cycle through only the translations the production VTL assigns to the class, as
+  phase 1's S20f; a class with none passing gets no synthetic rows. 8 seeds, at the end of gpu-5's queue.
+  S20f − A0 is reported with the same interval and harm rule; S20f − S20 is secondary.
 - **Endpoint:** macro-F1 over the 25 classes on the validation snips, S20 − A0, two-level bootstrap
   (seeds, then snips). S20 helps if the interval excludes zero and no other class is harmed (an interval
   entirely below −0.01). With 8 to 99 validation snips per class, per-class results are reported, not

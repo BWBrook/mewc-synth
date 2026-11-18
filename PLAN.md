@@ -617,3 +617,11 @@ and synthetic snips identically.
   - **Q6 (stretch):** distillation of the accurate model into the deployable one.
   - `train.py` now logs validation macro-F1 per epoch on the selection subset and takes `"select": "last"`;
     training is otherwise unchanged (CPU smoke test on 13 November).
+- 2026-11-18, before any Q1 S20 result: **secondary arm S20f** for the real low-count classes. A contact sheet of
+  six translations per class (17 classes finished) showed that some keep the look-alike's identity: goat
+  translations from cattle are still cattle; guinea fowl and owlet-nightjar are mixed; brown goshawk (200
+  steps, 68 snips) is murky. S20f is S20 with the synthetic rows cycling through only the translations the
+  production VTL assigns to the class (as phase 1's S20f), keeping share and real exposure; a class with no
+  passing translation gets none. HGNetV2-B4 production, seeds 1 to 8, appended to gpu-5's queue. S20f − A0 is
+  reported with the registered interval and harm rule; S20f − S20 is secondary. The primary endpoint stays
+  S20 − A0.

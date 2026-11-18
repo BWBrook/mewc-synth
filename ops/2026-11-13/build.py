@@ -3,7 +3,8 @@ ops/2026-11-13/configs and one queue per instance.
 - ngx-gpu-4: Q1 A0 (HGNetV2-B4 production, full real pool) seeds 2 to 8; Q3 EVA-02-B at 2,400 per class
   (6 + 24) seeds 1 and 2 and medium seed 3; Q2 deployable track at medium, seeds 1 and 2; Q2 accurate track
   at medium, seed 1; Q4 seeds 1 to 3.
-- ngx-gpu-5 (after rare_synth.sh): Q1 S20 seeds 1 to 8; Q2 accurate track, seed 2; Q4 seeds 4 to 6.
+- ngx-gpu-5 (after rare_synth.sh): Q1 S20 seeds 1 to 8; Q2 accurate track, seed 2; Q4 seeds 4 to 6; Q1's
+  identity-filtered S20f seeds 1 to 8 (added 18 November, before any S20 result).
 Usage: python ops/2026-11-13/build.py OPS_DIR"""
 import json
 import sys
@@ -46,6 +47,8 @@ def main(ops):
     for s in range(1, 7):
         for n in (100, 200):
             add("g4" if s <= 3 else "g5", f"re_A0_{n}_s{s}", {**hg_prod, "seed": s, "train": f"{ARMS}/A0_{n}.csv"})
+    for s in range(1, 9):
+        add("g5", f"rr_hgnetv2_b4_S20f_s{s}", {**hg_prod, "seed": s, "train": f"{ARMS}/rare_S20f.csv"})
     for gpu, lines in q.items():
         (ops / "2026-11-13" / f"{gpu}.queue").write_text("".join(lines))
         print(gpu, len(lines))
