@@ -1,0 +1,101 @@
+id,block,kind,species,target,lookalike,a,b,said,answer,note,called,correct
+rr001,1,synthetic,european_goldfinch,european_goldfinch,superb_fairywren,superb_fairywren,european_goldfinch,synthetic,european_goldfinch,,target,True
+rr002,1,synthetic,european_goldfinch,european_goldfinch,superb_fairywren,superb_fairywren,european_goldfinch,synthetic,unsure,,unsure,False
+rr003,1,real,superb_fairywren,european_goldfinch,superb_fairywren,european_goldfinch,superb_fairywren,real,superb_fairywren,,lookalike,True
+rr004,1,real,european_goldfinch,european_goldfinch,superb_fairywren,superb_fairywren,european_goldfinch,real,european_goldfinch,,target,True
+rr005,2,synthetic,brown_goshawk,brown_goshawk,brown_quail,brown_quail,brown_goshawk,real,brown_goshawk,,target,True
+rr006,2,real,brown_goshawk,brown_goshawk,brown_quail,brown_goshawk,brown_quail,real,brown_goshawk,,target,True
+rr007,2,synthetic,brown_goshawk,brown_goshawk,brown_quail,brown_goshawk,brown_quail,synthetic,brown_goshawk,"Yellow legs on all of these, and yellow eye, plus predator's beak",target,True
+rr008,2,real,brown_quail,brown_goshawk,brown_quail,brown_goshawk,brown_quail,real,brown_quail,,lookalike,True
+rr009,3,synthetic,chestnut_teal,chestnut_teal,pacific_black_duck,pacific_black_duck,chestnut_teal,real,pacific_black_duck,It's a juvenile so is a bit yellowish,lookalike,False
+rr010,3,real,chestnut_teal,chestnut_teal,pacific_black_duck,chestnut_teal,pacific_black_duck,real,chestnut_teal,,target,True
+rr011,3,real,pacific_black_duck,chestnut_teal,pacific_black_duck,pacific_black_duck,chestnut_teal,real,pacific_black_duck,,lookalike,True
+rr012,3,synthetic,chestnut_teal,chestnut_teal,pacific_black_duck,pacific_black_duck,chestnut_teal,synthetic,chestnut_teal,,target,True
+rr013,4,synthetic,european_starling,european_starling,common_blackbird,european_starling,common_blackbird,synthetic,common_blackbird,,lookalike,False
+rr014,4,synthetic,european_starling,european_starling,common_blackbird,common_blackbird,european_starling,real,common_blackbird,,lookalike,False
+rr015,4,real,common_blackbird,european_starling,common_blackbird,european_starling,common_blackbird,real,common_blackbird,,lookalike,True
+rr016,4,real,european_starling,european_starling,common_blackbird,european_starling,common_blackbird,real,european_starling,,target,True
+rr017,5,real,goat,goat,cattle,cattle,goat,real,goat,,target,True
+rr018,5,synthetic,goat,goat,cattle,cattle,goat,real,goat,,target,True
+rr019,5,synthetic,goat,goat,cattle,goat,cattle,real,cattle,,lookalike,False
+rr020,5,real,cattle,goat,cattle,cattle,goat,real,cattle,,lookalike,True
+rr021,6,real,new_holland_honeyeater,new_holland_honeyeater,forest_raven,forest_raven,new_holland_honeyeater,real,new_holland_honeyeater,,target,True
+rr022,6,real,forest_raven,new_holland_honeyeater,forest_raven,new_holland_honeyeater,forest_raven,synthetic,forest_raven,,lookalike,True
+rr023,6,synthetic,new_holland_honeyeater,new_holland_honeyeater,forest_raven,forest_raven,new_holland_honeyeater,real,new_holland_honeyeater,,target,True
+rr024,6,synthetic,new_holland_honeyeater,new_holland_honeyeater,forest_raven,new_holland_honeyeater,forest_raven,synthetic,new_holland_honeyeater,,target,True
+rr025,7,real,chicken,guinea_fowl,chicken,guinea_fowl,chicken,real,chicken,,lookalike,True
+rr026,7,synthetic,guinea_fowl,guinea_fowl,chicken,chicken,guinea_fowl,synthetic,guinea_fowl,,target,True
+rr027,7,synthetic,guinea_fowl,guinea_fowl,chicken,chicken,guinea_fowl,real,guinea_fowl,,target,True
+rr028,7,real,guinea_fowl,guinea_fowl,chicken,chicken,guinea_fowl,real,guinea_fowl,,target,True
+rr029,8,synthetic,swamp_harrier,swamp_harrier,wedge_tailed_eagle,swamp_harrier,wedge_tailed_eagle,real,swamp_harrier,Yellow legs,target,True
+rr030,8,real,swamp_harrier,swamp_harrier,wedge_tailed_eagle,wedge_tailed_eagle,swamp_harrier,real,swamp_harrier,,target,True
+rr031,8,synthetic,swamp_harrier,swamp_harrier,wedge_tailed_eagle,wedge_tailed_eagle,swamp_harrier,real,swamp_harrier,,target,True
+rr032,8,real,wedge_tailed_eagle,swamp_harrier,wedge_tailed_eagle,wedge_tailed_eagle,swamp_harrier,real,wedge_tailed_eagle,Head and beak shape,lookalike,True
+rr033,9,synthetic,scrubtit,scrubtit,tasmanian_scrubwren,scrubtit,tasmanian_scrubwren,synthetic,scrubtit,White wing dot,target,True
+rr034,9,synthetic,scrubtit,scrubtit,tasmanian_scrubwren,tasmanian_scrubwren,scrubtit,real,scrubtit,,target,True
+rr035,9,real,scrubtit,scrubtit,tasmanian_scrubwren,scrubtit,tasmanian_scrubwren,real,tasmanian_scrubwren,,lookalike,False
+rr036,9,real,tasmanian_scrubwren,scrubtit,tasmanian_scrubwren,scrubtit,tasmanian_scrubwren,real,tasmanian_scrubwren,"Angry eyebrow, wing dot is darker",lookalike,True
+rr037,10,real,eastern_rosella,eastern_rosella,crimson_rosella,crimson_rosella,eastern_rosella,synthetic,eastern_rosella,Might be a hybrid but I reckon it's an Eastern,target,True
+rr038,10,synthetic,eastern_rosella,eastern_rosella,crimson_rosella,crimson_rosella,eastern_rosella,synthetic,crimson_rosella,Possibly a hybrid,lookalike,False
+rr039,10,synthetic,eastern_rosella,eastern_rosella,crimson_rosella,crimson_rosella,eastern_rosella,real,crimson_rosella,,lookalike,False
+rr040,10,real,crimson_rosella,eastern_rosella,crimson_rosella,eastern_rosella,crimson_rosella,real,crimson_rosella,,lookalike,True
+rr041,11,real,brown_falcon,brown_falcon,laughing_kookaburra,laughing_kookaburra,brown_falcon,synthetic,brown_falcon,,target,True
+rr042,11,synthetic,brown_falcon,brown_falcon,laughing_kookaburra,brown_falcon,laughing_kookaburra,real,brown_falcon,That stick near its beak is a false flag!,target,True
+rr043,11,real,laughing_kookaburra,brown_falcon,laughing_kookaburra,brown_falcon,laughing_kookaburra,real,laughing_kookaburra,,lookalike,True
+rr044,11,synthetic,brown_falcon,brown_falcon,laughing_kookaburra,brown_falcon,laughing_kookaburra,real,brown_falcon,,target,True
+rr045,12,real,black_rat,rakali,black_rat,rakali,black_rat,real,black_rat,,lookalike,True
+rr046,12,synthetic,rakali,rakali,black_rat,rakali,black_rat,synthetic,black_rat,,lookalike,False
+rr047,12,synthetic,rakali,rakali,black_rat,black_rat,rakali,synthetic,rakali,,target,True
+rr048,12,real,rakali,rakali,black_rat,rakali,black_rat,real,rakali,,target,True
+rr049,13,real,skink,skink,superb_lyrebird,skink,superb_lyrebird,real,skink,,target,True
+rr050,13,synthetic,skink,skink,superb_lyrebird,skink,superb_lyrebird,synthetic,unsure,,unsure,False
+rr051,13,real,superb_lyrebird,skink,superb_lyrebird,skink,superb_lyrebird,real,superb_lyrebird,,lookalike,True
+rr052,13,synthetic,skink,skink,superb_lyrebird,skink,superb_lyrebird,real,skink,I reckon some skinks were mislabelled as superb lyrebirds (misclick) because they look nothing alike (maybe the colouring??),target,True
+rr053,14,synthetic,australian_owlet_nightjar,australian_owlet_nightjar,tasmanian_scrubwren,tasmanian_scrubwren,australian_owlet_nightjar,synthetic,australian_owlet_nightjar,,target,True
+rr054,14,real,australian_owlet_nightjar,australian_owlet_nightjar,tasmanian_scrubwren,tasmanian_scrubwren,australian_owlet_nightjar,real,australian_owlet_nightjar,,target,True
+rr055,14,real,tasmanian_scrubwren,australian_owlet_nightjar,tasmanian_scrubwren,australian_owlet_nightjar,tasmanian_scrubwren,real,tasmanian_scrubwren,,lookalike,True
+rr056,14,synthetic,australian_owlet_nightjar,australian_owlet_nightjar,tasmanian_scrubwren,australian_owlet_nightjar,tasmanian_scrubwren,synthetic,australian_owlet_nightjar,,target,True
+rr057,15,real,white_footed_dunnart,white_footed_dunnart,black_rat,black_rat,white_footed_dunnart,synthetic,white_footed_dunnart,,target,True
+rr058,15,synthetic,white_footed_dunnart,white_footed_dunnart,black_rat,black_rat,white_footed_dunnart,real,white_footed_dunnart,,target,True
+rr059,15,synthetic,white_footed_dunnart,white_footed_dunnart,black_rat,black_rat,white_footed_dunnart,real,black_rat,,lookalike,False
+rr060,15,real,black_rat,white_footed_dunnart,black_rat,white_footed_dunnart,black_rat,real,black_rat,,lookalike,True
+rr061,16,real,superb_fairywren,grey_fantail,superb_fairywren,grey_fantail,superb_fairywren,real,superb_fairywren,,lookalike,True
+rr062,16,real,grey_fantail,grey_fantail,superb_fairywren,superb_fairywren,grey_fantail,synthetic,grey_fantail,,target,True
+rr063,16,synthetic,grey_fantail,grey_fantail,superb_fairywren,superb_fairywren,grey_fantail,synthetic,superb_fairywren,,lookalike,False
+rr064,16,synthetic,grey_fantail,grey_fantail,superb_fairywren,grey_fantail,superb_fairywren,real,grey_fantail,,target,True
+rr065,17,synthetic,antechinus,antechinus,swamp_rat,swamp_rat,antechinus,synthetic,antechinus,,target,True
+rr066,17,real,antechinus,antechinus,swamp_rat,swamp_rat,antechinus,real,antechinus,,target,True
+rr067,17,synthetic,antechinus,antechinus,swamp_rat,swamp_rat,antechinus,real,antechinus,,target,True
+rr068,17,real,swamp_rat,antechinus,swamp_rat,swamp_rat,antechinus,synthetic,unsure,,unsure,False
+rr069,18,real,peafowl,tasmanian_boobook,peafowl,peafowl,tasmanian_boobook,real,peafowl,,lookalike,True
+rr070,18,synthetic,tasmanian_boobook,tasmanian_boobook,peafowl,peafowl,tasmanian_boobook,synthetic,unsure,,unsure,False
+rr071,18,real,tasmanian_boobook,tasmanian_boobook,peafowl,tasmanian_boobook,peafowl,synthetic,tasmanian_boobook,,target,True
+rr072,18,synthetic,tasmanian_boobook,tasmanian_boobook,peafowl,tasmanian_boobook,peafowl,synthetic,unsure,,unsure,False
+rr073,19,synthetic,australian_pipit,australian_pipit,grey_shrikethrush,grey_shrikethrush,australian_pipit,synthetic,australian_pipit,"Might be neither, could be a Victorian species not in the set?",target,True
+rr074,19,real,grey_shrikethrush,australian_pipit,grey_shrikethrush,australian_pipit,grey_shrikethrush,real,grey_shrikethrush,,lookalike,True
+rr075,19,synthetic,australian_pipit,australian_pipit,grey_shrikethrush,australian_pipit,grey_shrikethrush,synthetic,australian_pipit,"Hard to tell, as per previous pipit vs shrikethrush vs something else in Vic? But definitely not a shrikesthrush",target,True
+rr076,19,real,australian_pipit,australian_pipit,grey_shrikethrush,grey_shrikethrush,australian_pipit,synthetic,australian_pipit,"Hard to tell, as per previous pipit vs shrikethrush vs something else in Vic? But definitely not a shrikesthrush",target,True
+rr077,20,synthetic,white_bellied_sea_eagle,white_bellied_sea_eagle,cape_barren_goose,white_bellied_sea_eagle,cape_barren_goose,real,white_bellied_sea_eagle,,target,True
+rr078,20,real,cape_barren_goose,white_bellied_sea_eagle,cape_barren_goose,cape_barren_goose,white_bellied_sea_eagle,synthetic,cape_barren_goose,,lookalike,True
+rr079,20,synthetic,white_bellied_sea_eagle,white_bellied_sea_eagle,cape_barren_goose,cape_barren_goose,white_bellied_sea_eagle,synthetic,white_bellied_sea_eagle,,target,True
+rr080,20,real,white_bellied_sea_eagle,white_bellied_sea_eagle,cape_barren_goose,cape_barren_goose,white_bellied_sea_eagle,real,white_bellied_sea_eagle,,target,True
+rr081,21,real,strong_billed_honeyeater,strong_billed_honeyeater,thornbill,thornbill,strong_billed_honeyeater,real,strong_billed_honeyeater,,target,True
+rr082,21,real,thornbill,strong_billed_honeyeater,thornbill,thornbill,strong_billed_honeyeater,synthetic,thornbill,,lookalike,True
+rr083,21,synthetic,strong_billed_honeyeater,strong_billed_honeyeater,thornbill,strong_billed_honeyeater,thornbill,synthetic,strong_billed_honeyeater,,target,True
+rr084,21,synthetic,strong_billed_honeyeater,strong_billed_honeyeater,thornbill,strong_billed_honeyeater,thornbill,real,strong_billed_honeyeater,,target,True
+rr085,22,real,painted_buttonquail,painted_buttonquail,brown_quail,painted_buttonquail,brown_quail,synthetic,painted_buttonquail,,target,True
+rr086,22,synthetic,painted_buttonquail,painted_buttonquail,brown_quail,brown_quail,painted_buttonquail,real,painted_buttonquail,,target,True
+rr087,22,real,brown_quail,painted_buttonquail,brown_quail,painted_buttonquail,brown_quail,real,brown_quail,,lookalike,True
+rr088,22,synthetic,painted_buttonquail,painted_buttonquail,brown_quail,painted_buttonquail,brown_quail,real,brown_quail,,lookalike,False
+rr089,23,synthetic,pygmy_possum,pygmy_possum,black_rat,pygmy_possum,black_rat,real,pygmy_possum,,target,True
+rr090,23,real,pygmy_possum,pygmy_possum,black_rat,pygmy_possum,black_rat,synthetic,unsure,,unsure,False
+rr091,23,real,black_rat,pygmy_possum,black_rat,pygmy_possum,black_rat,real,black_rat,,lookalike,True
+rr092,23,synthetic,pygmy_possum,pygmy_possum,black_rat,black_rat,pygmy_possum,real,unsure,,unsure,False
+rr093,24,synthetic,brown_hare,brown_hare,eastern_barred_bandicoot,eastern_barred_bandicoot,brown_hare,synthetic,neither,Rabbit,neither,False
+rr094,24,real,eastern_barred_bandicoot,brown_hare,eastern_barred_bandicoot,eastern_barred_bandicoot,brown_hare,real,eastern_barred_bandicoot,Bad image though: reject?,lookalike,True
+rr095,24,real,brown_hare,brown_hare,eastern_barred_bandicoot,eastern_barred_bandicoot,brown_hare,real,brown_hare,,target,True
+rr096,24,synthetic,brown_hare,brown_hare,eastern_barred_bandicoot,eastern_barred_bandicoot,brown_hare,synthetic,neither,"Rabbit I think, low quality though",neither,False
+rr097,25,real,black_rat,house_mouse,black_rat,black_rat,house_mouse,real,black_rat,Note this is identical to about 5 others I looked at (or nearly),lookalike,True
+rr098,25,real,house_mouse,house_mouse,black_rat,house_mouse,black_rat,real,black_rat,,lookalike,False
+rr099,25,synthetic,house_mouse,house_mouse,black_rat,house_mouse,black_rat,real,unsure,,unsure,False
+rr100,25,synthetic,house_mouse,house_mouse,black_rat,house_mouse,black_rat,real,unsure,,unsure,False
