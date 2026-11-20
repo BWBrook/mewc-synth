@@ -625,3 +625,27 @@ and synthetic snips identically.
   passing translation gets none. HGNetV2-B4 production, seeds 1 to 8, appended to gpu-5's queue. S20f − A0 is
   reported with the registered interval and harm rule; S20f − S20 is secondary. The primary endpoint stays
   S20 − A0.
+- 2026-11-20, **third booking: Q1, Q3 and the deployable half of Q2.**
+  - **Q1, real low-count classes** (`ops/2026-11-13/q1_eval.json`; HGNetV2-B4 production, 8 paired seeds):
+    macro-F1 over the 25 classes A0 0.9261, S20 0.9233, S20 − A0 = −0.0028 [−0.0114, +0.0069]; no other class
+    harmed. **S20 does not help** by the registered rule. Overall macro-F1 0.9654 against 0.9651.
+    - Per class (reported, not tested): −0.031 guinea fowl, −0.031 New Holland honeyeater, −0.023 eastern rosella
+      through +0.018 European goldfinch and +0.023 brown goshawk.
+    - Post hoc and descriptive: the per-class change is unrelated to the identity-filter pass rate (Spearman
+      0.06) and falls with the classifiers' baseline confidence on the class (−0.51): synthetic snips helped the
+      classes the models find hardest and cost the easy ones.
+    - Read with phase 1: with 50 real snips per class, synthetic snips add +0.023 to +0.041 and the gain grows
+      with scale. With 65 to 680 real snips and a production baseline of 0.926, the same recipe adds nothing.
+      S20f (identity-filtered) runs later and tests whether filtering changes that.
+  - **Q3, accurate-model schedule:** EVA-02-B validation macro-F1 by length: screen 0.9669 (3 seeds), medium
+    0.9728 (0.9715, 0.9729, 0.9739), 2,400 per class 0.9719 (0.9717, 0.9721), production 0.9689 (1 seed). By the
+    rule, **the accurate model trains at medium length**.
+  - **Q2, deployable track at medium scale** (`ops/2026-11-20/q2_eval_deployable.json`): EfficientNetV2-S 0.9644
+    leads; FastViT-SA24 (−0.0007 [−0.0046, +0.0031]) and HGNetV2-B4 (−0.0009 [−0.0060, +0.0042]) tie;
+    MobileNetV4-HL is out (−0.0058 [−0.0113, −0.0009]). The tie goes to the cheapest on 8 CPU cores:
+    **HGNetV2-B4 stays** (54.6 images/s, against 45.9 and 17.9).
+  - **Consequences for Q5:** the final models train on the real pool only (no synthetic snips). The deployable
+    model's train-only seeds are Q1's eight A0 production runs. Its release candidate, a refit on train plus
+    validation at production length (`"select": "last"`, `ops/2026-11-20/rf_hgnetv2_b4_s1.json`), is appended to
+    ngx-gpu-4's queue. The accurate model waits for Q2's accurate track (DINOv3-L, ConvNeXt V2-L, EVA-02-L,
+    about 24 hours).

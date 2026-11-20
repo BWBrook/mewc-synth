@@ -23,3 +23,4 @@ torch re_A0_100_s2 /home/ubuntu/mewc-synth/ops/2026-11-13/configs/re_A0_100_s2.j
 torch re_A0_200_s2 /home/ubuntu/mewc-synth/ops/2026-11-13/configs/re_A0_200_s2.json
 torch re_A0_100_s3 /home/ubuntu/mewc-synth/ops/2026-11-13/configs/re_A0_100_s3.json
 torch re_A0_200_s3 /home/ubuntu/mewc-synth/ops/2026-11-13/configs/re_A0_200_s3.json
+torch rf_hgnetv2_b4_s1 /home/ubuntu/mewc-synth/ops/2026-11-20/rf_hgnetv2_b4_s1.json

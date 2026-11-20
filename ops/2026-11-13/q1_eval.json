@@ -1,0 +1,72 @@
+{
+ "a": "pd_hgnetv2_b4_anchor_s{s}",
+ "b": "rr_hgnetv2_b4_S20_s{s}",
+ "seeds": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8
+ ],
+ "n_focus": 25,
+ "focus_a": 0.9261,
+ "focus_b": 0.9233,
+ "focus_a_by_seed": [
+  0.9318,
+  0.9249,
+  0.9252,
+  0.9304,
+  0.9251,
+  0.9297,
+  0.9232,
+  0.9186
+ ],
+ "focus_b_by_seed": [
+  0.9247,
+  0.9196,
+  0.9227,
+  0.9267,
+  0.9233,
+  0.9154,
+  0.9287,
+  0.9251
+ ],
+ "overall_a": 0.9654,
+ "overall_b": 0.9651,
+ "focus_diff": -0.0028,
+ "ci95": [
+  -0.0114,
+  0.0069
+ ],
+ "per_class_diff": {
+  "european_goldfinch": 0.0177,
+  "brown_goshawk": 0.0229,
+  "chestnut_teal": -0.0119,
+  "european_starling": -0.0154,
+  "goat": -0.0162,
+  "new_holland_honeyeater": -0.0308,
+  "guinea_fowl": -0.0311,
+  "swamp_harrier": -0.0153,
+  "scrubtit": 0.003,
+  "eastern_rosella": -0.0231,
+  "brown_falcon": 0.0108,
+  "rakali": 0.0072,
+  "skink": -0.0126,
+  "australian_owlet_nightjar": 0.0072,
+  "white_footed_dunnart": -0.0214,
+  "grey_fantail": 0.0034,
+  "antechinus": 0.0169,
+  "tasmanian_boobook": -0.0073,
+  "australian_pipit": -0.0121,
+  "white_bellied_sea_eagle": 0.0024,
+  "strong_billed_honeyeater": -0.0039,
+  "painted_buttonquail": 0.007,
+  "pygmy_possum": 0.0089,
+  "brown_hare": 0.0122,
+  "house_mouse": 0.0107
+ },
+ "harmed_nonfocus": []
+}
