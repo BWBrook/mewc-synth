@@ -681,3 +681,9 @@ and synthetic snips identically.
   - Doubling the real snips from 50 to 100 gains +0.099, against S20's +0.041.
   - This fits Q1: a recipe that adds the equivalent of a few dozen real snips matters at 50 per class and is
     lost at 65 to 680 with a baseline of 0.926.
+- 2026-11-23, before any of its runs: **Q2 extended to four seeds in spare time.** Medium-scale seeds 3 and 4 for
+  ConvNeXt V2-L, EVA-02-L and DINOv3-L, seed 4 for EVA-02-B (seed 3 exists), and seeds 3 and 4 for
+  EfficientNetV2-S, FastViT-SA24 and HGNetV2-B4, at the end of each queue (`ops/2026-11-23/seeds34_*.queue`).
+  The same evaluation at four seeds is reported for the write-up. The release choice stays EVA-02-B and
+  HGNetV2-B4, unless a model's four-seed interval against the chosen model lies entirely above zero; that
+  model's refit then trains as a second release candidate, if the lease allows.

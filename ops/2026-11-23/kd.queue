@@ -2,3 +2,7 @@ torch kd_hgnetv2_b4_s1 /home/ubuntu/mewc-synth/ops/2026-11-23/kd_hgnetv2_b4_s1.j
 torch kd_hgnetv2_b4_s2 /home/ubuntu/mewc-synth/ops/2026-11-23/kd_hgnetv2_b4_s2.json
 torch kd_hgnetv2_b4_s3 /home/ubuntu/mewc-synth/ops/2026-11-23/kd_hgnetv2_b4_s3.json
 torch kd_hgnetv2_b4_s4 /home/ubuntu/mewc-synth/ops/2026-11-23/kd_hgnetv2_b4_s4.json
+torch md_cnv2_l_s3 /home/ubuntu/mewc-synth/ops/2026-11-23/seeds34/md_cnv2_l_s3.json
+torch md_eva02_l_s3 /home/ubuntu/mewc-synth/ops/2026-11-23/seeds34/md_eva02_l_s3.json
+torch md_dinov3_l_s3 /home/ubuntu/mewc-synth/ops/2026-11-23/seeds34/md_dinov3_l_s3.json
+torch md_eva02_b_anchor_s4 /home/ubuntu/mewc-synth/ops/2026-11-23/seeds34/md_eva02_b_anchor_s4.json

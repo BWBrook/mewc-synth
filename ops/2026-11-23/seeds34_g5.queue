@@ -1,0 +1,9 @@
+torch md_cnv2_l_s4 /home/ubuntu/mewc-synth/ops/2026-11-23/seeds34/md_cnv2_l_s4.json
+torch md_eva02_l_s4 /home/ubuntu/mewc-synth/ops/2026-11-23/seeds34/md_eva02_l_s4.json
+torch md_dinov3_l_s4 /home/ubuntu/mewc-synth/ops/2026-11-23/seeds34/md_dinov3_l_s4.json
+torch md_ens_s3 /home/ubuntu/mewc-synth/ops/2026-11-23/seeds34/md_ens_s3.json
+torch md_fastvit_sa24_s3 /home/ubuntu/mewc-synth/ops/2026-11-23/seeds34/md_fastvit_sa24_s3.json
+torch md_hgnetv2_b4_anchor_s3 /home/ubuntu/mewc-synth/ops/2026-11-23/seeds34/md_hgnetv2_b4_anchor_s3.json
+torch md_ens_s4 /home/ubuntu/mewc-synth/ops/2026-11-23/seeds34/md_ens_s4.json
+torch md_fastvit_sa24_s4 /home/ubuntu/mewc-synth/ops/2026-11-23/seeds34/md_fastvit_sa24_s4.json
+torch md_hgnetv2_b4_anchor_s4 /home/ubuntu/mewc-synth/ops/2026-11-23/seeds34/md_hgnetv2_b4_anchor_s4.json
