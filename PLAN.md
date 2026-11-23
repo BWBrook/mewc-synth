@@ -687,3 +687,24 @@ and synthetic snips identically.
   The same evaluation at four seeds is reported for the write-up. The release choice stays EVA-02-B and
   HGNetV2-B4, unless a model's four-seed interval against the chosen model lies entirely above zero; that
   model's refit then trains as a second release candidate, if the lease allows.
+- 2026-11-24, **Q5 test scoring outcome** (`ops/2026-11-23/test_eval.json`; scored once, nothing tuned after):
+
+  | Model | Test macro-F1, corrected labels | Original labels | Validation macro-F1 | Held-out projects, corrected | Original |
+  |---|---|---|---|---|---|
+  | EVA-02-B, 3 train-only seeds | 0.9723 ± 0.0023 | 0.9685 | 0.9728 | 0.777 ± 0.016 | 0.798 |
+  | EVA-02-B refit (train + val) | 0.9725 | 0.9686 | | 0.779 | 0.805 |
+  | HGNetV2-B4, 8 train-only seeds | 0.9605 ± 0.0022 | 0.9567 | 0.9654 | 0.723 ± 0.022 | 0.745 |
+  | HGNetV2-B4 refit (train + val) | 0.9664 | 0.9625 | | 0.751 | 0.777 |
+
+  - Accuracy on test: 0.988 (EVA-02-B) and 0.983 (HGNetV2-B4). On held-out projects: 0.971 and 0.960.
+  - Macro-F1 over the 25 low-count classes on test: EVA-02-B 0.939, HGNetV2-B4 0.917.
+  - **Validation was barely optimistic.** EVA-02-B's test score is within 0.0005 of validation, and
+    HGNetV2-B4 is 0.005 lower. Despite repeated model selection on validation, the selection bias is small.
+  - **Label-review effect** (the bias flagged on 5 November): scored against the original test labels, every
+    model's macro-F1 falls by 0.0038 to 0.0039. Report both.
+  - **Held-out projects:** macro-F1 falls to 0.72 to 0.78, while accuracy stays at 0.96 to 0.97. Many classes
+    have few snips there, so per-class F1 is noisy. The low-count classes drop to 0.50 to 0.61.
+    - On these snips the original labels score higher than the corrected ones (+0.02), matching the review's
+      finding that the flagged labels there were more often right than the models.
+    - Generalising to new projects, not the recipe, is the main gap for deployment.
+  - **Refit on train + validation** adds +0.006 test macro-F1 for HGNetV2-B4 and +0.0002 for EVA-02-B.
