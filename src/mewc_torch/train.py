@@ -4,7 +4,9 @@ the top blocks unfrozen, a fresh optimiser, and dropout and RandAugment magnitud
 each epoch on a fresh per-class sample; categorical focal loss; AdamW with AMSGrad and exponential
 learning-rate decay to min_lr_frac; the best epoch by validation loss is kept ("select": "last" keeps the
 final epoch instead, for a refit whose training list contains the validation snips). Each epoch also logs
-macro-F1 on the validation selection subset. Adds bf16, any batch
+macro-F1 on the validation selection subset. With "soft_targets" (an array of class probabilities, one row per
+training-list row, from a teacher) the loss is (1 - kd_weight) x focal loss + kd_weight x cross-entropy against
+the teacher's probabilities (offline distillation). Adds bf16, any batch
 size, per-epoch checkpoints, so an interrupted run resumes where it stopped, and an optional linear
 warmup over the first warmup_steps of each fresh optimiser (0, mewc-train's recipe, by default), and
 optional gradient checkpointing, which trades time for memory without changing the computation.
@@ -26,7 +28,8 @@ DEFAULTS = {"samples_per_class": 4000, "frozen_epochs": 10, "stage_len": 7, "tot
             "magnitudes": [0.2, 0.4, 0.6, 0.8], "dropouts": [0.1, 0.2, 0.3, 0.4], "n_aug": 3, "blocks": 2,
             "lr": 1e-4, "weight_decay": 1e-4, "min_lr_frac": 0.2, "batch": 16, "focal_alpha": 0.25,
             "focal_gamma": 2.0, "seed": 12345, "val_per_class": 100, "precision": "bf16", "workers": 16,
-            "frozen_patience": 5, "warmup_steps": 0, "grad_checkpointing": False, "select": "best"}
+            "frozen_patience": 5, "warmup_steps": 0, "grad_checkpointing": False, "select": "best",
+            "soft_targets": None, "kd_weight": 0.5}
 
 
 def focal_loss(logits, y, alpha, gamma):
@@ -53,7 +56,7 @@ def epoch_plan(cfg):
     return plan
 
 
-def run_epoch(model, loader, cfg, dev, opt=None, sched=None):
+def run_epoch(model, loader, cfg, dev, opt=None, sched=None, kd=None):
     train = opt is not None
     model.train(train)
     if train:
@@ -62,10 +65,16 @@ def run_epoch(model, loader, cfg, dev, opt=None, sched=None):
     total, n, t0, preds = 0.0, 0, time.time(), []
     with torch.set_grad_enabled(train):
         for x, y in loader:
+            if kd is not None:
+                labels, soft = kd
+                y, s = labels[y], soft[y].to(dev, non_blocking=True)
             x, y = x.to(dev, non_blocking=True), y.to(dev, non_blocking=True)
             with amp:
                 logits = model(x)
                 loss = focal_loss(logits, y, cfg["focal_alpha"], cfg["focal_gamma"])
+                if kd is not None:
+                    ce = -(s.float() * F.log_softmax(logits.float(), dim=1)).sum(1).mean()
+                    loss = (1 - cfg["kd_weight"]) * loss + cfg["kd_weight"] * ce
             if not train:
                 preds.append(logits.argmax(1).cpu())
             if train:
@@ -94,6 +103,11 @@ def main(config_path):
     dev = "cuda" if torch.cuda.is_available() else "cpu"
     classes = sorted(Path(cfg["classes"]).read_text().split())
     tr_paths, tr_labels = read_list(cfg["train"], classes)
+    kd = None
+    if cfg["soft_targets"]:
+        soft = torch.from_numpy(np.load(cfg["soft_targets"]))
+        assert soft.shape == (len(tr_labels), len(classes)), soft.shape
+        kd = (torch.from_numpy(tr_labels), soft)
     va_paths, va_labels = read_list(cfg["val"], classes)
     va_rows = np.concatenate([np.flatnonzero(va_labels == c)[:cfg["val_per_class"]] for c in range(len(classes))])
     model = MewcClassifier(cfg["backbone"], len(classes), cfg["dropouts"][0], pretrained=cfg.get("pretrained", True),
@@ -132,7 +146,8 @@ def main(config_path):
         seed = cfg["seed"] + (0 if ph == "frozen" else e)
         rows = sample_epoch(tr_labels, cfg["samples_per_class"], seed)
         n_aug = cfg["n_aug"] if ph == "progressive" else 0
-        tr_loss, tr_ips, _ = run_epoch(model, loader(tr_paths, tr_labels, rows, mag, n_aug, False), cfg, dev, opt, sched)
+        tr_targets = np.arange(len(tr_labels)) if kd is not None else tr_labels
+        tr_loss, tr_ips, _ = run_epoch(model, loader(tr_paths, tr_targets, rows, mag, n_aug, False), cfg, dev, opt, sched, kd)
         va_loss, va_ips, va_pred = run_epoch(model, val_loader, cfg, dev)
         rec = {"k": k, "phase": ph, "epoch": e, "dropout": drop, "magnitude": mag, "train_loss": tr_loss,
                "val_loss": va_loss, "val_f1": round(macro_f1(va_labels[va_rows], va_pred, len(classes)), 5),

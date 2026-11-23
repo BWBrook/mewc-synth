@@ -1,0 +1,149 @@
+{
+ "deployable": {
+  "complete": true,
+  "leader": "efficientnetv2_s",
+  "cost_key": "cpu8",
+  "tied": [
+   "efficientnetv2_s",
+   "fastvit_sa24",
+   "hgnetv2_b4"
+  ],
+  "winner": "hgnetv2_b4",
+  "models": [
+   {
+    "model": "efficientnetv2_s",
+    "per_seed": [
+     0.965,
+     0.9638
+    ],
+    "mean": 0.9644,
+    "diff_vs_leader": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "ties_leader": true,
+    "cpu8": 17.9
+   },
+   {
+    "model": "fastvit_sa24",
+    "per_seed": [
+     0.9636,
+     0.9639
+    ],
+    "mean": 0.9638,
+    "diff_vs_leader": -0.0007,
+    "ci95": [
+     -0.0046,
+     0.0031
+    ],
+    "ties_leader": true,
+    "cpu8": 45.9
+   },
+   {
+    "model": "hgnetv2_b4",
+    "per_seed": [
+     0.9614,
+     0.9657
+    ],
+    "mean": 0.9635,
+    "diff_vs_leader": -0.0009,
+    "ci95": [
+     -0.006,
+     0.0042
+    ],
+    "ties_leader": true,
+    "cpu8": 54.6
+   },
+   {
+    "model": "mobilenetv4_hl",
+    "per_seed": [
+     0.9568,
+     0.9603
+    ],
+    "mean": 0.9586,
+    "diff_vs_leader": -0.0058,
+    "ci95": [
+     -0.0113,
+     -0.0009
+    ],
+    "ties_leader": false,
+    "cpu8": 25.1
+   }
+  ]
+ },
+ "accurate": {
+  "complete": true,
+  "leader": "convnextv2_l",
+  "cost_key": "gpu_fp16_b32",
+  "tied": [
+   "convnextv2_l",
+   "eva02_l",
+   "eva02_b",
+   "dinov3_l"
+  ],
+  "winner": "eva02_b",
+  "models": [
+   {
+    "model": "convnextv2_l",
+    "per_seed": [
+     0.9709,
+     0.9757
+    ],
+    "mean": 0.9733,
+    "diff_vs_leader": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "ties_leader": true,
+    "gpu_fp16_b32": 49.4
+   },
+   {
+    "model": "eva02_l",
+    "per_seed": [
+     0.9738,
+     0.9726
+    ],
+    "mean": 0.9732,
+    "diff_vs_leader": -0.0001,
+    "ci95": [
+     -0.0044,
+     0.0045
+    ],
+    "ties_leader": true,
+    "gpu_fp16_b32": 29.4
+   },
+   {
+    "model": "eva02_b",
+    "per_seed": [
+     0.9715,
+     0.9729
+    ],
+    "mean": 0.9722,
+    "diff_vs_leader": -0.0011,
+    "ci95": [
+     -0.0059,
+     0.0033
+    ],
+    "ties_leader": true,
+    "gpu_fp16_b32": 86.5
+   },
+   {
+    "model": "dinov3_l",
+    "per_seed": [
+     0.9732,
+     0.9674
+    ],
+    "mean": 0.9703,
+    "diff_vs_leader": -0.0029,
+    "ci95": [
+     -0.0091,
+     0.004
+    ],
+    "ties_leader": true,
+    "gpu_fp16_b32": 47.2
+   }
+  ]
+ }
+}

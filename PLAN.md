@@ -649,3 +649,27 @@ and synthetic snips identically.
     validation at production length (`"select": "last"`, `ops/2026-11-20/rf_hgnetv2_b4_s1.json`), is appended to
     ngx-gpu-4's queue. The accurate model waits for Q2's accurate track (DINOv3-L, ConvNeXt V2-L, EVA-02-L,
     about 24 hours).
+- 2026-11-23, **Q2 accurate track at medium scale** (`ops/2026-11-20/q2_eval.json`): ConvNeXt V2-L 0.9733 (0.9709,
+  0.9757) leads; EVA-02-L 0.9732 (−0.0001 [−0.0044, +0.0045]), EVA-02-B 0.9722 (−0.0011 [−0.0059, +0.0033]) and
+  DINOv3-L 0.9703 (−0.0029 [−0.0091, +0.0040]) all tie. The tie goes to the cheapest on the 2080 in fp16:
+  **EVA-02-B stays the accurate model** (86.5 images/s, against 49.4, 47.2 and 29.4). Seed-to-seed spread in
+  the large models is up to 0.006, so two seeds cannot separate the four.
+- 2026-11-23, before any of its results: **Q5 test scoring and Q6 distillation.**
+  - **Final models:** EVA-02-B at medium length and HGNetV2-B4 at production length, real pool only.
+    - The refits on train + validation (`rf_eva02_b_s1`, `rf_hgnetv2_b4_s1`, `"select": "last"`) are the release
+      candidates. Their registry "validation" scores are meaningless, because validation is in their training
+      list (`rf_hgnetv2_b4_s1` 0.9969).
+  - **Test scoring, once** (`ops/2026-11-23/test_score.sh`, `test_eval.py`): every train-only seed of the final
+    configurations and both refits score the sealed test and held-out-project test snips: HGNetV2-B4 seeds 1
+    to 8 and refit, EVA-02-B seeds 1 to 3 and refit, 13 models (`test_runs.txt`).
+    - This is more than the two seeds per track registered on 13 November. All available seeds give a better
+      estimate, and the list was fixed before any test result.
+    - Macro-F1 overall and over the 25 low-count classes, and accuracy, on corrected and original labels.
+      Nothing is tuned or chosen afterwards.
+  - **Q6, distillation:** teacher targets are the mean class probabilities of the three train-only EVA-02-B
+    medium runs on each training snip, scored without augmentation. A student HGNetV2-B4 at production trains
+    on (1 − 0.5) × focal loss + 0.5 × cross-entropy against those targets, seeds 1 to 4.
+    - Comparison: paired with A0 seeds 1 to 4 (`pd_hgnetv2_b4_anchor`), overall validation macro-F1, two-level
+      interval. Distillation helps if the interval excludes zero.
+    - Known limits: the targets come from un-augmented views, while the student sees augmented ones; and the
+      teacher has seen these snips, so its targets on rare classes are close to one-hot.
