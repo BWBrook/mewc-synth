@@ -673,3 +673,11 @@ and synthetic snips identically.
       interval. Distillation helps if the interval excludes zero.
     - Known limits: the targets come from un-augmented views, while the student sees augmented ones; and the
       teacher has seen these snips, so its targets on rare classes are close to one-hot.
+- 2026-11-23, **Q4, worth of a synthetic snip** (descriptive; `ops/2026-11-23/q4_realeq.json`; HGNetV2-B4
+  production, pseudo-rare focus macro-F1, 6 seeds): real-only 50 snips 0.784, 100 snips 0.883, 200 snips 0.927,
+  full pool 0.974; S20 (50 real + 200 translations) 0.825.
+  - Read off the real-only curve, S20 equals **67 real snips** (bootstrap 60 to 75). The 200 translations are
+    worth about 17 real snips, about one real snip per 12 translations.
+  - Doubling the real snips from 50 to 100 gains +0.099, against S20's +0.041.
+  - This fits Q1: a recipe that adds the equivalent of a few dozen real snips matters at 50 per class and is
+    lost at 65 to 680 with a baseline of 0.926.
