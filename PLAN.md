@@ -703,7 +703,8 @@ and synthetic snips identically.
   - **Label-review effect** (the bias flagged on 5 November): scored against the original test labels, every
     model's macro-F1 falls by 0.0038 to 0.0039. Report both.
   - **Held-out projects:** macro-F1 falls to 0.72 to 0.78, while accuracy stays at 0.96 to 0.97. Many classes
-    have few snips there, so per-class F1 is noisy. The low-count classes drop to 0.50 to 0.61.
+    have few snips there: the held-out-project test covers 62 of the 96 classes, 24 of them with fewer than 10
+    snips (median 33), so per-class F1 is noisy. The low-count classes drop to 0.50 to 0.61.
     - On these snips the original labels score higher than the corrected ones (+0.02), matching the review's
       finding that the flagged labels there were more often right than the models.
     - Generalising to new projects, not the recipe, is the main gap for deployment.
