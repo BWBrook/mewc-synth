@@ -13,18 +13,22 @@ def compression_width(n_features, n_classes, vit):
     return 256 if n_classes <= 25 or n_features < 768 else 384 if n_features == 768 else 512
 
 
-def create_base(backbone, pretrained=True, img_size=None):
-    """The timm backbone without its classifier, average-pooled as mewc-train pools kimm's features, keeping
-    every pretrained weight: a class-token or attention-pool ViT averages its tokens after its own final
-    norm instead of timm's freshly initialised post-pool norm, and a transformer built at a non-native size
-    gets resampled position embeddings."""
+def base_kwargs(backbone, img_size=None):
+    """timm.create_model keyword arguments for the backbone without its classifier, average-pooled as
+    mewc-train pools kimm's features, keeping every pretrained weight: a class-token or attention-pool ViT
+    averages its tokens after its own final norm instead of timm's freshly initialised post-pool norm, and a
+    transformer built at a non-native size gets resampled position embeddings."""
     probe = timm.create_model(backbone, pretrained=False, num_classes=0)
     kw = {"num_classes": 0, "global_pool": "avg"}
     if getattr(probe, "global_pool", None) in ("token", "map"):
         kw[{"VisionTransformer": "fc_norm", "Eva": "use_fc_norm"}[type(probe).__name__]] = False
     if img_size and hasattr(probe, "patch_embed") and img_size != probe.pretrained_cfg["input_size"][-1]:
         kw["img_size"] = img_size
-    return timm.create_model(backbone, pretrained=pretrained, **kw)
+    return kw
+
+
+def create_base(backbone, pretrained=True, img_size=None):
+    return timm.create_model(backbone, pretrained=pretrained, **base_kwargs(backbone, img_size))
 
 
 class MewcClassifier(nn.Module):
