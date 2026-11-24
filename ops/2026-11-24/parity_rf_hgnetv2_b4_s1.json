@@ -1,0 +1,17 @@
+{
+ "run": "rf_hgnetv2_b4_s1",
+ "snips": 2000,
+ "img_size": 288,
+ "cuda16": {
+  "top1_agree": 1.0,
+  "disagreements": 0,
+  "max_abs_prob_diff": 0.006037026643753052,
+  "mean_abs_top_prob_diff": 0.0001419958716724068
+ },
+ "cpu32": {
+  "top1_agree": 1.0,
+  "disagreements": 0,
+  "max_abs_prob_diff": 3.516674041748047e-06,
+  "mean_abs_top_prob_diff": 7.395446033342523e-08
+ }
+}

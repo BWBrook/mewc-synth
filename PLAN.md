@@ -709,3 +709,11 @@ and synthetic snips identically.
       finding that the flagged labels there were more often right than the models.
     - Generalising to new projects, not the recipe, is the main gap for deployment.
   - **Refit on train + validation** adds +0.006 test macro-F1 for HGNetV2-B4 and +0.0002 for EVA-02-B.
+- 2026-11-24, **fp16 deployment check** (decision 1's condition; `ops/2026-11-24/fp16_parity.py`, run on alien's
+  RTX 2080):
+  - Both refits exported to ONNX (fused) and matched PyTorch within 1e-6.
+  - On 2,000 validation snips, CUDA fp16 agreed with CUDA fp32 on every top-1 prediction for both models; the
+    largest probability difference was 0.006 (HGNetV2-B4) and 0.005 (EVA-02-B). CPU fp32 matched CUDA fp32
+    within 4e-6.
+  - **fp16 is adopted for the 2080**, at the measured 868 (HGNetV2-B4) and 87 (EVA-02-B) images/s at batch 32.
+  - The ONNX files sit beside the refits on alien (`~/work/finals/runs`) and are rebuilt by `mewc_torch.export`.

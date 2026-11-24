@@ -1,0 +1,17 @@
+{
+ "run": "rf_eva02_b_s1",
+ "snips": 2000,
+ "img_size": 392,
+ "cuda16": {
+  "top1_agree": 1.0,
+  "disagreements": 0,
+  "max_abs_prob_diff": 0.005273699760437012,
+  "mean_abs_top_prob_diff": 0.00015785175492055714
+ },
+ "cpu32": {
+  "top1_agree": 1.0,
+  "disagreements": 0,
+  "max_abs_prob_diff": 2.8014183044433594e-06,
+  "mean_abs_top_prob_diff": 1.221001184603665e-07
+ }
+}
