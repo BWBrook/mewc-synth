@@ -717,3 +717,20 @@ and synthetic snips identically.
     within 4e-6.
   - **fp16 is adopted for the 2080**, at the measured 868 (HGNetV2-B4) and 87 (EVA-02-B) images/s at batch 32.
   - The ONNX files sit beside the refits on alien (`~/work/finals/runs`) and are rebuilt by `mewc_torch.export`.
+- 2026-11-24, **Q6 distillation outcome** (`ops/2026-11-24/q6_kd.json`; HGNetV2-B4 production, EVA-02-B soft
+  targets at weight 0.5, paired with the default-recipe seeds 1 to 4; macro-F1 over all 96 classes on validation,
+  two-level bootstrap):
+  - Distilled 0.9689 (seeds 0.9681, 0.9696, 0.9668, 0.9711) against 0.9660 (0.9670, 0.9655, 0.9642, 0.9673):
+    **+0.0029 [+0.0001, +0.0055]**. The interval excludes zero, narrowly, so by the registered rule
+    distillation helps. No class is harmed.
+  - The deployable model's final configuration becomes the distilled one.
+- 2026-11-24, before its runs: **distilled refit and its test scoring.** These follow from Q5's rules with the
+  distilled configuration:
+  - The deployable release candidate is `rfkd_hgnetv2_b4_s1`: train + validation, `"select": "last"`, the
+    same teacher. Training rows keep their Q6 targets; validation rows take the mean of the three train-only
+    EVA-02-B runs' validation probabilities (out of sample; `ops/2026-11-24/kd_refit_prep.py`).
+  - The four train-only distilled runs and the refit score the sealed test and held-out-project snips once, on
+    both label versions, as the other final models did.
+  - It runs on ngx-gpu-4 after the current ConvNeXt V2-L seed, ahead of the remaining four-seed runs
+    (`ops/2026-11-24/rfkd.sh`). It is then exported to ONNX, with fp16 parity checked on alien.
+  - The non-distilled HGNetV2-B4 refit stays as the fallback if the distilled refit fails a check.
