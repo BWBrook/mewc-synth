@@ -1,7 +1,7 @@
 """Publish a release bundle to Hugging Face: create the model repo private (if new), upload the bundle and its
-card, download it again and check every file's SHA-256 against the local bundle. With --public, make the repo
+card directory (README.md and any other files beside it), download it again and check every file's SHA-256 against the local bundle. With --public, make the repo
 public after the check passes. Needs a write token (hf auth login).
-Usage: python release/publish.py BUNDLE_DIR CARD_MD REPO_ID [--public]"""
+Usage: python release/publish.py BUNDLE_DIR CARD_DIR REPO_ID [--public]"""
 import hashlib
 import shutil
 import sys
@@ -24,8 +24,9 @@ def main(bundle, card, repo, *flags):
     api.create_repo(repo, repo_type="model", private=True, exist_ok=True)
     with tempfile.TemporaryDirectory() as tmp:
         stage = Path(tmp) / "bundle"
-        shutil.copytree(bundle, stage)
-        shutil.copy(card, stage / "README.md")
+        shutil.copytree(bundle, stage, ignore=shutil.ignore_patterns("__pycache__"))
+        for f in Path(card).iterdir():
+            shutil.copy(f, stage / f.name)
         api.upload_folder(repo_id=repo, folder_path=str(stage), commit_message=f"Release {bundle.name}")
         local = {p.name: sha(p) for p in stage.iterdir()}
     got = Path(snapshot_download(repo, local_dir=tempfile.mkdtemp()))
