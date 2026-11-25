@@ -11,7 +11,8 @@ import numpy as np
 import pandas as pd
 
 GROUPS = {"hgnetv2_b4 train-only": "pd_hgnetv2_b4_anchor_s", "hgnetv2_b4 refit": "rf_hgnetv2_b4_s",
-          "eva02_b train-only": "md_eva02_b_anchor_s", "eva02_b refit": "rf_eva02_b_s"}
+          "eva02_b train-only": "md_eva02_b_anchor_s", "eva02_b refit": "rf_eva02_b_s",
+          "hgnetv2_b4 distilled train-only": "kd_hgnetv2_b4_s", "hgnetv2_b4 distilled refit": "rfkd_hgnetv2_b4_s"}
 
 
 def f1s(truth, pred, k):

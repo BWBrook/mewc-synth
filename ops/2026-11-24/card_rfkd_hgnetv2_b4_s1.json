@@ -1,0 +1,795 @@
+{
+ "release_run": "rfkd_hgnetv2_b4_s1",
+ "train_only": [
+  "kd_hgnetv2_b4_s1",
+  "kd_hgnetv2_b4_s2",
+  "kd_hgnetv2_b4_s3",
+  "kd_hgnetv2_b4_s4"
+ ],
+ "test": {
+  "all": {
+   "n": 98049,
+   "classes": 96,
+   "macro_f1": 0.9676,
+   "accuracy": 0.9858
+  },
+  "camera_trap": {
+   "n": 71834,
+   "classes": 95,
+   "macro_f1": 0.9284,
+   "accuracy": 0.9836
+  }
+ },
+ "per_class_test": [
+  {
+   "class": "antechinus",
+   "f1": 0.8054,
+   "precision": 0.8091,
+   "recall": 0.8018,
+   "support": 111
+  },
+  {
+   "class": "australian_fur_seal",
+   "f1": 0.9938,
+   "precision": 0.9928,
+   "recall": 0.9948,
+   "support": 970
+  },
+  {
+   "class": "australian_magpie",
+   "f1": 0.993,
+   "precision": 0.994,
+   "recall": 0.992,
+   "support": 2001
+  },
+  {
+   "class": "australian_owlet_nightjar",
+   "f1": 0.9877,
+   "precision": 1.0,
+   "recall": 0.9756,
+   "support": 82
+  },
+  {
+   "class": "australian_pipit",
+   "f1": 0.9653,
+   "precision": 0.9542,
+   "recall": 0.9766,
+   "support": 128
+  },
+  {
+   "class": "bare_nosed_wombat",
+   "f1": 0.993,
+   "precision": 0.995,
+   "recall": 0.991,
+   "support": 1999
+  },
+  {
+   "class": "bassian_thrush",
+   "f1": 0.9933,
+   "precision": 0.9915,
+   "recall": 0.995,
+   "support": 2000
+  },
+  {
+   "class": "beautiful_firetail",
+   "f1": 0.9958,
+   "precision": 0.9916,
+   "recall": 1.0,
+   "support": 237
+  },
+  {
+   "class": "bennetts_wallaby",
+   "f1": 0.9945,
+   "precision": 0.994,
+   "recall": 0.995,
+   "support": 1998
+  },
+  {
+   "class": "black_currawong",
+   "f1": 0.965,
+   "precision": 0.9702,
+   "recall": 0.96,
+   "support": 1999
+  },
+  {
+   "class": "black_rat",
+   "f1": 0.97,
+   "precision": 0.9695,
+   "recall": 0.9705,
+   "support": 1998
+  },
+  {
+   "class": "black_swan",
+   "f1": 0.9891,
+   "precision": 0.9891,
+   "recall": 0.9891,
+   "support": 275
+  },
+  {
+   "class": "blotched_blue_tongue",
+   "f1": 0.9934,
+   "precision": 0.9934,
+   "recall": 0.9934,
+   "support": 301
+  },
+  {
+   "class": "brown_falcon",
+   "f1": 0.9624,
+   "precision": 0.9697,
+   "recall": 0.9552,
+   "support": 67
+  },
+  {
+   "class": "brown_goshawk",
+   "f1": 0.9,
+   "precision": 0.9474,
+   "recall": 0.8571,
+   "support": 21
+  },
+  {
+   "class": "brown_hare",
+   "f1": 0.9358,
+   "precision": 0.9745,
+   "recall": 0.9,
+   "support": 170
+  },
+  {
+   "class": "brown_quail",
+   "f1": 0.9832,
+   "precision": 0.9865,
+   "recall": 0.9799,
+   "support": 1495
+  },
+  {
+   "class": "brush_bronzewing",
+   "f1": 0.978,
+   "precision": 0.9744,
+   "recall": 0.9816,
+   "support": 1629
+  },
+  {
+   "class": "brushtail_possum",
+   "f1": 0.995,
+   "precision": 0.9945,
+   "recall": 0.9955,
+   "support": 2000
+  },
+  {
+   "class": "camera_bait",
+   "f1": 1.0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "support": 35
+  },
+  {
+   "class": "cape_barren_goose",
+   "f1": 0.9973,
+   "precision": 0.996,
+   "recall": 0.9985,
+   "support": 2001
+  },
+  {
+   "class": "cat",
+   "f1": 0.9925,
+   "precision": 0.995,
+   "recall": 0.99,
+   "support": 2000
+  },
+  {
+   "class": "cattle",
+   "f1": 0.9978,
+   "precision": 0.9975,
+   "recall": 0.998,
+   "support": 2000
+  },
+  {
+   "class": "chestnut_teal",
+   "f1": 0.9492,
+   "precision": 0.9333,
+   "recall": 0.9655,
+   "support": 29
+  },
+  {
+   "class": "chicken",
+   "f1": 0.9926,
+   "precision": 0.9951,
+   "recall": 0.9902,
+   "support": 813
+  },
+  {
+   "class": "common_blackbird",
+   "f1": 0.976,
+   "precision": 0.9813,
+   "recall": 0.9707,
+   "support": 1025
+  },
+  {
+   "class": "common_bronzewing",
+   "f1": 0.983,
+   "precision": 0.9934,
+   "recall": 0.9729,
+   "support": 1996
+  },
+  {
+   "class": "common_ringtail",
+   "f1": 0.9912,
+   "precision": 0.9869,
+   "recall": 0.9956,
+   "support": 455
+  },
+  {
+   "class": "crescent_honeyeater",
+   "f1": 0.9706,
+   "precision": 0.9741,
+   "recall": 0.9672,
+   "support": 427
+  },
+  {
+   "class": "crimson_rosella",
+   "f1": 0.997,
+   "precision": 0.996,
+   "recall": 0.998,
+   "support": 1998
+  },
+  {
+   "class": "dog",
+   "f1": 0.9737,
+   "precision": 0.9923,
+   "recall": 0.9557,
+   "support": 271
+  },
+  {
+   "class": "dusky_robin",
+   "f1": 0.9486,
+   "precision": 0.9395,
+   "recall": 0.9578,
+   "support": 308
+  },
+  {
+   "class": "eastern_barred_bandicoot",
+   "f1": 0.9924,
+   "precision": 0.9913,
+   "recall": 0.9934,
+   "support": 1373
+  },
+  {
+   "class": "eastern_bettong",
+   "f1": 0.983,
+   "precision": 0.9808,
+   "recall": 0.9851,
+   "support": 1143
+  },
+  {
+   "class": "eastern_quoll",
+   "f1": 0.9921,
+   "precision": 0.9929,
+   "recall": 0.9913,
+   "support": 1830
+  },
+  {
+   "class": "eastern_rosella",
+   "f1": 0.9839,
+   "precision": 0.9683,
+   "recall": 1.0,
+   "support": 61
+  },
+  {
+   "class": "european_goldfinch",
+   "f1": 0.9714,
+   "precision": 1.0,
+   "recall": 0.9444,
+   "support": 18
+  },
+  {
+   "class": "european_rabbit",
+   "f1": 0.9587,
+   "precision": 0.9587,
+   "recall": 0.9587,
+   "support": 533
+  },
+  {
+   "class": "european_starling",
+   "f1": 0.9254,
+   "precision": 0.9394,
+   "recall": 0.9118,
+   "support": 34
+  },
+  {
+   "class": "fallow_deer",
+   "f1": 0.998,
+   "precision": 0.9985,
+   "recall": 0.9975,
+   "support": 2000
+  },
+  {
+   "class": "flame_robin",
+   "f1": 0.9857,
+   "precision": 0.9889,
+   "recall": 0.9824,
+   "support": 1993
+  },
+  {
+   "class": "forest_raven",
+   "f1": 0.9815,
+   "precision": 0.9805,
+   "recall": 0.9825,
+   "support": 2000
+  },
+  {
+   "class": "forester_kangaroo",
+   "f1": 0.9977,
+   "precision": 0.998,
+   "recall": 0.9975,
+   "support": 2000
+  },
+  {
+   "class": "goat",
+   "f1": 0.973,
+   "precision": 1.0,
+   "recall": 0.9474,
+   "support": 38
+  },
+  {
+   "class": "green_rosella",
+   "f1": 0.9809,
+   "precision": 0.9822,
+   "recall": 0.9797,
+   "support": 394
+  },
+  {
+   "class": "grey_currawong",
+   "f1": 0.9344,
+   "precision": 0.9144,
+   "recall": 0.9553,
+   "support": 626
+  },
+  {
+   "class": "grey_fantail",
+   "f1": 0.9099,
+   "precision": 0.9099,
+   "recall": 0.9099,
+   "support": 111
+  },
+  {
+   "class": "grey_shrikethrush",
+   "f1": 0.9825,
+   "precision": 0.9854,
+   "recall": 0.9795,
+   "support": 2001
+  },
+  {
+   "class": "guinea_fowl",
+   "f1": 0.967,
+   "precision": 0.9778,
+   "recall": 0.9565,
+   "support": 46
+  },
+  {
+   "class": "house_mouse",
+   "f1": 0.7659,
+   "precision": 0.7336,
+   "recall": 0.801,
+   "support": 196
+  },
+  {
+   "class": "insect",
+   "f1": 0.981,
+   "precision": 0.9671,
+   "recall": 0.9952,
+   "support": 207
+  },
+  {
+   "class": "laughing_kookaburra",
+   "f1": 0.9952,
+   "precision": 0.996,
+   "recall": 0.9945,
+   "support": 1999
+  },
+  {
+   "class": "lewins_rail",
+   "f1": 0.9627,
+   "precision": 0.9789,
+   "recall": 0.9469,
+   "support": 245
+  },
+  {
+   "class": "little_penguin",
+   "f1": 0.9985,
+   "precision": 0.997,
+   "recall": 1.0,
+   "support": 2000
+  },
+  {
+   "class": "long_nosed_potoroo",
+   "f1": 0.9775,
+   "precision": 0.9835,
+   "recall": 0.9716,
+   "support": 1653
+  },
+  {
+   "class": "long_tailed_mouse",
+   "f1": 0.832,
+   "precision": 0.832,
+   "recall": 0.832,
+   "support": 363
+  },
+  {
+   "class": "maned_duck",
+   "f1": 0.997,
+   "precision": 0.995,
+   "recall": 0.999,
+   "support": 2001
+  },
+  {
+   "class": "masked_lapwing",
+   "f1": 0.9962,
+   "precision": 0.997,
+   "recall": 0.9954,
+   "support": 659
+  },
+  {
+   "class": "new_holland_honeyeater",
+   "f1": 0.9574,
+   "precision": 0.9184,
+   "recall": 1.0,
+   "support": 45
+  },
+  {
+   "class": "olive_whistler",
+   "f1": 0.923,
+   "precision": 0.9154,
+   "recall": 0.9306,
+   "support": 663
+  },
+  {
+   "class": "pacific_black_duck",
+   "f1": 0.9942,
+   "precision": 0.996,
+   "recall": 0.9925,
+   "support": 1997
+  },
+  {
+   "class": "painted_buttonquail",
+   "f1": 0.893,
+   "precision": 0.8391,
+   "recall": 0.9542,
+   "support": 153
+  },
+  {
+   "class": "peafowl",
+   "f1": 0.9983,
+   "precision": 0.999,
+   "recall": 0.9975,
+   "support": 2003
+  },
+  {
+   "class": "pink_robin",
+   "f1": 0.9626,
+   "precision": 0.9574,
+   "recall": 0.9677,
+   "support": 465
+  },
+  {
+   "class": "platypus",
+   "f1": 0.9527,
+   "precision": 0.9742,
+   "recall": 0.9321,
+   "support": 162
+  },
+  {
+   "class": "purple_swamphen",
+   "f1": 0.9723,
+   "precision": 0.9723,
+   "recall": 0.9723,
+   "support": 253
+  },
+  {
+   "class": "pygmy_possum",
+   "f1": 0.9373,
+   "precision": 0.966,
+   "recall": 0.9103,
+   "support": 156
+  },
+  {
+   "class": "rakali",
+   "f1": 0.8841,
+   "precision": 0.8592,
+   "recall": 0.9104,
+   "support": 67
+  },
+  {
+   "class": "red_fox",
+   "f1": 0.9943,
+   "precision": 0.9929,
+   "recall": 0.9957,
+   "support": 705
+  },
+  {
+   "class": "scrubtit",
+   "f1": 0.9434,
+   "precision": 0.9434,
+   "recall": 0.9434,
+   "support": 53
+  },
+  {
+   "class": "sheep",
+   "f1": 0.9975,
+   "precision": 0.9975,
+   "recall": 0.9975,
+   "support": 2001
+  },
+  {
+   "class": "short_beaked_echidna",
+   "f1": 0.9957,
+   "precision": 0.998,
+   "recall": 0.9935,
+   "support": 2000
+  },
+  {
+   "class": "skink",
+   "f1": 0.987,
+   "precision": 1.0,
+   "recall": 0.9744,
+   "support": 78
+  },
+  {
+   "class": "snake",
+   "f1": 0.9917,
+   "precision": 0.9934,
+   "recall": 0.9901,
+   "support": 303
+  },
+  {
+   "class": "sooty_shearwater",
+   "f1": 0.9983,
+   "precision": 0.997,
+   "recall": 0.9995,
+   "support": 2000
+  },
+  {
+   "class": "southern_brown_bandicoot",
+   "f1": 0.9816,
+   "precision": 0.9782,
+   "recall": 0.985,
+   "support": 2001
+  },
+  {
+   "class": "spotted_tail_quoll",
+   "f1": 0.9924,
+   "precision": 0.998,
+   "recall": 0.987,
+   "support": 1997
+  },
+  {
+   "class": "strong_billed_honeyeater",
+   "f1": 0.9536,
+   "precision": 0.9536,
+   "recall": 0.9536,
+   "support": 151
+  },
+  {
+   "class": "sugar_glider",
+   "f1": 0.9747,
+   "precision": 0.9554,
+   "recall": 0.9948,
+   "support": 194
+  },
+  {
+   "class": "superb_fairywren",
+   "f1": 0.9914,
+   "precision": 0.9949,
+   "recall": 0.988,
+   "support": 1994
+  },
+  {
+   "class": "superb_lyrebird",
+   "f1": 0.9908,
+   "precision": 0.9876,
+   "recall": 0.994,
+   "support": 2000
+  },
+  {
+   "class": "swamp_harrier",
+   "f1": 0.9748,
+   "precision": 1.0,
+   "recall": 0.9508,
+   "support": 61
+  },
+  {
+   "class": "swamp_rat",
+   "f1": 0.9266,
+   "precision": 0.9235,
+   "recall": 0.9297,
+   "support": 740
+  },
+  {
+   "class": "tasmanian_boobook",
+   "f1": 0.9702,
+   "precision": 0.9661,
+   "recall": 0.9744,
+   "support": 117
+  },
+  {
+   "class": "tasmanian_devil",
+   "f1": 0.9975,
+   "precision": 0.998,
+   "recall": 0.997,
+   "support": 2000
+  },
+  {
+   "class": "tasmanian_nativehen",
+   "f1": 0.9963,
+   "precision": 0.9945,
+   "recall": 0.998,
+   "support": 2000
+  },
+  {
+   "class": "tasmanian_pademelon",
+   "f1": 0.9886,
+   "precision": 0.9846,
+   "recall": 0.9925,
+   "support": 2002
+  },
+  {
+   "class": "tasmanian_scrubwren",
+   "f1": 0.9556,
+   "precision": 0.9413,
+   "recall": 0.9703,
+   "support": 942
+  },
+  {
+   "class": "thornbill",
+   "f1": 0.9915,
+   "precision": 0.993,
+   "recall": 0.99,
+   "support": 1999
+  },
+  {
+   "class": "unknown_animal",
+   "f1": 0.9804,
+   "precision": 0.9743,
+   "recall": 0.9865,
+   "support": 2000
+  },
+  {
+   "class": "wedge_tailed_eagle",
+   "f1": 0.9917,
+   "precision": 0.9935,
+   "recall": 0.9898,
+   "support": 1866
+  },
+  {
+   "class": "white_bellied_sea_eagle",
+   "f1": 0.9387,
+   "precision": 0.9387,
+   "recall": 0.9387,
+   "support": 163
+  },
+  {
+   "class": "white_faced_heron",
+   "f1": 0.9957,
+   "precision": 0.997,
+   "recall": 0.9945,
+   "support": 1999
+  },
+  {
+   "class": "white_footed_dunnart",
+   "f1": 0.7692,
+   "precision": 0.7955,
+   "recall": 0.7447,
+   "support": 94
+  },
+  {
+   "class": "yellow_tailed_black_cockatoo",
+   "f1": 0.9953,
+   "precision": 0.9935,
+   "recall": 0.997,
+   "support": 2000
+  },
+  {
+   "class": "yellow_throated_honeyeater",
+   "f1": 0.9602,
+   "precision": 0.9547,
+   "recall": 0.9656,
+   "support": 262
+  }
+ ],
+ "test_proj": {
+  "all": {
+   "n": 72169,
+   "classes": 62,
+   "macro_f1": 0.7434,
+   "accuracy": 0.9673
+  },
+  "camera_trap": {
+   "n": 72169,
+   "classes": 62,
+   "macro_f1": 0.7434,
+   "accuracy": 0.9673
+  }
+ },
+ "thresholds_test_proj_release": [
+  {
+   "threshold": 0.0,
+   "kept": 1.0,
+   "accuracy_kept": 0.9673
+  },
+  {
+   "threshold": 0.5,
+   "kept": 0.9754,
+   "accuracy_kept": 0.9806
+  },
+  {
+   "threshold": 0.6,
+   "kept": 0.9596,
+   "accuracy_kept": 0.9867
+  },
+  {
+   "threshold": 0.7,
+   "kept": 0.9427,
+   "accuracy_kept": 0.9912
+  },
+  {
+   "threshold": 0.8,
+   "kept": 0.9226,
+   "accuracy_kept": 0.9948
+  },
+  {
+   "threshold": 0.9,
+   "kept": 0.8865,
+   "accuracy_kept": 0.9979
+  },
+  {
+   "threshold": 0.95,
+   "kept": 0.8445,
+   "accuracy_kept": 0.9989
+  },
+  {
+   "threshold": 0.99,
+   "kept": 0.7053,
+   "accuracy_kept": 0.9998
+  }
+ ],
+ "thresholds_val_train_only": [
+  {
+   "threshold": 0.0,
+   "kept": 1.0,
+   "accuracy_kept": 0.9823
+  },
+  {
+   "threshold": 0.5,
+   "kept": 0.9899,
+   "accuracy_kept": 0.9879
+  },
+  {
+   "threshold": 0.6,
+   "kept": 0.9819,
+   "accuracy_kept": 0.9909
+  },
+  {
+   "threshold": 0.7,
+   "kept": 0.9721,
+   "accuracy_kept": 0.9932
+  },
+  {
+   "threshold": 0.8,
+   "kept": 0.9588,
+   "accuracy_kept": 0.9953
+  },
+  {
+   "threshold": 0.9,
+   "kept": 0.9326,
+   "accuracy_kept": 0.9976
+  },
+  {
+   "threshold": 0.95,
+   "kept": 0.9001,
+   "accuracy_kept": 0.9987
+  },
+  {
+   "threshold": 0.99,
+   "kept": 0.7726,
+   "accuracy_kept": 0.9998
+  }
+ ]
+}

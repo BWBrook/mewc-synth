@@ -734,3 +734,25 @@ and synthetic snips identically.
   - It runs on ngx-gpu-4 after the current ConvNeXt V2-L seed, ahead of the remaining four-seed runs
     (`ops/2026-11-24/rfkd.sh`). It is then exported to ONNX, with fp16 parity checked on alien.
   - The non-distilled HGNetV2-B4 refit stays as the fallback if the distilled refit fails a check.
+- 2026-11-25, **distilled models on test** (`ops/2026-11-24/test_eval_kd.json`; scored once, nothing tuned after):
+
+  | Model | Test macro-F1, corrected | Original | Held-out projects, corrected | Original |
+  |---|---|---|---|---|
+  | HGNetV2-B4 distilled, 4 train-only seeds | 0.9668 ± 0.0009 | 0.9629 | 0.730 ± 0.020 | 0.753 |
+  | HGNetV2-B4 distilled refit | 0.9676 | 0.9637 | 0.743 | 0.767 |
+  | HGNetV2-B4, 8 train-only seeds (for comparison) | 0.9605 ± 0.0022 | 0.9567 | 0.723 ± 0.022 | 0.745 |
+  | HGNetV2-B4 refit (for comparison) | 0.9664 | 0.9625 | 0.751 | 0.777 |
+
+  - Distillation's gain on test (+0.006 for the train-only seeds) is larger than on validation (+0.003). On
+    held-out projects the two refits are level within seed spread. Accuracy on test: 0.986 for the refit.
+  - The distilled refit is the fast release model.
+- 2026-11-25, **Q1 secondary arm S20f outcome** (`ops/2026-11-24/q1_S20f.json`, `q1_S20f_vs_S20.json`; 8 paired
+  seeds, macro-F1 over the 25 low-count classes on validation):
+  - S20f − A0 = +0.0003 [−0.0076, +0.0107]: no help, no class harmed.
+  - S20f − S20 = +0.0031 [−0.0043, +0.0113]: filtering the translations by the production VTL's identity
+    check does not rescue the synthetic arm.
+  - With Q1 (S20 − A0 = −0.0028), synthetic snips by this recipe do not help the real low-count classes. The
+    release models train on real snips only.
+- 2026-11-25, **release licence** (Barry, 25 November: "CC BY-NC 4.0 yep"): weights CC BY-NC 4.0, as for the
+  2024 MEWC Tasmanian model; `inference.py` MIT. The training images include eBird and iNaturalist photographs
+  (13% of training snips).
