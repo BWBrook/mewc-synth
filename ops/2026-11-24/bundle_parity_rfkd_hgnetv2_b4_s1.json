@@ -1,0 +1,10 @@
+{
+ "bundle": "rfkd_hgnetv2_b4_s1",
+ "n": 2000,
+ "device": "cpu",
+ "batch_max_abs_diff": 0.0020363330841064453,
+ "batch_top1_agreement": 1.0,
+ "single_max_abs_diff_vs_batch": 5.364418029785156e-07,
+ "get_crop_top1_agreement": 1.0,
+ "get_crop_max_abs_diff": 0.12567442655563354
+}
