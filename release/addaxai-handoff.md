@@ -8,7 +8,8 @@ until an external test compares them.
 |---|---|---|
 | Hugging Face | `bwbrook/tasmania-mewc-eva02-b` | `bwbrook/tasmania-mewc-hgnetv2-b4` |
 | Backbone | EVA-02-B at 392 px | HGNetV2-B4 at 288 px, distilled from EVA-02-B |
-| Sealed test, macro-F1 | 0.9725 | see the model card |
+| Sealed test, macro-F1 | 0.9725 | 0.9676 |
+| Held-out projects, accuracy (macro-F1) | 0.975 (0.779) | 0.967 (0.743) |
 | RTX 2080 (fp16 ONNX, batch 32) | 87 images/s | 868 images/s |
 | 8 CPU cores | 2.2 images/s | 55 images/s |
 
@@ -57,5 +58,5 @@ The fast model's entry is the same apart from these fields:
 
 - `"model_id": "TAS-BB-v2-fast"`;
 - `"friendly_name": "Tasmania (fast)"`;
-- the HGNetV2-B4 description and numbers from its model card;
+- the HGNetV2-B4 description: "... HGNetV2-B4 backbone at 288 px, distilled from the accurate model. On a sealed test of 98,049 snips, macro-F1 is 0.968 (accuracy 0.986); on two held-out projects, accuracy is 0.967 and macro-F1 0.74, lower for rare classes. About ten times faster than the accurate version; suits CPUs.";
 - `info_url` pointing to `bwbrook/tasmania-mewc-hgnetv2-b4`.

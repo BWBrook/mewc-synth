@@ -6,7 +6,7 @@ classes? This repo holds the test plan (`PLAN.md`), the code and the dated
 logs. Snips, generated images and model weights live on the compute volumes,
 not here.
 
-Status: phase 1 complete (8 November 2026); see `docs/phase1-summary.md`. Phase 2 waits for the next GPU booking.
+Status: phase 2 under way (third GPU booking, 17 November to 1 December 2026; `docs/plan-booking-3.md`). The two final classifiers are released on Hugging Face (CC BY-NC 4.0): [EVA-02-B, accurate](https://huggingface.co/bwbrook/tasmania-mewc-eva02-b) and [HGNetV2-B4, fast](https://huggingface.co/bwbrook/tasmania-mewc-hgnetv2-b4). Phase 1 is summarised in `docs/phase1-summary.md`.
 
 ## Licence
 
