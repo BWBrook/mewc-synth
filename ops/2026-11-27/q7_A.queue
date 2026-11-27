@@ -1,0 +1,7 @@
+torch ekd_hgnetv2_b4_s1 /home/ubuntu/mewc-synth/ops/2026-11-27/ekd_hgnetv2_b4_s1.json
+torch ekd_hgnetv2_b4_s2 /home/ubuntu/mewc-synth/ops/2026-11-27/ekd_hgnetv2_b4_s2.json
+torch ekd_hgnetv2_b4_s3 /home/ubuntu/mewc-synth/ops/2026-11-27/ekd_hgnetv2_b4_s3.json
+torch ekd_eva02_b_s1 /home/ubuntu/mewc-synth/ops/2026-11-27/ekd_eva02_b_s1.json
+torch ekd_eva02_b_s2 /home/ubuntu/mewc-synth/ops/2026-11-27/ekd_eva02_b_s2.json
+torch ekd_eva02_b_s3 /home/ubuntu/mewc-synth/ops/2026-11-27/ekd_eva02_b_s3.json
+torch ekd_eva02_b_s4 /home/ubuntu/mewc-synth/ops/2026-11-27/ekd_eva02_b_s4.json

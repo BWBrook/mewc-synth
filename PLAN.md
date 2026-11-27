@@ -783,3 +783,10 @@ and synthetic snips identically.
   - If (a) or (b) helps, that student's refit on train + validation trains next. Validation rows then take
     teacher A's members' validation probabilities. The refit is test-scored once and checked on alien.
   - Replacing a released model is Barry's call, since AddaxAI now distributes the current ones.
+  - Addendum, the same day, before any Q7 result: both possible refits are queued at the end of their lanes,
+    so the GPUs do not idle while a decision waits:
+    - `rfekd_hgnetv2_b4_s1` on lane B, with teacher B's targets for training and validation rows;
+    - `rfekd_eva02_b_s1` on lane A, with teacher A's.
+    
+    A refit counts only if its student passes the rule. Every Q7 student and both refits are then test-scored
+    once, and the scores are reported whatever the outcome (`ops/2026-11-27/followon.sh`).
