@@ -1,0 +1,206 @@
+{
+ "deployable": {
+  "complete": true,
+  "seeds": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "dropped_without_all_seeds": [
+   "mobilenetv4_hl"
+  ],
+  "leader": "efficientnetv2_s",
+  "cost_key": "cpu8",
+  "tied": [
+   "efficientnetv2_s",
+   "fastvit_sa24",
+   "hgnetv2_b4"
+  ],
+  "winner": "hgnetv2_b4",
+  "models": [
+   {
+    "model": "efficientnetv2_s",
+    "per_seed": [
+     0.965,
+     0.9638,
+     0.966,
+     0.9637
+    ],
+    "mean": 0.9646,
+    "diff_vs_leader": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "ties_leader": true,
+    "cpu8": 17.9,
+    "diff_vs_chosen": 0.0021,
+    "ci95_vs_chosen": [
+     -0.002,
+     0.0059
+    ],
+    "above_chosen": false
+   },
+   {
+    "model": "fastvit_sa24",
+    "per_seed": [
+     0.9636,
+     0.9639,
+     0.9663,
+     0.964
+    ],
+    "mean": 0.9644,
+    "diff_vs_leader": -0.0002,
+    "ci95": [
+     -0.0038,
+     0.0033
+    ],
+    "ties_leader": true,
+    "cpu8": 45.9,
+    "diff_vs_chosen": 0.0019,
+    "ci95_vs_chosen": [
+     -0.0021,
+     0.0057
+    ],
+    "above_chosen": false
+   },
+   {
+    "model": "hgnetv2_b4",
+    "per_seed": [
+     0.9614,
+     0.9657,
+     0.9633,
+     0.9599
+    ],
+    "mean": 0.9626,
+    "diff_vs_leader": -0.0021,
+    "ci95": [
+     -0.0059,
+     0.002
+    ],
+    "ties_leader": true,
+    "cpu8": 54.6,
+    "diff_vs_chosen": 0.0,
+    "ci95_vs_chosen": [
+     0.0,
+     0.0
+    ],
+    "above_chosen": false
+   }
+  ]
+ },
+ "accurate": {
+  "complete": true,
+  "seeds": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "dropped_without_all_seeds": [],
+  "leader": "dinov3_l",
+  "cost_key": "gpu_fp16_b32",
+  "tied": [
+   "dinov3_l",
+   "eva02_b",
+   "eva02_l",
+   "convnextv2_l"
+  ],
+  "winner": "eva02_b",
+  "models": [
+   {
+    "model": "dinov3_l",
+    "per_seed": [
+     0.9732,
+     0.9674,
+     0.9732,
+     0.9766
+    ],
+    "mean": 0.9726,
+    "diff_vs_leader": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ],
+    "ties_leader": true,
+    "gpu_fp16_b32": 47.2,
+    "diff_vs_chosen": 0.0001,
+    "ci95_vs_chosen": [
+     -0.0043,
+     0.0044
+    ],
+    "above_chosen": false
+   },
+   {
+    "model": "eva02_b",
+    "per_seed": [
+     0.9715,
+     0.9729,
+     0.9739,
+     0.9718
+    ],
+    "mean": 0.9725,
+    "diff_vs_leader": -0.0001,
+    "ci95": [
+     -0.0044,
+     0.0043
+    ],
+    "ties_leader": true,
+    "gpu_fp16_b32": 86.5,
+    "diff_vs_chosen": 0.0,
+    "ci95_vs_chosen": [
+     0.0,
+     0.0
+    ],
+    "above_chosen": false
+   },
+   {
+    "model": "eva02_l",
+    "per_seed": [
+     0.9738,
+     0.9726,
+     0.9716,
+     0.9718
+    ],
+    "mean": 0.9725,
+    "diff_vs_leader": -0.0001,
+    "ci95": [
+     -0.0044,
+     0.0044
+    ],
+    "ties_leader": true,
+    "gpu_fp16_b32": 29.4,
+    "diff_vs_chosen": -0.0,
+    "ci95_vs_chosen": [
+     -0.0024,
+     0.0025
+    ],
+    "above_chosen": false
+   },
+   {
+    "model": "convnextv2_l",
+    "per_seed": [
+     0.9709,
+     0.9757,
+     0.9724,
+     0.9671
+    ],
+    "mean": 0.9715,
+    "diff_vs_leader": -0.0011,
+    "ci95": [
+     -0.006,
+     0.004
+    ],
+    "ties_leader": true,
+    "gpu_fp16_b32": 49.4,
+    "diff_vs_chosen": -0.001,
+    "ci95_vs_chosen": [
+     -0.0049,
+     0.0029
+    ],
+    "above_chosen": false
+   }
+  ]
+ }
+}

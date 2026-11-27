@@ -3,8 +3,10 @@ the shortlist rule (PLAN 2026-11-02): per track the leader is the highest two-se
 validation snips; a model whose two-level bootstrap interval of the difference from the leader (seeds resampled
 within model, snips resampled jointly) contains zero ties, and the tie goes to the cheaper model on the track's
 cost key (alien: 2080 fp16 at batch 32 for accurate, 8-core CPU for deployable; ops/2026-11-02/hw_alien.jsonl).
-A track is evaluated only once every model has both seeds.
-Usage: python ops/2026-11-20/medium_shortlist_eval.py SCORES_DIR VAL_CSV HW_JSONL OUT_JSON"""
+A track is evaluated only once every model has every seed. SEEDS (default 1,2) extends it to more seeds (PLAN
+2026-11-23: four seeds); each model is then also compared with the chosen model (EVA-02-B, HGNetV2-B4), and
+"above_chosen" marks an interval entirely above zero.
+Usage: python ops/2026-11-20/medium_shortlist_eval.py SCORES_DIR VAL_CSV HW_JSONL OUT_JSON [SEEDS]"""
 import json
 import sys
 from pathlib import Path
@@ -22,7 +24,7 @@ TRACKS = {
                                   "convnextv2_l": ("md_cnv2_l_s{s}", "cnv2_l_base"),
                                   "eva02_l": ("md_eva02_l_s{s}", "eva02_l_bmore")}),
 }
-SEEDS = (1, 2)
+CHOSEN = {"deployable": "hgnetv2_b4", "accurate": "eva02_b"}
 
 
 def macro_f1(truth, pred, k):
@@ -32,7 +34,8 @@ def macro_f1(truth, pred, k):
     return float((2 * tp[present] / denom[present]).mean())
 
 
-def main(scores, val_csv, hw, out, n_boot=1000):
+def main(scores, val_csv, hw, out, seeds="1,2", n_boot=1000):
+    SEEDS = tuple(int(s) for s in seeds.split(","))
     v = pd.read_csv(val_csv)
     ci = {c: i for i, c in enumerate(sorted(v.label.unique()))}
     k, truth = len(ci), v.label.map(ci).to_numpy()
@@ -44,6 +47,9 @@ def main(scores, val_csv, hw, out, n_boot=1000):
     rng, res = np.random.default_rng(0), {}
     for track, (key, models) in TRACKS.items():
         files = {m: [Path(scores) / f"{t.format(s=s)}.csv" for s in SEEDS] for m, (t, _) in models.items()}
+        dropped = sorted(m for m, fs in files.items() if len(SEEDS) > 2 and not all(f.exists() for f in fs))
+        files = {m: fs for m, fs in files.items() if m not in dropped}
+        models = {m: x for m, x in models.items() if m not in dropped}
         if not all(f.exists() for fs in files.values() for f in fs):
             res[track] = {"complete": False, "missing": [f.stem for fs in files.values() for f in fs if not f.exists()]}
             continue
@@ -56,15 +62,18 @@ def main(scores, val_csv, hw, out, n_boot=1000):
         for b in range(n_boot):
             idx = rng.integers(0, len(truth), len(truth))
             for m, ps in preds.items():
-                boot[m][b] = np.mean([macro_f1(truth[idx], ps[j][idx], k) for j in rng.integers(0, 2, 2)])
+                boot[m][b] = np.mean([macro_f1(truth[idx], ps[j][idx], k) for j in rng.integers(0, len(SEEDS), len(SEEDS))])
         rows = []
         for m in sorted(models, key=mean.get, reverse=True):
             lo, hi = np.quantile(boot[m] - boot[leader], [0.025, 0.975])
+            clo, chi = np.quantile(boot[m] - boot[CHOSEN[track]], [0.025, 0.975])
             rows.append({"model": m, "per_seed": [round(x, 4) for x in per[m]], "mean": round(mean[m], 4),
                          "diff_vs_leader": round(mean[m] - mean[leader], 4), "ci95": [round(float(lo), 4), round(float(hi), 4)],
-                         "ties_leader": m == leader or bool(lo <= 0 <= hi), key: cost[models[m][1]][key]})
+                         "ties_leader": m == leader or bool(lo <= 0 <= hi), key: cost[models[m][1]][key],
+                         "diff_vs_chosen": round(mean[m] - mean[CHOSEN[track]], 4),
+                         "ci95_vs_chosen": [round(float(clo), 4), round(float(chi), 4)], "above_chosen": bool(clo > 0)})
         ties = [r for r in rows if r["ties_leader"]]
-        res[track] = {"complete": True, "leader": leader, "cost_key": key, "tied": [r["model"] for r in ties],
+        res[track] = {"complete": True, "seeds": list(SEEDS), "dropped_without_all_seeds": dropped, "leader": leader, "cost_key": key, "tied": [r["model"] for r in ties],
                       "winner": max(ties, key=lambda r: r[key])["model"], "models": rows}
     json.dump(res, open(out, "w"), indent=1)
     for t, r in res.items():
@@ -74,8 +83,9 @@ def main(scores, val_csv, hw, out, n_boot=1000):
         print(f"\n{t}: leader {r['leader']}, tied {r['tied']}, winner on {r['cost_key']}: {r['winner']}")
         for x in r["models"]:
             print(f"  {x['model']:18s} {x['mean']:.4f} {x['per_seed']} diff {x['diff_vs_leader']:+.4f} "
-                  f"[{x['ci95'][0]:+.4f}, {x['ci95'][1]:+.4f}] {'TIE' if x['ties_leader'] else '   '} {r['cost_key']} {x[r['cost_key']]}")
+                  f"[{x['ci95'][0]:+.4f}, {x['ci95'][1]:+.4f}] {'TIE' if x['ties_leader'] else '   '} {r['cost_key']} {x[r['cost_key']]} | vs chosen {x['diff_vs_chosen']:+.4f} "
+                  f"[{x['ci95_vs_chosen'][0]:+.4f}, {x['ci95_vs_chosen'][1]:+.4f}]{' ABOVE' if x['above_chosen'] else ''}")
 
 
 if __name__ == "__main__":
-    main(*sys.argv[1:5])
+    main(*sys.argv[1:6])

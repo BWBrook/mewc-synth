@@ -756,3 +756,30 @@ and synthetic snips identically.
 - 2026-11-25, **release licence** (Barry, 25 November: "CC BY-NC 4.0 yep"): weights CC BY-NC 4.0, as for the
   2024 MEWC Tasmanian model; `inference.py` MIT. The training images include eBird and iNaturalist photographs
   (13% of training snips).
+- 2026-11-27, **Q2 at four seeds** (`ops/2026-11-20/q2_eval_4seeds.json`; the registered extension of 2026-11-23):
+  - Accurate: DINOv3-L 0.9726, EVA-02-B 0.9725, EVA-02-L 0.9725, ConvNeXt V2-L 0.9715. All tie.
+    Against EVA-02-B every interval contains zero (DINOv3-L +0.0001 [−0.0043, +0.0044]).
+  - Deployable: EfficientNetV2-S 0.9646, FastViT-SA24 0.9644, HGNetV2-B4 0.9626. All tie, and against
+    HGNetV2-B4 every interval contains zero (EfficientNetV2-S +0.0021 [−0.0020, +0.0059]).
+  - MobileNetV4-HL, out after two seeds, was not extended.
+  - **The release choice stands; no second candidate.** At medium scale, the large models (300 M parameters)
+    gain nothing over EVA-02-B (86 M), which is 2 to 3 times faster on the 2080.
+- 2026-11-27, before any of its runs: **Q7, does an ensemble teacher improve distillation?** Q6 showed that
+  soft targets from EVA-02-B lift HGNetV2-B4, by +0.003 on validation and +0.006 on test. An ensemble of the
+  four tied accurate models is a stronger teacher.
+  - **Teachers:** the mean class probabilities of 8 train-only medium models, DINOv3-L, ConvNeXt V2-L, EVA-02-L
+    and EVA-02-B, each scored without augmentation on the training snips.
+    - Teacher A uses seeds 1 and 3, the checkpoints on ngx-gpu-4. Teacher B uses seeds 2 and 4, on ngx-gpu-5;
+      EVA-02-B seed 4 is copied there.
+    - Each lane's students use its own teacher, so teacher seed variation is part of the comparison.
+    - Each teacher's validation macro-F1 (mean of its 8 members' validation probabilities) is reported.
+  - **Students** (kd_weight 0.5 throughout):
+    - **(a) HGNetV2-B4, production:** `ekd_hgnetv2_b4_s1` to `s6` (s1 to s3 on teacher A, s4 to s6 on B),
+      paired with `kd_hgnetv2_b4_s1` to `s6` (EVA-02-B teacher; s5 and s6 are new, on ngx-gpu-5).
+    - **(b) EVA-02-B, medium:** `ekd_eva02_b_s1` to `s4` (teacher A), paired with `md_eva02_b_anchor_s1` to
+      `s4`. It runs only after (a).
+  - **Rule:** as Q6. Overall validation macro-F1 with a two-level bootstrap; the ensemble teacher helps if the
+    interval excludes zero on the positive side and no class is harmed.
+  - If (a) or (b) helps, that student's refit on train + validation trains next. Validation rows then take
+    teacher A's members' validation probabilities. The refit is test-scored once and checked on alien.
+  - Replacing a released model is Barry's call, since AddaxAI now distributes the current ones.
